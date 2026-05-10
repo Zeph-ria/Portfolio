@@ -33,7 +33,39 @@ nav{
   background:rgba(26,26,24,0.9);
   backdrop-filter:blur(16px);
   border-bottom:1px solid var(--card-border);
+  gap:1rem;
 }
+.lang-switcher{position:relative;flex-shrink:0;}
+.lang-btn{
+  font-family:'Space Mono',monospace;
+  font-size:.6rem;color:var(--teal);
+  letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(0,180,166,.3);
+  padding:.4rem 1rem;border-radius:100px;
+  background:none;cursor:pointer;
+  display:flex;align-items:center;gap:.4rem;
+  transition:all .3s;white-space:nowrap;
+}
+.lang-btn:hover{background:var(--teal);color:var(--dark);}
+.lang-dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:#222220;border:1px solid var(--card-border);
+  border-radius:8px;overflow:hidden;
+  display:none;z-index:500;min-width:140px;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);
+}
+.lang-dropdown.open{display:block;}
+.lang-option{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.6rem 1rem;
+  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;
+  color:var(--light);cursor:pointer;
+  transition:background .2s,color .2s;
+  border:none;background:none;width:100%;text-align:left;
+}
+.lang-option:hover{background:rgba(0,180,166,.08);color:var(--teal);}
+.lang-option.active{color:var(--teal);font-weight:700;}
+
 .nav-logo{
   font-family:'Space Mono',monospace;
   font-size:0.68rem;color:var(--teal);
@@ -527,7 +559,8 @@ footer p{
   .ss-grid { grid-template-columns: 1fr 1fr; }
   .postes-grid { grid-template-columns: 1fr 1fr; }
 
-  nav{padding:1rem 1.5rem;}
+  nav{padding:.8rem 1rem;gap:.5rem;}
+  .lang-btn{font-size:.52rem;padding:.28rem .55rem;}
   .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2.5rem;}
   section{padding:4.5rem 1.5rem;}
   .profil-grid{grid-template-columns:1fr;gap:2.5rem;}
@@ -560,7 +593,7 @@ footer p{
 
 .ss-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--card-border);
   margin-top: 3rem;
@@ -941,7 +974,15 @@ footer p{
 <!-- NAV -->
 <nav>
   <div class="nav-logo">GTK · Portfolio</div>
-  <a href="https://wa.me/243815128665" class="nav-cta" target="_blank" rel="noopener">Me contacter</a>
+  <div class="lang-switcher">
+    <button class="lang-btn" id="langBtn">FR &#9662;</button>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-option active" data-lang="fr">Français</button>
+      <button class="lang-option" data-lang="en">English</button>
+      <button class="lang-option" data-lang="es">Español</button>
+    </div>
+  </div>
+  <a href="https://wa.me/243815128665" class="nav-cta" id="i-nav-cta" target="_blank" rel="noopener">Me contacter</a>
 </nav>
 
 <!-- HERO -->
@@ -950,19 +991,19 @@ footer p{
   <div class="hero-grid"></div>
 
   <div class="hero-left">
-    <div class="hero-eyebrow">Kinshasa, RDC · Disponible en remote</div>
+    <div class="hero-eyebrow" id="i-hero-eyebrow">Kinshasa, RDC · Disponible en remote</div>
     <h1 class="hero-name">
       Gloria<br>
       <em>Tumsifu</em><br>
       Kasunzu
     </h1>
-    <div class="hero-role">Marketing Digital & Performance</div>
-    <p class="hero-desc">
+    <div class="hero-role" id="i-hero-role">Marketing Digital & Performance</div>
+    <p class="hero-desc" id="i-hero-desc">
       Stratégie de contenu, pilotage de campagnes et relation client. Une expérience transversale entre groupe industriel, entreprise et freelance, pour des résultats concrets avec des budgets maîtrisés.
     </p>
     <div class="hero-cta">
-      <a href="#projets" class="btn-primary">Voir mes projets</a>
-      <a href="#experience" class="btn-outline">Mon expérience →</a>
+      <a href="#projets" class="btn-primary" id="i-btn-projects">Voir mes projets</a>
+      <a href="#experience" class="btn-outline" id="i-btn-exp">Mon expérience →</a>
     </div>
   </div>
 
@@ -970,23 +1011,23 @@ footer p{
     <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-num">100K</span>
-        <div class="stat-lbl">Impressions campagne vidéo Facebook</div>
-        <div class="stat-ctx">Budget total · 25 $</div>
+        <div class="stat-lbl" id="i-stat1-lbl">Impressions campagne vidéo Facebook</div>
+        <div class="stat-ctx" id="i-stat1-ctx">Budget total · 25 $</div>
       </div>
       <div class="stat-card">
         <span class="stat-num">915</span>
-        <div class="stat-lbl">Abonnés LinkedIn générés from scratch</div>
-        <div class="stat-ctx">100 % organique · 10 mois</div>
+        <div class="stat-lbl" id="i-stat2-lbl">Abonnés LinkedIn générés from scratch</div>
+        <div class="stat-ctx" id="i-stat2-ctx">100 % organique · 10 mois</div>
       </div>
       <div class="stat-card">
         <span class="stat-num">140</span>
-        <div class="stat-lbl">Conversations commerciales qualifiées</div>
-        <div class="stat-ctx">Budget total · 15 $</div>
+        <div class="stat-lbl" id="i-stat3-lbl">Conversations commerciales qualifiées</div>
+        <div class="stat-ctx" id="i-stat3-ctx">Budget total · 15 $</div>
       </div>
       <div class="stat-card">
         <span class="stat-num">+1520%</span>
-        <div class="stat-lbl">Croissance communauté en 1 mois</div>
-        <div class="stat-ctx">2 $/jour · 7 jours</div>
+        <div class="stat-lbl" id="i-stat4-lbl">Croissance communauté en 1 mois</div>
+        <div class="stat-ctx" id="i-stat4-ctx">2 $/jour · 7 jours</div>
       </div>
     </div>
   </div>
@@ -996,36 +1037,36 @@ footer p{
 <div class="band">
   <div class="band-item">
     <span class="band-num">15 300</span>
-    <div class="band-lbl">Impressions organiques Google</div>
+    <div class="band-lbl" id="i-band1">Impressions organiques Google</div>
   </div>
   <div class="band-item">
     <span class="band-num">Pos. 5</span>
-    <div class="band-lbl">Position moyenne Google en 10 mois</div>
+    <div class="band-lbl" id="i-band2">Position moyenne Google en 10 mois</div>
   </div>
   <div class="band-item">
     <span class="band-num">19 854</span>
-    <div class="band-lbl">ThruPlays vidéo Facebook</div>
+    <div class="band-lbl" id="i-band3">ThruPlays vidéo Facebook</div>
   </div>
   <div class="band-item">
     <span class="band-num">1 000+</span>
-    <div class="band-lbl">Prospects gérés via CRM</div>
+    <div class="band-lbl" id="i-band4">Prospects gérés via CRM</div>
   </div>
 </div>
 
 <!-- PROFIL -->
 <section id="profil">
-  <div class="sec-label">01, Profil</div>
-  <h2 class="sec-title">Qui suis-je &<br>ce que je maîtrise</h2>
+  <div class="sec-label" id="i-label-profil">01, Profil</div>
+  <h2 class="sec-title" id="i-profil-title">Qui suis-je &<br>ce que je maîtrise</h2>
 
   <div class="profil-grid">
     <div>
       <div class="profil-text">
-        <p>Spécialiste en marketing digital, je conjugue vision stratégique et exécution opérationnelle sur l'ensemble de la chaîne de valeur marketing, de la conception d'une identité visuelle au reporting de campagne Meta Ads.</p>
-        <p>Mon parcours entre groupe industriel (TEXAF), entreprise et freelance m'a permis de développer une adaptabilité rare et une capacité à produire des résultats concrets, y compris avec des budgets très contraints.</p>
-        <p>Je m'intéresse profondément aux usages de l'IA dans le marketing, à l'optimisation SEO/AEO pour les moteurs nouvelle génération, et au développement du marketing digital en Afrique francophone.</p>
+        <p id="i-profil-p1">Spécialiste en marketing digital, je conjugue vision stratégique et exécution opérationnelle sur l'ensemble de la chaîne de valeur marketing, de la conception d'une identité visuelle au reporting de campagne Meta Ads.</p>
+        <p id="i-profil-p2">Mon parcours entre groupe industriel (TEXAF), entreprise et freelance m'a permis de développer une adaptabilité rare et une capacité à produire des résultats concrets, y compris avec des budgets très contraints.</p>
+        <p id="i-profil-p3">Je m’intéresse profondément aux usages de l'IA dans le marketing, à l'optimisation SEO/AEO pour les moteurs nouvelle génération, et au développement du marketing digital en Afrique francophone.</p>
       </div>
 
-      <span class="deep-skills-label">Ce que je fais en plus de la fiche de poste</span>
+      <span class="deep-skills-label" id="i-dsi-label">Ce que je fais en plus de la fiche de poste</span>
       <div class="deep-skills-grid">
         <div class="deep-skill-item">
           <div class="dsi-title">Budget optimization</div>
@@ -1064,8 +1105,8 @@ footer p{
 
     <div>
       <div style="margin-bottom:1.4rem;padding-top:.5rem;">
-        <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--cream);display:block;margin-bottom:.3rem;">Domaines de compétence</span>
-        <span style="font-family:'Space Mono',monospace;font-size:.55rem;color:var(--teal);letter-spacing:.2em;text-transform:uppercase;">Les 4 piliers de mon expertise</span>
+        <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--cream);display:block;margin-bottom:.3rem;" id="i-skills-title">Domaines de compétence</span>
+        <span style="font-family:'Space Mono',monospace;font-size:.55rem;color:var(--teal);letter-spacing:.2em;text-transform:uppercase;" id="i-skills-sub">Les 4 piliers de mon expertise</span>
       </div>
     <div class="skills-list">
       <div class="skill-option">
@@ -1107,8 +1148,8 @@ footer p{
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="sec-label">02, Expérience</div>
-  <h2 class="sec-title">Ce que je sais<br>faire concrètement</h2>
+  <div class="sec-label" id="i-label-exp">02, Expérience</div>
+  <h2 class="sec-title" id="i-exp-title">Ce que je sais<br>faire concrètement</h2>
 
   <p class="exp-intro">
     Mon parcours couvre l'ensemble du spectre marketing : de la stratégie de marque à l'exécution opérationnelle, de la gestion de communauté au pilotage de campagnes d'acquisition, de la refonte de site à la conception de projets institutionnels.
@@ -1149,22 +1190,22 @@ footer p{
   </div>
 
   <!-- ACCORDION -->
-  <div class="exp-accordion-title">Détail des expériences</div>
+  <div class="exp-accordion-title" id="i-acc-label">Détail des expériences</div>
   <div class="acc-list">
 
     <div class="acc-item open">
       <div class="acc-header" onclick="toggleAcc(this.parentElement)">
         <div class="acc-bar" style="background:linear-gradient(180deg,#00B4A6,#007A70);"></div>
         <div class="acc-meta">
-          <h3>Consultante en Marketing Digital & Communication</h3>
+          <h3 id="i-job1-title">Consultante en Marketing Digital & Communication</h3>
           <div class="acc-sub">
-            <span class="acc-company">Freelance</span>
+            <span class="acc-company" id="i-job1-co">Freelance</span>
             <span class="acc-period">Fév. 2026 → Aujourd'hui</span>
           </div>
         </div>
         <div class="acc-toggle">+</div>
       </div>
-      <div class="acc-body">
+      <div class="acc-body" id="acc-body-1">
         <ul>
           <li>Création de contenu et gestion éditoriale pour des clients en communication et branding</li>
           <li>Conseil en optimisation de campagnes Meta Ads, analyse de performance et recommandations</li>
@@ -1177,7 +1218,7 @@ footer p{
       <div class="acc-header" onclick="toggleAcc(this.parentElement)">
         <div class="acc-bar" style="background:linear-gradient(180deg,#D4863A,#A05820);"></div>
         <div class="acc-meta">
-          <h3>Chargée du Suivi Client</h3>
+          <h3 id="i-job2-title">Chargée du Suivi Client</h3>
           <div class="acc-sub">
             <span class="acc-company">Utexafrica · Groupe TEXAF</span>
             <span class="acc-period">Juil. 2025 → Jan. 2026</span>
@@ -1185,7 +1226,7 @@ footer p{
         </div>
         <div class="acc-toggle">+</div>
       </div>
-      <div class="acc-body">
+      <div class="acc-body" id="acc-body-2">
         <ul>
           <li>Suivi portefeuille prospects via CRM Yourent <span class="chip chip-teal">426 logements · 1 000+ résidents</span></li>
           <li>Fiabilisation des données CRM pour améliorer la visibilité du pipeline commercial</li>
@@ -1199,7 +1240,7 @@ footer p{
       <div class="acc-header" onclick="toggleAcc(this.parentElement)">
         <div class="acc-bar" style="background:linear-gradient(180deg,#C0254A,#8A1030);"></div>
         <div class="acc-meta">
-          <h3>Chargée de Communication Digitale</h3>
+          <h3 id="i-job3-title">Chargée de Communication Digitale</h3>
           <div class="acc-sub">
             <span class="acc-company">Carrigrès · Groupe TEXAF</span>
             <span class="acc-period">Jan. 2025 → Jan. 2026</span>
@@ -1207,7 +1248,7 @@ footer p{
         </div>
         <div class="acc-toggle">+</div>
       </div>
-      <div class="acc-body">
+      <div class="acc-body" id="acc-body-3">
         <ul>
           <li>Création identité visuelle complète, logo, charte graphique, supports institutionnels</li>
           <li>Pilotage complet de la refonte WordPress <span class="chip chip-teal">15 300 impressions · position moy. 5 sur Google</span></li>
@@ -1223,7 +1264,7 @@ footer p{
       <div class="acc-header" onclick="toggleAcc(this.parentElement)">
         <div class="acc-bar" style="background:linear-gradient(180deg,#8A8A80,#4A4A45);"></div>
         <div class="acc-meta">
-          <h3>Chargée de Projets Digitaux & Community Manager</h3>
+          <h3 id="i-job4-title">Chargée de Projets Digitaux & Community Manager</h3>
           <div class="acc-sub">
             <span class="acc-company">Freelance · Kinshasa</span>
             <span class="acc-period">Mai 2024 → Jan. 2025</span>
@@ -1231,7 +1272,7 @@ footer p{
         </div>
         <div class="acc-toggle">+</div>
       </div>
-      <div class="acc-body">
+      <div class="acc-body" id="acc-body-4">
         <ul>
           <li>Croissance communauté <span class="chip chip-teal">+1 520 % en 1 mois · portée +5 000 personnes</span>, budget 2 $/jour · 7 jours</li>
           <li>Portefeuille clients diversifié : e-commerce, ONG éducative, galerie d'art, salon de beauté</li>
@@ -1245,20 +1286,20 @@ footer p{
 
 <!-- PROJETS -->
 <section id="projets">
-  <div class="sec-label">03, Projets</div>
-  <h2 class="sec-title">Ce que je construis<br>par moi-même</h2>
+  <div class="sec-label" id="i-label-proj">03, Projets</div>
+  <h2 class="sec-title" id="i-proj-title">Ce que je construis<br>par moi-même</h2>
 
   <!-- FEATURED -->
   <div class="projet-featured">
     <div>
-      <div class="projet-tag">Projet fondateur · En ligne</div>
+      <div class="projet-tag" id="i-proj-tag">Projet fondateur · En ligne</div>
       <h3 class="projet-name">
         Marketing<br><em>Africain</em>
       </h3>
       <p class="projet-tagline">
         Plateforme francophone dédiée aux entrepreneurs africains : guides PDF pratiques sur le marketing digital, les outils IA, la monétisation et la croissance en ligne. Conçue pour rendre le marketing accessible sur le continent.
       </p>
-      <a href="https://marketingafricain.com" target="_blank" class="projet-link">Visiter marketingafricain.com</a>
+      <a href="https://marketingafricain.com" target="_blank" class="projet-link" id="i-proj-link">Visiter marketingafricain.com</a>
     </div>
 
     <div class="projet-details">
@@ -1291,13 +1332,13 @@ footer p{
 
 <!-- OUTILS -->
 <section id="outils">
-  <div class="sec-label">02.5, Écosystème</div>
-  <h2 class="sec-title">Les outils que<br>je maîtrise</h2>
+  <div class="sec-label" id="i-label-outils">02.5, Écosystème</div>
+  <h2 class="sec-title" id="i-outils-title">Les outils que<br>je maîtrise</h2>
 
   <div class="tools-categories">
 
     <div>
-      <div class="tools-category-label">Intelligence artificielle</div>
+      <div class="tools-category-label" id="i-cat-ai">Intelligence artificielle</div>
       <div class="tools-row" id="tools-ai">
         <div class="tool-badge ai-tool">
           <span class="tool-name">Claude</span>
@@ -1312,7 +1353,7 @@ footer p{
     </div>
 
     <div>
-      <div class="tools-category-label">Design & Création</div>
+      <div class="tools-category-label" id="i-cat-design">Design & Création</div>
       <div class="tools-row" id="tools-design">
         <div class="tool-badge">
           <span class="tool-name">Canva</span>
@@ -1330,26 +1371,43 @@ footer p{
     </div>
 
     <div>
-      <div class="tools-category-label">Web & Gestion de projet</div>
+      <div class="tools-category-label" id="i-cat-web">Web & Gestion de projet</div>
       <div class="tools-row" id="tools-web">
-        <div class="tool-badge">
-          <span class="tool-name">WordPress</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Notion</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Power Automate</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Meta Business Suite</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Google Ads</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Google Analytics</span>
-        </div>
+        <div class="tool-badge"><span class="tool-name">WordPress</span></div>
+        <div class="tool-badge"><span class="tool-name">Notion</span></div>
+        <div class="tool-badge"><span class="tool-name">Power Automate</span></div>
+        <div class="tool-badge"><span class="tool-name">Meta Business Suite</span></div>
+        <div class="tool-badge"><span class="tool-name">Google Ads</span></div>
+        <div class="tool-badge"><span class="tool-name">Google Analytics</span></div>
+        <div class="tool-badge"><span class="tool-name">Google Search Console</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tools-category-label" id="i-cat-social">Réseaux sociaux</div>
+      <div class="tools-row" id="tools-social">
+        <div class="tool-badge"><span class="tool-name">Instagram</span></div>
+        <div class="tool-badge"><span class="tool-name">Facebook</span></div>
+        <div class="tool-badge"><span class="tool-name">TikTok</span></div>
+        <div class="tool-badge"><span class="tool-name">LinkedIn</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tools-category-label" id="i-cat-office">Suite Microsoft Office</div>
+      <div class="tools-row" id="tools-office">
+        <div class="tool-badge"><span class="tool-name">Excel</span></div>
+        <div class="tool-badge"><span class="tool-name">PowerPoint</span></div>
+        <div class="tool-badge"><span class="tool-name">Word</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tools-category-label" id="i-cat-crm">CRM & Formulaires</div>
+      <div class="tools-row" id="tools-crm">
+        <div class="tool-badge"><span class="tool-name">Yourent CRM</span></div>
+        <div class="tool-badge"><span class="tool-name">Tally</span></div>
+        <div class="tool-badge"><span class="tool-name">Google Forms</span></div>
       </div>
     </div>
 
@@ -1358,8 +1416,8 @@ footer p{
 
 <!-- POSTES -->
 <section id="postes">
-  <div class="sec-label">06, Débouchés</div>
-  <h2 class="sec-title">Les postes auxquels<br><em>je peux prétendre</em></h2>
+  <div class="sec-label" id="i-label-postes">06, Débouchés</div>
+  <h2 class="sec-title" id="i-postes-title">Les postes auxquels<br><em>je peux prétendre</em></h2>
   <p class="postes-intro">
     Mon profil transversal couvre la stratégie, l'exécution terrain, la donnée et la relation client. Voici les postes qui correspondent réellement à ce que je sais faire.
   </p>
@@ -1367,74 +1425,74 @@ footer p{
   <div class="postes-grid">
 
     <div class="poste-card tier-1">
-      <div class="poste-title">Chargée de Communication Digitale</div>
-      <div class="poste-desc">Le poste que j'ai déjà occupé avec des résultats prouvés, refonte de site, SEO, LinkedIn, Meta Ads, branding complet.</div>
+      <div class="poste-title" id="i-p01-title">Chargée de Communication Digitale</div>
+      <div class="poste-desc" id="i-p01-desc">Le poste que j'ai déjà occupé avec des résultats prouvés, refonte de site, SEO, LinkedIn, Meta Ads, branding complet.</div>
       <div class="poste-tags"><span class="poste-tag">SEO</span><span class="poste-tag">Meta Ads</span><span class="poste-tag">WordPress</span><span class="poste-tag">Branding</span></div>
     </div>
 
     <div class="poste-card tier-1">
-      <div class="poste-title">Social Media Manager</div>
-      <div class="poste-desc">Stratégie éditoriale, gestion de communauté, campagnes sponsorisées et reporting, mon quotidien pendant des mois.</div>
+      <div class="poste-title" id="i-p02-title">Social Media Manager</div>
+      <div class="poste-desc" id="i-p02-desc">Stratégie éditoriale, gestion de communauté, campagnes sponsorisées et reporting, mon quotidien pendant des mois.</div>
       <div class="poste-tags"><span class="poste-tag">Content</span><span class="poste-tag">Community</span><span class="poste-tag">Reporting</span><span class="poste-tag">Meta</span></div>
     </div>
 
     <div class="poste-card tier-1">
-      <div class="poste-title">Chargée Marketing Digital</div>
-      <div class="poste-desc">Vision 360° : acquisition, fidélisation, branding, SEO, email marketing. Le profil généraliste senior dont les PME ont besoin.</div>
+      <div class="poste-title" id="i-p03-title">Chargée Marketing Digital</div>
+      <div class="poste-desc" id="i-p03-desc">Vision 360° : acquisition, fidélisation, branding, SEO, email marketing. Le profil généraliste senior dont les PME ont besoin.</div>
       <div class="poste-tags"><span class="poste-tag">360°</span><span class="poste-tag">Acquisition</span><span class="poste-tag">Email</span><span class="poste-tag">AEO</span></div>
     </div>
 
     <div class="poste-card tier-1">
-      <div class="poste-title">Account Manager</div>
-      <div class="poste-desc">Gestion de portefeuille clients, suivi des performances, recommandations stratégiques. Mon expérience CRM et TEXAF parle d'elle-même.</div>
+      <div class="poste-title" id="i-p04-title">Account Manager</div>
+      <div class="poste-desc" id="i-p04-desc">Gestion de portefeuille clients, suivi des performances, recommandations stratégiques. Mon expérience CRM et TEXAF parle d'elle-même.</div>
       <div class="poste-tags"><span class="poste-tag">CRM</span><span class="poste-tag">Client</span><span class="poste-tag">Conseil</span><span class="poste-tag">B2B</span></div>
     </div>
 
     <div class="poste-card tier-2">
-      <div class="poste-title">Brand Manager</div>
-      <div class="poste-desc">Gardienne de l'identité visuelle, de la cohérence de marque et de la stratégie de contenu long terme.</div>
+      <div class="poste-title" id="i-p05-title">Brand Manager</div>
+      <div class="poste-desc" id="i-p05-desc">Gardienne de l'identité visuelle, de la cohérence de marque et de la stratégie de contenu long terme.</div>
       <div class="poste-tags"><span class="poste-tag">Branding</span><span class="poste-tag">Identité</span><span class="poste-tag">Stratégie</span></div>
     </div>
 
     <div class="poste-card tier-2">
-      <div class="poste-title">Content Strategist</div>
-      <div class="poste-desc">Architecte du contenu, planification éditoriale, SEO/AEO, optimisation pour moteurs IA. L'avenir du contenu est ma spécialité.</div>
+      <div class="poste-title" id="i-p06-title">Content Strategist</div>
+      <div class="poste-desc" id="i-p06-desc">Architecte du contenu, planification éditoriale, SEO/AEO, optimisation pour moteurs IA. L'avenir du contenu est ma spécialité.</div>
       <div class="poste-tags"><span class="poste-tag">SEO</span><span class="poste-tag">AEO</span><span class="poste-tag">IA</span><span class="poste-tag">Éditorial</span></div>
     </div>
 
     <div class="poste-card tier-2">
-      <div class="poste-title">Digital Marketing Manager</div>
-      <div class="poste-desc">Coordination de l'ensemble des leviers digitaux avec reporting à la direction. Mon niveau de livrables y correspond.</div>
+      <div class="poste-title" id="i-p07-title">Digital Marketing Manager</div>
+      <div class="poste-desc" id="i-p07-desc">Coordination de l'ensemble des leviers digitaux avec reporting à la direction. Mon niveau de livrables y correspond.</div>
       <div class="poste-tags"><span class="poste-tag">Management</span><span class="poste-tag">Stratégie</span><span class="poste-tag">KPIs</span></div>
     </div>
 
     <div class="poste-card tier-2">
-      <div class="poste-title">Growth Marketer</div>
-      <div class="poste-desc">Acquisition, activation, rétention, avec des micro-budgets qui font des résultats macro. C'est exactement ce que j'ai fait chez TEXAF.</div>
+      <div class="poste-title" id="i-p08-title">Growth Marketer</div>
+      <div class="poste-desc" id="i-p08-desc">Acquisition, activation, rétention, avec des micro-budgets qui font des résultats macro. C'est exactement ce que j'ai fait chez TEXAF.</div>
       <div class="poste-tags"><span class="poste-tag">Growth</span><span class="poste-tag">Funnel</span><span class="poste-tag">ROI</span></div>
     </div>
 
     <div class="poste-card tier-3">
-      <div class="poste-title">Consultante Stratégie Digitale</div>
-      <div class="poste-desc">Audit, recommandations et accompagnement dans la transformation digitale. Mon profil freelance et TEXAF le prouve.</div>
+      <div class="poste-title" id="i-p09-title">Consultante Stratégie Digitale</div>
+      <div class="poste-desc" id="i-p09-desc">Audit, recommandations et accompagnement dans la transformation digitale. Mon profil freelance et TEXAF le prouve.</div>
       <div class="poste-tags"><span class="poste-tag">Audit</span><span class="poste-tag">Conseil</span><span class="poste-tag">Remote</span></div>
     </div>
 
     <div class="poste-card tier-3">
-      <div class="poste-title">AI Marketing Specialist</div>
-      <div class="poste-desc">Intégrer les outils IA dans les stratégies marketing. Un rôle émergent que peu de profils africains peuvent occuper aujourd'hui.</div>
+      <div class="poste-title" id="i-p10-title">AI Marketing Specialist</div>
+      <div class="poste-desc" id="i-p10-desc">Intégrer les outils IA dans les stratégies marketing. Un rôle émergent que peu de profils africains peuvent occuper aujourd'hui.</div>
       <div class="poste-tags"><span class="poste-tag">IA</span><span class="poste-tag">Claude</span><span class="poste-tag">Automatisation</span></div>
     </div>
 
     <div class="poste-card tier-3">
-      <div class="poste-title">Marketing Director, Afrique</div>
-      <div class="poste-desc">Piloter la stratégie marketing d'une organisation panafricaine. Mon Master RI + expertise terrain africaine y pointent.</div>
+      <div class="poste-title" id="i-p11-title">Marketing Director, Afrique</div>
+      <div class="poste-desc" id="i-p11-desc">Piloter la stratégie marketing d'une organisation panafricaine. Mon Master RI + expertise terrain africaine y pointent.</div>
       <div class="poste-tags"><span class="poste-tag">Leadership</span><span class="poste-tag">Afrique</span><span class="poste-tag">Panafricain</span></div>
     </div>
 
     <div class="poste-card tier-3">
-      <div class="poste-title">Fondatrice, EdTech Marketing</div>
-      <div class="poste-desc">Marketing Africain préfigure déjà ce rôle, créer des formations et outils pour les professionnels du marketing africain.</div>
+      <div class="poste-title" id="i-p12-title">Fondatrice, EdTech Marketing</div>
+      <div class="poste-desc" id="i-p12-desc">Marketing Africain préfigure déjà ce rôle, créer des formations et outils pour les professionnels du marketing africain.</div>
       <div class="poste-tags"><span class="poste-tag">Entrepreneuriat</span><span class="poste-tag">EdTech</span><span class="poste-tag">Afrique</span></div>
     </div>
 
@@ -1447,8 +1505,8 @@ footer p{
 
 <!-- SOFT SKILLS -->
 <section id="softskills">
-  <div class="sec-label">05, Profil humain</div>
-  <h2 class="sec-title">Ce que les chiffres<br>ne disent pas</h2>
+  <div class="sec-label" id="i-label-ss">05, Profil humain</div>
+  <h2 class="sec-title" id="i-ss-title">Ce que les chiffres<br>ne disent pas</h2>
 
   <div class="ss-grid">
 
@@ -1671,8 +1729,8 @@ footer p{
 <!-- CONTACT STRIP -->
 <div class="contact-strip" id="contact">
   <div class="contact-strip-left">
-    <h2>Travaillons<br>ensemble.</h2>
-    <p>Disponible pour des missions freelance, des postes en présentiel à Kinshasa ou en remote.</p>
+    <h2 id="i-contact-title">Travaillons<br>ensemble.</h2>
+    <p id="i-contact-sub">Disponible pour des missions freelance, des postes en présentiel à Kinshasa ou en remote.</p>
   </div>
   <div class="contact-strip-links">
     <a href="mailto:gzephrine@gmail.com" class="contact-btn">✉ gzephrine@gmail.com</a>
@@ -1684,7 +1742,7 @@ footer p{
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Gloria Tumsifu Kasunzu</p>
-  <p>Kinshasa, RDC · Remote · Disponible</p>
+  <p id="i-footer-status">Kinshasa, RDC · Remote · Disponible</p>
 </footer>
 
 <script>
@@ -1787,6 +1845,7 @@ updateSideNav();
 
     var label = document.createElement('span');
     label.textContent = s.label;
+    label.dataset.sectionId = s.id;
     Object.assign(label.style, {
       fontFamily:    'DM Sans, sans-serif',
       fontSize:      '9px',
@@ -1836,5 +1895,602 @@ updateSideNav();
 })();
 </script>
 
+
+
+<script>
+(function () {
+  "use strict";
+
+  /* =============================================================
+     TRANSLATION DICTIONARY
+     Every piece of text that changes between languages.
+     Numbers, proper nouns and dates are kept identical.
+  ============================================================= */
+  var T = {
+
+    /* ── FRENCH (default) ── */
+    fr: {
+      code: "FR",
+
+      /* NAV */
+      "i-nav-cta": "Me contacter",
+
+      /* HERO */
+      "i-hero-eyebrow": "Kinshasa, RDC · Disponible en remote",
+      "i-hero-role":    "Marketing Digital & Performance",
+      "i-hero-desc":    "Stratégie de contenu, pilotage de campagnes et relation client. Une expérience transversale entre groupe industriel, entreprise et freelance, pour des résultats concrets avec des budgets maîtrisés.",
+      "i-btn-projects": "Voir mes projets",
+      "i-btn-exp":      "Mon expérience →",
+
+      /* STAT CARDS */
+      "i-stat1-lbl": "Impressions campagne vidéo Facebook",
+      "i-stat1-ctx": "Budget total · 25 $",
+      "i-stat2-lbl": "Abonnés LinkedIn générés from scratch",
+      "i-stat2-ctx": "100 % organique · 10 mois",
+      "i-stat3-lbl": "Conversations commerciales qualifiées",
+      "i-stat3-ctx": "Budget total · 15 $",
+      "i-stat4-lbl": "Croissance communauté en 1 mois",
+      "i-stat4-ctx": "2 $/jour · 7 jours",
+
+      /* BAND */
+      "i-band1": "Impressions organiques Google",
+      "i-band2": "Position moyenne Google en 10 mois",
+      "i-band3": "ThruPlays vidéo Facebook",
+      "i-band4": "Prospects gérés via CRM",
+
+      /* PROFIL */
+      "i-label-profil": "01, Profil",
+      "i-profil-title": "Qui suis-je &<br>ce que je maîtrise",
+      "i-profil-p1": "Spécialiste en marketing digital, je conjugue vision stratégique et exécution opérationnelle sur l’ensemble de la chaîne de valeur marketing, de la conception d’une identité visuelle au reporting de campagne Meta Ads.",
+      "i-profil-p2": "Mon parcours entre groupe industriel (TEXAF), entreprise et freelance m’a permis de développer une adaptabilité rare et une capacité à produire des résultats concrets, y compris avec des budgets très contraints.",
+      "i-profil-p3": "Je m’intéresse profondément aux usages de l’IA dans le marketing, à l’optimisation SEO/AEO pour les moteurs nouvelle génération, et au développement du marketing digital en Afrique francophone.",
+      "i-dsi-label":    "Ce que je fais en plus de la fiche de poste",
+      "i-skills-title": "Domaines de compétence",
+      "i-skills-sub":   "Les 4 piliers de mon expertise",
+
+      /* EXPERIENCE */
+      "i-label-exp": "02, Expérience",
+      "i-exp-title": "Ce que je sais<br>faire concrètement",
+      "i-acc-label": "Détail des expériences",
+
+      /* ACCORDION JOBS */
+      "i-job1-title": "Consultante en Marketing Digital & Communication",
+      "i-job2-title": "Chargée du Suivi Client",
+      "i-job3-title": "Chargée de Communication Digitale",
+      "i-job4-title": "Chargée de Projets Digitaux & Community Manager",
+
+      /* PROJETS */
+      "i-label-proj": "03, Projets",
+      "i-proj-title": "Ce que je construis<br>par moi-même",
+      "i-proj-tag":   "Projet fondateur · En ligne",
+      "i-proj-link":  "Visiter marketingafricain.com",
+
+      /* OUTILS */
+      "i-label-outils": "02.5, Écosystème",
+      "i-outils-title": "Les outils que<br>je maîtrise",
+      "i-cat-ai":       "Intelligence artificielle",
+      "i-cat-design":   "Design & Création",
+      "i-cat-web":      "Web & Gestion de projet",
+      "i-cat-social":   "Réseaux sociaux",
+      "i-cat-office":   "Suite Microsoft Office",
+      "i-cat-crm":      "CRM & Formulaires",
+
+      /* POSTES */
+      "i-label-postes": "06, Débouchés",
+      "i-postes-title": "Les postes auxquels<br><em>je peux prétendre</em>",
+      "i-p01-title": "Chargée de Communication Digitale",
+      "i-p01-desc":  "Le poste que j’ai déjà occupé avec des résultats prouvés : refonte de site, SEO, LinkedIn, Meta Ads, branding complet.",
+      "i-p02-title": "Social Media Manager",
+      "i-p02-desc":  "Stratégie éditoriale, gestion de communauté, campagnes sponsorisées et reporting, mon quotidien pendant des mois.",
+      "i-p03-title": "Chargée Marketing Digital",
+      "i-p03-desc":  "Vision 360° : acquisition, fidélisation, branding, SEO, email marketing. Le profil généraliste senior dont les PME ont besoin.",
+      "i-p04-title": "Account Manager",
+      "i-p04-desc":  "Gestion de portefeuille clients, suivi des performances, recommandations stratégiques. Mon expérience CRM et TEXAF parle d’elle-même.",
+      "i-p05-title": "Brand Manager",
+      "i-p05-desc":  "Gardienne de l’identité visuelle, de la cohérence de marque et de la stratégie de contenu long terme.",
+      "i-p06-title": "Content Strategist",
+      "i-p06-desc":  "Architecte du contenu, planification éditoriale, SEO/AEO, optimisation pour moteurs IA. L’avenir du contenu est ma spécialité.",
+      "i-p07-title": "Digital Marketing Manager",
+      "i-p07-desc":  "Coordination de l’ensemble des leviers digitaux avec reporting à la direction. Mon niveau de livrables y correspond.",
+      "i-p08-title": "Growth Marketer",
+      "i-p08-desc":  "Acquisition, activation, rétention, avec des micro-budgets qui font des résultats macro. C’est exactement ce que j’ai fait chez TEXAF.",
+      "i-p09-title": "Consultante Stratégie Digitale",
+      "i-p09-desc":  "Audit, recommandations et accompagnement dans la transformation digitale. Mon profil freelance et TEXAF le prouve.",
+      "i-p10-title": "AI Marketing Specialist",
+      "i-p10-desc":  "Intégrer les outils IA dans les stratégies marketing. Un rôle émergent que peu de profils africains peuvent occuper aujourd’hui.",
+      "i-p11-title": "Marketing Director, Afrique",
+      "i-p11-desc":  "Piloter la stratégie marketing d’une organisation panafricaine. Mon Master RI + expertise terrain africaine y pointent.",
+      "i-p12-title": "Fondatrice, EdTech Marketing",
+      "i-p12-desc":  "Marketing Africain préfigure déjà ce rôle : créer des formations et outils pour les professionnels du marketing africain.",
+
+      /* SOFTSKILLS */
+      "i-label-ss": "05, Profil humain",
+      "i-ss-title": "Ce que les chiffres<br>ne disent pas",
+
+      /* CONTACT + FOOTER */
+      "i-contact-title": "Travaillons<br>ensemble.",
+      "i-contact-sub":   "Disponible pour des missions freelance, des postes en présentiel à Kinshasa ou en remote.",
+      "i-footer-status": "Kinshasa, RDC · Remote · Disponible",
+
+      "sideNav": {
+        "profil": "Profil",
+        "experience": "Expérience",
+        "projets": "Projets",
+        "outils": "Outils",
+        "postes": "Débouchés",
+        "softskills": "Softskills"
+      },
+    },
+
+    /* ── ENGLISH ── */
+    en: {
+      code: "EN",
+
+      "i-nav-cta": "Contact me",
+
+      "i-hero-eyebrow": "Kinshasa, DRC · Available Remote",
+      "i-hero-role":    "Digital Marketing & Performance",
+      "i-hero-desc":    "Content strategy, campaign management and client relations. Cross-sector experience spanning an industrial group, companies and freelance work, delivering concrete results on tight budgets.",
+      "i-btn-projects": "See my projects",
+      "i-btn-exp":      "My experience →",
+
+      "i-stat1-lbl": "Facebook video campaign impressions",
+      "i-stat1-ctx": "Total budget · $25",
+      "i-stat2-lbl": "LinkedIn followers generated from scratch",
+      "i-stat2-ctx": "100% organic · 10 months",
+      "i-stat3-lbl": "Qualified commercial conversations",
+      "i-stat3-ctx": "Total budget · $15",
+      "i-stat4-lbl": "Community growth in 1 month",
+      "i-stat4-ctx": "$2/day · 7 days",
+
+      "i-band1": "Organic Google impressions",
+      "i-band2": "Average Google position in 10 months",
+      "i-band3": "Facebook video ThruPlays",
+      "i-band4": "Prospects managed via CRM",
+
+      "i-label-profil": "01, Profile",
+      "i-profil-title": "Who I am &<br>what I master",
+      "i-profil-p1": "Digital marketing specialist, I combine strategic vision and operational execution across the full marketing value chain, from visual identity design to Meta Ads campaign reporting.",
+      "i-profil-p2": "My background spanning an industrial group (TEXAF), companies and freelance work has given me a rare adaptability and the ability to deliver concrete results, even on very tight budgets.",
+      "i-profil-p3": "I am deeply interested in AI applications in marketing, SEO/AEO optimisation for next-generation search engines, and the development of digital marketing in francophone Africa.",
+      "i-dsi-label":    "What I do beyond the job description",
+      "i-skills-title": "Areas of expertise",
+      "i-skills-sub":   "The 4 pillars of my skillset",
+
+      "i-label-exp": "02, Experience",
+      "i-exp-title": "What I can<br>actually do",
+      "i-acc-label": "Experience breakdown",
+
+      "i-job1-title": "Digital Marketing & Communication Consultant",
+      "i-job2-title": "Client Relations Officer",
+      "i-job3-title": "Digital Communications Manager",
+      "i-job4-title": "Digital Project Manager & Community Manager",
+
+      "i-label-proj": "03, Projects",
+      "i-proj-title": "What I build<br>on my own",
+      "i-proj-tag":   "Founding project · Live",
+      "i-proj-link":  "Visit marketingafricain.com",
+
+      "i-label-outils": "02.5, Ecosystem",
+      "i-outils-title": "Tools I<br>master",
+      "i-cat-ai":       "Artificial intelligence",
+      "i-cat-design":   "Design & Creation",
+      "i-cat-web":      "Web & Project management",
+      "i-cat-social":   "Social media",
+      "i-cat-office":   "Microsoft Office Suite",
+      "i-cat-crm":      "CRM & Forms",
+
+      "i-label-postes": "06, Opportunities",
+      "i-postes-title": "Positions I can<br><em>apply for</em>",
+      "i-p01-title": "Digital Communications Manager",
+      "i-p01-desc":  "A role I have already held with proven results: website redesign, SEO, LinkedIn, Meta Ads, full branding.",
+      "i-p02-title": "Social Media Manager",
+      "i-p02-desc":  "Editorial strategy, community management, sponsored campaigns and reporting, my day-to-day for months.",
+      "i-p03-title": "Digital Marketing Officer",
+      "i-p03-desc":  "360° vision: acquisition, retention, branding, SEO, email marketing. The senior generalist profile SMEs need.",
+      "i-p04-title": "Account Manager",
+      "i-p04-desc":  "Client portfolio management, performance tracking, strategic recommendations. My CRM and TEXAF experience speaks for itself.",
+      "i-p05-title": "Brand Manager",
+      "i-p05-desc":  "Guardian of visual identity, brand consistency and long-term content strategy.",
+      "i-p06-title": "Content Strategist",
+      "i-p06-desc":  "Content architect, editorial planning, SEO/AEO, AI engine optimisation. The future of content is my speciality.",
+      "i-p07-title": "Digital Marketing Manager",
+      "i-p07-desc":  "Coordinating all digital levers with reporting to senior management. My deliverable level matches this role.",
+      "i-p08-title": "Growth Marketer",
+      "i-p08-desc":  "Acquisition, activation, retention, with micro-budgets delivering macro results. Exactly what I did at TEXAF.",
+      "i-p09-title": "Digital Strategy Consultant",
+      "i-p09-desc":  "Audit, recommendations and support through digital transformation. My freelance and TEXAF profile proves it.",
+      "i-p10-title": "AI Marketing Specialist",
+      "i-p10-desc":  "Integrating AI tools into marketing strategies. An emerging role that few African profiles can fill today.",
+      "i-p11-title": "Marketing Director, Africa",
+      "i-p11-desc":  "Leading the marketing strategy of a pan-African organisation. My IR Master’s + African field expertise point there.",
+      "i-p12-title": "Founder, EdTech Marketing",
+      "i-p12-desc":  "Marketing Africain already prefigures this role: building courses and tools for African marketing professionals.",
+
+      "i-label-ss": "05, Human profile",
+      "i-ss-title": "What the numbers<br>don’t show",
+
+      "i-contact-title": "Let’s work<br>together.",
+      "i-contact-sub":   "Available for freelance projects, on-site positions in Kinshasa or remote work.",
+      "i-footer-status": "Kinshasa, DRC · Remote · Available",
+
+      "sideNav": {
+        "profil": "Profile",
+        "experience": "Experience",
+        "projets": "Projects",
+        "outils": "Tools",
+        "postes": "Positions",
+        "softskills": "Soft skills"
+      },
+    },
+
+    /* ── SPANISH ── */
+    es: {
+      code: "ES",
+
+      "i-nav-cta": "Contáctame",
+
+      "i-hero-eyebrow": "Kinshasa, RDC · Disponible en remoto",
+      "i-hero-role":    "Marketing Digital & Rendimiento",
+      "i-hero-desc":    "Estrategia de contenido, gestión de campañas y relación con clientes. Experiencia transversal entre grupo industrial, empresa y trabajo freelance, con resultados concretos y presupuestos ajustados.",
+      "i-btn-projects": "Ver mis proyectos",
+      "i-btn-exp":      "Mi experiencia →",
+
+      "i-stat1-lbl": "Impresiones de campaña de vídeo en Facebook",
+      "i-stat1-ctx": "Presupuesto total · 25 $",
+      "i-stat2-lbl": "Seguidores de LinkedIn generados desde cero",
+      "i-stat2-ctx": "100 % orgánico · 10 meses",
+      "i-stat3-lbl": "Conversaciones comerciales cualificadas",
+      "i-stat3-ctx": "Presupuesto total · 15 $",
+      "i-stat4-lbl": "Crecimiento de comunidad en 1 mes",
+      "i-stat4-ctx": "2 $/día · 7 días",
+
+      "i-band1": "Impresiones orgánicas en Google",
+      "i-band2": "Posición media en Google en 10 meses",
+      "i-band3": "ThruPlays de vídeo en Facebook",
+      "i-band4": "Prospectos gestionados vía CRM",
+
+      "i-label-profil": "01, Perfil",
+      "i-profil-title": "Quién soy &<br>qué domino",
+      "i-profil-p1": "Especialista en marketing digital, combino visión estratégica y ejecución operativa en toda la cadena de valor del marketing, desde el diseño de identidad visual hasta el reporte de campañas Meta Ads.",
+      "i-profil-p2": "Mi trayectoria entre un grupo industrial (TEXAF), empresas y trabajo freelance me ha permitido desarrollar una adaptabilidad poco común y la capacidad de producir resultados concretos con presupuestos muy ajustados.",
+      "i-profil-p3": "Me interesa profundamente el uso de la IA en el marketing, la optimización SEO/AEO para motores de nueva generación y el desarrollo del marketing digital en África francofóna.",
+      "i-dsi-label":    "Lo que hago más allá de la descripción del puesto",
+      "i-skills-title": "Áreas de competencia",
+      "i-skills-sub":   "Los 4 pilares de mi experiencia",
+
+      "i-label-exp": "02, Experiencia",
+      "i-exp-title": "Lo que sé<br>hacer concretamente",
+      "i-acc-label": "Detalle de experiencias",
+
+      "i-job1-title": "Consultora de Marketing Digital & Comunicación",
+      "i-job2-title": "Responsable de Atención al Cliente",
+      "i-job3-title": "Responsable de Comunicación Digital",
+      "i-job4-title": "Gestora de Proyectos Digitales & Community Manager",
+
+      "i-label-proj": "03, Proyectos",
+      "i-proj-title": "Lo que construyo<br>por mi cuenta",
+      "i-proj-tag":   "Proyecto fundador · En línea",
+      "i-proj-link":  "Visitar marketingafricain.com",
+
+      "i-label-outils": "02.5, Ecosistema",
+      "i-outils-title": "Herramientas que<br>domino",
+      "i-cat-ai":       "Inteligencia artificial",
+      "i-cat-design":   "Diseño & Creación",
+      "i-cat-web":      "Web & Gestión de proyectos",
+      "i-cat-social":   "Redes sociales",
+      "i-cat-office":   "Suite Microsoft Office",
+      "i-cat-crm":      "CRM & Formularios",
+
+      "i-label-postes": "06, Oportunidades",
+      "i-postes-title": "Puestos a los que<br><em>puedo aspirar</em>",
+      "i-p01-title": "Responsable de Comunicación Digital",
+      "i-p01-desc":  "Un puesto que ya ocupé con resultados probados: rediseño web, SEO, LinkedIn, Meta Ads, branding completo.",
+      "i-p02-title": "Social Media Manager",
+      "i-p02-desc":  "Estrategia editorial, gestión de comunidad, campañas patrocinadas y reporting, mi día a día durante meses.",
+      "i-p03-title": "Responsable de Marketing Digital",
+      "i-p03-desc":  "Visión 360°: adquisición, fidelización, branding, SEO, email marketing. El perfil generalista sénior que las pymes necesitan.",
+      "i-p04-title": "Account Manager",
+      "i-p04-desc":  "Gestión de cartera de clientes, seguimiento del rendimiento, recomendaciones estratégicas. Mi experiencia CRM y TEXAF habla por sí sola.",
+      "i-p05-title": "Brand Manager",
+      "i-p05-desc":  "Guardiana de la identidad visual, la coherencia de marca y la estrategia de contenido a largo plazo.",
+      "i-p06-title": "Content Strategist",
+      "i-p06-desc":  "Arquitecta de contenido, planificación editorial, SEO/AEO, optimización para motores IA. El futuro del contenido es mi especialidad.",
+      "i-p07-title": "Digital Marketing Manager",
+      "i-p07-desc":  "Coordinación de todos los canales digitales con reporte a la dirección. Mi nivel de entregables corresponde a este rol.",
+      "i-p08-title": "Growth Marketer",
+      "i-p08-desc":  "Adquisición, activación, retención, con micro-presupuestos que producen resultados macro. Es exactamente lo que hice en TEXAF.",
+      "i-p09-title": "Consultora de Estrategia Digital",
+      "i-p09-desc":  "Auditoría, recomendaciones y acompañamiento en la transformación digital. Mi perfil freelance y TEXAF lo demuestran.",
+      "i-p10-title": "AI Marketing Specialist",
+      "i-p10-desc":  "Integrar herramientas de IA en las estrategias de marketing. Un rol emergente que pocos perfiles africanos pueden ocupar hoy.",
+      "i-p11-title": "Directora de Marketing, África",
+      "i-p11-desc":  "Pilotar la estrategia de marketing de una organización panafricana. Mi Máster en RRII + experiencia en terreno africano apuntan a ello.",
+      "i-p12-title": "Fundadora, EdTech Marketing",
+      "i-p12-desc":  "Marketing Africain ya prefigura este rol: crear formaciones y herramientas para los profesionales del marketing africano.",
+
+      "i-label-ss": "05, Perfil humano",
+      "i-ss-title": "Lo que los números<br>no dicen",
+
+      "i-contact-title": "Trabajemos<br>juntos.",
+      "i-contact-sub":   "Disponible para misiones freelance, puestos presenciales en Kinshasa o trabajo remoto.",
+      "i-footer-status": "Kinshasa, RDC · Remoto · Disponible",
+
+      "sideNav": {
+        "profil": "Perfil",
+        "experience": "Experiencia",
+        "projets": "Proyectos",
+        "outils": "Herramientas",
+        "postes": "Puestos",
+        "softskills": "Aptitudes"
+      },
+    }
+  };
+
+  /* =============================================================
+     DYNAMIC CONTENT ARRAYS
+     Text for elements selected by class (not ID)
+  ============================================================= */
+  var DC = {
+    fr: {
+      whatido: [
+        { h:"Campagnes & Acquisition",       p:"Paramétrage, lancement et optimisation de campagnes Meta Ads et Google Ads. Reporting de performance et recommandations stratégiques. Résultats prouvés avec des micro-budgets." },
+        { h:"SEO & Visibilité",              p:"Optimisation on-page, stratégie de contenu SEO, AEO pour moteurs IA, création de llms.txt. Position moyenne 5 sur Google en 10 mois sur un nouveau domaine." },
+        { h:"Branding & Identité visuelle",  p:"Conception complète d’identités visuelles : logo, charte graphique, supports institutionnels. Cohérence visuelle cross-canal." },
+        { h:"Web & CMS",                      p:"Création, refonte et maintenance de sites WordPress. Optimisation SEO technique, sécurisation, coordination des livrables." },
+        { h:"CRM & Suivi client",             p:"Gestion de portefeuilles de prospects, qualification des besoins, fiabilisation des données CRM, accompagnement jusqu’à la décision." },
+        { h:"Stratégie & Rédaction",       p:"Conception de projets stratégiques de A à Z, rédaction de documents institutionnels (ESG, plans opérationnels), copywriting orienté conversion." }
+      ],
+      skills: [
+        { h:"Stratégie & Branding",       p:"Marketing digital, identité visuelle, content marketing, social media, SEO / AEO / GEO" },
+        { h:"Performance & Acquisition",   p:"Meta Ads, Google Ads, email marketing, reporting, analyse de performance" },
+        { h:"CRM & Relation Client",       p:"Qualification et suivi de prospects, gestion du parcours client, fiabilisation des données" },
+        { h:"Création & Outils",          p:"Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate" }
+      ],
+      deepskills: [
+        { t:"Budget optimization",               d:"Produire des résultats massifs avec des ressources limitées, 100 000 impressions pour 25 $." },
+        { t:"Copywriting stratégique",           d:"Écrire pour convaincre : chaque mot est choisi, chaque phrase a une fonction précise." },
+        { t:"Gestion de crise digitale",         d:"Gérer les tentatives de piratage, les bad buzz et les problèmes techniques sous pression." },
+        { t:"Coordination multi-équipes",       d:"Aligner prestataires, équipes internes et clients autour d’un même livrable, dans les délais." },
+        { t:"IA appliquée au marketing",        d:"Utiliser Claude et ChatGPT comme de vrais outils de travail : prompting, itération, production." },
+        { t:"Rédaction de projets stratégiques", d:"Formaliser des visions complexes en documents actionnables : ESG, plans opérationnels, stratégies." },
+        { t:"Conception de A à Z",              d:"Piloter un projet depuis l’idée jusqu’au livrable final, sans perdre le fil ni la qualité." },
+        { t:"Analyse pipeline CRM",              d:"Lire, nettoyer et interpréter les données d’un CRM pour optimiser la conversion et le suivi." }
+      ],
+      sslabels: ["Créativité", "Autonomie", "Capacité d’analyse", "Esprit stratégique", "Adaptabilité", "Travail en équipe"],
+      ssdescs:  [
+        "Trouver des solutions originales là où les autres voient des contraintes.",
+        "Conduire un projet de A à Z sans attendre qu’on lui dise quoi faire.",
+        "Lire les données, identifier les leviers, prendre les bonnes décisions.",
+        "Penser deux coups d’avance. Voir l’ensemble avant d’agir sur le détail.",
+        "Changer d’environnement, de secteur ou d’outil sans perdre en efficacité.",
+        "Fédérer, coordonner et faire avancer des projets avec des équipes diverses."
+      ],
+      expIntro: "Mon parcours couvre l’ensemble du spectre marketing : de la stratégie de marque à l’exécution opérationnelle, de la gestion de communauté au pilotage de campagnes d’acquisition, de la refonte de site à la conception de projets institutionnels.",
+      projTagline: "Plateforme francophone dédiée aux entrepreneurs africains : guides PDF pratiques sur le marketing digital, les outils IA, la monétisation et la croissance en ligne. Conçue pour rendre le marketing accessible sur le continent.",
+      projKeys:   ["Catégorie", "Audience", "Offre", "Tech", "Vision"],
+      projVals:   [
+        "Plateforme e-learning · Guides PDF",
+        "Entrepreneurs francophones d’Afrique subsaharienne",
+        "<strong>8 guides à 10 $</strong> : WhatsApp Business, Meta Ads, email marketing, outils IA (ChatGPT & Claude), freelancing, Mobile Money…",
+        "WordPress · SEO / AEO / GEO · Rank Math · Boutique Chariow",
+        "Devenir la référence marketing digital en Afrique francophone"
+      ],
+      postesIntro: "Mon profil transversal couvre la stratégie, l’exécution terrain, la donnée et la relation client. Voici les postes qui correspondent réellement à ce que je sais faire.",
+      postesNote:  "<strong>Note :</strong> Cette liste est une boussole, pas un plafond. Le marché remote élargit encore davantage le spectre de ce qui est accessible aujourd’hui."
+    },
+
+    en: {
+      whatido: [
+        { h:"Campaigns & Acquisition",     p:"Setup, launch and optimisation of Meta Ads and Google Ads campaigns. Performance reporting and strategic recommendations. Proven results on micro-budgets." },
+        { h:"SEO & Visibility",            p:"On-page optimisation, SEO content strategy, AEO for AI engines, llms.txt creation. Average position 5 on Google in 10 months on a new domain." },
+        { h:"Branding & Visual Identity",  p:"Full visual identity design: logo, brand guidelines, institutional materials. Cross-channel visual consistency." },
+        { h:"Web & CMS",                   p:"WordPress site creation, redesign and maintenance. Technical SEO, security hardening, deliverable coordination." },
+        { h:"CRM & Client Management",     p:"Prospect portfolio management, needs qualification, CRM data reliability, end-to-end client journey support." },
+        { h:"Strategy & Copywriting",      p:"End-to-end strategic project design, institutional document writing (ESG, operational plans), conversion-focused copywriting." }
+      ],
+      skills: [
+        { h:"Strategy & Branding",         p:"Digital marketing, visual identity, content marketing, social media, SEO / AEO / GEO" },
+        { h:"Performance & Acquisition",   p:"Meta Ads, Google Ads, email marketing, reporting, performance analysis" },
+        { h:"CRM & Client Relations",      p:"Prospect qualification and tracking, client journey management, data reliability" },
+        { h:"Creation & Tools",            p:"Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate" }
+      ],
+      deepskills: [
+        { t:"Budget optimization",            d:"Delivering massive results with limited resources, 100,000 impressions for $25." },
+        { t:"Strategic copywriting",          d:"Writing to persuade: every word chosen, every sentence with a precise purpose." },
+        { t:"Digital crisis management",      d:"Handling hacking attempts, bad buzz and technical issues under pressure." },
+        { t:"Multi-team coordination",        d:"Aligning contractors, internal teams and clients around one deliverable, on time." },
+        { t:"AI applied to marketing",        d:"Using Claude and ChatGPT as real work tools: prompting, iteration, production." },
+        { t:"Strategic document writing",     d:"Turning complex visions into actionable documents: ESG reports, operational plans, strategies." },
+        { t:"End-to-end project management",  d:"Driving a project from idea to final delivery without losing direction or quality." },
+        { t:"CRM pipeline analysis",          d:"Reading, cleaning and interpreting CRM data to optimise conversion and follow-up." }
+      ],
+      sslabels: ["Creativity", "Autonomy", "Analytical thinking", "Strategic mindset", "Adaptability", "Teamwork"],
+      ssdescs:  [
+        "Finding original solutions where others see only constraints.",
+        "Running a project from A to Z without waiting to be told what to do.",
+        "Reading data, identifying levers, making the right decisions.",
+        "Thinking two moves ahead. Seeing the whole before acting on the detail.",
+        "Switching environment, sector or tool without losing effectiveness.",
+        "Uniting, coordinating and moving projects forward with diverse teams."
+      ],
+      expIntro: "My background covers the full marketing spectrum: from brand strategy to operational execution, community management to acquisition campaign management, website redesign to institutional project design.",
+      projTagline: "A French-language platform for African entrepreneurs: practical PDF guides on digital marketing, AI tools, monetisation and online growth. Designed to make marketing accessible across the continent.",
+      projKeys:   ["Category", "Audience", "Offer", "Tech", "Vision"],
+      projVals:   [
+        "E-learning platform · PDF Guides",
+        "French-speaking entrepreneurs in sub-Saharan Africa",
+        "<strong>8 guides at $10</strong>: WhatsApp Business, Meta Ads, email marketing, AI tools (ChatGPT & Claude), freelancing, Mobile Money…",
+        "WordPress · SEO / AEO / GEO · Rank Math · Chariow shop",
+        "Becoming the digital marketing reference in francophone Africa"
+      ],
+      postesIntro: "My cross-functional profile covers strategy, field execution, data and client relations. Here are the positions that genuinely match what I can do.",
+      postesNote:  "<strong>Note:</strong> This list is a compass, not a ceiling. The remote market expands the scope of what is accessible today even further."
+    },
+
+    es: {
+      whatido: [
+        { h:"Campañas & Adquisición",   p:"Configuración, lanzamiento y optimización de campañas Meta Ads y Google Ads. Reportes de rendimiento y recomendaciones estratégicas. Resultados probados con micro-presupuestos." },
+        { h:"SEO & Visibilidad",          p:"Optimización on-page, estrategia de contenido SEO, AEO para motores IA, creación de llms.txt. Posición media 5 en Google en 10 meses en un dominio nuevo." },
+        { h:"Branding & Identidad visual", p:"Diseño completo de identidades visuales: logo, manual de marca, materiales institucionales. Coherencia visual cross-canal." },
+        { h:"Web & CMS",                  p:"Creación, rediseño y mantenimiento de sitios WordPress. SEO técnico, seguridad, coordinación de entregables." },
+        { h:"CRM & Atención al cliente", p:"Gestión de carteras de prospectos, cualificación de necesidades, fiabilización de datos CRM, acompañamiento hasta la decisión." },
+        { h:"Estrategia & Redacción",    p:"Diseño de proyectos estratégicos de A a Z, redacción de documentos institucionales (ESG, planes operativos), copywriting orientado a la conversión." }
+      ],
+      skills: [
+        { h:"Estrategia & Branding",       p:"Marketing digital, identidad visual, content marketing, social media, SEO / AEO / GEO" },
+        { h:"Rendimiento & Adquisición", p:"Meta Ads, Google Ads, email marketing, reporting, análisis de rendimiento" },
+        { h:"CRM & Relación con clientes", p:"Cualificación y seguimiento de prospectos, gestión del recorrido del cliente, fiabilización de datos" },
+        { h:"Creación & Herramientas",   p:"Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate" }
+      ],
+      deepskills: [
+        { t:"Optimización de presupuesto",       d:"Producir resultados masivos con recursos limitados, 100.000 impresiones por 25 $." },
+        { t:"Copywriting estratégico",            d:"Escribir para convencer: cada palabra elegida, cada frase con un propósito preciso." },
+        { t:"Gestión de crisis digitales",        d:"Manejar intentos de hackeo, malas noticias y problemas técnicos bajo presión." },
+        { t:"Coordinación multi-equipo",          d:"Alinear proveedores, equipos internos y clientes en torno a un mismo entregable, a tiempo." },
+        { t:"IA aplicada al marketing",             d:"Usar Claude y ChatGPT como herramientas de trabajo reales: prompting, iteración, producción." },
+        { t:"Redacción de proyectos estratégicos", d:"Convertir visiones complejas en documentos ejecutables: ESG, planes operativos, estrategias." },
+        { t:"Gestión de proyectos de A a Z",     d:"Pilotar un proyecto desde la idea hasta la entrega final sin perder el hilo ni la calidad." },
+        { t:"Análisis de pipeline CRM",           d:"Leer, limpiar e interpretar datos de un CRM para optimizar la conversión y el seguimiento." }
+      ],
+      sslabels: ["Creatividad", "Autonomía", "Capacidad analítica", "Visión estratégica", "Adaptabilidad", "Trabajo en equipo"],
+      ssdescs:  [
+        "Encontrar soluciones originales donde otros ven solo limitaciones.",
+        "Llevar un proyecto de A a Z sin esperar que le digan qué hacer.",
+        "Leer los datos, identificar las palancas, tomar las decisiones correctas.",
+        "Pensar dos movimientos por adelantado. Ver el conjunto antes de actuar en el detalle.",
+        "Cambiar de entorno, sector o herramienta sin perder eficacia.",
+        "Federar, coordinar y hacer avanzar proyectos con equipos diversos."
+      ],
+      expIntro: "Mi trayectoria cubre todo el espectro del marketing: desde la estrategia de marca hasta la ejecución operativa, la gestión de comunidades hasta el pilotaje de campañas, el rediseño web hasta la concepción de proyectos institucionales.",
+      projTagline: "Plataforma en francés para emprendedores africanos: guías PDF prácticas sobre marketing digital, herramientas IA, monetización y crecimiento online. Diseñada para hacer el marketing accesible en el continente.",
+      projKeys:   ["Categoría", "Público", "Oferta", "Tech", "Visión"],
+      projVals:   [
+        "Plataforma e-learning · Guías PDF",
+        "Emprendedores francofónos del África subsahariana",
+        "<strong>8 guías a 10 $</strong>: WhatsApp Business, Meta Ads, email marketing, herramientas IA (ChatGPT & Claude), freelancing, Mobile Money…",
+        "WordPress · SEO / AEO / GEO · Rank Math · Tienda Chariow",
+        "Convertirse en la referencia de marketing digital en África francofóna"
+      ],
+      postesIntro: "Mi perfil transversal cubre la estrategia, la ejecución en terreno, los datos y la relación con clientes. Aquí están los puestos que corresponden realmente a lo que sé hacer.",
+      postesNote:  "<strong>Nota:</strong> Esta lista es una brújula, no un techo. El mercado remoto amplía aún más el espectro de lo que es accesible hoy."
+    }
+  };
+
+  /* =============================================================
+     ENGINE
+  ============================================================= */
+  function byId(id) { return document.getElementById(id); }
+  function all(sel) { return document.querySelectorAll(sel); }
+
+  function set(id, val) {
+    var el = byId(id);
+    if (!el || !val) return;
+    if (val.indexOf("<") !== -1) el.innerHTML = val;
+    else el.textContent = val;
+  }
+
+  function apply(lang) {
+    var t  = T[lang];
+    var dc = DC[lang];
+    if (!t || !dc) return;
+
+    /* ── Static IDs ── */
+    Object.keys(t).forEach(function(k) {
+      if (k !== "code") set(k, t[k]);
+    });
+
+    /* ── whatido cards ── */
+    all(".whatido-card").forEach(function(c, i) {
+      if (!dc.whatido[i]) return;
+      var h = c.querySelector("h4"); if (h) h.textContent = dc.whatido[i].h;
+      var p = c.querySelector("p");  if (p) p.textContent = dc.whatido[i].p;
+    });
+
+    /* ── skill pillars ── */
+    all(".skill-info").forEach(function(c, i) {
+      if (!dc.skills[i]) return;
+      var h = c.querySelector("h4"); if (h) h.textContent = dc.skills[i].h;
+      var p = c.querySelector("p");  if (p) p.textContent = dc.skills[i].p;
+    });
+
+    /* ── deep skills ── */
+    all(".deep-skill-item").forEach(function(c, i) {
+      if (!dc.deepskills[i]) return;
+      var t2 = c.querySelector(".dsi-title"); if (t2) t2.textContent = dc.deepskills[i].t;
+      var d  = c.querySelector(".dsi-desc");  if (d)  d.textContent  = dc.deepskills[i].d;
+    });
+
+    /* ── softskills ── */
+    all(".ss-card").forEach(function(c, i) {
+      var lbl  = c.querySelector(".ss-label"); if (lbl  && dc.sslabels[i]) lbl.textContent  = dc.sslabels[i];
+      var desc = c.querySelector(".ss-desc");  if (desc && dc.ssdescs[i])  desc.textContent = dc.ssdescs[i];
+    });
+
+    /* ── exp intro ── */
+    var intro = document.querySelector(".exp-intro");
+    if (intro) intro.textContent = dc.expIntro;
+
+    /* ── projet tagline ── */
+    var pt = document.querySelector(".projet-tagline");
+    if (pt) pt.textContent = dc.projTagline;
+
+    /* ── projet details ── */
+    all(".projet-detail-row").forEach(function(row, i) {
+      var k = row.querySelector(".detail-key"); if (k && dc.projKeys[i]) k.textContent = dc.projKeys[i];
+      var v = row.querySelector(".detail-val"); if (v && dc.projVals[i]) v.innerHTML   = dc.projVals[i];
+    });
+
+    /* ── postes intro + note ── */
+    var pi = document.querySelector(".postes-intro");
+    if (pi) pi.textContent = dc.postesIntro;
+    var pn = document.querySelector(".postes-note");
+    if (pn) pn.innerHTML = dc.postesNote;
+
+    /* ── lang btn ── */
+    var lb = byId("langBtn");
+    if (lb) lb.innerHTML = t.code + " &#9662;";
+
+    /* ── active state ── */
+    all(".lang-option").forEach(function(o) {
+      o.classList.toggle("active", o.dataset.lang === lang);
+    });
+
+    /* ── side nav tabs ── */
+    if (t.sideNav) {
+      all("[data-section-id]").forEach(function(el) {
+        var sec = el.dataset.sectionId;
+        if (t.sideNav[sec]) el.textContent = t.sideNav[sec];
+      });
+    }
+
+    try { localStorage.setItem("gtk-lang", lang); } catch(e) {}
+    document.documentElement.lang = lang;
+  }
+
+  /* ── Dropdown ── */
+  var btn = byId("langBtn");
+  var dd  = byId("langDropdown");
+  if (btn && dd) {
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      dd.classList.toggle("open");
+    });
+    document.addEventListener("click", function() { dd.classList.remove("open"); });
+    all(".lang-option").forEach(function(o) {
+      o.addEventListener("click", function() {
+        apply(this.dataset.lang);
+        dd.classList.remove("open");
+      });
+    });
+  }
+
+  /* ── Init ── */
+  var saved = "fr";
+  try { saved = localStorage.getItem("gtk-lang") || "fr"; } catch(e) {}
+  apply(saved);
+
+})();
+</script>
 </body>
 </html>
