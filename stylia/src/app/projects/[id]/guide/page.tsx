@@ -3,7 +3,7 @@ import { notFound, redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth';
 import { getDb, type MeasurementRow, type ProjectRow } from '@/lib/db';
 import { isLocale, DEFAULT_LOCALE, LOCALE_COOKIE } from '@/lib/i18n';
-import { draftStraightSkirt } from '@/lib/pattern/skirtBlock';
+import { draftGarment, isGarmentSlug } from '@/lib/pattern/garments';
 import { consultTextiles } from '@/lib/textiles/consultant';
 import { canExportFullSize } from '@/lib/payments/stripe';
 import { GuideClient } from '@/components/GuideClient';
@@ -34,13 +34,17 @@ export default function GuidePage({
   const cookieLocale = cookies().get(LOCALE_COOKIE)?.value ?? '';
   const locale = isLocale(cookieLocale) ? cookieLocale : user.locale ?? DEFAULT_LOCALE;
 
-  const draft = draftStraightSkirt(measurement);
-  const consultant = consultTextiles(project.garment_type, locale);
+  const garment = isGarmentSlug(project.garment_type)
+    ? project.garment_type
+    : 'straight_skirt_base';
+  const draft = draftGarment(garment, measurement);
+  const consultant = consultTextiles(garment, locale);
 
   return (
     <GuideClient
       projectId={project.id}
       projectName={project.name}
+      garment={garment}
       draft={draft}
       consultant={consultant}
       canExport={canExportFullSize(user, project)}

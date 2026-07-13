@@ -1,4 +1,5 @@
 import { getDb, type TextileRow, type Locale } from '../db';
+import { GARMENTS, isGarmentSlug } from '../pattern/garments';
 
 /**
  * Intelligent Textile Consultant.
@@ -52,10 +53,11 @@ export function consultTextiles(garmentType: string, locale: Locale): Consultant
   const db = getDb();
   const textiles = db.prepare('SELECT * FROM textiles ORDER BY name_en').all() as TextileRow[];
 
-  // For the straight-skirt MVP: structured/rigid fabrics hold the silhouette;
-  // fluid fabrics are flagged. Future garment types plug in their own filters.
-  const isStraightSkirt = garmentType === 'straight_skirt_base';
-  const recommended = textiles.filter((t) => (isStraightSkirt ? t.drape_type === 'rigid' : true));
+  // Each garment declares its preferred drape family in the registry:
+  // structured garments (straight skirt, trousers) call for rigid fabrics,
+  // flared garments drape best in fluid ones, the bodice accepts both.
+  const drape = isGarmentSlug(garmentType) ? GARMENTS[garmentType].drape : 'rigid';
+  const recommended = textiles.filter((t) => (drape === 'any' ? true : t.drape_type === drape));
   const warnings = textiles.filter((t) => t.drape_type === 'fluid');
 
   const thermal: ConsultantPayload['thermal_instructions'] = {};

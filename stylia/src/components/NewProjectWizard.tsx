@@ -6,6 +6,9 @@ import { useI18n } from './I18nProvider';
 import { UnitToggle } from './UnitToggle';
 import { convert, type Unit } from '@/lib/units';
 import { SIZE_CHART } from '@/lib/pattern/sizeChart';
+import { GARMENT_SLUGS, type GarmentSlug } from '@/lib/pattern/garments';
+
+type PhotoAnalysis = { garment: GarmentSlug; confidence: string; note: string };
 
 type MeasurementProfile = {
   id: number;
@@ -50,7 +53,9 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
   const [step, setStep] = useState(1);
   const [photo, setPhoto] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
-  const [garment, setGarment] = useState('straight_skirt_base');
+  const [garment, setGarment] = useState<GarmentSlug>('straight_skirt_base');
+  const [analysis, setAnalysis] = useState<PhotoAnalysis | null>(null);
+  const [analyzing, setAnalyzing] = useState(false);
   const [projectName, setProjectName] = useState('');
   const [profiles, setProfiles] = useState<MeasurementProfile[]>([]);
   const [profileId, setProfileId] = useState<'new' | number>('new');
@@ -76,13 +81,46 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
       .catch(() => setProfiles([]));
   }, []);
 
-  // ---- Step 1: upload ------------------------------------------------------
-  const readFile = useCallback((file: File) => {
-    if (!file.type.startsWith('image/') || file.size > 3_000_000) return;
-    const reader = new FileReader();
-    reader.onload = () => setPhoto(String(reader.result));
-    reader.readAsDataURL(file);
-  }, []);
+  // ---- Step 1: upload + AI garment detection -------------------------------
+  const analyzePhoto = useCallback(
+    async (dataUrl: string) => {
+      setAnalyzing(true);
+      setAnalysis(null);
+      try {
+        const res = await fetch('/api/analyze-photo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ photo: dataUrl, locale }),
+        });
+        if (res.ok) {
+          const body = await res.json();
+          if (body.analysis) {
+            setAnalysis(body.analysis);
+            setGarment(body.analysis.garment);
+          }
+        }
+      } catch {
+        // detection is best-effort; manual selection always works
+      } finally {
+        setAnalyzing(false);
+      }
+    },
+    [locale],
+  );
+
+  const readFile = useCallback(
+    (file: File) => {
+      if (!file.type.startsWith('image/') || file.size > 3_000_000) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = String(reader.result);
+        setPhoto(dataUrl);
+        void analyzePhoto(dataUrl);
+      };
+      reader.readAsDataURL(file);
+    },
+    [analyzePhoto],
+  );
 
   function onDrop(e: React.DragEvent) {
     e.preventDefault();
@@ -161,7 +199,7 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: projectName || t.wizard.straightSkirt.split('/')[0].trim(),
+          name: projectName || t.garments[garment].name,
           garment_type: garment,
           measurement_id: measurementId,
           input_photo_url: photo,
@@ -220,14 +258,32 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
           >
             {photo ? (
               <>
-                {/* sketch-style preview — the image-to-sketch AI hook plugs in here */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photo}
                   alt="upload preview"
                   className="max-h-64 rounded-lg object-contain grayscale contrast-125"
                 />
-                <button type="button" className="btn-secondary" onClick={() => setPhoto(null)}>
+                {analyzing && (
+                  <p className="animate-pulse text-sm text-gold">{t.wizard.aiAnalyzing}</p>
+                )}
+                {analysis && (
+                  <div className="rounded-xl border border-sage/40 bg-sage/10 px-4 py-2 text-sm text-ink/80">
+                    <span className="mr-2 rounded-full bg-sage/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sage">
+                      {t.wizard.aiDetected}
+                    </span>
+                    <strong>{t.garments[analysis.garment].name}</strong>
+                    {analysis.note && <span className="text-ink/60"> — {analysis.note}</span>}
+                  </div>
+                )}
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => {
+                    setPhoto(null);
+                    setAnalysis(null);
+                  }}
+                >
                   {t.wizard.uploadReplace}
                 </button>
               </>
@@ -279,10 +335,19 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
                 id="garment"
                 className="field-input"
                 value={garment}
-                onChange={(e) => setGarment(e.target.value)}
+                onChange={(e) => setGarment(e.target.value as GarmentSlug)}
               >
-                <option value="straight_skirt_base">{t.wizard.straightSkirt}</option>
+                {GARMENT_SLUGS.map((slug) => (
+                  <option key={slug} value={slug}>
+                    {t.garments[slug].name}
+                  </option>
+                ))}
               </select>
+              {analysis && analysis.garment === garment && (
+                <p className="mt-1 text-xs text-sage">
+                  ✓ {t.wizard.aiDetected} ({analysis.confidence})
+                </p>
+              )}
             </div>
             <div>
               <label className="field-label" htmlFor="projectName">{t.wizard.projectName}</label>
@@ -291,7 +356,7 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
                 className="field-input"
                 value={projectName}
                 onChange={(e) => setProjectName(e.target.value)}
-                placeholder={t.wizard.straightSkirt.split('/')[0].trim()}
+                placeholder={t.garments[garment].name}
               />
             </div>
           </div>

@@ -59,6 +59,9 @@ const es: Dictionary = {
     uploadReplace: 'Reemplazar imagen',
     garmentLabel: 'Tipo de prenda',
     straightSkirt: 'Falda Recta Básica / Jupe Droite de Base',
+    aiAnalyzing: 'Analizando tu foto…',
+    aiDetected: 'Detectado desde tu foto',
+    aiUnavailable: 'Detección automática no disponible — elige la prenda manualmente.',
     projectName: 'Nombre del proyecto',
     profileLabel: 'Perfil de medidas',
     newProfile: 'Nuevo perfil…',
@@ -84,6 +87,7 @@ const es: Dictionary = {
     exportPdf: 'Exportar PDF',
     buyFabric: 'Comprar tela a juego',
     paperFormat: 'Formato de papel',
+    fullSize: 'Tamaño real (una sola hoja)',
     lockedTitle: 'La exportación a tamaño real está bloqueada',
     lockedBody:
       'Los borradores de aficionado llevan marca de agua. Desbloquea el patrón a tamaño real, listo para imprimir, con una compra única o una suscripción Pro.',
@@ -118,6 +122,120 @@ const es: Dictionary = {
     legendCut: 'Línea de corte',
     legendConstruction: 'Línea de construcción',
     legendDart: 'Pinza',
+  },
+  garments: {
+    straight_skirt_base: {
+      name: 'Falda recta básica',
+      steps: {
+        frame: {
+          title: 'El marco de construcción',
+          body: 'Dibuja el rectángulo: ancho = (cadera + holgura) / 2, alto = largo total. La vertical izquierda es el centro espalda, la derecha el centro delantero.',
+        },
+        hipLine: {
+          title: 'Líneas de cadera y cadera alta',
+          body: 'Traza la línea de cadera a la altura cintura-cadera, y la línea de cadera alta a media altura — la curva lateral pasará por ella.',
+        },
+        sideSeam: {
+          title: 'Costura lateral',
+          body: 'Divide el marco en panel trasero (ancho/4 − 1 cm) y delantero (ancho/4 + 1 cm). La divisoria es la costura lateral.',
+        },
+        darts: {
+          title: 'Pinzas de cintura',
+          body: 'Reducción total = medio ancho del marco − cintura/2, repartida: 40 % a las curvas laterales, 35 % a la pinza trasera, 25 % a la delantera.',
+        },
+        curves: {
+          title: 'Curvas laterales',
+          body: 'Modela la costura lateral de la cintura a la cadera con una curva suave que pasa por el punto de cadera alta.',
+        },
+        finish: {
+          title: 'Líneas de corte',
+          body: 'Las líneas continuas son de corte; las de trazo y punto, de construcción. Añade los márgenes de costura antes de cortar.',
+        },
+      },
+    },
+    flared_skirt: {
+      name: 'Falda evasé',
+      steps: {
+        frame: {
+          title: 'Marco de base',
+          body: 'Parte del marco de la falda recta: línea de cadera y costura lateral en su sitio, paneles separados a ±1 cm.',
+        },
+        pivot: {
+          title: 'Cerrar las pinzas',
+          body: 'Corta desde la punta de cada pinza hasta el bajo y cierra las pinzas de cintura — su valor pivota hacia el vuelo del bajo.',
+        },
+        flare: {
+          title: 'Añadir el vuelo',
+          body: 'Desde el punto de cadera, gira la costura lateral hacia fuera: valor transferido de las pinzas más 6 cm de vuelo de estilo por lado.',
+        },
+        hem: {
+          title: 'Curva del bajo',
+          body: 'Sube el bajo en el lateral y vuelve a trazarlo en curva suave para que quede perpendicular a las costuras.',
+        },
+        finish: {
+          title: 'Líneas de corte',
+          body: 'La línea de cintura queda ligeramente curvada tras cerrar las pinzas. Añade los márgenes antes de cortar.',
+        },
+      },
+    },
+    bodice_block: {
+      name: 'Corpiño base',
+      steps: {
+        frame: {
+          title: 'El marco de construcción',
+          body: 'Ancho del marco = (pecho + holgura) / 2, alto = largo talle espalda. Traza la línea de pecho y la línea de sisa.',
+        },
+        necklines: {
+          title: 'Escotes',
+          body: 'Escote trasero: ancho cuello/6 + 0,5 cm, subida 2 cm. Escote delantero: mismo ancho, profundidad cuello/6 + 1,5 cm.',
+        },
+        shoulders: {
+          title: 'Caídas de hombro',
+          body: 'Inclina cada hombro desde el punto de escote hasta el ancho de espalda, 4 cm bajo la línea superior.',
+        },
+        armhole: {
+          title: 'Sisa',
+          body: 'Curva desde cada extremo de hombro hasta la costura lateral, a la profundidad de sisa (pecho/4 − 1 cm).',
+        },
+        darts: {
+          title: 'Pinzas de cintura',
+          body: 'Reparte la reducción de cintura entre los laterales y una pinza por panel; la delantera se sitúa sobre la separación de pecho.',
+        },
+        finish: {
+          title: 'Líneas de corte',
+          body: 'Las líneas continuas son de corte. Verifica que los dos hombros midan lo mismo antes de añadir márgenes.',
+        },
+      },
+    },
+    straight_trousers: {
+      name: 'Pantalón recto',
+      steps: {
+        frame: {
+          title: 'Líneas de construcción',
+          body: 'Traza las horizontales: línea de cadera, línea de tiro a cadera/4 + 3 cm, línea de rodilla a medio camino del tiro al bajo.',
+        },
+        forks: {
+          title: 'Los tiros',
+          body: 'Prolonga el panel delantero cadera/20 y el trasero cadera/10 en la línea de tiro, con una curva suave.',
+        },
+        creases: {
+          title: 'Rayas de planchado',
+          body: 'Centra una raya vertical en cada pierna — todos los anchos bajo el tiro se miden simétricamente respecto a ella.',
+        },
+        legs: {
+          title: 'Piernas y bajo',
+          body: 'Entalla del tiro y el lateral hacia la rodilla, y baja recto hasta el ancho del bajo.',
+        },
+        darts: {
+          title: 'Pinzas de cintura',
+          body: 'Una pinza por panel absorbe la diferencia cintura-cadera; la cintura trasera se sube 1 cm.',
+        },
+        finish: {
+          title: 'Líneas de corte',
+          body: 'Comprueba que las entrepiernas delantera y trasera midan igual antes de añadir los márgenes.',
+        },
+      },
+    },
   },
   textiles: {
     title: 'Consultor textil',

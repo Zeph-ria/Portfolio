@@ -57,6 +57,9 @@ const en = {
     uploadReplace: 'Replace image',
     garmentLabel: 'Garment type',
     straightSkirt: 'Basic Straight Skirt / Jupe Droite de Base',
+    aiAnalyzing: 'Analyzing your photo…',
+    aiDetected: 'Detected from your photo',
+    aiUnavailable: 'Automatic detection unavailable — pick the garment manually.',
     projectName: 'Project name',
     profileLabel: 'Measurement profile',
     newProfile: 'New profile…',
@@ -82,6 +85,7 @@ const en = {
     exportPdf: 'Export PDF',
     buyFabric: 'Buy Matching Fabric',
     paperFormat: 'Paper format',
+    fullSize: 'Real size (single sheet)',
     lockedTitle: 'Full-size export is locked',
     lockedBody:
       'Hobbyist drafts are watermarked. Unlock the full-size, print-ready pattern with a one-time purchase or a Pro subscription.',
@@ -116,6 +120,120 @@ const en = {
     legendCut: 'Cutting line',
     legendConstruction: 'Construction line',
     legendDart: 'Dart',
+  },
+  garments: {
+    straight_skirt_base: {
+      name: 'Basic Straight Skirt',
+      steps: {
+        frame: {
+          title: 'The construction frame',
+          body: 'Draw the rectangle: width = (hip + ease) / 2, height = total length. The left vertical is the centre back, the right one the centre front.',
+        },
+        hipLine: {
+          title: 'Hip & small-hip lines',
+          body: 'Trace the hip line at the waist-to-hip height, and the small-hip line halfway down — the side curve will pass through it.',
+        },
+        sideSeam: {
+          title: 'Side seam',
+          body: 'Split the frame into back panel (width/4 − 1 cm) and front panel (width/4 + 1 cm). The divider is the side seam.',
+        },
+        darts: {
+          title: 'Waist darts',
+          body: 'Total waist reduction = half-frame width − waist/2, distributed 40% to the side curves, 35% to the back dart, 25% to the front dart.',
+        },
+        curves: {
+          title: 'Side curves',
+          body: 'Shape the side seam from waist to hip with a smooth curve through the small-hip point.',
+        },
+        finish: {
+          title: 'Cutting lines',
+          body: 'Solid lines are cutting paths; dash-dotted lines are construction lines. Add seam allowances before cutting.',
+        },
+      },
+    },
+    flared_skirt: {
+      name: 'Flared Skirt',
+      steps: {
+        frame: {
+          title: 'Base frame',
+          body: 'Start from the straight-skirt frame: hip line and side seam in place, panels split back/front at ±1 cm.',
+        },
+        pivot: {
+          title: 'Close the darts',
+          body: 'Slash from each dart point to the hem and close the waist darts — their value pivots into hem width.',
+        },
+        flare: {
+          title: 'Add the flare',
+          body: 'From the hip point, swing the side seam outward: transferred dart value plus 6 cm of style flare on each side.',
+        },
+        hem: {
+          title: 'Hem curve',
+          body: 'Raise the hem at the side and redraw it as a smooth curve so it stays perpendicular to the seams.',
+        },
+        finish: {
+          title: 'Cutting lines',
+          body: 'The waistline becomes a gentle curve after dart closure. Add seam allowances before cutting.',
+        },
+      },
+    },
+    bodice_block: {
+      name: 'Bodice Block',
+      steps: {
+        frame: {
+          title: 'The construction frame',
+          body: 'Frame width = (bust + ease) / 2, height = back waist length. Trace the bust line and the armhole-depth line.',
+        },
+        necklines: {
+          title: 'Necklines',
+          body: 'Back neckline: width neck/6 + 0.5 cm, rise 2 cm. Front neckline: same width, depth neck/6 + 1.5 cm.',
+        },
+        shoulders: {
+          title: 'Shoulder slopes',
+          body: 'Slope each shoulder from the neck point down to the across-back width, 4 cm below the top line.',
+        },
+        armhole: {
+          title: 'Armhole',
+          body: 'Curve from each shoulder end down to the side seam at the armhole-depth line (bust/4 − 1 cm).',
+        },
+        darts: {
+          title: 'Waist darts',
+          body: 'Distribute the waist reduction between the side seams and one dart per panel; the front dart sits on the bust-span line.',
+        },
+        finish: {
+          title: 'Cutting lines',
+          body: 'Solid lines are cutting paths. Verify the two shoulder lengths match before adding seam allowances.',
+        },
+      },
+    },
+    straight_trousers: {
+      name: 'Straight Trousers',
+      steps: {
+        frame: {
+          title: 'Construction lines',
+          body: 'Trace the horizontals: hip line, crotch line at hip/4 + 3 cm (the montant), knee line halfway from crotch to hem.',
+        },
+        forks: {
+          title: 'The forks',
+          body: 'Extend the front panel by hip/20 and the back panel by hip/10 at the crotch line, with a smooth seat curve.',
+        },
+        creases: {
+          title: 'Crease lines',
+          body: 'Centre a vertical crease on each leg — every width below the crotch is measured symmetrically around it.',
+        },
+        legs: {
+          title: 'Legs and hem',
+          body: 'Taper from the fork and side to the knee, then run straight to the hem width.',
+        },
+        darts: {
+          title: 'Waist darts',
+          body: 'One dart per panel absorbs the waist-to-hip difference; the back waist is raised by 1 cm.',
+        },
+        finish: {
+          title: 'Cutting lines',
+          body: 'Check that front and back inseams match in length before adding seam allowances.',
+        },
+      },
+    },
   },
   textiles: {
     title: 'Textile consultant',

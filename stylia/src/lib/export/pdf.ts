@@ -1,4 +1,4 @@
-import type { PatternLine, SkirtDraft } from '../pattern/skirtBlock';
+import type { PatternLine, PatternDraft as SkirtDraft } from '../pattern/types';
 
 /**
  * Dependency-free vector PDF generator.
@@ -7,15 +7,16 @@ import type { PatternLine, SkirtDraft } from '../pattern/skirtBlock';
  * (1 mm on paper = 1 mm of pattern). Formats smaller than the pattern
  * (A4 / US Letter) are tiled into a page grid with alignment crop marks
  * and "row/column" labels so the sheets can be taped together; A0 usually
- * fits a skirt block on a single sheet.
+ * fits a block on a single sheet. 'FullSize' emits ONE page sized exactly
+ * to the pattern (plus margins) for plotter / copy-shop printing at 100%.
  */
 
-export type PaperFormat = 'A4' | 'USLetter' | 'A0';
+export type PaperFormat = 'A4' | 'USLetter' | 'A0' | 'FullSize';
 
 const PT_PER_MM = 72 / 25.4;
 const CM_TO_MM = 10;
 
-const PAPER_PT: Record<PaperFormat, { w: number; h: number }> = {
+const PAPER_PT: Record<Exclude<PaperFormat, 'FullSize'>, { w: number; h: number }> = {
   A4: { w: 595.28, h: 841.89 },
   USLetter: { w: 612, h: 792 },
   A0: { w: 2383.94, h: 3370.39 },
@@ -45,14 +46,21 @@ export interface PdfOptions {
 }
 
 export function draftToPdf(draft: SkirtDraft, opts: PdfOptions): Buffer {
-  const paper = PAPER_PT[opts.format];
-  const printW = paper.w - 2 * PAGE_MARGIN_MM * PT_PER_MM;
-  const printH = paper.h - 2 * PAGE_MARGIN_MM * PT_PER_MM;
-
   const patternWmm = draft.widthCm * CM_TO_MM + 20; // 10 mm padding each side
   const patternHmm = draft.heightCm * CM_TO_MM + 20;
   const patternWpt = patternWmm * PT_PER_MM;
   const patternHpt = patternHmm * PT_PER_MM;
+
+  // 'FullSize': one custom page matching the real pattern dimensions.
+  const paper =
+    opts.format === 'FullSize'
+      ? {
+          w: patternWpt + 2 * PAGE_MARGIN_MM * PT_PER_MM,
+          h: patternHpt + 2 * PAGE_MARGIN_MM * PT_PER_MM,
+        }
+      : PAPER_PT[opts.format];
+  const printW = paper.w - 2 * PAGE_MARGIN_MM * PT_PER_MM;
+  const printH = paper.h - 2 * PAGE_MARGIN_MM * PT_PER_MM;
 
   const cols = Math.max(1, Math.ceil(patternWpt / printW));
   const rows = Math.max(1, Math.ceil(patternHpt / printH));

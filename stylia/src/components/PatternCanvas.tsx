@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import type { SkirtDraft, PatternLine } from '@/lib/pattern/skirtBlock';
+import type { PatternDraft as SkirtDraft, PatternLine } from '@/lib/pattern/types';
 import { segmentsToPath } from '@/lib/pattern/svg';
 import { useI18n } from './I18nProvider';
 
@@ -47,7 +47,7 @@ export function PatternCanvas({
     [draft],
   );
 
-  const hipY = draft.computed.hipLineY * CM_TO_MM;
+  const hipY = (draft.computed.hipLineY ?? 0) * CM_TO_MM;
 
   return (
     <div className="relative h-full w-full overflow-auto rounded-2xl border border-ink/10 bg-white shadow-couture">
@@ -91,9 +91,9 @@ export function PatternCanvas({
             ))}
 
           {/* dimension annotations */}
-          {visibleLineIds.includes('hip-line') && (
+          {visibleLineIds.includes('hip-line') && hipY > 0 && (
             <text x={4} y={hipY - 4} fontSize="11" fill="#8a8378">
-              {t.wizard.hip} · {draft.computed.totalWidth} cm
+              {t.wizard.hip}
             </text>
           )}
           <text x={4} y={-8} fontSize="11" fill="#8a8378">

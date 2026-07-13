@@ -59,6 +59,9 @@ const fr: Dictionary = {
     uploadReplace: 'Remplacer l’image',
     garmentLabel: 'Type de vêtement',
     straightSkirt: 'Jupe Droite de Base / Standard Straight Skirt',
+    aiAnalyzing: 'Analyse de votre photo…',
+    aiDetected: 'Détecté depuis votre photo',
+    aiUnavailable: 'Détection automatique indisponible — choisissez le vêtement manuellement.',
     projectName: 'Nom du projet',
     profileLabel: 'Profil de mesures',
     newProfile: 'Nouveau profil…',
@@ -84,6 +87,7 @@ const fr: Dictionary = {
     exportPdf: 'Exporter en PDF',
     buyFabric: 'Acheter le tissu assorti',
     paperFormat: 'Format papier',
+    fullSize: 'Taille réelle (une seule feuille)',
     lockedTitle: 'L’export en taille réelle est verrouillé',
     lockedBody:
       'Les brouillons Passionné sont filigranés. Débloquez le patron en taille réelle, prêt à imprimer, avec un achat unique ou un abonnement Pro.',
@@ -118,6 +122,120 @@ const fr: Dictionary = {
     legendCut: 'Ligne de coupe',
     legendConstruction: 'Ligne de construction',
     legendDart: 'Pince',
+  },
+  garments: {
+    straight_skirt_base: {
+      name: 'Jupe droite de base',
+      steps: {
+        frame: {
+          title: 'Le cadre de construction',
+          body: 'Tracez le rectangle : largeur = (bassin + aisance) / 2, hauteur = longueur totale. La verticale gauche est le milieu dos, la droite le milieu devant.',
+        },
+        hipLine: {
+          title: 'Lignes de bassin et des petites hanches',
+          body: 'Tracez la ligne de bassin à la hauteur taille-bassin, et la ligne des petites hanches à mi-hauteur — la courbe de côté passera par elle.',
+        },
+        sideSeam: {
+          title: 'Couture côté',
+          body: 'Divisez le cadre en panneau dos (largeur/4 − 1 cm) et panneau devant (largeur/4 + 1 cm). La séparation est la couture côté.',
+        },
+        darts: {
+          title: 'Pinces de taille',
+          body: 'Valeur totale des pinces = demi-largeur du cadre − taille/2, répartie : 40 % aux courbes de côté, 35 % à la pince dos, 25 % à la pince devant.',
+        },
+        curves: {
+          title: 'Courbes de côté',
+          body: 'Galbez la couture côté de la taille au bassin avec une courbe fluide passant par le point des petites hanches.',
+        },
+        finish: {
+          title: 'Lignes de coupe',
+          body: 'Les traits pleins sont les lignes de coupe ; les traits mixtes les lignes de construction. Ajoutez les marges de couture avant de couper.',
+        },
+      },
+    },
+    flared_skirt: {
+      name: 'Jupe évasée',
+      steps: {
+        frame: {
+          title: 'Cadre de base',
+          body: 'Partez du cadre de la jupe droite : ligne de bassin et couture côté en place, panneaux séparés dos/devant à ±1 cm.',
+        },
+        pivot: {
+          title: 'Fermer les pinces',
+          body: 'Fendez de la pointe de chaque pince jusqu’à l’ourlet et fermez les pinces de taille — leur valeur bascule dans l’ampleur du bas.',
+        },
+        flare: {
+          title: 'Ajouter l’évasement',
+          body: 'Depuis le point de bassin, pivotez la couture côté vers l’extérieur : valeur des pinces transférée plus 6 cm d’ampleur de style de chaque côté.',
+        },
+        hem: {
+          title: 'Courbe d’ourlet',
+          body: 'Remontez l’ourlet au côté et retracez-le en courbe fluide pour qu’il reste perpendiculaire aux coutures.',
+        },
+        finish: {
+          title: 'Lignes de coupe',
+          body: 'La ligne de taille devient une légère courbe après fermeture des pinces. Ajoutez les marges de couture avant de couper.',
+        },
+      },
+    },
+    bodice_block: {
+      name: 'Corsage de base',
+      steps: {
+        frame: {
+          title: 'Le cadre de construction',
+          body: 'Largeur du cadre = (poitrine + aisance) / 2, hauteur = longueur taille dos. Tracez la ligne de poitrine et la ligne d’emmanchure.',
+        },
+        necklines: {
+          title: 'Encolures',
+          body: 'Encolure dos : largeur encolure/6 + 0,5 cm, montant 2 cm. Encolure devant : même largeur, profondeur encolure/6 + 1,5 cm.',
+        },
+        shoulders: {
+          title: 'Pentes d’épaule',
+          body: 'Inclinez chaque épaule du point d’encolure jusqu’à la carrure, 4 cm sous la ligne haute.',
+        },
+        armhole: {
+          title: 'Emmanchure',
+          body: 'Courbez de chaque extrémité d’épaule jusqu’à la couture côté, à la profondeur d’emmanchure (poitrine/4 − 1 cm).',
+        },
+        darts: {
+          title: 'Pinces de taille',
+          body: 'Répartissez la réduction de taille entre les côtés et une pince par panneau ; la pince devant se place sur l’écart de poitrine.',
+        },
+        finish: {
+          title: 'Lignes de coupe',
+          body: 'Les traits pleins sont les lignes de coupe. Vérifiez que les deux longueurs d’épaule correspondent avant d’ajouter les marges.',
+        },
+      },
+    },
+    straight_trousers: {
+      name: 'Pantalon droit',
+      steps: {
+        frame: {
+          title: 'Lignes de construction',
+          body: 'Tracez les horizontales : ligne de bassin, ligne de montant à bassin/4 + 3 cm, ligne de genou à mi-chemin du montant à l’ourlet.',
+        },
+        forks: {
+          title: 'Les fourches',
+          body: 'Prolongez le panneau devant de bassin/20 et le panneau dos de bassin/10 à la ligne de montant, avec une courbe de fourche fluide.',
+        },
+        creases: {
+          title: 'Plis de repassage',
+          body: 'Centrez un pli vertical sur chaque jambe — toutes les largeurs sous le montant se mesurent symétriquement autour de lui.',
+        },
+        legs: {
+          title: 'Jambes et ourlet',
+          body: 'Fuselez de la fourche et du côté vers le genou, puis descendez droit jusqu’à la largeur d’ourlet.',
+        },
+        darts: {
+          title: 'Pinces de taille',
+          body: 'Une pince par panneau absorbe la différence taille-bassin ; la taille dos est remontée de 1 cm.',
+        },
+        finish: {
+          title: 'Lignes de coupe',
+          body: 'Vérifiez que les entrejambes devant et dos ont la même longueur avant d’ajouter les marges de couture.',
+        },
+      },
+    },
   },
   textiles: {
     title: 'Conseiller textile',

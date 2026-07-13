@@ -2,27 +2,17 @@
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { SkirtDraft } from '@/lib/pattern/skirtBlock';
+import type { PatternDraft } from '@/lib/pattern/types';
+import { GARMENTS, type GarmentSlug } from '@/lib/pattern/garments';
 import type { ConsultantPayload } from '@/lib/textiles/consultant';
-import type { PaperFormat } from '@/lib/db';
+import type { PaperFormat } from '@/lib/export/pdf';
 import { PatternCanvas } from './PatternCanvas';
 import { useI18n } from './I18nProvider';
-
-type StepKey = 'frame' | 'hipLine' | 'sideSeam' | 'darts' | 'curves' | 'finish';
-
-const STEP_LINES: Record<StepKey, string[]> = {
-  frame: ['back-outline', 'front-outline'],
-  hipLine: ['hip-line', 'small-hip-line'],
-  sideSeam: ['side-seam-axis'],
-  darts: ['back-dart-legs', 'back-dart-axis', 'front-dart-legs', 'front-dart-axis'],
-  curves: ['back-outline', 'front-outline'],
-  finish: [],
-};
-const STEPS: StepKey[] = ['frame', 'hipLine', 'sideSeam', 'darts', 'curves', 'finish'];
 
 export function GuideClient({
   projectId,
   projectName,
+  garment,
   draft,
   consultant,
   canExport,
@@ -31,7 +21,8 @@ export function GuideClient({
 }: {
   projectId: number;
   projectName: string;
-  draft: SkirtDraft;
+  garment: GarmentSlug;
+  draft: PatternDraft;
   consultant: ConsultantPayload;
   canExport: boolean;
   defaultFormat: PaperFormat;
@@ -43,16 +34,20 @@ export function GuideClient({
   const [format, setFormat] = useState<PaperFormat>(defaultFormat);
   const [busy, setBusy] = useState(false);
 
+  const steps = GARMENTS[garment].steps;
+  const stepTexts = t.garments[garment].steps as Record<string, { title: string; body: string }>;
+
   const visibleLineIds = useMemo(() => {
     const ids = new Set<string>();
-    for (let i = 0; i <= activeStep && i < STEPS.length; i++) {
-      for (const id of STEP_LINES[STEPS[i]]) ids.add(id);
+    for (let i = 0; i <= activeStep && i < steps.length; i++) {
+      for (const id of steps[i].lineIds) ids.add(id);
     }
-    if (STEPS[activeStep] === 'finish') draft.lines.forEach((l) => ids.add(l.id));
+    // the last step reveals the complete pattern
+    if (activeStep === steps.length - 1) draft.lines.forEach((l) => ids.add(l.id));
     return [...ids];
-  }, [activeStep, draft]);
+  }, [activeStep, draft, steps]);
 
-  const activeLineIds = STEP_LINES[STEPS[activeStep]] ?? [];
+  const activeLineIds = steps[activeStep]?.lineIds ?? [];
 
   async function exportPdf() {
     if (!canExport) {
@@ -72,16 +67,6 @@ export function GuideClient({
     window.open(`/api/projects/${projectId}/export?format=${format}`, '_blank');
   }
 
-  const c = draft.computed;
-  const stepValues: Record<StepKey, string> = {
-    frame: `${c.totalWidth} × ${draft.heightCm} cm`,
-    hipLine: `y = ${c.hipLineY} cm | ${c.smallHipLineY} cm`,
-    sideSeam: `${t.guide.steps.sideSeam.title}: ${c.backPanelWidth} cm | ${c.frontPanelWidth} cm`,
-    darts: `Σ ${c.totalWaistReduction} cm → ${c.backDartValue} / ${c.frontDartValue} cm`,
-    curves: `2 × ${c.sideCurveEach} cm`,
-    finish: '',
-  };
-
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
       <div className="mb-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
@@ -99,6 +84,7 @@ export function GuideClient({
             <option value="A4">A4</option>
             <option value="USLetter">US Letter</option>
             <option value="A0">A0</option>
+            <option value="FullSize">{t.guide.fullSize}</option>
           </select>
           <button className="btn-primary" onClick={exportPdf} disabled={busy}>
             {canExport ? t.guide.exportPdf : t.guide.unlock}
@@ -132,10 +118,12 @@ export function GuideClient({
       {/* Split screen: instructions left, live canvas right */}
       <div className="grid gap-6 lg:grid-cols-[minmax(320px,2fr)_3fr]">
         <section aria-label={t.guide.stepsTitle} className="space-y-3">
-          <h2 className="text-2xl">{t.guide.stepsTitle}</h2>
-          {STEPS.map((key, i) => (
+          <h2 className="text-2xl">
+            {t.guide.stepsTitle} — {t.garments[garment].name}
+          </h2>
+          {steps.map((step, i) => (
             <button
-              key={key}
+              key={step.key}
               onClick={() => setActiveStep(i)}
               className={`block w-full rounded-2xl border p-5 text-left transition ${
                 i === activeStep
@@ -148,13 +136,15 @@ export function GuideClient({
               <div className="flex items-baseline justify-between gap-3">
                 <h3 className="text-lg font-medium">
                   <span className="mr-2 font-display text-gold">{i + 1}.</span>
-                  {t.guide.steps[key].title}
+                  {stepTexts[step.key]?.title}
                 </h3>
-                {stepValues[key] && (
-                  <span className="whitespace-nowrap font-mono text-[11px] text-ink/50">{stepValues[key]}</span>
+                {step.value && (
+                  <span className="whitespace-nowrap font-mono text-[11px] text-ink/50">
+                    {step.value(draft.computed)}
+                  </span>
                 )}
               </div>
-              <p className="mt-1 text-sm leading-relaxed text-ink/70">{t.guide.steps[key].body}</p>
+              <p className="mt-1 text-sm leading-relaxed text-ink/70">{stepTexts[step.key]?.body}</p>
             </button>
           ))}
         </section>

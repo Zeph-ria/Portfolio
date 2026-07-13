@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { getDb, type MeasurementRow, type ProjectRow, type PaperFormat } from '@/lib/db';
+import { getDb, type MeasurementRow, type ProjectRow } from '@/lib/db';
 import { requireUser } from '@/lib/auth';
-import { draftStraightSkirt } from '@/lib/pattern/skirtBlock';
-import { draftToPdf } from '@/lib/export/pdf';
+import { draftGarment } from '@/lib/pattern/garments';
+import { draftToPdf, type PaperFormat } from '@/lib/export/pdf';
 import { canExportFullSize } from '@/lib/payments/stripe';
 
 export const dynamic = 'force-dynamic';
@@ -33,7 +33,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 
     const url = new URL(req.url);
     const requested = url.searchParams.get('format') ?? user.paper_format;
-    const format: PaperFormat = ['A4', 'USLetter', 'A0'].includes(requested)
+    const format: PaperFormat = ['A4', 'USLetter', 'A0', 'FullSize'].includes(requested)
       ? (requested as PaperFormat)
       : 'A4';
 
@@ -41,7 +41,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
       .prepare('SELECT * FROM measurements WHERE id = ?')
       .get(project.measurement_id) as MeasurementRow;
 
-    const pdf = draftToPdf(draftStraightSkirt(m), {
+    const pdf = draftToPdf(draftGarment(project.garment_type, m), {
       format,
       title: `StylIA · ${project.name}`,
       watermark: null,

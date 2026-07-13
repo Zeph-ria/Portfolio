@@ -14,8 +14,10 @@ Trilingual (🇫🇷 FR / 🇬🇧 EN / 🇪🇸 ES) · dual units (cm / inches)
 | Database | SQLite via `better-sqlite3` — plain SQL schema, portable to Postgres |
 | Auth | Email + password (bcrypt), opaque session tokens in HttpOnly cookies |
 | Payments | Stripe (mock-first; swap in the native SDK via env vars) |
-| Drafting engine | Pure TypeScript — "Teresa Gilewska" parametric formulas |
-| Export | Dependency-free vector PDF writer (A4 / US Letter / A0, tiled at 100 % scale) |
+| Drafting engine | Pure TypeScript — classic French flat-pattern parametric formulas |
+| Garments | Straight skirt, flared skirt, bodice block, straight trousers (modular registry) |
+| AI vision | Claude (claude-opus-4-8) classifies the uploaded photo into a draftable garment |
+| Export | Dependency-free vector PDF writer (A4 / US Letter / A0 tiled, or **FullSize** single sheet at real scale) |
 
 ## Quick start
 
@@ -95,6 +97,12 @@ Professional Tailors and active subscribers export full size freely.
 Hobbyists must complete the (mock) Stripe checkout — until the
 `checkout.session.completed` webhook is verified, exports return
 **402 Payment Required** and previews are watermarked.
+
+## AI photo detection
+
+Set `ANTHROPIC_API_KEY` to enable garment detection from the uploaded photo
+(`src/lib/ai/analyzePhoto.ts`, wired to `/api/analyze-photo`). Without the
+key the wizard degrades gracefully to manual garment selection.
 
 ## Going live with Stripe
 

@@ -1,18 +1,10 @@
 /**
  * ============================================================================
- * StylIA — "Teresa Gilewska" Mathematical Engine
- * Basic Straight Skirt block (Jupe Droite de Base)
+ * StylIA — Mathematical Engine · Basic Straight Skirt (Jupe Droite de Base)
+ * Flat-pattern method, vol. 1 of the knowledge base ("Coupe à plat : les bases")
  * ============================================================================
- * All inputs and outputs are in CENTIMETRES (canonical unit, 1 mm precision).
  * Coordinate system: origin at point A (centre back × waist line),
  * X grows towards the centre front, Y grows downwards.
- *
- *          A ────────────── side ────────────── B      ← waist line (y = 0)
- *          │        back        │     front     │
- *          │                    │               │
- *          ├────────────────────┼───────────────┤      ← hip line (y = H_height)
- *          │                    │               │
- *          D ────────────────────────────────── C      ← hem (y = L)
  *
  * Core outer framing (aisance/ease = 2 cm on the hips):
  *   Total Width        = (H + 2) / 2
@@ -20,110 +12,53 @@
  *   Back  Panel Width  = (H + 2) / 4 − 1
  *   Total Height       = L
  *   Hip Line Position  = H_height from the waist edge
+ *   Small-hip line (ligne des petites hanches) at ≈ H_height / 2;
+ *   small-hip girth defaults to H − 11 (constant offset in the size chart).
  *
  * Dart calculation (calcul des pinces de taille):
  *   Total Waist Reduction = Total Width − W / 2
  *   Side curve (each side) = 0.4 × reduction / 2
  *   Back dart value        = 0.35 × reduction
  *   Front dart value       = 0.25 × reduction
- *   Front dart length 10–12 cm (we draft at 11), back 13–15 cm (we draft at 14)
+ *   Front dart length 10–12 cm (drafted at 11), back 13–15 cm (drafted at 14)
  * ============================================================================
  */
 
-export const EASE_CM = 2; // Total ease allowance (aisance) applied to hips
-export const FRONT_DART_LENGTH_CM = 11; // within the 10–12 cm textbook range
-export const BACK_DART_LENGTH_CM = 14; // within the 13–15 cm textbook range
+import {
+  mm,
+  curveControl,
+  verticalDart,
+  horizontalLine,
+  type PatternDraft,
+  type PatternLine,
+  type Point,
+} from './types';
 
-export interface SkirtMeasurementsCm {
-  hip_circ: number;
+export const EASE_CM = 2; // Total ease allowance (aisance) applied to hips
+export const FRONT_DART_LENGTH_CM = 11; // within the 10–12 cm range
+export const BACK_DART_LENGTH_CM = 14; // within the 13–15 cm range
+
+export interface BodyMeasurementsCm {
+  bust_circ: number;
   waist_circ: number;
-  total_length: number;
+  hip_circ: number;
   waist_to_hip_height: number;
-  /**
-   * Tour des petites hanches (~10 cm below the waist). Optional: when
-   * absent it is estimated from the size chart's constant hip − 11 cm.
-   */
+  total_length: number;
   small_hip_circ?: number | null;
-  /**
-   * Hauteur des petites hanches. Optional: defaults to half the
-   * waist-to-hip height, per the size-chart proportions.
-   */
   small_hip_height?: number | null;
 }
 
-export type Point = { x: number; y: number };
+// Backwards-compatible aliases (earlier modules import these names).
+export type SkirtMeasurementsCm = BodyMeasurementsCm;
+export type SkirtDraft = PatternDraft;
+export type { PatternDraft, PatternLine, Point };
+export type { Segment, LineKind } from './types';
 
-export type Segment =
-  | { type: 'move'; to: Point }
-  | { type: 'line'; to: Point }
-  | { type: 'quad'; control: Point; to: Point };
-
-export type LineKind = 'cut' | 'construction' | 'dart';
-
-export interface PatternLine {
-  id: string;
-  kind: LineKind;
-  /** i18n label key suffix (optional annotation on the canvas) */
-  label?: string;
-  segments: Segment[];
-}
-
-export interface SkirtDraft {
-  /** overall bounding box of the block, cm */
-  widthCm: number;
-  heightCm: number;
-  lines: PatternLine[];
-  computed: {
-    totalWidth: number;
-    frontPanelWidth: number;
-    backPanelWidth: number;
-    hipLineY: number;
-    smallHipLineY: number;
-    smallHipInsetEach: number;
-    totalWaistReduction: number;
-    sideCurveEach: number;
-    backDartValue: number;
-    frontDartValue: number;
-    backDartAxisX: number;
-    frontDartAxisX: number;
-  };
-  /** named construction points, for the interactive canvas */
-  points: Record<string, Point>;
-}
-
-const mm = (v: number) => Math.round(v * 100) / 100; // keep 0.01 cm = 0.1 mm
-
-/** Builds an isoceles waist dart (two solid legs) on a vertical axis. */
-function dart(id: string, axisX: number, value: number, length: number): PatternLine[] {
-  const half = value / 2;
-  return [
-    {
-      id: `${id}-legs`,
-      kind: 'dart',
-      segments: [
-        { type: 'move', to: { x: mm(axisX - half), y: 0 } },
-        { type: 'line', to: { x: mm(axisX), y: mm(length) } },
-        { type: 'line', to: { x: mm(axisX + half), y: 0 } },
-      ],
-    },
-    {
-      id: `${id}-axis`,
-      kind: 'construction',
-      segments: [
-        { type: 'move', to: { x: mm(axisX), y: 0 } },
-        { type: 'line', to: { x: mm(axisX), y: mm(length) } },
-      ],
-    },
-  ];
-}
-
-export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
+export function draftStraightSkirt(m: BodyMeasurementsCm): PatternDraft {
   const H = m.hip_circ;
   const W = m.waist_circ;
   const L = m.total_length;
   const Hh = m.waist_to_hip_height;
-  // "Petites hanches" intermediate line: size-chart fallbacks are a
-  // constant hip − 11 cm girth at half the waist-to-hip height.
   const smallHip = m.small_hip_circ ?? Math.max(H - 11, 0);
   const smallHipY = m.small_hip_height ?? Hh / 2;
 
@@ -133,9 +68,6 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
   const backPanelWidth = (H + EASE_CM) / 4 - 1;
   const hipLineY = Hh;
 
-  // Frame width the block must reach at the small-hip line; the side hip
-  // curve passes through this intermediate point instead of a free-hand
-  // control, which is what keeps the curve anatomically faithful.
   const smallHipHalfWidth = (smallHip + EASE_CM) / 2;
   const smallHipInsetEach = Math.max((totalWidth - smallHipHalfWidth) / 2, 0);
 
@@ -145,17 +77,15 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
   const backDartValue = 0.35 * totalWaistReduction;
   const frontDartValue = 0.25 * totalWaistReduction;
 
-  // Dart axes sit at the midpoint of each finished panel waistline —
-  // the standard textbook placement for the basic block.
-  const sideSeamX = backPanelWidth; // measured from centre back
+  const sideSeamX = backPanelWidth;
   const backDartAxisX = (sideSeamX - sideCurveEach) / 2;
   const frontDartAxisX = sideSeamX + sideCurveEach + (totalWidth - (sideSeamX + sideCurveEach)) / 2;
 
   // --- Named points -------------------------------------------------------
-  const A: Point = { x: 0, y: 0 }; // centre back × waist
-  const B: Point = { x: mm(totalWidth), y: 0 }; // centre front × waist
-  const C: Point = { x: mm(totalWidth), y: mm(L) }; // centre front × hem
-  const D: Point = { x: 0, y: mm(L) }; // centre back × hem
+  const A: Point = { x: 0, y: 0 };
+  const B: Point = { x: mm(totalWidth), y: 0 };
+  const C: Point = { x: mm(totalWidth), y: mm(L) };
+  const D: Point = { x: 0, y: mm(L) };
   const sideWaistBack: Point = { x: mm(sideSeamX - sideCurveEach), y: 0 };
   const sideWaistFront: Point = { x: mm(sideSeamX + sideCurveEach), y: 0 };
   const smallHipBack: Point = { x: mm(sideSeamX - smallHipInsetEach), y: mm(smallHipY) };
@@ -163,15 +93,7 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
   const sideHip: Point = { x: mm(sideSeamX), y: mm(hipLineY) };
   const sideHem: Point = { x: mm(sideSeamX), y: mm(L) };
 
-  // Quadratic control chosen so the curve passes exactly through the
-  // small-hip point at t = 0.5:  control = 2·P − (P₀ + P₂)/2.
-  const curveControl = (p0: Point, through: Point, p2: Point): Point => ({
-    x: mm(2 * through.x - (p0.x + p2.x) / 2),
-    y: mm(2 * through.y - (p0.y + p2.y) / 2),
-  });
-
   const lines: PatternLine[] = [
-    // -- Cutting paths (solid) ----------------------------------------------
     {
       id: 'back-outline',
       kind: 'cut',
@@ -179,7 +101,6 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
       segments: [
         { type: 'move', to: A },
         { type: 'line', to: sideWaistBack },
-        // side hip curve: waist → hip line, through the small-hip point
         { type: 'quad', control: curveControl(sideWaistBack, smallHipBack, sideHip), to: sideHip },
         { type: 'line', to: sideHem },
         { type: 'line', to: D },
@@ -199,25 +120,8 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
         { type: 'line', to: B },
       ],
     },
-    // -- Construction lines (dash-dotted) ------------------------------------
-    {
-      id: 'small-hip-line',
-      kind: 'construction',
-      label: 'smallHipLine',
-      segments: [
-        { type: 'move', to: { x: 0, y: mm(smallHipY) } },
-        { type: 'line', to: { x: mm(totalWidth), y: mm(smallHipY) } },
-      ],
-    },
-    {
-      id: 'hip-line',
-      kind: 'construction',
-      label: 'hipLine',
-      segments: [
-        { type: 'move', to: { x: 0, y: mm(hipLineY) } },
-        { type: 'line', to: { x: mm(totalWidth), y: mm(hipLineY) } },
-      ],
-    },
+    horizontalLine('small-hip-line', smallHipY, 0, totalWidth),
+    horizontalLine('hip-line', hipLineY, 0, totalWidth),
     {
       id: 'side-seam-axis',
       kind: 'construction',
@@ -227,9 +131,8 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
         { type: 'line', to: sideHem },
       ],
     },
-    // -- Darts (solid legs + dash-dotted axis) -------------------------------
-    ...dart('back-dart', backDartAxisX, backDartValue, BACK_DART_LENGTH_CM),
-    ...dart('front-dart', frontDartAxisX, frontDartValue, FRONT_DART_LENGTH_CM),
+    ...verticalDart('back-dart', backDartAxisX, 0, backDartValue, BACK_DART_LENGTH_CM),
+    ...verticalDart('front-dart', frontDartAxisX, 0, frontDartValue, FRONT_DART_LENGTH_CM),
   ];
 
   return {
@@ -250,17 +153,6 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
       backDartAxisX: mm(backDartAxisX),
       frontDartAxisX: mm(frontDartAxisX),
     },
-    points: {
-      A,
-      B,
-      C,
-      D,
-      sideWaistBack,
-      sideWaistFront,
-      smallHipBack,
-      smallHipFront,
-      sideHip,
-      sideHem,
-    },
+    points: { A, B, C, D, sideWaistBack, sideWaistFront, smallHipBack, smallHipFront, sideHip, sideHem },
   };
 }

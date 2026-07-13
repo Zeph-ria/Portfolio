@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getDb, type MeasurementRow, type ProjectRow } from '@/lib/db';
 import { requireUser } from '@/lib/auth';
-import { draftStraightSkirt } from '@/lib/pattern/skirtBlock';
+import { draftGarment } from '@/lib/pattern/garments';
 import { draftToSvg } from '@/lib/pattern/svg';
 import { canExportFullSize } from '@/lib/payments/stripe';
 
@@ -24,7 +24,7 @@ export async function GET(_req: Request, { params }: { params: { id: string } })
       .prepare('SELECT * FROM measurements WHERE id = ?')
       .get(project.measurement_id) as MeasurementRow;
 
-    const draft = draftStraightSkirt(m);
+    const draft = draftGarment(project.garment_type, m);
     const svg = draftToSvg(draft, {
       watermark: canExportFullSize(user, project) ? null : 'STYLIA · DRAFT',
     });

@@ -1,4 +1,4 @@
-import type { PatternLine, Segment, SkirtDraft } from './skirtBlock';
+import type { PatternLine, Segment, PatternDraft as SkirtDraft } from './types';
 
 /**
  * SVG rendering of a pattern draft.
