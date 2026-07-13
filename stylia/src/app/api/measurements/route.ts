@@ -6,6 +6,9 @@ import { inchToCm } from '@/lib/units';
 export const dynamic = 'force-dynamic';
 
 const FIELDS = ['bust_circ', 'waist_circ', 'hip_circ', 'waist_to_hip_height', 'total_length'] as const;
+// Optional "petites hanches" measures — the drafting engine derives
+// size-chart fallbacks when they are absent.
+const OPTIONAL_FIELDS = ['small_hip_circ', 'small_hip_height'] as const;
 
 export async function GET() {
   try {
@@ -35,12 +38,20 @@ export async function POST(req: Request) {
       cm[f] = Math.round((unit === 'inch' ? inchToCm(v) : v) * 10) / 10;
     }
 
+    const optional: Record<string, number | null> = {};
+    for (const f of OPTIONAL_FIELDS) {
+      const v = Number(body[f]);
+      optional[f] =
+        Number.isFinite(v) && v > 0 ? Math.round((unit === 'inch' ? inchToCm(v) : v) * 10) / 10 : null;
+    }
+
     const profileName = String(body.profile_name ?? '').trim() || 'Myself';
     const info = getDb()
       .prepare(
         `INSERT INTO measurements
-           (user_id, profile_name, unit, bust_circ, waist_circ, hip_circ, waist_to_hip_height, total_length)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+           (user_id, profile_name, unit, bust_circ, waist_circ, hip_circ, waist_to_hip_height, total_length,
+            small_hip_circ, small_hip_height)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .run(
         user.id,
@@ -51,6 +62,8 @@ export async function POST(req: Request) {
         cm.hip_circ,
         cm.waist_to_hip_height,
         cm.total_length,
+        optional.small_hip_circ,
+        optional.small_hip_height,
       );
 
     const row = getDb()

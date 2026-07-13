@@ -22,8 +22,24 @@ export function getDb(): Database.Database {
 
   db.exec(readFileSync(join(process.cwd(), 'db', 'schema.sql'), 'utf8'));
   db.exec(readFileSync(join(process.cwd(), 'db', 'seed.sql'), 'utf8'));
+  migrate(db);
 
   return db;
+}
+
+/** Additive migrations for databases created before a column existed. */
+function migrate(db: Database.Database): void {
+  const cols = (db.prepare('PRAGMA table_info(measurements)').all() as { name: string }[]).map(
+    (c) => c.name,
+  );
+  // "Petites hanches" (small-hip) measures — optional, size-chart fallback
+  // applies when NULL (girth = hip − 11 cm, height = half hip height).
+  if (!cols.includes('small_hip_circ')) {
+    db.exec('ALTER TABLE measurements ADD COLUMN small_hip_circ REAL');
+  }
+  if (!cols.includes('small_hip_height')) {
+    db.exec('ALTER TABLE measurements ADD COLUMN small_hip_height REAL');
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -57,6 +73,8 @@ export interface MeasurementRow {
   hip_circ: number;
   waist_to_hip_height: number;
   total_length: number;
+  small_hip_circ: number | null;
+  small_hip_height: number | null;
   created_at: string;
   updated_at: string;
 }

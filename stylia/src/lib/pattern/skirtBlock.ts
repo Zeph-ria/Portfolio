@@ -39,6 +39,16 @@ export interface SkirtMeasurementsCm {
   waist_circ: number;
   total_length: number;
   waist_to_hip_height: number;
+  /**
+   * Tour des petites hanches (~10 cm below the waist). Optional: when
+   * absent it is estimated from the size chart's constant hip − 11 cm.
+   */
+  small_hip_circ?: number | null;
+  /**
+   * Hauteur des petites hanches. Optional: defaults to half the
+   * waist-to-hip height, per the size-chart proportions.
+   */
+  small_hip_height?: number | null;
 }
 
 export type Point = { x: number; y: number };
@@ -68,6 +78,8 @@ export interface SkirtDraft {
     frontPanelWidth: number;
     backPanelWidth: number;
     hipLineY: number;
+    smallHipLineY: number;
+    smallHipInsetEach: number;
     totalWaistReduction: number;
     sideCurveEach: number;
     backDartValue: number;
@@ -110,12 +122,22 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
   const W = m.waist_circ;
   const L = m.total_length;
   const Hh = m.waist_to_hip_height;
+  // "Petites hanches" intermediate line: size-chart fallbacks are a
+  // constant hip − 11 cm girth at half the waist-to-hip height.
+  const smallHip = m.small_hip_circ ?? Math.max(H - 11, 0);
+  const smallHipY = m.small_hip_height ?? Hh / 2;
 
   // --- Core outer framing -------------------------------------------------
   const totalWidth = (H + EASE_CM) / 2;
   const frontPanelWidth = (H + EASE_CM) / 4 + 1;
   const backPanelWidth = (H + EASE_CM) / 4 - 1;
   const hipLineY = Hh;
+
+  // Frame width the block must reach at the small-hip line; the side hip
+  // curve passes through this intermediate point instead of a free-hand
+  // control, which is what keeps the curve anatomically faithful.
+  const smallHipHalfWidth = (smallHip + EASE_CM) / 2;
+  const smallHipInsetEach = Math.max((totalWidth - smallHipHalfWidth) / 2, 0);
 
   // --- Dart calculation ---------------------------------------------------
   const totalWaistReduction = totalWidth - W / 2;
@@ -136,8 +158,17 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
   const D: Point = { x: 0, y: mm(L) }; // centre back × hem
   const sideWaistBack: Point = { x: mm(sideSeamX - sideCurveEach), y: 0 };
   const sideWaistFront: Point = { x: mm(sideSeamX + sideCurveEach), y: 0 };
+  const smallHipBack: Point = { x: mm(sideSeamX - smallHipInsetEach), y: mm(smallHipY) };
+  const smallHipFront: Point = { x: mm(sideSeamX + smallHipInsetEach), y: mm(smallHipY) };
   const sideHip: Point = { x: mm(sideSeamX), y: mm(hipLineY) };
   const sideHem: Point = { x: mm(sideSeamX), y: mm(L) };
+
+  // Quadratic control chosen so the curve passes exactly through the
+  // small-hip point at t = 0.5:  control = 2·P − (P₀ + P₂)/2.
+  const curveControl = (p0: Point, through: Point, p2: Point): Point => ({
+    x: mm(2 * through.x - (p0.x + p2.x) / 2),
+    y: mm(2 * through.y - (p0.y + p2.y) / 2),
+  });
 
   const lines: PatternLine[] = [
     // -- Cutting paths (solid) ----------------------------------------------
@@ -148,8 +179,8 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
       segments: [
         { type: 'move', to: A },
         { type: 'line', to: sideWaistBack },
-        // hip curve: waist → hip line, bulging towards the frame edge
-        { type: 'quad', control: { x: mm(sideSeamX), y: mm(hipLineY * 0.45) }, to: sideHip },
+        // side hip curve: waist → hip line, through the small-hip point
+        { type: 'quad', control: curveControl(sideWaistBack, smallHipBack, sideHip), to: sideHip },
         { type: 'line', to: sideHem },
         { type: 'line', to: D },
         { type: 'line', to: A },
@@ -162,13 +193,22 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
       segments: [
         { type: 'move', to: B },
         { type: 'line', to: sideWaistFront },
-        { type: 'quad', control: { x: mm(sideSeamX), y: mm(hipLineY * 0.45) }, to: sideHip },
+        { type: 'quad', control: curveControl(sideWaistFront, smallHipFront, sideHip), to: sideHip },
         { type: 'line', to: sideHem },
         { type: 'line', to: C },
         { type: 'line', to: B },
       ],
     },
     // -- Construction lines (dash-dotted) ------------------------------------
+    {
+      id: 'small-hip-line',
+      kind: 'construction',
+      label: 'smallHipLine',
+      segments: [
+        { type: 'move', to: { x: 0, y: mm(smallHipY) } },
+        { type: 'line', to: { x: mm(totalWidth), y: mm(smallHipY) } },
+      ],
+    },
     {
       id: 'hip-line',
       kind: 'construction',
@@ -201,6 +241,8 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
       frontPanelWidth: mm(frontPanelWidth),
       backPanelWidth: mm(backPanelWidth),
       hipLineY: mm(hipLineY),
+      smallHipLineY: mm(smallHipY),
+      smallHipInsetEach: mm(smallHipInsetEach),
       totalWaistReduction: mm(totalWaistReduction),
       sideCurveEach: mm(sideCurveEach),
       backDartValue: mm(backDartValue),
@@ -215,6 +257,8 @@ export function draftStraightSkirt(m: SkirtMeasurementsCm): SkirtDraft {
       D,
       sideWaistBack,
       sideWaistFront,
+      smallHipBack,
+      smallHipFront,
       sideHip,
       sideHem,
     },

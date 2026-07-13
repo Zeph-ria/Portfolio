@@ -63,9 +63,13 @@ const fr: Dictionary = {
     profileLabel: 'Profil de mesures',
     newProfile: 'Nouveau profil…',
     profileName: 'Nom du profil (ex. « Moi-même », « Cliente X »)',
+    sizePreset: 'Taille standard (FR)',
+    sizeCustom: 'Sur mesure — mesures personnalisées',
     bust: 'Tour de poitrine',
     waist: 'Tour de taille',
     hip: 'Tour de bassin',
+    smallHip: 'Tour des petites hanches (~10 cm sous la taille, optionnel)',
+    smallHipHeight: 'Hauteur des petites hanches (optionnel)',
     waistToHip: 'Hauteur taille-bassin',
     totalLength: 'Longueur totale de la jupe',
     unitToggle: 'Unités',
@@ -91,8 +95,8 @@ const fr: Dictionary = {
         body: 'Tracez le rectangle A-B-C-D : largeur = (bassin + aisance) / 2, hauteur = longueur totale. La verticale A-D est le milieu dos, B-C le milieu devant.',
       },
       hipLine: {
-        title: 'Ligne de bassin',
-        body: 'Depuis la ligne de taille, reportez la hauteur taille-bassin vers le bas et tracez la ligne de bassin horizontale sur toute la largeur.',
+        title: 'Lignes de bassin et des petites hanches',
+        body: 'Depuis la ligne de taille, reportez la hauteur taille-bassin vers le bas et tracez la ligne de bassin horizontale. À mi-hauteur, tracez la ligne des petites hanches — la courbe de côté passera par elle.',
       },
       sideSeam: {
         title: 'Couture côté',
@@ -104,7 +108,7 @@ const fr: Dictionary = {
       },
       curves: {
         title: 'Courbes de côté',
-        body: 'Galbez la couture côté de la taille à la ligne de bassin avec une courbe de hanche fluide, en retirant la valeur de côté sur chaque panneau.',
+        body: 'Galbez la couture côté de la taille à la ligne de bassin avec une courbe fluide passant par le point des petites hanches, en retirant la valeur de côté sur chaque panneau.',
       },
       finish: {
         title: 'Lignes de coupe',

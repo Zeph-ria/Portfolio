@@ -56,15 +56,34 @@ src/app/
                            # svg, export, textiles, checkout, webhooks/stripe)
 ```
 
+## Knowledge base
+
+The drafting conventions follow the classic French flat-pattern method
+(Gilewska, *Le modélisme de mode*, vol. 1 *Coupe à plat : les bases* and
+vol. 2 *Coupe à plat : les transformations*):
+
+- **Size chart** (`src/lib/pattern/sizeChart.ts`): the standard French
+  ready-to-wear measurement table (IFTH), sizes 34–48, powers the wizard's
+  size presets. Two structural constants from the chart drive fallbacks:
+  small-hip girth = hip − 11 cm, small-hip line at half the hip height.
+- **Construction lines**: waist line, *ligne des petites hanches*
+  (~10 cm below the waist) and *ligne du bassin* (~20 cm below the waist).
+  The side hip curve passes through the small-hip point.
+- **Measurement doctrine**: body measures are taken without ease; ease is
+  applied during construction (2 cm on the hips for the straight skirt).
+
 ## The drafting engine (Jupe Droite de Base)
 
 All values in **cm**, ease (aisance) = **2 cm** on the hips:
 
 - Total width = (H + 2) / 2 · front panel = (H + 2) / 4 + 1 · back panel = (H + 2) / 4 − 1
-- Hip line at `waist_to_hip_height`; total height = `total_length`
+- Hip line at `waist_to_hip_height`; small-hip line at `small_hip_height`
+  (default: half the hip height); total height = `total_length`
 - Total waist reduction = total width − W / 2, distributed
   **40 %** side curves (÷2 per side) / **35 %** back dart / **25 %** front dart
 - Dart lengths: front 11 cm (10–12), back 14 cm (13–15)
+- Side curve: quadratic Bézier through the small-hip point
+  (girth (small_hip + ease) / 2 at the small-hip line)
 
 Output: structured segments (`move` / `line` / `quad`) rendered as
 solid **cutting paths**, dash-dotted **construction lines** and gold **darts** —
@@ -89,3 +108,11 @@ The engine is deliberately modular for future work: body-posture adjustments
 plug into `skirtBlock.ts` inputs, nesting algorithms consume the same
 `Segment[]` geometry, and new garment types register alongside
 `straight_skirt_base` in the wizard and the textile consultant.
+
+Planned garment families, following the knowledge base's progression —
+vol. 1 bases first, then vol. 2 transformations built on top of them:
+
+1. Bases: flared skirt, bodice block (with small-hip and hip lines),
+   sleeves, collars, pockets, lining.
+2. Transformations: jackets, kimonos, raglans, trousers, hoods, capes,
+   bustiers, trains & overskirts (all constructed from the base blocks).

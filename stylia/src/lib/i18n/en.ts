@@ -61,9 +61,13 @@ const en = {
     profileLabel: 'Measurement profile',
     newProfile: 'New profile…',
     profileName: 'Profile name (e.g. “Myself”, “Client X”)',
+    sizePreset: 'Standard size (FR)',
+    sizeCustom: 'Custom — bespoke measurements',
     bust: 'Bust circumference',
     waist: 'Waist circumference',
     hip: 'Hip circumference',
+    smallHip: 'Small-hip circumference (~10 cm below waist, optional)',
+    smallHipHeight: 'Small-hip height (optional)',
     waistToHip: 'Waist-to-hip height',
     totalLength: 'Total skirt length',
     unitToggle: 'Units',
@@ -89,8 +93,8 @@ const en = {
         body: 'Draw rectangle A-B-C-D: width = (hip + ease) / 2, height = total length. The vertical A-D is the centre back, B-C the centre front.',
       },
       hipLine: {
-        title: 'Hip line',
-        body: 'From the waist edge, measure the waist-to-hip height down and trace the horizontal hip line across the frame.',
+        title: 'Hip & small-hip lines',
+        body: 'From the waist edge, measure the waist-to-hip height down and trace the horizontal hip line. Halfway down, trace the small-hip line — the side curve will pass through it.',
       },
       sideSeam: {
         title: 'Side seam',
@@ -102,7 +106,7 @@ const en = {
       },
       curves: {
         title: 'Side curves',
-        body: 'Shape the side seam from the waist to the hip line with a smooth hip curve, removing the side reduction on each panel.',
+        body: 'Shape the side seam from the waist to the hip line with a smooth curve passing through the small-hip point, removing the side reduction on each panel.',
       },
       finish: {
         title: 'Cutting lines',

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useI18n } from './I18nProvider';
 import { UnitToggle } from './UnitToggle';
 import { convert, type Unit } from '@/lib/units';
+import { SIZE_CHART } from '@/lib/pattern/sizeChart';
 
 type MeasurementProfile = {
   id: number;
@@ -15,17 +16,30 @@ type MeasurementProfile = {
   hip_circ: number;
   waist_to_hip_height: number;
   total_length: number;
+  small_hip_circ: number | null;
+  small_hip_height: number | null;
 };
 
-const FIELDS = ['bust_circ', 'waist_circ', 'hip_circ', 'waist_to_hip_height', 'total_length'] as const;
+const FIELDS = [
+  'bust_circ',
+  'waist_circ',
+  'hip_circ',
+  'small_hip_circ',
+  'waist_to_hip_height',
+  'small_hip_height',
+  'total_length',
+] as const;
 type Field = (typeof FIELDS)[number];
+const OPTIONAL_FIELDS: Field[] = ['small_hip_circ', 'small_hip_height'];
 
-// Sensible cm defaults (size 38/40) so the form is instantly explorable.
+// Size-chart defaults (FR 40) so the form is instantly explorable.
 const DEFAULT_CM: Record<Field, number> = {
-  bust_circ: 90,
+  bust_circ: 92,
   waist_circ: 70,
   hip_circ: 96,
+  small_hip_circ: 85,
   waist_to_hip_height: 20,
+  small_hip_height: 9.4,
   total_length: 60,
 };
 
@@ -41,6 +55,7 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
   const [profiles, setProfiles] = useState<MeasurementProfile[]>([]);
   const [profileId, setProfileId] = useState<'new' | number>('new');
   const [profileName, setProfileName] = useState('');
+  const [sizePreset, setSizePreset] = useState<'custom' | number>('custom');
   const [unit, setUnit] = useState<Unit>(defaultUnit);
   const [values, setValues] = useState<Record<Field, string>>(() => {
     const init = {} as Record<Field, string>;
@@ -98,7 +113,27 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
     // stored values are canonical cm — display in the active unit
     setValues(() => {
       const next = {} as Record<Field, string>;
-      for (const f of FIELDS) next[f] = String(convert(p[f], 'cm', unit));
+      for (const f of FIELDS) {
+        const v = p[f];
+        next[f] = v == null ? '' : String(convert(v, 'cm', unit));
+      }
+      return next;
+    });
+  }
+
+  /** Pre-fill the form from the standard French size chart (still editable). */
+  function selectSizePreset(preset: 'custom' | number) {
+    setSizePreset(preset);
+    if (preset === 'custom') return;
+    const entry = SIZE_CHART.find((s) => s.fr === preset);
+    if (!entry) return;
+    setValues((prev) => {
+      const next = { ...prev };
+      for (const f of FIELDS) {
+        if (f === 'total_length') continue; // length is a style choice, not a body measure
+        const cmValue = entry[f as keyof typeof entry];
+        if (typeof cmValue === 'number') next[f] = String(convert(cmValue, 'cm', unit));
+      }
       return next;
     });
   }
@@ -297,14 +332,35 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
           </div>
 
           {profileId === 'new' && (
-            <div className="mb-5">
-              <label className="field-label" htmlFor="profileName">{t.wizard.profileName}</label>
-              <input
-                id="profileName"
-                className="field-input"
-                value={profileName}
-                onChange={(e) => setProfileName(e.target.value)}
-              />
+            <div className="mb-5 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label className="field-label" htmlFor="profileName">{t.wizard.profileName}</label>
+                <input
+                  id="profileName"
+                  className="field-input"
+                  value={profileName}
+                  onChange={(e) => setProfileName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="field-label" htmlFor="sizePreset">{t.wizard.sizePreset}</label>
+                <select
+                  id="sizePreset"
+                  className="field-input"
+                  value={sizePreset}
+                  onChange={(e) =>
+                    selectSizePreset(e.target.value === 'custom' ? 'custom' : Number(e.target.value))
+                  }
+                >
+                  <option value="custom">{t.wizard.sizeCustom}</option>
+                  {SIZE_CHART.map((s) => (
+                    <option key={s.fr} value={s.fr}>
+                      {s.fr}
+                      {s.intl ? ` (${s.intl})` : ''}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           )}
 
@@ -318,7 +374,9 @@ export function NewProjectWizard({ defaultUnit }: { defaultUnit: Unit }) {
                         bust_circ: 'bust',
                         waist_circ: 'waist',
                         hip_circ: 'hip',
+                        small_hip_circ: 'smallHip',
                         waist_to_hip_height: 'waistToHip',
+                        small_hip_height: 'smallHipHeight',
                         total_length: 'totalLength',
                       } as const
                     )[f]

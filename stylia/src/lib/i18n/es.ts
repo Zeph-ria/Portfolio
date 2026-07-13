@@ -63,9 +63,13 @@ const es: Dictionary = {
     profileLabel: 'Perfil de medidas',
     newProfile: 'Nuevo perfil…',
     profileName: 'Nombre del perfil (p. ej. «Yo», «Clienta X»)',
+    sizePreset: 'Talla estándar (FR)',
+    sizeCustom: 'A medida — medidas personalizadas',
     bust: 'Contorno de pecho',
     waist: 'Contorno de cintura',
     hip: 'Contorno de cadera',
+    smallHip: 'Contorno de cadera alta (~10 cm bajo la cintura, opcional)',
+    smallHipHeight: 'Altura de cadera alta (opcional)',
     waistToHip: 'Altura cintura-cadera',
     totalLength: 'Largo total de la falda',
     unitToggle: 'Unidades',
@@ -91,8 +95,8 @@ const es: Dictionary = {
         body: 'Dibuja el rectángulo A-B-C-D: ancho = (cadera + holgura) / 2, alto = largo total. La vertical A-D es el centro espalda, B-C el centro delantero.',
       },
       hipLine: {
-        title: 'Línea de cadera',
-        body: 'Desde la línea de cintura, mide hacia abajo la altura cintura-cadera y traza la línea horizontal de cadera a lo ancho del marco.',
+        title: 'Líneas de cadera y cadera alta',
+        body: 'Desde la línea de cintura, mide hacia abajo la altura cintura-cadera y traza la línea horizontal de cadera. A media altura, traza la línea de cadera alta — la curva lateral pasará por ella.',
       },
       sideSeam: {
         title: 'Costura lateral',
@@ -104,7 +108,7 @@ const es: Dictionary = {
       },
       curves: {
         title: 'Curvas laterales',
-        body: 'Modela la costura lateral desde la cintura hasta la línea de cadera con una curva suave, eliminando la reducción lateral en cada panel.',
+        body: 'Modela la costura lateral desde la cintura hasta la línea de cadera con una curva suave que pasa por el punto de cadera alta, eliminando la reducción lateral en cada panel.',
       },
       finish: {
         title: 'Líneas de corte',

@@ -12,7 +12,7 @@ type StepKey = 'frame' | 'hipLine' | 'sideSeam' | 'darts' | 'curves' | 'finish';
 
 const STEP_LINES: Record<StepKey, string[]> = {
   frame: ['back-outline', 'front-outline'],
-  hipLine: ['hip-line'],
+  hipLine: ['hip-line', 'small-hip-line'],
   sideSeam: ['side-seam-axis'],
   darts: ['back-dart-legs', 'back-dart-axis', 'front-dart-legs', 'front-dart-axis'],
   curves: ['back-outline', 'front-outline'],
@@ -75,7 +75,7 @@ export function GuideClient({
   const c = draft.computed;
   const stepValues: Record<StepKey, string> = {
     frame: `${c.totalWidth} × ${draft.heightCm} cm`,
-    hipLine: `y = ${c.hipLineY} cm`,
+    hipLine: `y = ${c.hipLineY} cm | ${c.smallHipLineY} cm`,
     sideSeam: `${t.guide.steps.sideSeam.title}: ${c.backPanelWidth} cm | ${c.frontPanelWidth} cm`,
     darts: `Σ ${c.totalWaistReduction} cm → ${c.backDartValue} / ${c.frontDartValue} cm`,
     curves: `2 × ${c.sideCurveEach} cm`,
