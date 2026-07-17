@@ -182,24 +182,24 @@ const es: Dictionary = {
       name: 'Corpiño base',
       steps: {
         frame: {
-          title: 'El marco de construcción',
-          body: 'Ancho del marco = (pecho + holgura) / 2, alto = largo talle espalda. Traza la línea de pecho y la línea de sisa.',
+          title: 'El marco y sus líneas',
+          body: 'El marco va de los hombros hasta la línea de cadera. Traza las horizontales: línea de espalda, línea de pecho (pecho/4 + 1), línea de cintura (largo talle espalda), línea de cadera alta y línea de cadera.',
         },
         necklines: {
           title: 'Escotes',
           body: 'Escote trasero: ancho cuello/6 + 0,5 cm, subida 2 cm. Escote delantero: mismo ancho, profundidad cuello/6 + 1,5 cm.',
         },
         shoulders: {
-          title: 'Caídas de hombro',
-          body: 'Inclina cada hombro desde el punto de escote hasta el ancho de espalda, 4 cm bajo la línea superior.',
+          title: 'Hombros y sus pinzas',
+          body: 'Caída de hombro: 18° en la espalda, 26° en el delantero. La espalda lleva una pinza de hombro de 2 cm a media longitud; la pinza de pecho delantera (≈ pecho/20) cierra sobre el vértice del busto.',
         },
         armhole: {
           title: 'Sisa',
-          body: 'Curva desde cada extremo de hombro hasta la costura lateral, a la profundidad de sisa (pecho/4 − 1 cm).',
+          body: 'La sisa se inscribe entre las verticales de ancho de espalda y de delantero (N1, N2) y baja hasta la línea de pecho.',
         },
         darts: {
           title: 'Pinzas de cintura',
-          body: 'Reparte la reducción de cintura entre los laterales y una pinza por panel; la delantera se sitúa sobre la separación de pecho.',
+          body: 'La reducción de cintura se reparte entre el centro espalda, los laterales y dos pinzas rombo (espalda y delantero) que cruzan la línea de cintura y cierran debajo. Los laterales vuelven a abrirse hacia los anchos de cadera.',
         },
         finish: {
           title: 'Líneas de corte',

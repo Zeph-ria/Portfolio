@@ -106,8 +106,8 @@ export const GARMENTS: Record<GarmentSlug, GarmentDefinition> = {
     steps: [
       {
         key: 'frame',
-        lineIds: ['bust-line', 'scye-line'],
-        value: (c) => `${c.totalWidth} × ${c.backLength} cm`,
+        lineIds: ['carrure-line', 'bust-line', 'waist-line', 'small-hip-line'],
+        value: (c) => `${c.totalWidth} × ${c.totalHeight} cm`,
       },
       {
         key: 'necklines',
@@ -116,18 +116,18 @@ export const GARMENTS: Record<GarmentSlug, GarmentDefinition> = {
       },
       {
         key: 'shoulders',
-        lineIds: ['back-outline', 'front-outline'],
-        value: (c) => `${c.shoulderLength} cm`,
+        lineIds: ['back-shoulder-dart', 'front-bust-dart'],
+        value: (c) => `${c.backShoulderAngle}° / ${c.frontShoulderAngle}°`,
       },
       {
         key: 'armhole',
-        lineIds: ['side-seam-axis'],
-        value: (c) => `y = ${c.scyeLineY} cm`,
+        lineIds: ['across-back-axis', 'across-front-axis'],
+        value: (c) => `y = ${c.bustLineY} cm`,
       },
       {
         key: 'darts',
         lineIds: ['back-dart-legs', 'back-dart-axis', 'front-dart-legs', 'front-dart-axis'],
-        value: (c) => `${c.backDartValue} / ${c.frontDartValue} cm`,
+        value: (c) => `Σ ${c.waistReduction} → ${c.backDartValue} / ${c.frontDartValue} cm`,
       },
       { key: 'finish', lineIds: [] },
     ],

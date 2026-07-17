@@ -180,24 +180,24 @@ const en = {
       name: 'Bodice Block',
       steps: {
         frame: {
-          title: 'The construction frame',
-          body: 'Frame width = (bust + ease) / 2, height = back waist length. Trace the bust line and the armhole-depth line.',
+          title: 'The frame and its lines',
+          body: 'The frame runs from the shoulders down to the hip line. Trace the horizontals: across-back line, bust line (bust/4 + 1), waist line (back waist length), small-hip line and hip line.',
         },
         necklines: {
           title: 'Necklines',
           body: 'Back neckline: width neck/6 + 0.5 cm, rise 2 cm. Front neckline: same width, depth neck/6 + 1.5 cm.',
         },
         shoulders: {
-          title: 'Shoulder slopes',
-          body: 'Slope each shoulder from the neck point down to the across-back width, 4 cm below the top line.',
+          title: 'Shoulders and their darts',
+          body: 'Shoulder slope: 18° at the back, 26° at the front. The back takes a 2 cm shoulder dart at mid-length; the front bust dart (≈ bust/20) closes on the bust point.',
         },
         armhole: {
           title: 'Armhole',
-          body: 'Curve from each shoulder end down to the side seam at the armhole-depth line (bust/4 − 1 cm).',
+          body: 'The armhole sits between the across-back and across-front verticals (N1, N2) and reaches down to the bust line.',
         },
         darts: {
           title: 'Waist darts',
-          body: 'Distribute the waist reduction between the side seams and one dart per panel; the front dart sits on the bust-span line.',
+          body: 'The waist reduction is split between the centre back, the side seams and two diamond darts (back and front) that cross the waistline and close below it. The sides then flare back out to the hip widths.',
         },
         finish: {
           title: 'Cutting lines',

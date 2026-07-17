@@ -76,6 +76,43 @@ export function verticalDart(
   ];
 }
 
+/**
+ * Diamond (losange) dart: a double-pointed dart that opens to `value` at
+ * the waist line and closes to a point above and below it — the classic
+ * bodice waist dart crossing the waistline.
+ */
+export function diamondDart(
+  id: string,
+  axisX: number,
+  topY: number,
+  waistY: number,
+  bottomY: number,
+  value: number,
+): PatternLine[] {
+  const half = value / 2;
+  return [
+    {
+      id: `${id}-legs`,
+      kind: 'dart',
+      segments: [
+        { type: 'move', to: { x: mm(axisX), y: mm(topY) } },
+        { type: 'line', to: { x: mm(axisX - half), y: mm(waistY) } },
+        { type: 'line', to: { x: mm(axisX), y: mm(bottomY) } },
+        { type: 'line', to: { x: mm(axisX + half), y: mm(waistY) } },
+        { type: 'line', to: { x: mm(axisX), y: mm(topY) } },
+      ],
+    },
+    {
+      id: `${id}-axis`,
+      kind: 'construction',
+      segments: [
+        { type: 'move', to: { x: mm(axisX), y: mm(topY) } },
+        { type: 'line', to: { x: mm(axisX), y: mm(bottomY) } },
+      ],
+    },
+  ];
+}
+
 /** Horizontal dash-dotted construction line across the block. */
 export function horizontalLine(id: string, y: number, x0: number, x1: number): PatternLine {
   return {

@@ -182,24 +182,24 @@ const fr: Dictionary = {
       name: 'Corsage de base',
       steps: {
         frame: {
-          title: 'Le cadre de construction',
-          body: 'Largeur du cadre = (poitrine + aisance) / 2, hauteur = longueur taille dos. Tracez la ligne de poitrine et la ligne d’emmanchure.',
+          title: 'Le cadre et ses lignes',
+          body: 'Le cadre va des épaules jusqu’au bassin. Tracez les horizontales : ligne de carrure, ligne de poitrine (poitrine/4 + 1), ligne de taille (longueur taille dos), ligne des petites hanches et ligne du bassin.',
         },
         necklines: {
           title: 'Encolures',
           body: 'Encolure dos : largeur encolure/6 + 0,5 cm, montant 2 cm. Encolure devant : même largeur, profondeur encolure/6 + 1,5 cm.',
         },
         shoulders: {
-          title: 'Pentes d’épaule',
-          body: 'Inclinez chaque épaule du point d’encolure jusqu’à la carrure, 4 cm sous la ligne haute.',
+          title: 'Épaules et leurs pinces',
+          body: 'Pente d’épaule : 18° au dos, 26° au devant. Au dos, une pince d’épaule de 2 cm à mi-longueur ; au devant, la pince de poitrine (≈ poitrine/20) se ferme sur le saillant.',
         },
         armhole: {
           title: 'Emmanchure',
-          body: 'Courbez de chaque extrémité d’épaule jusqu’à la couture côté, à la profondeur d’emmanchure (poitrine/4 − 1 cm).',
+          body: 'L’emmanchure s’inscrit entre les verticales de carrure dos et devant (N1, N2) et descend jusqu’à la ligne de poitrine.',
         },
         darts: {
           title: 'Pinces de taille',
-          body: 'Répartissez la réduction de taille entre les côtés et une pince par panneau ; la pince devant se place sur l’écart de poitrine.',
+          body: 'La réduction de taille se répartit entre le milieu dos, les côtés et deux pinces losanges (dos et devant) qui traversent la ligne de taille et se referment dessous. Les côtés se ré-évasent ensuite vers les largeurs de bassin.',
         },
         finish: {
           title: 'Lignes de coupe',
