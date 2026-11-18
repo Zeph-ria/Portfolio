@@ -143,6 +143,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
 .websites-section{background:#fff}
 .websites-title{font-size:clamp(70px,11.5vw,185px)}
 .website-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px;margin-top:45px}
+.website-card{min-width:0}
 .browser-preview{height:clamp(320px,34vw,550px);overflow:hidden;display:flex;flex-direction:column}
 .browser-bar{height:45px;padding:0 16px;background:#f7f7f7;color:#555;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px}
 .browser-dots{display:flex;gap:5px}
@@ -154,9 +155,8 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
 .masdia-browser .browser-content{background:#173c2d;color:#f1f6ec}
 .masdia-browser .browser-content strong{font-family:var(--sans);font-weight:700;letter-spacing:-.09em}
 .masdia-browser .browser-content strong span{color:#a3d8ae}
-.breathe-browser .browser-content{background:radial-gradient(circle at 75% 15%,#a8c3ba 0,transparent 38%),linear-gradient(140deg,#e2efea,#c0d6cd);color:#1b4b42}
-.breathe-browser .browser-content strong{font-size:clamp(52px,5.5vw,96px)}
-.breathe-browser .browser-content em{font-weight:400}
+.browser-preview.breathe-browser{height:auto;background:#f5f0ea}
+.browser-screenshot{display:block;width:100%;height:auto}
 .website-details{display:flex;justify-content:space-between;gap:20px;align-items:end;padding-top:18px}
 .website-details>div{min-width:0}
 .website-details h3{font:400 clamp(35px,4vw,65px)/1 var(--serif);margin:0}
@@ -258,7 +258,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{
   .design-tile b{font-size:23px}
   .design-tile small{text-align:left}
   .main-nav{flex-wrap:wrap;justify-content:flex-start;column-gap:16px;row-gap:8px}
-  .website-grid{grid-template-columns:1fr;gap:48px}
+  .website-grid{grid-template-columns:minmax(0,1fr);gap:48px}
   .websites-title{font-size:clamp(58px,12vw,100px)}
   .browser-preview{height:390px}
   .browser-content strong{font-size:clamp(45px,10vw,80px)}

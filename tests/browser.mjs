@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png', '.woff': 'font/woff', '.woff2': 'font/woff2', '.json': 'application/json' };
+const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff': 'font/woff', '.woff2': 'font/woff2', '.json': 'application/json' };
 let server;
 let browser;
 let baseURL = process.env.PORTFOLIO_BASE_URL;
@@ -189,7 +189,7 @@ if (browser) {
   });
 
   for (const language of ['fr', 'en', 'es']) {
-    for (const width of [360, 390, 768, 1440]) {
+    for (const width of [360, 390, 650, 700, 768, 1440]) {
       await run(`no horizontal overflow or clipped headings at ${width}px / ${language}`, async () => {
         await page.setViewportSize({ width, height: 1000 });
         await page.locator('#language-select').selectOption(language);
@@ -197,7 +197,7 @@ if (browser) {
         await page.evaluate(() => window.scrollTo(0, 0));
         const overflow = await page.evaluate(() => {
           const viewport = document.documentElement.clientWidth;
-          const offenders = [...document.querySelectorAll('h1, h2, h3, .hero h1 > span, .main-nav a, .header-actions, .browser-content strong, .visual-caption, .design-tile b, .design-tile small')].filter(element => {
+          const offenders = [...document.querySelectorAll('h1, h2, h3, .hero h1 > span, .main-nav a, .header-actions, .browser-content strong, .visual-caption, .design-tile b, .design-tile small, #sites .website-card, #sites .website-details p')].filter(element => {
             if (!element.getClientRects().length) return false;
             const bounds = element.getBoundingClientRect();
             if (bounds.left < -1 || bounds.right > viewport + 1 || element.scrollWidth > element.clientWidth + 2) return true;
@@ -212,6 +212,18 @@ if (browser) {
         });
         assert.equal(overflow.pageOverflow, false, 'Page scrolls sideways');
         assert.deepEqual(overflow.offenders, [], 'Heading/nav content exceeds its visible box');
+        const capture = await page.locator('.breathe-browser').evaluate(element => {
+          const image = element.querySelector('img');
+          const box = element.getBoundingClientRect();
+          const picture = image.getBoundingClientRect();
+          const bar = element.querySelector('.browser-bar').getBoundingClientRect();
+          return {
+            gap: box.height - picture.height - bar.height,
+            ratioError: Math.abs(picture.height - picture.width * image.naturalHeight / image.naturalWidth)
+          };
+        });
+        assert(Math.abs(capture.gap) <= 1, 'Website capture is cropped or followed by artificial empty space');
+        assert(capture.ratioError <= 1, 'Website capture proportions changed');
       });
     }
   }

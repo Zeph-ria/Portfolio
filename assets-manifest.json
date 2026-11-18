@@ -1,13 +1,15 @@
 {
   "auditedAt": "2026-11-18",
-  "measurement": "Native WebP pixel dimensions, verified from file headers",
+  "measurement": "Native WebP and JPEG pixel dimensions, verified from file headers",
   "notes": [
-    "These files are Canva preview thumbnails, not high-resolution exports.",
+    "The 23 Canva WebP files are preview thumbnails, not high-resolution exports.",
+    "The Breathe & Rise Without Fear JPEG is an unretouched browser screenshot of the confirmed live website, captured on 2026-11-18.",
     "Source URLs identify the documents already linked in the portfolio; they do not attest to anonymous public access or publication rights.",
     "Do not rewrite signed thumbnail URLs to request other sizes. Replace previews only with authorized exports.",
     "Update this manifest when replacing an image with a genuine higher-resolution export."
   ],
   "images": [
+    {"path":"assets/breathe-without-fear-site.jpg","width":1348,"height":926,"quality":"live-website-screenshot","sourceUrl":"https://breathewithoutfear.org/en","capturedAt":"2026-11-18"},
     {"path":"assets/agorafrik-charte.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/67ThfsXZaICQnFQ"},
     {"path":"assets/agorafrik-pitch.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/PCkdrGrSOJ0u5mo"},
     {"path":"assets/agorafrik-publication.webp","width":400,"height":500,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/DWy_n3Rnedvh24c"},

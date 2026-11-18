@@ -26,7 +26,7 @@ La palette et la typographie d'affichage structurent la direction éditoriale. L
 
 **La police exacte du logotype Nice People n'est pas confirmée.** Le grand logotype observé sur le site de référence est une image, pas un titre HTML dont la famille typographique serait directement récupérable. Wremena est le choix actuellement utilisé dans ce portfolio, pas une identification certaine de la police de ce logotype.
 
-Les fichiers Wremena avaient été obtenus via CDNFonts. Les conditions applicables à leur auto-hébergement et à leur redistribution dans le dépôt public restent à confirmer auprès de la source officielle. Voir [AUDIT_ASSETS.md](AUDIT_ASSETS.md) pour les observations, les sources primaires et les limites de cet audit.
+Les fichiers Wremena avaient été obtenus via CDNFonts. L'enquête complémentaire a retrouvé Wremena sur l'ancien site officiel Nice People, les conditions historiques de la fonderie et une licence actuelle prévoyant l'usage web. Elle distingue ces éléments de la redistribution des WOFF dans un dépôt public. Les binaires locaux restent inchangés ; aucune licence n'a été acceptée et aucune autre famille n'a été substituée. Les deux voies de distribution et la comparaison technique sont documentées dans [AUDIT_ASSETS.md](AUDIT_ASSETS.md).
 
 ## Structure
 
@@ -36,10 +36,11 @@ Les fichiers Wremena avaient été obtenus via CDNFonts. Les conditions applicab
 | `styles.css` | Direction artistique, responsive, états de focus et réduction des animations |
 | `i18n.js` | Traductions FR/EN/ES, métadonnées, textes alternatifs et préférence de langue |
 | `script.js` | Filtres, compteurs, aperçu des créations et navigation du dialogue |
-| `assets/` | 23 aperçus WebP, polices locales et favicon |
-| `assets-manifest.json` | Source Canva, dimensions natives et qualité déclarée de chaque aperçu |
+| `assets/` | 23 aperçus WebP, une vraie capture web JPEG, polices locales et favicon |
+| `assets-manifest.json` | Provenance, dimensions natives et qualité déclarée de chaque aperçu et capture |
 | `tests/` | Contrats statiques, tests unitaires et scénario navigateur séparé |
 | `AUDIT_ASSETS.md` | Provenance et qualité des assets, typographie, domaines et droits à confirmer |
+| `EXPORT_PLAN.md` | Les 23 designs Canva vérifiés, pages à exporter, formats et contrôles avant PDF public |
 | `QA_REPORT.md` | Vérifications réellement effectuées, résultats et limites |
 | `docs/qa/` | Captures de la prévisualisation contrôlée |
 
@@ -71,17 +72,21 @@ Les 23 WebP actuels sont des **miniatures**, pas des exports HD. L'aperçu peut 
 
 **Un compte Canva peut être nécessaire.** Le lien du calendrier mural testé sans connexion redirige vers la page de connexion. La présence d'un lien source ne garantit donc pas un accès anonyme ; un lien de consultation autorisé ou un PDF publiable doit être validé avant de promettre un accès public aux documents.
 
+Les 23 designs ont été relus par leur identifiant Canva (296 pages au total). [Le plan d'export](EXPORT_PLAN.md) privilégie les quatre calendriers, Agorafrik, Ardhi Organic et Kadea, en conservant la page 3 pour Annieck. Le connecteur disponible n'expose pas d'export. La tentative normale de connexion au navigateur a rencontré une erreur Google lors de la validation par clé d'accès ; elle a été arrêtée. Aucun export HD/PDF ni changement de partage n'est annoncé comme réalisé.
+
+Le domaine **breathewithoutfear.org** a été confirmé par Gloria. La carte du site utilise désormais une capture réelle de la page active, prise le 18 novembre 2026 (1348 × 926 px), et non la composition provisoire. Sa description, son lien et ses textes accessibles sont vérifiés en FR/EN/ES.
+
 ## Tests
 
 Les contrôles de code ne nécessitent aucune nouvelle dépendance npm :
 
 ```bash
-node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs
+node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs tests/domain.test.mjs
 node tests/smoke.mjs
 git diff --check
 ```
 
-Au 18 novembre 2026, ces suites comptent 34 tests réussis, plus le smoke test. Les tests d'interaction exécutent le vrai script sur une fixture DOM limitée aux états et aux événements : ils ne remplacent pas une vérification du rendu dans un navigateur.
+Au 18 novembre 2026, ces suites comptent 38 tests réussis, plus le smoke test. Les tests d'interaction exécutent le vrai script sur une fixture DOM limitée aux états et aux événements : ils ne remplacent pas une vérification du rendu dans un navigateur.
 
 Une suite Playwright distincte est disponible pour un environnement où Playwright et un navigateur compatible sont déjà installés :
 
@@ -91,7 +96,7 @@ node tests/browser.mjs
 
 Elle peut utiliser `PORTFOLIO_BROWSER_EXECUTABLE` pour désigner un navigateur déjà autorisé, ou `PORTFOLIO_BASE_URL` pour viser une prévisualisation autorisée. Sans URL, elle lance un serveur HTTP local temporaire en lecture seule. Elle n'installe pas de navigateur. **Le code de sortie 2 signale une infrastructure indisponible, pas des tests réussis.**
 
-Une vérification réelle via navigateur et prévisualisation locale a par ailleurs couvert les langues, les filtres, le dialogue, le chargement des 23 médias uniques et 12 combinaisons langue/largeur. Les résultats, les corrections et les limites sont consignés dans [QA_REPORT.md](QA_REPORT.md). Ni Lighthouse, ni une campagne multi-navigateurs, ni des appareils physiques n'ont été validés dans cette passe.
+Une première vérification réelle via navigateur a couvert les langues, les filtres, le dialogue, les 23 œuvres et 12 combinaisons langue/largeur. La passe complémentaire couvre la nouvelle capture web et les cartes « Sites web » dans 18 combinaisons (FR/EN/ES × 360, 390, 650, 700, 768 et 1440 px). Les résultats, les corrections et les limites sont consignés dans [QA_REPORT.md](QA_REPORT.md). Ni Lighthouse, ni une campagne multi-navigateurs, ni des appareils physiques n'ont été validés dans cette passe.
 
 ## Workflow de revue et publication
 
@@ -106,8 +111,8 @@ Une vérification réelle via navigateur et prévisualisation locale a par aille
 - [ ] Recevoir les exports haute résolution autorisés et les éventuels PDF publiables, puis remplacer les miniatures sans liens d'export temporaires.
 - [ ] Confirmer les droits de présentation des créations clients et l'accès souhaité aux documents. Vérifier les liens sans session Canva avant de les annoncer publics ; ne pas modifier leurs paramètres de partage sans accord.
 - [ ] Confirmer la licence applicable aux WOFF Wremena présents, leur auto-hébergement et leur redistribution dans le dépôt.
-- [ ] Confirmer le domaine officiel du projet Breathe Without Fear. L'adresse fournie est [breathwithoutfear.org](https://breathwithoutfear.org/), observée en page d'attente le 18 novembre 2026. Ne pas lui substituer silencieusement un domaine voisin.
+- [x] Domaine du site de la sœur confirmé par Gloria : [breathewithoutfear.org](https://breathewithoutfear.org/). Ancienne adresse retirée du contenu public et vraie capture intégrée.
 - [ ] Valider avec Gloria les rôles, chiffres, périodes et coordonnées professionnelles avant publication.
 - [ ] Compléter, selon l'objectif de publication, la revue d'accessibilité assistive, les tests sur appareils physiques et la mesure de performance.
 
-Les projets « Génération », « Prayer Machine » et « Just1Pulse » sont exclus. La section « Sites web » distingue Carrigrès, MASDIA en développement et Breathe Without Fear en préparation. Les visuels web sont explicitement présentés comme des compositions éditoriales, pas comme des captures des sites réels.
+Les projets « Génération », « Prayer Machine » et « Just1Pulse » sont exclus. La section « Sites web » distingue Carrigrès, MASDIA en développement et Breathe & Rise Without Fear en ligne. Les visuels Carrigrès et MASDIA restent explicitement présentés comme des compositions éditoriales ; Breathe & Rise Without Fear possède une vraie capture du site.

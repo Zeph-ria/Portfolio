@@ -106,7 +106,7 @@ test('Declared image dimensions match the actual local WebP files', () => {
   const manifestPath = join(root, 'assets-manifest.json');
   if (existsSync(manifestPath)) {
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
-    for (const image of manifest.images) {
+    for (const image of manifest.images.filter(image => image.path.endsWith('.webp'))) {
       const actual = webpDimensions(readFileSync(resolve(root, image.path)));
       assert.deepEqual({ width: image.width, height: image.height }, actual, `Stale asset manifest dimensions: ${image.path}`);
     }
@@ -132,7 +132,7 @@ test('The four calendar formats and requested website section remain present', (
     assert(sources.has(`assets/carrigres-calendrier-${format}.webp`), `Missing calendar format ${format}`);
   }
   assert(ids.has('sites'), 'Dedicated website section removed');
-  assert(byTag('a').some(node => node.attrs.href === 'https://breathwithoutfear.org/'), 'User-supplied site domain must be retained');
+  assert(byTag('a').some(node => node.attrs.href === 'https://breathewithoutfear.org/'), 'The confirmed website domain must be retained');
   assert(css.includes('prefers-reduced-motion'), 'Reduced-motion preference must be respected');
   assert(css.includes(':focus-visible'), 'Visible keyboard focus must be styled');
 });

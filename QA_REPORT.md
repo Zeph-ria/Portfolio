@@ -8,9 +8,9 @@ Périmètre : fichiers locaux de la branche et prévisualisation locale servie p
 
 ## Conclusion
 
-Les **34 tests unitaires et contrats**, ainsi que le smoke test, réussissent. Les vérifications interactives ont confirmé les langues FR/EN/ES, leur mémorisation, le filtrage de la galerie et le fonctionnement du dialogue. Les 23 fichiers d'image uniques se chargent dans le navigateur avec des dimensions naturelles non nulles. Les débordements réellement détectés dans la première passe responsive ont été corrigés ; la seconde passe ne les retrouve pas dans les 12 combinaisons contrôlées.
+Les **38 tests unitaires et contrats**, ainsi que le smoke test, réussissent. Les vérifications interactives initiales ont confirmé les langues FR/EN/ES, leur mémorisation, le filtrage de la galerie, le dialogue et le chargement des 23 œuvres. La passe complémentaire intègre le domaine confirmé par Gloria et une vraie capture de Breathe & Rise Without Fear. La section « Sites web » a été contrôlée dans **18 combinaisons langue/largeur** ; les défauts de hauteur et de débordement découverts ont été corrigés puis revérifiés.
 
-Ce résultat n'est ni une garantie d'absence de toute erreur, ni une validation de publication finale. La qualité HD des œuvres, les droits de diffusion, l'accès public aux documents, la redistribution des polices et le domaine officiel de Breathe Without Fear restent des validations distinctes. Aucune mise en production finale n'est attestée par ce rapport.
+Ce résultat n'est ni une garantie d'absence de toute erreur, ni une validation de publication finale. La qualité HD des œuvres, les droits de diffusion, l'accès public aux documents et la distribution des polices restent des validations distinctes. Le domaine Breathe Without Fear est désormais confirmé et intégré. Aucune mise en production finale n'est attestée par ce rapport.
 
 ## Inventaire contrôlé
 
@@ -21,12 +21,13 @@ Ce résultat n'est ni une garantie d'absence de toute erreur, ni une validation 
 | Archives complémentaires | 2 créations |
 | Section « Sites web » | 3 projets |
 | Fichiers WebP uniques | 23, tous recensés dans `assets-manifest.json` |
-| Images sources dans le HTML | 25 occurrences ; deux œuvres sont réutilisées dans le bandeau |
+| Capture JPEG de site | 1 fichier réel, 1348 × 926 px ; Breathe & Rise Without Fear |
+| Images sources dans le HTML | 26 occurrences ; deux œuvres sont réutilisées dans le bandeau |
 | Image du dialogue | 1 élément dynamique, sans `src` initial ; source et dimensions affectées à l'ouverture |
 | Calendriers Carrigrès | 4 fichiers distincts : mural, table, triptyque, sous-main |
 | Langues d'interface | FR, EN, ES |
 
-Les dimensions déclarées des 25 images sources et celles du manifeste correspondent aux dimensions lues directement dans les en-têtes des 23 WebP. Cette vérification établit les proportions et la cohérence des fichiers ; elle ne transforme pas les miniatures en exports HD.
+Les dimensions déclarées des images sources et celles du manifeste correspondent aux dimensions lues directement dans les en-têtes des 23 WebP et du JPEG. Cette vérification établit les proportions et la cohérence des fichiers ; elle ne transforme pas les miniatures en exports HD.
 
 Les créations Agorafrik, Ardhi Organic et Kadea sont présentes. Les projets Génération, Prayer Machine et Just1Pulse ne figurent pas dans le contenu public de la page. L'adresse personnelle interdite par les garde-fous du projet n'est pas réintroduite ; le contact proposé reste LinkedIn.
 
@@ -35,7 +36,7 @@ Les créations Agorafrik, Ardhi Organic et Kadea sont présentes. Les projets G�
 Commandes depuis la racine du dépôt :
 
 ```bash
-node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs
+node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs tests/domain.test.mjs
 node tests/smoke.mjs
 git diff --check
 ```
@@ -45,6 +46,7 @@ git diff --check
 | `tests/i18n.test.cjs` | 16/16 réussis | Couverture FR/EN/ES, légendes et alt, métadonnées, mémoire de langue, stockage refusé, interpolation et rendu sûr |
 | `tests/interactions.test.mjs` | 11/11 réussis | Vrai script exécuté sur fixture DOM : filtres, groupes, navigation d'aperçu, liens sources, langue, fermeture et états d'erreur |
 | `tests/static-contracts.mjs` | 7/7 réussis | Structure HTML, références d'ID, cibles de liens, ressources, dimensions WebP, exclusions et catégories |
+| `tests/domain.test.mjs` | 4/4 réussis | Domaine confirmé, absence de statut provisoire FR/EN/ES, libellés accessibles, vraie capture JPEG et dimensions/manifeste |
 | `tests/smoke.mjs` | Réussi | Contrôles structurels complémentaires et invariants de contenu |
 | `git diff --check` | Aucune anomalie signalée | Erreurs d'espacement et de patch dans le diff suivi |
 
@@ -126,13 +128,13 @@ N'ont pas été exécutés :
 
 | Sujet | État et prochaine validation |
 | --- | --- |
-| Exports HD | Les 23 WebP sont des miniatures Canva. Recevoir des exports autorisés avant de présenter les œuvres comme détaillées ou HD. |
+| Exports HD | Les 23 designs ont été identifiés et leurs 296 pages inventoriées. Le connecteur n'expose pas d'export ; la connexion du navigateur a échoué à la validation Google par clé d'accès. Aucun export HD/PDF obtenu. Voir `EXPORT_PLAN.md`. |
 | Accès public aux documents | Le calendrier mural testé anonymement demande une connexion. Valider les liens de consultation ou PDF autorisés, sans promettre l'accès public sur la seule présence d'une URL. |
 | Documents et confidentialité | Les liens ne prouvent pas l'autorisation client. Vérifier les pages réellement publiables sans changer les permissions de partage de manière implicite. |
-| Police exacte de la référence | Non établie. Le logotype Nice People observé est une image ; Wremena ne doit pas être annoncée comme sa police identifiée avec certitude. |
-| Licence des WOFF | L'auto-hébergement et la redistribution des fichiers actuels dans le dépôt restent à confirmer. Voir `AUDIT_ASSETS.md`. |
-| Domaine Breathe Without Fear | Conserver l'adresse fournie `https://breathwithoutfear.org/`, observée en page d'attente, jusqu'à confirmation de l'adresse officielle. Ne pas substituer le domaine voisin par déduction. |
-| Représentation des sites | Les compositions éditoriales sont identifiées comme telles ; elles ne sont pas des captures des sites réels. |
+| Police exacte de la référence | Wremena est attestée sur l'ancien site officiel Nice People, mais le logotype séparé reste un dessin non identifié avec certitude. Aucune substitution de famille ou taille de police dans cette passe. |
+| Licence des WOFF | Conditions historiques, licence web actuelle et comparaison des binaires documentées. La voie de distribution reste à choisir ; fichiers locaux inchangés et aucun accord accepté. Voir `AUDIT_ASSETS.md`. |
+| Domaine Breathe Without Fear | `https://breathewithoutfear.org/` confirmé explicitement par Gloria, observé actif en HTTP 200 et dans le navigateur, intégré dans le contenu public. |
+| Représentation des sites | Vraie capture pour Breathe & Rise Without Fear ; compositions éditoriales identifiées pour Carrigrès et MASDIA. |
 | Données du portfolio | Faire confirmer les rôles, chiffres, périodes et le contact professionnel par Gloria. |
 | Mise en production | Non attestée par cette passe. Suivre séparément le workflow de revue et de publication du dépôt externe. |
 
@@ -148,10 +150,30 @@ Les captures suivantes proviennent de la prévisualisation contrôlée et doiven
 | Vue mobile 360 px | [mobile-360.jpg](docs/qa/mobile-360.jpg) |
 | Galerie des quatre calendriers | [calendar-gallery.jpg](docs/qa/calendar-gallery.jpg) |
 | Dialogue d'aperçu | [lightbox.jpg](docs/qa/lightbox.jpg) |
+| Nouvelle fiche du site confirmé, desktop | [breathe-desktop.jpg](docs/qa/breathe-desktop.jpg) |
+| Nouvelle fiche du site confirmé, iframe 360 px | [breathe-mobile-360.jpg](docs/qa/breathe-mobile-360.jpg) |
 
 Les dimensions des captures correspondent à la fenêtre de prévisualisation. La largeur mobile testée est celle de l'iframe ; elle ne doit pas être déduite de la largeur du fichier JPEG.
 
 <!-- QA_EVIDENCE_APPENDIX: compléter si un commit ou de nouvelles preuves sont ajoutés après cette passe. -->
+
+### Passe complémentaire après confirmation du domaine
+
+La capture source a été prise sur `https://breathewithoutfear.org/en`, sans retouche, puis intégrée avec ses dimensions intrinsèques et un texte alternatif dans les trois langues. L'ancien domaine et les statuts « en préparation / coming soon » ont été retirés de la carte et des traductions dynamiques. Le rôle de conception, déjà présent, n'est pas présenté comme une déduction des métadonnées publiques.
+
+Contrôles réels supplémentaires : FR/EN/ES × largeurs d'iframe **360, 390, 650, 700, 768 et 1440 px**. Les largeurs internes relevées sont respectivement 345, 375, 635, 685, 753 et 1425 px, après occupation de la barre de défilement. Les mesures incluent les limites de grille et les éléments susceptibles d'être masqués par un parent, pas seulement `scrollWidth` de chaque paragraphe.
+
+Défauts détectés et corrigés :
+
+1. La règle mobile générique imposait une hauteur fixe à la capture : spécificité corrigée pour maintenir `height:auto`.
+2. Le minimum intrinsèque d'une colonne élargissait les cartes au-delà de leur grille : `minmax(0,1fr)` et `min-width:0` rétablissent la largeur disponible.
+3. Le mot français « infrastructure » dépassait encore dans le visuel Carrigrès à 360 px : césure discrétionnaire ajoutée, sans modifier la famille ou la taille de police.
+
+La dernière passe des 18 combinaisons ne retrouve aucun débordement dans les cartes, titres, descriptions, barres de navigateur et textes des compositions web contrôlés. La capture est décodée en 1348 × 926 px ; l'écart entre la hauteur du cadre et la somme barre + image est nul, et l'écart de proportion reste inférieur à 0,03 px. Ce contrôle ne vaut pas campagne sur appareils physiques.
+
+La suite Playwright future a été étendue aux deux largeurs limites, aux limites des cartes et aux proportions de la capture, avec types MIME JPEG/SVG. Elle n'a pas été exécutée dans cette passe : les résultats de navigateur ci-dessus proviennent de CUA avec la prévisualisation gérée. La prévisualisation a été arrêtée après conservation des preuves.
+
+La tentative d'accès Canva a été arrêtée au premier message d'erreur Google lors de la validation par clé d'accès. Aucun export HD/PDF, changement de partage, accord de licence ou nouvelle publication du site n'a été effectué.
 
 - [x] Dimensions et provenance déclarée des 23 fichiers documentées dans le manifeste.
 - [x] Chargement et dimensions naturelles des 23 fichiers uniques contrôlés dans le navigateur réel.

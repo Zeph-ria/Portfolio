@@ -106,9 +106,6 @@
     'Visiter le site': 'Visitar sitio',
     'Direction artistique et conception du site de mon agence. Projet en évolution.': 'Dirección artística y diseño del sitio de mi agencia. Proyecto en desarrollo.',
     'En développement': 'En desarrollo',
-    'Conception du site Breathe Without Fear. Le domaine fourni affiche actuellement une page d’attente.': 'Diseño del sitio Breathe Without Fear. El dominio facilitado muestra actualmente una página de próximo lanzamiento.',
-    "Conception du site Breathe Without Fear. Le domaine fourni affiche actuellement une page d'attente.": 'Diseño del sitio Breathe Without Fear. El dominio facilitado muestra actualmente una página de próximo lanzamiento.',
-    'Voir le domaine': 'Ver dominio',
     'À propos de moi': 'Sobre mí',
     "PLUS<br>QU'UNE<br><em>ÉTIQUETTE.</em>": 'MÁS<br>QUE UNA<br><em>ETIQUETA.</em>',
     'Je suis Gloria, une professionnelle de la communication qui aime aussi concevoir des produits et construire des systèmes.': 'Soy Gloria, profesional de la comunicación a la que también le encanta diseñar productos y construir sistemas.',
@@ -147,12 +144,11 @@
     ['.project-proof > span:first-child', triple('15 300 impressions SEO', '15,300 SEO impressions', '15.300 impresiones SEO')],
     ['.os-motif small', triple('TRAVAILLER. CLAIREMENT.', 'WORK. CLEARLY.', 'TRABAJAR. CON CLARIDAD.')],
     ['.design-library .section-topline > span:last-child', triple('PRINT / IDENTITÉ / DIGITAL', 'PRINT / BRANDING / DIGITAL', 'IMPRESIÓN / IDENTIDAD / DIGITAL')],
-    ['.carrigres-browser .browser-content strong', triple("Pour vos grands projets d'infrastructure.", 'For your major infrastructure projects.', 'Para tus grandes proyectos de infraestructura.')],
+    ['.carrigres-browser .browser-content strong', triple("Pour vos grands projets d'infra\u00adstructure.", 'For your major infrastructure projects.', 'Para tus grandes proyectos de infraestructura.')],
     ['.carrigres-browser .browser-overline', triple('CARRIGRÈS · GROUPE TEXAF', 'CARRIGRÈS · TEXAF GROUP', 'CARRIGRÈS · GRUPO TEXAF')],
     ['.carrigres-browser .browser-label', triple('MATÉRIAUX DE CONSTRUCTION · KINSHASA', 'CONSTRUCTION MATERIALS · KINSHASA', 'MATERIALES DE CONSTRUCCIÓN · KINSHASA')],
     ['.masdia-browser .browser-overline', triple('COMMUNICATION · AUTOMATISATION · IA', 'COMMUNICATION · AUTOMATION · AI', 'COMUNICACIÓN · AUTOMATIZACIÓN · IA')],
     ['.masdia-browser .browser-label', triple("SITE D'AGENCE EN ÉVOLUTION", 'AGENCY WEBSITE IN DEVELOPMENT', 'SITIO DE AGENCIA EN DESARROLLO')],
-    ['.breathe-browser .browser-label', triple('WEB / CONCEPTION VISUELLE', 'WEB / VISUAL DESIGN', 'WEB / DISEÑO VISUAL')],
     ['.specialties > span:nth-child(1)', triple('Marque & contenu', 'Brand & Content', 'Marca y contenido')],
     ['.specialties > span:nth-child(2)', triple('Stratégie digitale', 'Digital Strategy', 'Estrategia digital')],
     ['.specialties > span:nth-child(3)', triple('Conception produit', 'Product Thinking', 'Diseño de producto')],
@@ -168,11 +164,12 @@
     ['.design-filters', 'aria-label', UI.designFilters],
     ['.carrigres-browser', 'aria-label', triple('Aperçu éditorial du site Carrigrès', 'Editorial representation of the Carrigrès website', 'Representación editorial del sitio Carrigrès')],
     ['.masdia-browser', 'aria-label', triple('Composition éditoriale MASDIA, site en développement', 'MASDIA editorial composition, website in development', 'Composición editorial de MASDIA, sitio en desarrollo')],
-    ['.breathe-browser', 'aria-label', triple('Composition éditoriale Breathe Without Fear, site en préparation', 'Breathe Without Fear editorial composition, website in preparation', 'Composición editorial de Breathe Without Fear, sitio en preparación')]
+    ['.breathe-browser', 'aria-label', triple('Capture du site en ligne Breathe & Rise Without Fear', 'Screenshot of the live Breathe & Rise Without Fear website', 'Captura del sitio en línea Breathe & Rise Without Fear')]
   ]);
 
   // Per-asset descriptions keep every image meaningful in all interface languages.
   const ASSETS = Object.freeze({
+    'breathe-without-fear-site.jpg': triple('Capture de la page d’accueil Breathe & Rise Without Fear, avec le portrait de Marie Desy et la présentation de son initiative', 'Screenshot of the Breathe & Rise Without Fear homepage, with Marie Desy’s portrait and an introduction to her initiative', 'Captura de la página de inicio de Breathe & Rise Without Fear, con el retrato de Marie Desy y la presentación de su iniciativa'),
     'carrigres-brochure.webp': triple('Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle', 'Carrigrès company brochure designed for institutional communication', 'Folleto corporativo de Carrigrès para comunicación institucional'),
     'bloom-publication.webp': triple('Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées', 'Bloom Atelier 243 design featuring a bouquet of preserved red roses', 'Diseño de Bloom Atelier 243 con un ramo de rosas rojas preservadas'),
     'anniecks-campagne.webp': triple("Composition photographique Annieck's Business montrant des t-shirts colorés", "Annieck's Business photo composition with colourful T-shirts", "Composición fotográfica de Annieck's Business con camisetas de colores"),
