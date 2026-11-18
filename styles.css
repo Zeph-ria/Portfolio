@@ -130,6 +130,9 @@ button:focus-visible,a:focus-visible{outline:3px solid #b87c94;outline-offset:4p
 .masdia-browser .browser-content{background:#173c2d;color:#f1f6ec}
 .masdia-browser .browser-content strong{font-family:var(--sans);font-weight:700;letter-spacing:-.09em}
 .masdia-browser .browser-content strong span{color:#a3d8ae}
+.breathe-browser .browser-content{background:radial-gradient(circle at 75% 15%,#a8c3ba 0,transparent 38%),linear-gradient(140deg,#e2efea,#c0d6cd);color:#1b4b42}
+.breathe-browser .browser-content strong{font-size:clamp(52px,5.5vw,96px)}
+.breathe-browser .browser-content em{font-weight:400}
 .website-details{display:flex;justify-content:space-between;gap:20px;align-items:end;padding-top:18px}
 .website-details h3{font:400 clamp(35px,4vw,65px)/1 var(--serif);margin:0}
 .website-details p{max-width:480px;color:var(--muted);font-size:15px}
