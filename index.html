@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Portfolio de Gloria Tumsifu Kasunzu : stratégie, communication, design et solutions numériques. Projets et réalisations à Kinshasa.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gloria Tumsifu Kasunzu — Portfolio">
+  <meta property="og:description" content="Stratégie, communication, design et solutions numériques. Une sélection de projets et de créations à Kinshasa.">
+  <meta name="color-scheme" content="light">
   <title>Gloria Tumsifu Kasunzu — Portfolio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/Wremena-Regular.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script src="i18n.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -26,9 +32,9 @@
         <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
       </nav>
       <div class="header-actions">
-        <button type="button" class="lang-button" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <select class="language-select" id="language-select" aria-label="Choisir la langue"><option value="fr" lang="fr">FR</option><option value="en" lang="en">EN</option><option value="es" lang="es">ES</option></select>
         <a class="social-link" href="https://www.linkedin.com/in/gloria-zephrine-kasunzu/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-        <a class="mail-link" href="#contact" aria-label="Contact">✉</a>
+        <a class="mail-link" href="#contact" aria-label="Contact"><svg width="23" height="19" viewBox="0 0 23 19" fill="none" aria-hidden="true"><path d="M1.5 2.5h20v14h-20zM2 3l9.5 7L21 3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
       </div>
     </header>
 
@@ -38,10 +44,10 @@
           <span data-fr="Portfolio personnel · Kinshasa, RDC" data-en="Personal portfolio · Kinshasa, DR Congo">Portfolio personnel · Kinshasa, RDC</span>
           <span>2026 / —</span>
         </div>
-        <h1 id="hero-title"><span>GLORIA</span><span>TUMSIFU</span><span>KASUNZU<span class="title-period">.</span></span></h1>
+        <h1 id="hero-title"><span>GLORIA TUMSIFU</span><span>KASUNZU<span class="title-period">.</span></span></h1>
         <div class="hero-bottom">
           <p data-fr="Stratégie. Créativité. Innovation." data-en="Strategy. Creativity. Innovation.">Stratégie. Créativité. Innovation.</p>
-          <a href="#realisations" data-fr="Découvrir mes réalisations ↘" data-en="Explore my work ↘">Découvrir mes réalisations ↘</a>
+          <a href="#realisations" data-fr="Découvrir mes réalisations" data-en="Explore my work">Découvrir mes réalisations</a>
         </div>
       </section>
 
@@ -51,10 +57,10 @@
           <h2 data-fr="Je donne une forme <em>concrète</em> aux idées." data-en="I give ideas a <em>tangible</em> form.">Je donne une forme <em>concrète</em> aux idées.</h2>
           <p data-fr="Communication, design, expériences numériques et systèmes intelligents : j'aime les projets qui exigent de penser autant que de créer." data-en="Communication, design, digital experiences and intelligent systems: I love projects that demand as much thought as creativity.">Communication, design, expériences numériques et systèmes intelligents : j'aime les projets qui exigent de penser autant que de créer.</p>
         </div>
-        <div class="feature-art" aria-hidden="true">
-          <div class="feature-orbit orbit-one"></div>
-          <div class="feature-orbit orbit-two"></div>
-          <span class="art-g">G</span><span class="art-script">idées & matière</span>
+        <div class="feature-art">
+          <a class="feature-piece feature-piece-back" href="#galerie"><img src="assets/agorafrik-charte.webp" width="596" height="336" alt="Couverture orange de la charte graphique Agorafrik" decoding="async"></a>
+          <a class="feature-piece feature-piece-front" href="#realisations"><img src="assets/bloom-publication.webp" width="400" height="500" alt="Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées" decoding="async"></a>
+          <span class="art-script" aria-hidden="true">idées & matière</span>
         </div>
         <div class="feature-footer"><span>01 — 06</span><span>GLORIA / PORTFOLIO</span></div>
       </section>
@@ -69,15 +75,21 @@
           <button class="filter" type="button" data-filter="design" aria-pressed="false">Design</button>
           <button class="filter" type="button" data-filter="digital" aria-pressed="false" data-fr="Produits & digital" data-en="Products & digital">Produits & digital</button>
         </div>
+        <p class="filter-status sr-only" id="project-status" role="status" aria-live="polite" aria-atomic="true"></p>
         <div class="project-grid" id="project-grid">
           <article class="project-card" data-category="communication design">
-            <div class="project-visual visual-carrigres"><span class="visual-number">01</span><img class="real-artwork artwork-landscape" src="assets/carrigres-brochure.webp" alt="Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle" loading="lazy"><span class="visual-caption">BROCHURE / COMMUNICATION</span></div>
+            <div class="project-visual visual-carrigres"><span class="visual-number">01</span><img class="real-artwork artwork-landscape" src="assets/carrigres-brochure.webp" alt="Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle" width="651" height="307" decoding="async" loading="lazy"><span class="visual-caption">BROCHURE / COMMUNICATION</span></div>
             <div class="project-details"><div><h3>Carrigrès</h3><p data-fr="Communication digitale, refonte web, campagnes et visibilité." data-en="Digital communications, website overhaul, campaigns and visibility.">Communication digitale, refonte web, campagnes et visibilité.</p></div><span class="project-year">2024–26</span></div>
-            <div class="project-proof"><span>15 300 impressions SEO</span><span>0 → 915 LinkedIn</span><a href="https://www.canva.com/d/w254evG3IYgtDku" target="_blank" rel="noopener noreferrer" data-fr="Consulter la brochure ↗" data-en="View brochure ↗">Consulter la brochure ↗</a></div>
+            <div class="project-proof"><span>15 300 impressions SEO</span><span>0 → 915 LinkedIn</span><a href="https://www.canva.com/d/w254evG3IYgtDku" target="_blank" rel="noopener noreferrer" data-fr="Consulter la brochure" data-en="View brochure">Consulter la brochure</a></div>
+            <details class="case-study"><summary data-fr="Dans les coulisses du projet" data-en="Behind the project" data-es="Detrás del proyecto">Dans les coulisses du projet</summary><dl>
+              <div><dt data-i18n="context">Le contexte</dt><dd data-fr="Présenter une activité industrielle et rendre son offre plus lisible, du web aux supports imprimés." data-en="Present an industrial business and make its offering clearer, across web and print." data-es="Presentar una actividad industrial y hacer más clara su oferta, tanto en la web como en los materiales impresos.">Présenter une activité industrielle et rendre son offre plus lisible, du web aux supports imprimés.</dd></div>
+              <div><dt data-i18n="role">Mon rôle</dt><dd data-fr="Communication digitale, refonte web et création de supports de marque." data-en="Digital communication, website redesign and brand materials." data-es="Comunicación digital, rediseño web y materiales de marca.">Communication digitale, refonte web et création de supports de marque.</dd></div>
+              <div><dt data-i18n="deliverables">Les livrables</dt><dd data-fr="Brochure, charte graphique et quatre formats de calendrier : mural, table A5, triptyque et sous-main. Tous sont visibles dans la galerie." data-en="Brochure, brand guidelines and four calendar formats: wall, A5 desk, three-panel and desk pad. All can be viewed in the gallery." data-es="Folleto, manual de identidad y cuatro formatos de calendario: mural, de mesa A5, tríptico y de escritorio. Todos se pueden ver en la galería.">Brochure, charte graphique et quatre formats de calendrier : mural, table A5, triptyque et sous-main. Tous sont visibles dans la galerie.</dd></div>
+            </dl></details>
           </article>
           <article class="project-card" data-category="communication design">
-            <div class="project-visual visual-bloom"><span class="visual-number">02</span><img class="real-artwork artwork-portrait" src="assets/bloom-publication.webp" alt="Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées" loading="lazy"><span class="visual-caption">CRÉATION ÉDITORIALE / SOCIAL MEDIA</span></div>
-            <div class="project-details"><div><h3>Bloom Atelier 243</h3><p data-fr="Direction visuelle et création éditoriale pour une marque de roses stabilisées." data-en="Visual direction and editorial creation for a preserved-rose brand.">Direction visuelle et création éditoriale pour une marque de roses stabilisées.</p><a class="case-link" href="https://www.canva.com/d/KkQd_FV_8Z6qXGH" target="_blank" rel="noopener noreferrer" data-fr="Voir les publications ↗" data-en="View the posts ↗">Voir les publications ↗</a></div><span class="project-year">2026</span></div>
+            <div class="project-visual visual-bloom"><span class="visual-number">02</span><img class="real-artwork artwork-portrait" src="assets/bloom-publication.webp" alt="Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées" width="400" height="500" decoding="async" loading="lazy"><span class="visual-caption">CRÉATION ÉDITORIALE / SOCIAL MEDIA</span></div>
+            <div class="project-details"><div><h3>Bloom Atelier 243</h3><p data-fr="Direction visuelle et création éditoriale pour une marque de roses stabilisées." data-en="Visual direction and editorial creation for a preserved-rose brand.">Direction visuelle et création éditoriale pour une marque de roses stabilisées.</p><a class="case-link" href="https://www.canva.com/d/KkQd_FV_8Z6qXGH" target="_blank" rel="noopener noreferrer" data-fr="Voir les publications" data-en="View the posts">Voir les publications</a></div><span class="project-year">2026</span></div>
           </article>
           <article class="project-card" data-category="digital design">
             <div class="project-visual visual-os"><span class="visual-number">03</span><div class="os-motif"><span>G</span><div><b>GLORIA OS</b><small>WORK. CLEARLY.</small></div></div><span class="visual-caption">PRODUCT DESIGN / OUTIL INTERNE</span></div>
@@ -88,8 +100,8 @@
             <div class="project-details"><div><h3>Quoakoo</h3><p data-fr="Plateforme d'agents IA spécialisés, conçue autour d'objectifs mesurables." data-en="Specialized AI agents platform designed around measurable goals.">Plateforme d'agents IA spécialisés, conçue autour d'objectifs mesurables.</p></div><span class="project-year">2026</span></div>
           </article>
           <article class="project-card" data-category="communication design">
-            <div class="project-visual visual-anniecks"><span class="visual-number">05</span><img class="real-artwork artwork-portrait" src="assets/anniecks-campagne.webp" alt="Composition photographique Annieck's Business montrant des t-shirts colorés" loading="lazy"><span class="visual-caption">MODE / E-COMMERCE / CONTENU</span></div>
-            <div class="project-details"><div><h3>Annieck's Business</h3><p data-fr="Contenus de marque, campagnes et parcours e-commerce." data-en="Brand content, campaigns and e-commerce journey.">Contenus de marque, campagnes et parcours e-commerce.</p><a class="case-link" href="https://www.canva.com/d/dsdGAkkrIbAa-am" target="_blank" rel="noopener noreferrer" data-fr="Voir les créations ↗" data-en="View the designs ↗">Voir les créations ↗</a></div><span class="project-year">2026</span></div>
+            <div class="project-visual visual-anniecks"><span class="visual-number">05</span><img class="real-artwork artwork-portrait" src="assets/anniecks-campagne.webp" alt="Composition photographique Annieck's Business montrant des t-shirts colorés" width="400" height="500" decoding="async" loading="lazy"><span class="visual-caption">MODE / E-COMMERCE / CONTENU</span></div>
+            <div class="project-details"><div><h3>Annieck's Business</h3><p data-fr="Contenus de marque, campagnes et parcours e-commerce." data-en="Brand content, campaigns and e-commerce journey.">Contenus de marque, campagnes et parcours e-commerce.</p><a class="case-link" href="https://www.canva.com/d/dsdGAkkrIbAa-am" target="_blank" rel="noopener noreferrer" data-fr="Voir les créations" data-en="View the designs">Voir les créations</a></div><span class="project-year">2026</span></div>
           </article>
           <article class="project-card" data-category="digital communication">
             <div class="project-visual visual-masdia"><span class="visual-number">06</span><span class="masdia-wordmark">MASDIA<span>.</span></span><span class="visual-caption">STRATÉGIE / AUTOMATISATION / DIGITAL</span></div>
@@ -102,12 +114,12 @@
         </div>
         <div class="archive-grid">
           <a class="archive-item" href="https://www.canva.com/d/GZsK9DemUhhWsKg" target="_blank" rel="noopener noreferrer">
-            <div class="archive-image"><img src="assets/revendre-lookbook.webp" alt="Couverture de lookbook mode Re-vendre" loading="lazy"></div>
-            <span>Re-vendre — Lookbook <span aria-hidden="true">↗</span></span>
+            <div class="archive-image"><img src="assets/revendre-lookbook.webp" alt="Couverture de lookbook mode Re-vendre" width="376" height="532" decoding="async" loading="lazy"></div>
+            <span>Re-vendre — Lookbook </span>
           </a>
           <a class="archive-item" href="https://www.canva.com/d/qGhDejiU_3daQPq" target="_blank" rel="noopener noreferrer">
-            <div class="archive-image"><img src="assets/utex-identite.webp" alt="Support d'identité UTEX, une communauté unique" loading="lazy"></div>
-            <span>UTEX — Identité <span aria-hidden="true">↗</span></span>
+            <div class="archive-image"><img src="assets/utex-identite.webp" alt="Support d'identité UTEX, une communauté unique" width="532" height="375" decoding="async" loading="lazy"></div>
+            <span>UTEX — Identité </span>
           </a>
         </div>
         <p class="portfolio-note" data-fr="Les projets numériques en développement sont représentés par des compositions éditoriales, et non des captures d'interface. Les documents consultables restent la propriété de leurs auteurs et commanditaires respectifs." data-en="Digital products in development use editorial compositions, not interface screenshots. Viewable documents remain the property of their respective authors and clients.">Les projets numériques en développement sont représentés par des compositions éditoriales, et non des captures d'interface. Les documents consultables restent la propriété de leurs auteurs et commanditaires respectifs.</p>
@@ -124,84 +136,90 @@
           <button type="button" class="design-filter" data-design-filter="digital" aria-pressed="false" data-fr="Communication" data-en="Communication">Communication</button>
           <button type="button" class="design-filter" data-design-filter="academy" aria-pressed="false" data-fr="Kadea Academy" data-en="Kadea Academy">Kadea Academy</button>
         </div>
+        <p class="filter-status" id="design-status" role="status" aria-live="polite" aria-atomic="true"></p>
         <h3 class="gallery-series" data-fr="Carrigrès — les quatre calendriers" data-en="Carrigrès — four calendar formats">Carrigrès — les quatre calendriers</h3>
         <div class="design-grid" id="design-grid">
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/4Yteo_gyYVViINO" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/carrigres-calendrier-mural.webp" alt="Calendrier mural Carrigrès 2026 avec camion et grille annuelle" loading="lazy"></div>
-            <span><b>Calendrier mural</b><small>Carrigrès · 2026 ↗</small></span>
+            <div class="design-image"><img src="assets/carrigres-calendrier-mural.webp" alt="Calendrier mural Carrigrès 2026 avec camion et grille annuelle" width="375" height="532" decoding="async" loading="lazy"></div>
+            <span><b>Calendrier mural</b><small>Carrigrès · 2026</small></span>
           </a>
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/Pk7lR-01VgEb8NC" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/carrigres-calendrier-table.webp" alt="Calendrier de table Carrigrès 2026, identité bleu et jaune" loading="lazy"></div>
-            <span><b>Calendrier de table A5</b><small>Carrigrès · 2026 ↗</small></span>
+            <div class="design-image"><img src="assets/carrigres-calendrier-table.webp" alt="Calendrier de table Carrigrès 2026, identité bleu et jaune" width="538" height="372" decoding="async" loading="lazy"></div>
+            <span><b>Calendrier de table A5</b><small>Carrigrès · 2026</small></span>
           </a>
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/6R0KBwWfyWyogZo" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/carrigres-calendrier-triptyque.webp" alt="Calendrier triptyque pliable Carrigrès 2026" loading="lazy"></div>
-            <span><b>Calendrier triptyque</b><small>Carrigrès · 2026 ↗</small></span>
+            <div class="design-image"><img src="assets/carrigres-calendrier-triptyque.webp" alt="Calendrier triptyque pliable Carrigrès 2026" width="284" height="700" decoding="async" loading="lazy"></div>
+            <span><b>Calendrier triptyque</b><small>Carrigrès · 2026</small></span>
           </a>
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/OQTgeCFYcqIdNiM" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/carrigres-calendrier-sous-main.webp" alt="Sous-main de bureau Carrigrès avec calendrier 2026" loading="lazy"></div>
-            <span><b>Sous-main de bureau</b><small>Carrigrès · 2026 ↗</small></span>
+            <div class="design-image"><img src="assets/carrigres-calendrier-sous-main.webp" alt="Sous-main de bureau Carrigrès avec calendrier 2026" width="547" height="365" decoding="async" loading="lazy"></div>
+            <span><b>Sous-main de bureau</b><small>Carrigrès · 2026</small></span>
           </a>
         </div>
         <h3 class="gallery-series gallery-series-secondary" data-fr="Identités, campagnes & exercices" data-en="Identities, campaigns & exercises">Identités, campagnes & exercices</h3>
         <div class="design-grid">
           <a class="design-tile" data-design-category="branding" href="https://www.canva.com/d/13dF8HWSLL1a6EQ" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/carrigres-charte.webp" alt="Couverture de la charte graphique Carrigrès" loading="lazy"></div>
-            <span><b>Charte graphique</b><small>Carrigrès ↗</small></span>
+            <div class="design-image"><img src="assets/carrigres-charte.webp" alt="Couverture de la charte graphique Carrigrès" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Charte graphique</b><small>Carrigrès</small></span>
           </a>
           <a class="design-tile" data-design-category="branding" href="https://www.canva.com/d/67ThfsXZaICQnFQ" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/agorafrik-charte.webp" alt="Couverture orange de la charte graphique Agorafrik" loading="lazy"></div>
-            <span><b>Charte graphique Agorafrik</b><small>Identité de marque ↗</small></span>
+            <div class="design-image"><img src="assets/agorafrik-charte.webp" alt="Couverture orange de la charte graphique Agorafrik" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Charte graphique Agorafrik</b><small>Identité de marque</small></span>
           </a>
           <a class="design-tile" data-design-category="branding digital" href="https://www.canva.com/d/Evv2_et3iAc2bWR" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/agorafrik-visuels.webp" alt="Couverture des créations de communication Agorafrik, rouge profond et orange" loading="lazy"></div>
-            <span><b>Agorafrik — visuels</b><small>Direction de communication ↗</small></span>
+            <div class="design-image"><img src="assets/agorafrik-visuels.webp" alt="Couverture des créations de communication Agorafrik, rouge profond et orange" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Agorafrik — visuels</b><small>Direction de communication</small></span>
           </a>
           <a class="design-tile" data-design-category="digital" href="https://www.canva.com/d/DWy_n3Rnedvh24c" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/agorafrik-publication.webp" alt="Publication Agorafrik présentant une plateforme dédiée aux talents africains" loading="lazy"></div>
-            <span><b>Agorafrik — campagne</b><small>Social media ↗</small></span>
+            <div class="design-image"><img src="assets/agorafrik-publication.webp" alt="Publication Agorafrik présentant une plateforme dédiée aux talents africains" width="400" height="500" decoding="async" loading="lazy"></div>
+            <span><b>Agorafrik — campagne</b><small>Social media</small></span>
           </a>
           <a class="design-tile" data-design-category="digital" href="https://www.canva.com/d/RcMikEIHaAzVwgY" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/ardhi-organic-strategie.webp" alt="Présentation de stratégie digitale Ardhi Organic avec couleurs orange et vert" loading="lazy"></div>
-            <span><b>Ardhi Organic</b><small>Stratégie de notoriété ↗</small></span>
+            <div class="design-image"><img src="assets/ardhi-organic-strategie.webp" alt="Présentation de stratégie digitale Ardhi Organic avec couleurs orange et vert" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Ardhi Organic</b><small>Stratégie de notoriété</small></span>
           </a>
           <a class="design-tile" data-design-category="academy" href="https://www.canva.com/d/MPt7MXmwW-CN49t" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/kadea-storytelling.webp" alt="Présentation d'exercice Kadea Academy sur le storytelling" loading="lazy"></div>
-            <span><b>Storytelling</b><small>Projet Kadea Academy ↗</small></span>
+            <div class="design-image"><img src="assets/kadea-storytelling.webp" alt="Présentation d'exercice Kadea Academy sur le storytelling" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Storytelling</b><small>Projet Kadea Academy</small></span>
           </a>
           <a class="design-tile" data-design-category="academy" href="https://www.canva.com/d/XXMYQWrMld05HUD" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/kadea-growth-hacking.webp" alt="Présentation Kadea Academy sur le growth hacking" loading="lazy"></div>
-            <span><b>Growth hacking</b><small>Projet Kadea Academy ↗</small></span>
+            <div class="design-image"><img src="assets/kadea-growth-hacking.webp" alt="Présentation Kadea Academy sur le growth hacking" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Growth hacking</b><small>Projet Kadea Academy</small></span>
           </a>
           <a class="design-tile" data-design-category="academy" href="https://www.canva.com/d/qMhmH6B2le-pBha" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/kadea-affiche.webp" alt="Affiche de communication d'une formation Kadea Academy" loading="lazy"></div>
-            <span><b>Affiche de formation</b><small>Exercice Kadea Academy ↗</small></span>
+            <div class="design-image"><img src="assets/kadea-affiche.webp" alt="Affiche de communication d'une formation Kadea Academy" width="376" height="532" decoding="async" loading="lazy"></div>
+            <span><b>Affiche de formation</b><small>Exercice Kadea Academy</small></span>
           </a>
           <a class="design-tile" data-design-category="digital" href="https://www.canva.com/d/1q862gib0MKX2fh" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/revendre-carte-cadeau.webp" alt="Carte cadeau Re-vendre avec typographie orange et ruban rouge" loading="lazy"></div>
-            <span><b>Carte cadeau</b><small>Re-vendre ↗</small></span>
+            <div class="design-image"><img src="assets/revendre-carte-cadeau.webp" alt="Carte cadeau Re-vendre avec typographie orange et ruban rouge" width="530" height="377" decoding="async" loading="lazy"></div>
+            <span><b>Carte cadeau</b><small>Re-vendre</small></span>
           </a>
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/jD-kbp4JSINafB8" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/atelier-prospectus.webp" alt="Prospectus de l'Atelier, salon de manucure et pédicure" loading="lazy"></div>
-            <span><b>Prospectus A5</b><small>L'Atelier ↗</small></span>
+            <div class="design-image"><img src="assets/atelier-prospectus.webp" alt="Prospectus de l'Atelier, salon de manucure et pédicure" width="375" height="533" decoding="async" loading="lazy"></div>
+            <span><b>Prospectus A5</b><small>L'Atelier</small></span>
           </a>
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/nXKLAxsNx3QeDNv" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/atelier-rollup.webp" alt="Roll-up vertical L'Atelier, prestations de manucure et pédicure" loading="lazy"></div>
-            <span><b>Roll-up vitrine</b><small>L'Atelier ↗</small></span>
+            <div class="design-image"><img src="assets/atelier-rollup.webp" alt="Roll-up vertical L'Atelier, prestations de manucure et pédicure" width="264" height="755" decoding="async" loading="lazy"></div>
+            <span><b>Roll-up vitrine</b><small>L'Atelier</small></span>
           </a>
           <a class="design-tile" data-design-category="digital print" href="https://www.canva.com/d/owe29OS5s6Ve9Dr" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/utex-halloween.webp" alt="Affiche Halloween UTEX aux couleurs sombres" loading="lazy"></div>
-            <span><b>Campagne Halloween</b><small>UTEX ↗</small></span>
+            <div class="design-image"><img src="assets/utex-halloween.webp" alt="Affiche Halloween UTEX aux couleurs sombres" width="376" height="532" decoding="async" loading="lazy"></div>
+            <span><b>Campagne Halloween</b><small>UTEX</small></span>
           </a>
           <a class="design-tile" data-design-category="print" href="https://www.canva.com/d/Dkx3jpwp0E8hv1w" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/utex-centenaire.webp" alt="Visuel de présentation centenaire TEXAF" loading="lazy"></div>
-            <span><b>Centenaire TEXAF</b><small>UTEX / événementiel ↗</small></span>
+            <div class="design-image"><img src="assets/utex-centenaire.webp" alt="Visuel de présentation centenaire TEXAF" width="376" height="532" decoding="async" loading="lazy"></div>
+            <span><b>Centenaire TEXAF</b><small>UTEX / événementiel</small></span>
           </a>
           <a class="design-tile" data-design-category="branding" href="https://www.canva.com/d/PCkdrGrSOJ0u5mo" target="_blank" rel="noopener noreferrer">
-            <div class="design-image"><img src="assets/agorafrik-pitch.webp" alt="Couverture d'un pitch deck Agorafrik bordeaux et orange" loading="lazy"></div>
-            <span><b>Pitch deck Agorafrik</b><small>Présentation de marque ↗</small></span>
+            <div class="design-image"><img src="assets/agorafrik-pitch.webp" alt="Couverture d'un pitch deck Agorafrik bordeaux et orange" width="596" height="336" decoding="async" loading="lazy"></div>
+            <span><b>Pitch deck Agorafrik</b><small>Présentation de marque</small></span>
           </a>
         </div>
+        <details class="case-study gallery-case"><summary data-fr="Agorafrik — une identité déclinée" data-en="Agorafrik — an identity across formats" data-es="Agorafrik — una identidad en distintos formatos">Agorafrik — une identité déclinée</summary><dl>
+          <div><dt data-i18n="approach">Mon approche</dt><dd data-fr="Une même direction visuelle, du document de marque aux prises de parole digitales. Le bordeaux et l’orange relient les différents supports." data-en="One visual direction, from brand documents to digital communication. Burgundy and orange connect the different materials." data-es="Una misma dirección visual, desde los documentos de marca hasta la comunicación digital. El burdeos y el naranja conectan los distintos materiales.">Une même direction visuelle, du document de marque aux prises de parole digitales. Le bordeaux et l’orange relient les différents supports.</dd></div>
+          <div><dt data-i18n="deliverables">Les livrables</dt><dd data-fr="Charte graphique, visuels de communication, publication et présentation de marque. Les documents sources sont accessibles depuis chaque aperçu." data-en="Brand guidelines, communication visuals, a social post and a brand presentation. Source documents are linked from each preview." data-es="Manual de identidad, piezas de comunicación, una publicación y una presentación de marca. Los documentos originales están enlazados desde cada vista previa.">Charte graphique, visuels de communication, publication et présentation de marque. Les documents sources sont accessibles depuis chaque aperçu.</dd></div>
+        </dl></details>
+        <p class="portfolio-note" data-fr="Les créations et les documents conservent leur langue d’origine. Les aperçus disponibles sont des miniatures ; consultez les documents sources pour les détails." data-en="Artwork and documents retain their original language. Available previews are thumbnails; open the source documents for detail." data-es="Los diseños y documentos conservan su idioma original. Las vistas previas disponibles son miniaturas; consulta los documentos originales para ver los detalles.">Les créations et les documents conservent leur langue d’origine. Les aperçus disponibles sont des miniatures ; consultez les documents sources pour les détails.</p>
       </section>
 
       <section class="websites-section section-pad" id="sites" aria-labelledby="websites-title">
@@ -211,10 +229,10 @@
         <div class="website-grid">
           <article class="website-card">
             <div class="browser-preview carrigres-browser" aria-label="Aperçu éditorial du site Carrigrès">
-              <div class="browser-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span>carrigres.com</span><span>↗</span></div>
+              <div class="browser-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span>carrigres.com</span></div>
               <div class="browser-content"><span class="browser-overline">CARRIGRÈS · GROUPE TEXAF</span><strong>Pour vos grands projets d'infrastructure.</strong><span class="browser-label">MATÉRIAUX DE CONSTRUCTION · KINSHASA</span></div>
             </div>
-            <div class="website-details"><div><h3>Carrigrès</h3><p data-fr="Refonte et optimisation du site WordPress, visibilité SEO et présentation de l'offre." data-en="WordPress redesign and optimization, SEO visibility and clearer service offering.">Refonte et optimisation du site WordPress, visibilité SEO et présentation de l'offre.</p></div><a href="https://www.carrigres.com/" target="_blank" rel="noopener noreferrer" data-fr="Visiter le site ↗" data-en="Visit website ↗">Visiter le site ↗</a></div>
+            <div class="website-details"><div><h3>Carrigrès</h3><p data-fr="Refonte et optimisation du site WordPress, visibilité SEO et présentation de l'offre." data-en="WordPress redesign and optimization, SEO visibility and clearer service offering.">Refonte et optimisation du site WordPress, visibilité SEO et présentation de l'offre.</p></div><a href="https://www.carrigres.com/" target="_blank" rel="noopener noreferrer" data-fr="Visiter le site" data-en="Visit website">Visiter le site</a></div>
           </article>
           <article class="website-card">
             <div class="browser-preview masdia-browser" aria-label="Composition éditoriale MASDIA, site en développement">
@@ -228,9 +246,10 @@
               <div class="browser-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span>breathwithoutfear.org</span><span>✳</span></div>
               <div class="browser-content"><span class="browser-overline">BREATHE WITHOUT FEAR</span><strong>Breathe<br><em>without fear.</em></strong><span class="browser-label">WEB / CONCEPTION VISUELLE</span></div>
             </div>
-            <div class="website-details"><div><h3>Breathe Without Fear</h3><p data-fr="Projet de site web pour une initiative portée par ma sœur. Le domaine affiche actuellement une page d'attente." data-en="Website project for an initiative led by my sister. The domain currently displays a coming-soon page.">Projet de site web pour une initiative portée par ma sœur. Le domaine affiche actuellement une page d'attente.</p></div><a href="https://breathwithoutfear.org/" target="_blank" rel="noopener noreferrer" data-fr="Voir le domaine ↗" data-en="View domain ↗">Voir le domaine ↗</a></div>
+            <div class="website-details"><div><h3>Breathe Without Fear</h3><p data-fr="Conception du site Breathe Without Fear. Le domaine fourni affiche actuellement une page d’attente." data-en="Website design for Breathe Without Fear. The supplied domain currently displays a coming-soon page.">Conception du site Breathe Without Fear. Le domaine fourni affiche actuellement une page d’attente.</p></div><a href="https://breathwithoutfear.org/" target="_blank" rel="noopener noreferrer" data-fr="Voir le domaine" data-en="View domain">Voir le domaine</a></div>
           </article>
         </div>
+        <p class="portfolio-note" data-fr="Ces présentations sont des compositions éditoriales, pas des captures des sites. Les liens et les états d’avancement sont indiqués séparément." data-en="These presentations are editorial compositions, not website screenshots. Links and project status are shown separately." data-es="Estas presentaciones son composiciones editoriales, no capturas de los sitios. Los enlaces y el estado de los proyectos se indican por separado.">Ces présentations sont des compositions éditoriales, pas des captures des sites. Les liens et les états d’avancement sont indiqués séparément.</p>
       </section>
 
       <section class="about-section section-pad" id="apropos" aria-labelledby="about-title">
@@ -272,10 +291,17 @@
         <div class="section-topline"><span data-fr="Échangeons" data-en="Let's connect">Échangeons</span><span>GLORIA / 05</span></div>
         <h2 id="contact-title" data-fr="FAISONS<br><em>QUELQUE CHOSE</em><br>DE BEAU." data-en="LET'S MAKE<br><em>SOMETHING</em><br>MEANINGFUL.">FAISONS<br><em>QUELQUE CHOSE</em><br>DE BEAU.</h2>
         <p data-fr="Pour une opportunité professionnelle, une mission ou une collaboration, retrouvons-nous sur LinkedIn." data-en="For a professional opportunity, a project or a collaboration, let's connect on LinkedIn.">Pour une opportunité professionnelle, une mission ou une collaboration, retrouvons-nous sur LinkedIn.</p>
-        <a class="contact-cta" href="https://www.linkedin.com/in/gloria-zephrine-kasunzu/" target="_blank" rel="noopener noreferrer" data-fr="Me contacter sur LinkedIn ↗" data-en="Contact me on LinkedIn ↗">Me contacter sur LinkedIn ↗</a>
+        <a class="contact-cta" href="https://www.linkedin.com/in/gloria-zephrine-kasunzu/" target="_blank" rel="noopener noreferrer" data-fr="Me contacter sur LinkedIn" data-en="Contact me on LinkedIn">Me contacter sur LinkedIn</a>
       </section>
     </main>
-    <footer class="site-footer"><span>© <span id="year">2026</span> Gloria Tumsifu Kasunzu</span><a href="#accueil" data-fr="Retour en haut ↑" data-en="Back to top ↑">Retour en haut ↑</a></footer>
+    <footer class="site-footer"><span>© <span id="year">2026</span> Gloria Tumsifu Kasunzu</span><a href="#accueil" data-fr="Retour en haut" data-en="Back to top">Retour en haut</a></footer>
   </div>
+  <dialog id="design-dialog" aria-labelledby="preview-title" aria-describedby="preview-caption">
+    <div class="preview-shell">
+      <header class="preview-header"><div><p id="preview-counter" aria-live="polite" aria-atomic="true"></p><h2 id="preview-title"></h2></div><button id="preview-close" type="button" data-i18n-aria="close" aria-label="Fermer" autofocus><span aria-hidden="true">×</span></button></header>
+      <div class="preview-stage"><button id="preview-prev" type="button" data-i18n-aria="previous" aria-label="Précédent"><span aria-hidden="true">←</span></button><div class="preview-media"><img id="preview-image" alt="" hidden><p id="preview-error" role="status" data-i18n="error" hidden>Impossible de charger cet aperçu. Vous pouvez consulter le document source.</p></div><button id="preview-next" type="button" data-i18n-aria="next" aria-label="Suivant"><span aria-hidden="true">→</span></button></div>
+      <footer class="preview-footer"><p id="preview-caption" data-i18n="assetCaption">Aperçu de la création. Le document source peut nécessiter une connexion à Canva.</p><a id="preview-document" target="_blank" rel="noopener noreferrer" data-i18n="viewDocument">Consulter le document</a></footer>
+    </div>
+  </dialog>
 </body>
 </html>

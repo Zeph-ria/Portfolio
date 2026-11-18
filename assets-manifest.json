@@ -1,0 +1,35 @@
+{
+  "auditedAt": "2026-11-18",
+  "measurement": "Native WebP pixel dimensions, verified from file headers",
+  "notes": [
+    "These files are Canva preview thumbnails, not high-resolution exports.",
+    "Source URLs identify the documents already linked in the portfolio; they do not attest to anonymous public access or publication rights.",
+    "Do not rewrite signed thumbnail URLs to request other sizes. Replace previews only with authorized exports.",
+    "Update this manifest when replacing an image with a genuine higher-resolution export."
+  ],
+  "images": [
+    {"path":"assets/agorafrik-charte.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/67ThfsXZaICQnFQ"},
+    {"path":"assets/agorafrik-pitch.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/PCkdrGrSOJ0u5mo"},
+    {"path":"assets/agorafrik-publication.webp","width":400,"height":500,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/DWy_n3Rnedvh24c"},
+    {"path":"assets/agorafrik-visuels.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/Evv2_et3iAc2bWR"},
+    {"path":"assets/anniecks-campagne.webp","width":400,"height":500,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/dsdGAkkrIbAa-am"},
+    {"path":"assets/ardhi-organic-strategie.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/RcMikEIHaAzVwgY"},
+    {"path":"assets/atelier-prospectus.webp","width":375,"height":533,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/jD-kbp4JSINafB8"},
+    {"path":"assets/atelier-rollup.webp","width":264,"height":755,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/nXKLAxsNx3QeDNv"},
+    {"path":"assets/bloom-publication.webp","width":400,"height":500,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/KkQd_FV_8Z6qXGH"},
+    {"path":"assets/carrigres-brochure.webp","width":651,"height":307,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/w254evG3IYgtDku"},
+    {"path":"assets/carrigres-calendrier-mural.webp","width":375,"height":532,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/4Yteo_gyYVViINO"},
+    {"path":"assets/carrigres-calendrier-sous-main.webp","width":547,"height":365,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/OQTgeCFYcqIdNiM"},
+    {"path":"assets/carrigres-calendrier-table.webp","width":538,"height":372,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/Pk7lR-01VgEb8NC"},
+    {"path":"assets/carrigres-calendrier-triptyque.webp","width":284,"height":700,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/6R0KBwWfyWyogZo"},
+    {"path":"assets/carrigres-charte.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/13dF8HWSLL1a6EQ"},
+    {"path":"assets/kadea-affiche.webp","width":376,"height":532,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/qMhmH6B2le-pBha"},
+    {"path":"assets/kadea-growth-hacking.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/XXMYQWrMld05HUD"},
+    {"path":"assets/kadea-storytelling.webp","width":596,"height":336,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/MPt7MXmwW-CN49t"},
+    {"path":"assets/revendre-carte-cadeau.webp","width":530,"height":377,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/1q862gib0MKX2fh"},
+    {"path":"assets/revendre-lookbook.webp","width":376,"height":532,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/GZsK9DemUhhWsKg"},
+    {"path":"assets/utex-centenaire.webp","width":376,"height":532,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/Dkx3jpwp0E8hv1w"},
+    {"path":"assets/utex-halloween.webp","width":376,"height":532,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/owe29OS5s6Ve9Dr"},
+    {"path":"assets/utex-identite.webp","width":532,"height":375,"quality":"canva-preview","sourceUrl":"https://www.canva.com/d/qGhDejiU_3daQPq"}
+  ]
+}
