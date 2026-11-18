@@ -25,6 +25,10 @@ assert(html.includes('id="project-grid"'));
 assert(html.includes('id="lang-toggle"'));
 assert(!html.includes('gzephrine@gmail.com'), 'Personal email unexpectedly exposed');
 assert(html.match(/<article class="project-card"/g)?.length === 6, 'Unexpected project count');
+for (const [, path] of html.matchAll(/src="(assets\/[^"]+\.webp)"/g)) {
+  assert(existsSync(join(root, path)), `Missing design thumbnail: ${path}`);
+}
+assert(!/Prayer Machine|Génération/i.test(html), 'Excluded project found');
 assert(js.includes('aria-pressed'), 'Filter accessibility state missing');
 assert(css.includes('prefers-reduced-motion'), 'Reduced-motion support missing');
 console.log('Portfolio smoke checks passed.');

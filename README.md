@@ -19,12 +19,14 @@ Portfolio personnel bilingue (français et anglais), développé en HTML/CSS/Jav
 - `index.html` : contenu et structure
 - `styles.css` : mise en page responsive
 - `script.js` : traduction FR/EN et filtres des projets
-- `assets/` : polices locales
+- `assets/` : polices locales et aperçus de créations Canva
 - `tests/smoke.mjs` : vérifications structurelles
 
 ## Avant publication
 
-- Ajouter les véritables captures, visuels et documents après contrôle des droits de diffusion.
+- Les aperçus de réalisations Canva ont été intégrés à partir de documents identifiés ; confirmer les droits de diffusion auprès des clients avant la fusion publique.
+- Obtenir des exports haute résolution pour remplacer les miniatures Canva lorsque les originaux sont disponibles.
+- Ne pas inclure les projets « Génération » et « Prayer Machine » ni leurs déclinaisons.
 - Vérifier les intitulés, chiffres et périodes avec les documents sources.
 - Effectuer une validation visuelle desktop/mobile et les tests d'accessibilité.
 - Confirmer les coordonnées de contact professionnelles.
