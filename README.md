@@ -29,6 +29,7 @@ Portfolio personnel bilingue (français et anglais), développé en HTML/CSS/Jav
 - Ne pas inclure les projets « Génération » et « Prayer Machine » ni leurs déclinaisons.
 - Galerie élargie : Carrigrès (quatre calendriers et charte), Agorafrik, Ardhi Organic et exercices Kadea Academy.
 - Le site réalisé pour la sœur de Gloria doit être identifié par son URL ou son nom avant ajout.
+- Section « Sites web » distincte : Carrigrès (site public vérifié), MASDIA (travail en cours). Just1Pulse est exclu.
 - Vérifier les intitulés, chiffres et périodes avec les documents sources.
 - Effectuer une validation visuelle desktop/mobile et les tests d'accessibilité.
 - Confirmer les coordonnées de contact professionnelles.

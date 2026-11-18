@@ -116,6 +116,25 @@ button:focus-visible,a:focus-visible{outline:3px solid #b87c94;outline-offset:4p
 .design-tile>span{display:flex;justify-content:space-between;gap:15px;padding-top:12px;line-height:1.35}
 .design-tile b{font:400 clamp(20px,2vw,29px)/1.1 var(--serif)}
 .design-tile small{color:var(--muted);font-size:12px;text-align:right}
+.websites-section{background:#fff}
+.websites-title{font-size:clamp(70px,11.5vw,185px)}
+.website-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px;margin-top:45px}
+.browser-preview{height:clamp(320px,34vw,550px);overflow:hidden;display:flex;flex-direction:column}
+.browser-bar{height:45px;padding:0 16px;background:#f7f7f7;color:#555;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px}
+.browser-dots{display:flex;gap:5px}
+.browser-dots i{width:8px;height:8px;border-radius:50%;background:#bebebe;display:block}
+.browser-content{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:25px;padding:clamp(25px,4vw,65px)}
+.browser-overline,.browser-label{font-size:11px;letter-spacing:.14em}
+.browser-content strong{font:400 clamp(45px,5vw,90px)/.95 var(--serif);letter-spacing:-.06em;max-width:690px}
+.carrigres-browser .browser-content{background:linear-gradient(135deg,#0c3a58,#075d7a);color:white}
+.masdia-browser .browser-content{background:#173c2d;color:#f1f6ec}
+.masdia-browser .browser-content strong{font-family:var(--sans);font-weight:700;letter-spacing:-.09em}
+.masdia-browser .browser-content strong span{color:#a3d8ae}
+.website-details{display:flex;justify-content:space-between;gap:20px;align-items:end;padding-top:18px}
+.website-details h3{font:400 clamp(35px,4vw,65px)/1 var(--serif);margin:0}
+.website-details p{max-width:480px;color:var(--muted);font-size:15px}
+.website-details a{white-space:nowrap;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:5px;font-size:13px}
+.website-status{font-size:12px;border:1px solid var(--line);padding:7px 12px;border-radius:50px;white-space:nowrap}
 .portfolio-note{color:var(--muted);font-size:13px;max-width:850px;margin-top:50px}
 .about-section{background:#f4f1ee}
 .about-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:5vw}
@@ -185,6 +204,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #b87c94;outline-offset:4p
   .design-tile>span{flex-direction:column;gap:6px}
   .design-tile b{font-size:23px}
   .design-tile small{text-align:left}
+  .main-nav{flex-wrap:wrap;justify-content:flex-start;column-gap:16px;row-gap:8px}
+  .website-grid{grid-template-columns:1fr;gap:48px}
+  .websites-title{font-size:clamp(58px,12vw,100px)}
+  .browser-preview{height:390px}
+  .browser-content strong{font-size:clamp(45px,10vw,80px)}
+  .website-details{align-items:start;flex-direction:column;gap:5px}
   .project-visual{height:clamp(280px,85vw,480px)}
   .carrigres-wordmark{font-size:clamp(38px,9vw,60px)}
   .bloom-wordmark{font-size:clamp(70px,19vw,120px)}
