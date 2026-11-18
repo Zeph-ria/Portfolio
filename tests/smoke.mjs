@@ -25,6 +25,8 @@ assert(html.includes('id="project-grid"'));
 assert(html.includes('id="lang-toggle"'));
 assert(!html.includes('gzephrine@gmail.com'), 'Personal email unexpectedly exposed');
 assert(html.match(/<article class="project-card"/g)?.length === 6, 'Unexpected project count');
+assert(html.match(/class="design-tile"/g)?.length === 18, 'Unexpected design gallery count');
+assert(html.includes('id="design-grid"'), 'Design gallery missing');
 for (const [, path] of html.matchAll(/src="(assets\/[^"]+\.webp)"/g)) {
   assert(existsSync(join(root, path)), `Missing design thumbnail: ${path}`);
 }

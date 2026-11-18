@@ -3,6 +3,8 @@
   const langButton = document.getElementById('lang-toggle');
   const filterButtons = [...document.querySelectorAll('[data-filter]')];
   const projects = [...document.querySelectorAll('[data-category]')];
+  const designFilters = [...document.querySelectorAll('[data-design-filter]')];
+  const designs = [...document.querySelectorAll('[data-design-category]')];
   let language = 'fr';
 
   function setLanguage(next) {
@@ -20,6 +22,7 @@
     langButton.textContent = language === 'fr' ? 'EN' : 'FR';
     langButton.setAttribute('aria-label', language === 'fr' ? 'Switch to English' : 'Passer en français');
     document.querySelector('.filters').setAttribute('aria-label', language === 'fr' ? 'Filtrer les projets' : 'Filter projects');
+    document.querySelector('.design-filters').setAttribute('aria-label', language === 'fr' ? 'Filtrer la galerie' : 'Filter gallery');
   }
 
   function filterProjects(category) {
@@ -33,8 +36,21 @@
     });
   }
 
+  function filterDesigns(category) {
+    designFilters.forEach(button => {
+      const selected = button.dataset.designFilter === category;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    designs.forEach(design => {
+      design.hidden = category !== 'all' && !design.dataset.designCategory.split(' ').includes(category);
+    });
+    document.querySelector('.gallery-series').hidden = category !== 'all' && category !== 'print';
+  }
+
   langButton.addEventListener('click', () => setLanguage(language === 'fr' ? 'en' : 'fr'));
   filterButtons.forEach(button => button.addEventListener('click', () => filterProjects(button.dataset.filter)));
+  designFilters.forEach(button => button.addEventListener('click', () => filterDesigns(button.dataset.designFilter)));
   document.getElementById('year').textContent = String(new Date().getFullYear());
   setLanguage('fr');
 })();

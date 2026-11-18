@@ -100,6 +100,22 @@ button:focus-visible,a:focus-visible{outline:3px solid #b87c94;outline-offset:4p
 .archive-image{height:320px;background:#eee8e4;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden}
 .archive-image img{display:block;max-height:100%;max-width:100%;object-fit:contain;transition:transform .4s}
 .archive-item:hover img{transform:scale(1.05)}
+.design-library{background:#f8f6f3}
+.gallery-display{font-size:clamp(72px,10.5vw,175px)}
+.design-filters{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 65px}
+.design-filter{background:transparent;color:var(--ink);border:1px solid #b8b1ae;border-radius:50px;padding:10px 17px;font-size:13px}
+.design-filter.active,.design-filter:hover{background:var(--wine);color:white;border-color:var(--wine)}
+.gallery-series{font:400 clamp(30px,3.5vw,55px)/1.1 var(--serif);margin:0 0 25px}
+.gallery-series-secondary{margin-top:80px}
+.design-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 22px}
+.design-tile{display:block;text-decoration:none;min-width:0}
+.design-tile[hidden]{display:none!important}
+.design-image{background:#e9e5e0;aspect-ratio:5/4;display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+.design-image img{display:block;max-width:100%;max-height:100%;object-fit:contain;transition:transform .35s}
+.design-tile:hover .design-image img{transform:scale(1.04)}
+.design-tile>span{display:flex;justify-content:space-between;gap:15px;padding-top:12px;line-height:1.35}
+.design-tile b{font:400 clamp(20px,2vw,29px)/1.1 var(--serif)}
+.design-tile small{color:var(--muted);font-size:12px;text-align:right}
 .portfolio-note{color:var(--muted);font-size:13px;max-width:850px;margin-top:50px}
 .about-section{background:#f4f1ee}
 .about-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:5vw}
@@ -163,6 +179,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #b87c94;outline-offset:4p
   .archive-heading p{margin-top:22px}
   .archive-grid{grid-template-columns:1fr;gap:32px}
   .archive-image{height:350px}
+  .gallery-display{font-size:clamp(53px,12vw,100px)}
+  .design-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}
+  .design-image{aspect-ratio:4/5;padding:10px}
+  .design-tile>span{flex-direction:column;gap:6px}
+  .design-tile b{font-size:23px}
+  .design-tile small{text-align:left}
   .project-visual{height:clamp(280px,85vw,480px)}
   .carrigres-wordmark{font-size:clamp(38px,9vw,60px)}
   .bloom-wordmark{font-size:clamp(70px,19vw,120px)}
