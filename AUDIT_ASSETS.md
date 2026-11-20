@@ -1,5 +1,13 @@
 # Audit des visuels, de la référence et des domaines
 
+## Décision de livraison — 20 novembre 2026
+
+Le point de provenance des fichiers Wremena est résolu par l’intégration des **WOFF officiels historiques** : Regular archivé en 2018 et Bold archivé en 2019, inchangés. Les deux conversions tierces CDNFonts ont été remplacées. La déclaration de diffusion officielle archivée en 2018 et 2022, les URL des binaires et leurs empreintes sont consignées dans [docs/FONT_PROVENANCE.md](docs/FONT_PROVENANCE.md).
+
+La famille Wremena, les tailles et les couleurs sont conservées. Les 119 caractères utilisés et déjà couverts gardent les mêmes avances horizontales. L’enquête du 18 novembre reproduite ci-dessous décrit l’état antérieur à cette décision ; les paragraphes qui indiquent qu’aucun fichier n’a été remplacé se rapportent à cette ancienne passe.
+
+Les deux miniatures L’Atelier restent une limite de qualité des sources disponibles. Elles sont identifiées dans la visionneuse et n’empêchent pas la présentation des 23 créations.
+
 État des visuels actualisé le **19 novembre 2026**. L’enquête typographique et la vérification du domaine ci-dessous datent du 18 novembre. Cette mise à jour distingue les exports obtenus, les deux miniatures encore utilisées et la provenance des polices existantes.
 
 ## Visuels intégrés

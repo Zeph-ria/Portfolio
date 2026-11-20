@@ -1,5 +1,14 @@
 # Rapport de vérification du portfolio
 
+## Préparation de la livraison — 20 novembre 2026
+
+- Les deux WOFF officiels historiques de Wremena remplacent les conversions tierces. Les sources et empreintes sont documentées dans [docs/FONT_PROVENANCE.md](docs/FONT_PROVENANCE.md).
+- La comparaison des 119 caractères couverts utilisés dans les sources ne montre aucun nouveau caractère manquant ni changement d’avance horizontale : [font-compatibility.json](docs/qa/2026-11-20/font-compatibility.json).
+- La famille, les tailles et les couleurs CSS sont conservées. La différence de métriques verticales Bold est identifiée pour le contrôle visuel du logo `GTK.`.
+- L’adresse publique `https://zeph-ria.github.io/Portfolio/` a été confirmée dans le navigateur. L’adresse canonique, l’URL Open Graph et une capture réelle de partage ont été ajoutées.
+- Après ces changements, **46/46 tests Node**, le smoke test et `git diff --check` réussissent. Les résultats ci-dessous documentent séparément la passe visuelle du 19 novembre.
+- La vérification de la version publiée et le résultat du déploiement sont suivis dans [l’objectif #2](https://github.com/Zeph-ria/Portfolio/issues/2), après la fusion de la PR #3.
+
 Date de la passe : **19 novembre 2026**
 
 Branche contrôlée : `feat/editorial-portfolio-2026`

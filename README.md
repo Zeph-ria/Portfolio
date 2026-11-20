@@ -2,7 +2,7 @@
 
 Portfolio personnel en français, anglais et espagnol, développé en HTML/CSS/JavaScript sans dépendance de build. Il rassemble 6 projets sélectionnés, une galerie de 18 créations, 2 pièces d’archives et une section distincte de 3 projets web.
 
-Le dépôt [Zeph-ria/Portfolio](https://github.com/Zeph-ria/Portfolio) est la source du projet. La reprise validée du chantier se poursuit sur `feat/editorial-portfolio-2026`, dans la [PR #3](https://github.com/Zeph-ria/Portfolio/pull/3). L’état d’une branche ou d’une prévisualisation ne doit pas être confondu avec une publication du site.
+Le dépôt [Zeph-ria/Portfolio](https://github.com/Zeph-ria/Portfolio) est la source du projet. L’adresse publique est [https://zeph-ria.github.io/Portfolio/](https://zeph-ria.github.io/Portfolio/). GitHub Pages publie la branche `main`. La refonte est suivie dans la [PR #3](https://github.com/Zeph-ria/Portfolio/pull/3) et [l’objectif #2](https://github.com/Zeph-ria/Portfolio/issues/2).
 
 ## État des visuels — 19 novembre 2026
 
@@ -34,7 +34,9 @@ Ouvrir [http://localhost:8000](http://localhost:8000). Aucun build n’est requi
 
 La palette, les familles typographiques et les tailles de la direction artistique validée sont conservées pendant l’intégration des exports. Les variantes d’image changent le poids des fichiers chargés, pas la mise en page des cartes.
 
-L’enquête antérieure a retrouvé Wremena sur l’ancien site officiel Nice People. Elle n’a pas identifié avec certitude la police source de son logotype, qui est une image distincte. Les fichiers Wremena locaux et leur provenance sont documentés dans [AUDIT_ASSETS.md](AUDIT_ASSETS.md) ; aucun remplacement de police ni nouvel accord de licence n’a été effectué dans cette passe.
+La livraison du 20 novembre utilise les **WOFF officiels historiques de Wremena**, rattachés à la déclaration de diffusion de la fonderie à cette époque. Les sources et empreintes figurent dans [docs/FONT_PROVENANCE.md](docs/FONT_PROVENANCE.md). Ces fichiers remplacent les conversions tierces sans changer la famille, les tailles ou la palette. L’enquête antérieure sur la référence Nice People reste disponible dans [AUDIT_ASSETS.md](AUDIT_ASSETS.md).
+
+L’adresse canonique et l’aperçu de partage utilisent le domaine GitHub Pages confirmé. L’image de partage est une capture réelle du rendu du portfolio, conservée dans `assets/share-preview.jpg`.
 
 ## Structure
 
