@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "comparison_generated_utc": "2026-11-20T17:54:44.100920+00:00",
+  "inputs": {
+    "git_commit": "aa96d1b67d5798d1ef7c3138c0ab2692581be8c6",
+    "text_files": [
+      {
+        "path": "index.html",
+        "sha256": "1141da45a1519a5841b6d2e77b51e13bf2dbc7548468b8f83c34862a19ea0000"
+      },
+      {
+        "path": "i18n.js",
+        "sha256": "e9532f65c58bdea90f9a93d90abd2e66e3cd39e8f88d54eda63caaf847fbe35d"
+      }
+    ],
+    "character_selection": "Printable Unicode codepoints in complete index.html and i18n.js source files, filtered per font to codepoints covered by the original font. This includes source-code characters as well as visible text.",
+    "all_printable_codepoint_count_in_input_files": 121
+  },
+  "fonts": [
+    {
+      "style": "Regular",
+      "source": {
+        "git_commit": "aa96d1b67d5798d1ef7c3138c0ab2692581be8c6",
+        "git_path": "assets/Wremena-Regular.woff",
+        "bytes": 39924,
+        "sha256": "4d7fed170fe78f5dcadf9379a9a3ba50a18a200918855c749536b1a3f3fea805"
+      },
+      "target": {
+        "local_path": "/workspace/scratch/0e665702eb66/font-research/regular.woff",
+        "bytes": 35232,
+        "sha256": "7e06b3641d48bdf6a816e3539ae685ed9f0323da8c670a1d4d45e7ca86f487ed"
+      },
+      "relevant_used_character_count": 119,
+      "target_covered_relevant_character_count": 119,
+      "source_unsupported_characters_in_input_files": [
+        {
+          "codepoint": "U+0060",
+          "character": "`"
+        },
+        {
+          "codepoint": "U+2733",
+          "character": "✳"
+        }
+      ],
+      "newly_missing_glyphs": [],
+      "target_unsupported_characters_in_input_files": [
+        {
+          "codepoint": "U+0060",
+          "character": "`"
+        },
+        {
+          "codepoint": "U+2733",
+          "character": "✳"
+        }
+      ],
+      "per_used_character_advance_differences": [],
+      "per_used_character_left_bearing_differences": [
+        {
+          "codepoint": "U+002A",
+          "character": "*",
+          "source_left_bearing": 50,
+          "target_left_bearing": 46,
+          "difference": -4
+        }
+      ],
+      "source_units_per_em": 1000,
+      "target_units_per_em": 1000,
+      "source_hhea": {
+        "ascent": 750,
+        "descent": -250,
+        "lineGap": 9
+      },
+      "target_hhea": {
+        "ascent": 750,
+        "descent": -250,
+        "lineGap": 9
+      },
+      "source_has_GPOS": true,
+      "target_has_GPOS": true,
+      "conclusion": "All input-file characters covered by the source remain covered, with identical advance widths. This compares glyph metrics, not browser shaping, kerning effects, outlines or rendered pixels."
+    },
+    {
+      "style": "Bold",
+      "source": {
+        "git_commit": "aa96d1b67d5798d1ef7c3138c0ab2692581be8c6",
+        "git_path": "assets/Wremena-Bold.woff",
+        "bytes": 43108,
+        "sha256": "85e7941d25e564d3c631b6ccd18327925b8a566adf94756f951daa4d629985f1"
+      },
+      "target": {
+        "local_path": "/workspace/scratch/0e665702eb66/font-research/bold.woff",
+        "bytes": 36652,
+        "sha256": "ae7996a3a935f2958241cd9765c025dac3f0492ecb0974c3544b2d7eabac797f"
+      },
+      "relevant_used_character_count": 119,
+      "target_covered_relevant_character_count": 119,
+      "source_unsupported_characters_in_input_files": [
+        {
+          "codepoint": "U+0060",
+          "character": "`"
+        },
+        {
+          "codepoint": "U+2733",
+          "character": "✳"
+        }
+      ],
+      "newly_missing_glyphs": [],
+      "target_unsupported_characters_in_input_files": [
+        {
+          "codepoint": "U+0060",
+          "character": "`"
+        },
+        {
+          "codepoint": "U+2733",
+          "character": "✳"
+        }
+      ],
+      "per_used_character_advance_differences": [],
+      "per_used_character_left_bearing_differences": [
+        {
+          "codepoint": "U+002A",
+          "character": "*",
+          "source_left_bearing": 40,
+          "target_left_bearing": 37,
+          "difference": -3
+        }
+      ],
+      "source_units_per_em": 1000,
+      "target_units_per_em": 1000,
+      "source_hhea": {
+        "ascent": 750,
+        "descent": -250,
+        "lineGap": 9
+      },
+      "target_hhea": {
+        "ascent": 905,
+        "descent": -330,
+        "lineGap": 0
+      },
+      "source_has_GPOS": true,
+      "target_has_GPOS": true,
+      "conclusion": "All input-file characters covered by the source remain covered, with identical advance widths. This compares glyph metrics, not browser shaping, kerning effects, outlines or rendered pixels."
+    }
+  ],
+  "official_policy": {
+    "url": "https://web.archive.org/web/20180104161648id_/http://typefaces.temporarystate.net:80/download/",
+    "http_status": 200,
+    "actual_url": "https://web.archive.org/web/20180104161648id_/http://typefaces.temporarystate.net:80/download/",
+    "archive_timestamp": "20180104161648",
+    "archive_date": "2018-01-04T16:16:48Z",
+    "http_memento_datetime": "Thu, 04 Jan 2018 16:16:48 GMT",
+    "retrieved_utc": "2026-11-20T17:54:44.100819+00:00",
+    "raw_html_sha256": "678e76b5403d0c92701a0852d715223181bc3f4d4a2fbaef7615096113d2deba",
+    "raw_html_bytes": 15014,
+    "exact_declaration": "The typefaces are provided without any copyright restrictions.",
+    "exact_html_snippet": "<span class=\"disclaimer\">\n\t\t\t\tThe typefaces are provided without any copyright restrictions.\n\t\t\t</span>",
+    "listed_styles": [
+      "Wremena Light",
+      "Wremena Regular",
+      "Wremena Bold"
+    ]
+  },
+  "observed_conclusion": "For both fonts, all 119 printable codepoints covered by the original font remain available, with zero advance-width differences. Asterisk left bearing changes slightly. Regular hhea values match; Bold hhea values differ, warranting a targeted rendered check. This is not a pixel-identical rendering claim."
+}

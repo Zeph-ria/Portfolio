@@ -1,2496 +1,314 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gloria Tumsifu Kasunzu, Marketing Digital</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --teal: #00B4A6;
-  --teal-dark: #007A70;
-  --teal-dim: rgba(0,180,166,0.12);
-  --amber: #D4863A;
-  --amber-dim: rgba(212,134,58,0.12);
-  --cream: #F5F0E8;
-  --dark: #1A1A18;
-  --mid: #3D3D38;
-  --light: #8A8A80;
-  --card-bg: #222220;
-  --card-border: rgba(245,240,232,0.07);
-  --shadow: 0 20px 60px rgba(0,0,0,0.35);
-}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden;}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1.1rem 4rem;
-  background:rgba(26,26,24,0.9);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--card-border);
-  gap:1rem;
-}
-.lang-switcher{position:relative;flex-shrink:0;}
-.lang-btn{
-  font-family:'Space Mono',monospace;
-  font-size:.6rem;color:var(--teal);
-  letter-spacing:.12em;text-transform:uppercase;
-  border:1px solid rgba(0,180,166,.3);
-  padding:.4rem 1rem;border-radius:100px;
-  background:none;cursor:pointer;
-  display:flex;align-items:center;gap:.4rem;
-  transition:all .3s;white-space:nowrap;
-}
-.lang-btn:hover{background:var(--teal);color:var(--dark);}
-.lang-dropdown{
-  position:absolute;top:calc(100% + 8px);right:0;
-  background:#222220;border:1px solid var(--card-border);
-  border-radius:8px;overflow:hidden;
-  display:none;z-index:500;min-width:140px;
-  box-shadow:0 16px 40px rgba(0,0,0,.5);
-}
-.lang-dropdown.open{display:block;}
-.lang-option{
-  display:flex;align-items:center;gap:.7rem;
-  padding:.6rem 1rem;
-  font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.08em;
-  color:var(--light);cursor:pointer;
-  transition:background .2s,color .2s;
-  border:none;background:none;width:100%;text-align:left;
-}
-.lang-option:hover{background:rgba(0,180,166,.08);color:var(--teal);}
-.lang-option.active{color:var(--teal);font-weight:700;}
-
-.nav-logo{
-  font-family:'Space Mono',monospace;
-  font-size:0.68rem;color:var(--teal);
-  letter-spacing:0.25em;text-transform:uppercase;
-}
-.nav-cta{
-  font-family:'Space Mono',monospace;
-  font-size:.6rem;color:var(--teal);
-  text-decoration:none;letter-spacing:.12em;text-transform:uppercase;
-  border:1px solid rgba(0,180,166,.3);
-  padding:.4rem 1rem;border-radius:100px;
-  transition:all .3s;
-}
-.nav-cta:hover{background:var(--teal);color:var(--dark);}
-
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  display:grid;grid-template-columns:1.1fr 0.9fr;
-  align-items:center;
-  padding:7rem 4rem 4rem;gap:4rem;
-  position:relative;overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 72% 45%,rgba(0,180,166,0.07) 0%,transparent 55%),
-    radial-gradient(ellipse at 18% 80%,rgba(212,134,58,0.05) 0%,transparent 50%);
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(0,180,166,0.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,180,166,0.035) 1px,transparent 1px);
-  background-size:64px 64px;
-}
-
-.hero-left{position:relative;z-index:2;}
-
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.8rem;
-  font-family:'Space Mono',monospace;font-size:.62rem;
-  color:var(--amber);letter-spacing:.22em;text-transform:uppercase;
-  margin-bottom:2rem;
-  animation:fadeUp .5s ease .1s both;
-}
-
-.hero-name{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3.4rem,5.5vw,6rem);
-  font-weight:900;line-height:.95;
-  margin-bottom:2rem;
-  animation:fadeUp .5s ease .22s both;
-}
-.hero-name em{
-  display:block;font-style:italic;font-weight:400;
-  color:var(--teal);
-}
-
-.hero-role{
-  display:inline-block;
-  background:var(--amber);color:var(--dark);
-  font-family:'Space Mono',monospace;font-size:.68rem;
-  letter-spacing:.15em;text-transform:uppercase;font-weight:700;
-  padding:.55rem 1.3rem;margin-bottom:2rem;
-  animation:fadeUp .5s ease .34s both;
-}
-
-.hero-desc{
-  font-size:.97rem;line-height:1.85;
-  color:rgba(245,240,232,.65);max-width:46ch;
-  margin-bottom:2.8rem;
-  animation:fadeUp .5s ease .46s both;
-}
-
-.hero-cta{
-  display:flex;gap:1rem;flex-wrap:wrap;
-  animation:fadeUp .5s ease .58s both;
-}
-.btn-primary{
-  padding:.9rem 2.1rem;background:var(--teal);color:var(--dark);
-  font-family:'Space Mono',monospace;font-size:.68rem;
-  letter-spacing:.12em;text-transform:uppercase;font-weight:700;
-  text-decoration:none;transition:all .3s;
-  box-shadow:0 4px 22px rgba(0,180,166,.3);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,180,166,.45);}
-.btn-outline{
-  padding:.9rem 2.1rem;
-  border:1px solid rgba(245,240,232,.2);color:var(--cream);
-  font-family:'Space Mono',monospace;font-size:.68rem;
-  letter-spacing:.12em;text-transform:uppercase;
-  text-decoration:none;transition:all .3s;
-}
-.btn-outline:hover{border-color:var(--amber);color:var(--amber);}
-
-/* ── HERO STATS ── */
-.hero-right{
-  position:relative;z-index:2;
-  animation:fadeUp .6s ease .4s both;
-}
-.stats-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1.5px;background:var(--card-border);
-  border:1px solid var(--card-border);
-}
-.stat-card{
-  background:var(--dark);padding:2rem 1.8rem;
-  position:relative;overflow:hidden;transition:background .3s;
-  cursor:default;
-}
-.stat-card:hover{background:rgba(0,180,166,.04);}
-.stat-card::before{
-  content:'';position:absolute;top:0;left:0;
-  width:2px;height:0;background:var(--teal);
-  transition:height .4s;
-}
-.stat-card:hover::before{height:100%;}
-.stat-card:nth-child(2),.stat-card:nth-child(4){
-  border-left:none;
-}
-.stat-card:nth-child(1) .stat-num{color:var(--teal);}
-.stat-card:nth-child(2) .stat-num{color:var(--amber);}
-.stat-card:nth-child(3) .stat-num{color:var(--amber);}
-.stat-card:nth-child(4) .stat-num{color:var(--teal);}
-
-.stat-num{
-  font-family:'Playfair Display',serif;
-  font-size:2.8rem;font-weight:900;line-height:1;display:block;
-}
-.stat-lbl{font-size:.72rem;color:var(--light);margin-top:.45rem;line-height:1.4;}
-.stat-ctx{
-  font-family:'Space Mono',monospace;font-size:.58rem;
-  color:var(--amber);margin-top:.3rem;letter-spacing:.08em;
-}
-
-/* ── BAND ── */
-.band{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  background:var(--teal);
-}
-.band-item{
-  padding:2.8rem 2rem;text-align:center;
-  border-right:1px solid rgba(255,255,255,.15);
-  transition:background .3s;
-}
-.band-item:last-child{border-right:none;}
-.band-item:hover{background:rgba(0,0,0,.1);}
-.band-num{
-  font-family:'Playfair Display',serif;
-  font-size:2.6rem;font-weight:900;color:white;
-  display:block;line-height:1;
-}
-.band-lbl{font-size:.7rem;color:rgba(255,255,255,.72);margin-top:.4rem;line-height:1.4;}
-
-/* ── SECTIONS ── */
-section{padding:7rem 4rem;}
-
-.sec-label{
-  font-family:'Space Mono',monospace;font-size:.62rem;
-  color:var(--teal);letter-spacing:.28em;text-transform:uppercase;
-  margin-bottom:1.2rem;
-  display:block;
-}
-
-.sec-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,3.5vw,3.4rem);
-  font-weight:900;line-height:1.08;
-  margin-bottom:3.5rem;
-}
-
-/* ── PROFIL ── */
-#profil{background:var(--dark);}
-
-.profil-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:5rem;align-items:start;
-}
-
-.profil-text p{
-  font-size:.97rem;line-height:1.88;
-  color:rgba(245,240,232,.65);margin-bottom:1.3rem;
-}
-
-/* hidden skills */
-.hidden-block{
-  margin-top:2.5rem;
-  background:var(--card-bg);
-  border:1px solid var(--card-border);
-  padding:1.8rem;
-}
-.hidden-block h4{
-  font-family:'Space Mono',monospace;font-size:.58rem;
-  color:var(--amber);letter-spacing:.22em;text-transform:uppercase;
-  margin-bottom:1rem;
-}
-.hidden-tag{
-  display:inline-block;
-  padding:.3rem .85rem;
-  border:1px solid rgba(212,134,58,.25);
-  background:rgba(212,134,58,.07);
-  color:rgba(245,240,232,.75);
-  font-size:.7rem;margin:.2rem;
-  border-radius:100px;
-}
-
-/* skill options (v2 style, dark) */
-.skills-list{display:flex;flex-direction:column;gap:.85rem;}
-
-.skill-option{
-  background:var(--card-bg);
-  border:1px solid var(--card-border);
-  padding:1.2rem 1.5rem;
-  display:grid;grid-template-columns:52px 3px 1fr;
-  align-items:center;gap:1.3rem;
-  transition:border-color .3s,transform .25s;
-  cursor:default;
-}
-.skill-option:hover{border-color:rgba(0,180,166,.35);transform:translateX(5px);}
-
-.skill-num{
-  font-family:'Playfair Display',serif;
-  font-size:1.7rem;font-weight:900;color:var(--cream);line-height:1;
-  opacity:.35;
-}
-.skill-num span{ display:none; }
-.skill-bar{width:3px;height:38px;border-radius:10px;}
-
-.skill-info h4{
-  font-size:.88rem;font-weight:600;color:var(--cream);margin-bottom:.2rem;
-}
-.skill-info p{font-size:.72rem;color:var(--light);line-height:1.4;}
-
-/* ── EXPERIENCE ── */
-#experience{background:rgba(245,240,232,.02);border-top:1px solid var(--card-border);}
-
-.exp-intro{
-  max-width:60ch;
-  font-size:.97rem;line-height:1.82;
-  color:rgba(245,240,232,.6);
-  margin-bottom:3rem;
-  margin-top:-1.5rem;
-}
-
-/* what I do grid */
-.whatido{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--card-border);
-  margin-bottom:4rem;
-}
-.whatido-card{
-  background:var(--card-bg);padding:2rem;
-  transition:background .3s,border-left .3s;
-  border-left:3px solid transparent;
-}
-.whatido-card:hover{background:rgba(212,134,58,.04);border-left:3px solid var(--amber);}
-.whatido-card .icon{
-  font-size:1.4rem;margin-bottom:1rem;display:block;
-}
-.whatido-card h4{
-  font-family:'DM Sans',sans-serif;
-  font-size:1rem;font-weight:700;
-  margin-bottom:.6rem;color:var(--cream);
-}
-.whatido-card p{font-size:.78rem;line-height:1.65;color:var(--light);}
-
-/* accordion exp */
-.exp-accordion-title{
-  font-family:'Space Mono',monospace;font-size:.6rem;
-  color:var(--light);letter-spacing:.2em;text-transform:uppercase;
-  margin-bottom:1.5rem;
-}
-.acc-list{display:flex;flex-direction:column;gap:.75rem;}
-
-.acc-item{
-  background:var(--card-bg);
-  border:1px solid var(--card-border);
-  overflow:hidden;transition:border-color .3s;
-}
-.acc-item.open{border-color:rgba(0,180,166,.3);}
-
-.acc-header{
-  display:grid;grid-template-columns:5px 1fr auto;
-  align-items:center;gap:1.5rem;
-  padding:1.4rem 1.8rem;
-  cursor:pointer;
-  user-select:none;
-}
-.acc-bar{height:100%;min-height:44px;width:5px;border-radius:4px;flex-shrink:0;}
-
-.acc-meta h3{
-  font-family:'DM Sans',sans-serif;
-  font-size:1.05rem;font-weight:700;
-  color:var(--cream);margin-bottom:.25rem;
-}
-.acc-sub{
-  display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;
-}
-.acc-company{font-size:.75rem;color:var(--light);}
-.acc-period{
-  font-family:'Space Mono',monospace;font-size:.57rem;
-  letter-spacing:.1em;color:var(--amber);
-  background:rgba(212,134,58,.1);
-  padding:.18rem .6rem;border-radius:100px;
-}
-
-.acc-toggle{
-  width:30px;height:30px;border-radius:50%;
-  background:rgba(245,240,232,.05);
-  border:1px solid var(--card-border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;color:var(--light);
-  flex-shrink:0;transition:all .3s;
-}
-.acc-item.open .acc-toggle{
-  background:var(--teal);color:var(--dark);border-color:var(--teal);
-  transform:rotate(45deg);
-}
-
-.acc-body{
-  max-height:0;overflow:hidden;
-  transition:max-height .4s ease,padding .3s ease;
-  padding:0 1.8rem 0 4.5rem;
-}
-.acc-item.open .acc-body{max-height:600px;padding:0 1.8rem 1.6rem 4.5rem;}
-
-.acc-body ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;padding-top:.2rem;}
-.acc-body li{
-  font-size:.84rem;color:rgba(245,240,232,.68);
-  line-height:1.65;padding-left:1.3rem;position:relative;
-}
-.acc-body li::before{
-  content:'→';position:absolute;left:0;
-  color:var(--teal);font-size:.7rem;top:.15em;
-}
-
-.chip{
-  display:inline-block;
-  font-family:'Space Mono',monospace;font-size:.55rem;
-  padding:.15rem .55rem;border-radius:100px;
-  margin-left:.3rem;vertical-align:middle;
-}
-.chip-teal{background:rgba(0,180,166,.15);color:var(--teal);}
-.chip-amber{background:rgba(212,134,58,.15);color:var(--amber);}
-
-/* ── PROJETS ── */
-#projets{background:var(--dark);border-top:1px solid var(--card-border);}
-
-.projet-featured{
-  display:grid;grid-template-columns:1.1fr 0.9fr;
-  gap:4rem;align-items:center;
-  margin-bottom:4rem;
-}
-
-.projet-tag{
-  font-family:'Space Mono',monospace;font-size:.58rem;
-  color:var(--amber);letter-spacing:.2em;text-transform:uppercase;
-  background:var(--amber-dim);padding:.3rem .9rem;border-radius:100px;
-  display:inline-block;margin-bottom:1.4rem;
-}
-
-.projet-name{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,3.5vw,3.2rem);
-  font-weight:900;line-height:1.08;
-  margin-bottom:1rem;
-}
-.projet-name em{font-style:italic;font-weight:400;color:var(--teal);}
-
-.projet-tagline{
-  font-size:1rem;line-height:1.8;
-  color:rgba(245,240,232,.65);
-  margin-bottom:2rem;max-width:48ch;
-}
-
-.projet-link{
-  display:inline-flex;align-items:center;gap:.7rem;
-  padding:.85rem 1.8rem;
-  background:var(--teal);color:var(--dark);
-  font-family:'Space Mono',monospace;font-size:.68rem;
-  letter-spacing:.12em;text-transform:uppercase;font-weight:700;
-  text-decoration:none;transition:all .3s;
-  box-shadow:0 4px 20px rgba(0,180,166,.25);
-}
-.projet-link:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,180,166,.4);}
-.projet-link::after{content:'↗';font-size:.8rem;}
-
-.projet-details{
-  display:flex;flex-direction:column;gap:1px;
-  background:var(--card-border);
-}
-.projet-detail-row{
-  background:var(--card-bg);
-  padding:1.3rem 1.6rem;
-  display:grid;grid-template-columns:140px 1fr;
-  align-items:start;gap:1rem;
-  transition:background .3s;
-}
-.projet-detail-row:hover{background:rgba(0,180,166,.04);}
-.detail-key{
-  font-family:'Space Mono',monospace;font-size:.6rem;
-  color:var(--light);letter-spacing:.12em;text-transform:uppercase;
-  padding-top:.1rem;
-}
-.detail-val{font-size:.82rem;color:rgba(245,240,232,.75);line-height:1.55;}
-.detail-val strong{color:var(--teal);}
-
-/* more projects */
-.projects-more{
-  border-top:1px solid var(--card-border);
-  padding-top:3rem;
-}
-.projects-more-title{
-  font-family:'Space Mono',monospace;font-size:.6rem;
-  color:var(--light);letter-spacing:.2em;text-transform:uppercase;
-  margin-bottom:1.5rem;
-}
-.proj-placeholder-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--card-border);
-}
-.proj-placeholder{
-  background:var(--card-bg);padding:2rem;
-  display:flex;flex-direction:column;
-  align-items:flex-start;gap:.8rem;
-  min-height:160px;
-  transition:background .3s;
-}
-.proj-placeholder:hover{background:rgba(212,134,58,.03);}
-.proj-placeholder .ph-num{
-  font-family:'Space Mono',monospace;font-size:.58rem;
-  color:rgba(245,240,232,.2);letter-spacing:.2em;
-}
-.proj-placeholder .ph-label{
-  font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;
-  color:rgba(245,240,232,.18);font-style:italic;
-}
-.proj-placeholder .ph-soon{
-  font-family:'Space Mono',monospace;font-size:.55rem;
-  color:rgba(212,134,58,.5);letter-spacing:.15em;text-transform:uppercase;
-  margin-top:auto;
-}
-
-/* ── CONTACT STRIP ── */
-.contact-strip{
-  background:var(--amber);
-  padding:5rem 4rem;
-  display:flex;justify-content:space-between;align-items:center;
-  gap:2rem;flex-wrap:wrap;
-}
-.contact-strip-left h2{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.8rem,3vw,3rem);
-  font-weight:900;color:white;line-height:1.1;
-}
-.contact-strip-left p{
-  font-size:.9rem;color:rgba(255,255,255,.75);
-  margin-top:.6rem;max-width:40ch;line-height:1.6;
-}
-.contact-strip-links{display:flex;gap:.8rem;flex-wrap:wrap;}
-.contact-btn{
-  padding:.85rem 1.8rem;background:var(--dark);color:white;
-  font-family:'Space Mono',monospace;font-size:.65rem;
-  letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;transition:all .3s;
-  display:flex;align-items:center;gap:.5rem;
-}
-.contact-btn:hover{background:white;color:var(--dark);}
-
-/* ── FOOTER ── */
-footer{
-  background:var(--dark);
-  border-top:1px solid var(--card-border);
-  padding:1.8rem 4rem;
-  display:flex;justify-content:space-between;align-items:center;
-}
-footer p{
-  font-family:'Space Mono',monospace;font-size:.6rem;
-  color:rgba(245,240,232,.25);letter-spacing:.1em;
-}
-
-/* ── ANIMATION ── */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(24px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1000px){
-  .ss-grid { grid-template-columns: 1fr 1fr; }
-  .postes-grid { grid-template-columns: 1fr 1fr; }
-
-  nav{padding:.8rem 1rem;gap:.5rem;}
-  .lang-btn{font-size:.52rem;padding:.28rem .55rem;}
-  .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2.5rem;}
-  section{padding:4.5rem 1.5rem;}
-  .profil-grid{grid-template-columns:1fr;gap:2.5rem;}
-  .whatido{grid-template-columns:1fr 1fr;}
-  .deep-skills-grid{grid-template-columns:1fr;}
-  .tools-row{gap:.5rem;}
-  .tool-badge{padding:.6rem .9rem;}
-  .projet-featured{grid-template-columns:1fr;gap:2.5rem;}
-  .band{grid-template-columns:1fr 1fr;}
-  .proj-placeholder-grid{grid-template-columns:1fr 1fr;}
-  .contact-strip{flex-direction:column;align-items:flex-start;}
-  footer{flex-direction:column;gap:.8rem;text-align:center;}
-}
-@media(max-width:600px){
-  .ss-grid { grid-template-columns: 1fr; }
-  .postes-grid { grid-template-columns: 1fr; border-radius: 12px; }
-
-  .stats-grid{grid-template-columns:1fr;}
-  .band{grid-template-columns:1fr;}
-  .whatido{grid-template-columns:1fr;}
-  .proj-placeholder-grid{grid-template-columns:1fr;}
-}
-
-
-/* ── SOFT SKILLS ── */
-#softskills {
-  background: var(--dark);
-  border-top: 1px solid var(--card-border);
-}
-
-.ss-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--card-border);
-  margin-top: 3rem;
-}
-
-.ss-card {
-  background: var(--card-bg);
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.2rem;
-  transition: background .3s;
-  position: relative;
-  overflow: hidden;
-}
-.ss-card:hover { background: rgba(0,180,166,.04); }
-.ss-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--teal);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .4s;
-}
-.ss-card:nth-child(2n)::after { background: var(--amber); }
-.ss-card:hover::after { transform: scaleX(1); }
-
-.ss-icon {
-  width: 90px;
-  height: 90px;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.ss-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--teal);
-  line-height: 1.2;
-}
-.ss-card:nth-child(2n) .ss-label { color: var(--amber); }
-
-.ss-desc {
-  font-size: .75rem;
-  color: var(--light);
-  line-height: 1.6;
-  max-width: 22ch;
-}
-
-/* ── ICON ANIMATIONS ── */
-
-/* 1. Créativité, lightbulb glow + rays */
-@keyframes bulb-glow {
-  0%,100% { opacity:.5; transform: scale(1); }
-  50%      { opacity:1;  transform: scale(1.08); }
-}
-@keyframes ray-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes spark {
-  0%,100% { opacity:0; transform: scale(0) translate(0,0); }
-  50%      { opacity:1; transform: scale(1) translate(var(--tx), var(--ty)); }
-}
-
-/* 2. Autonomie, compass */
-@keyframes needle-spin {
-  0%,100% { transform: rotate(-20deg); }
-  40%     { transform: rotate(200deg); }
-  55%     { transform: rotate(185deg); }
-  70%     { transform: rotate(190deg); }
-}
-
-/* 3. Analyse, bars building */
-@keyframes bar1 { 0%,10%{height:0} 40%,100%{height:36px} }
-@keyframes bar2 { 0%,20%{height:0} 55%,100%{height:55px} }
-@keyframes bar3 { 0%,30%{height:0} 70%,100%{height:28px} }
-@keyframes bar4 { 0%,40%{height:0} 85%,100%{height:45px} }
-@keyframes line-draw {
-  from { stroke-dashoffset: 120; }
-  to   { stroke-dashoffset: 0; }
-}
-
-/* 4. Stratégie, path tracing */
-@keyframes dot-move {
-  0%   { offset-distance: 0%; }
-  100% { offset-distance: 100%; }
-}
-@keyframes queen-bob {
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-5px); }
-}
-
-/* 5. Adaptabilité, morph */
-@keyframes morph {
-  0%,100% { d: path("M45 15 Q75 15 75 45 Q75 75 45 75 Q15 75 15 45 Q15 15 45 15"); border-radius: 50%; }
-  25%     { d: path("M20 20 Q70 15 75 45 Q80 75 50 78 Q20 80 15 50 Q10 20 20 20"); }
-  50%     { d: path("M45 10 Q80 20 80 50 Q80 80 50 78 Q20 75 15 45 Q10 20 45 10"); }
-  75%     { d: path("M25 18 Q75 10 78 50 Q80 80 45 80 Q15 78 12 48 Q10 18 25 18"); }
-}
-@keyframes blob-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* 6. Équipe, nodes pulse + connect */
-@keyframes node-pulse {
-  0%,100% { r: 6; opacity:.7; }
-  50%     { r: 9; opacity:1; }
-}
-@keyframes link-flash {
-  0%,100% { opacity:.2; }
-  50%     { opacity:.8; }
-}
-@keyframes center-pulse {
-  0%,100% { r: 9; }
-  50%     { r: 12; }
-}
-
-/* ── COMPÉTENCES PROFONDES ── */
-.deep-skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .6rem;
-  margin-top: 1.8rem;
-}
-.deep-skill-item {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-left: 3px solid var(--teal);
-  padding: 1rem 1.2rem;
-  transition: border-color .3s, background .3s;
-}
-.deep-skill-item:nth-child(even) { border-left-color: var(--amber); }
-.deep-skill-item:hover { background: rgba(0,180,166,.04); }
-.deep-skill-item:nth-child(even):hover { background: rgba(212,134,58,.04); }
-.dsi-title {
-  font-size: .82rem;
-  font-weight: 700;
-  color: var(--cream);
-  margin-bottom: .25rem;
-  line-height: 1.3;
-}
-.dsi-desc {
-  font-size: .7rem;
-  color: var(--light);
-  line-height: 1.5;
-}
-
-.deep-skills-label {
-  font-family: 'Space Mono', monospace;
-  font-size: .58rem;
-  color: var(--teal);
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  margin-top: 2.5rem;
-  margin-bottom: .6rem;
-  display: block;
-}
-
-/* ── OUTILS ── */
-#outils {
-  background: rgba(245,240,232,.02);
-  border-top: 1px solid var(--card-border);
-}
-
-.tools-categories {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-
-.tools-category-label {
-  font-family: 'Space Mono', monospace;
-  font-size: .58rem;
-  color: var(--light);
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  padding-bottom: .6rem;
-  border-bottom: 1px solid var(--card-border);
-}
-
-.tools-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .6rem;
-  align-items: center;
-}
-
-.tool-badge {
-  display: inline-flex;
-  align-items: center;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  padding: .65rem 1.3rem;
-  border-radius: 100px;
-  transition: all .3s;
-  cursor: default;
-  opacity: 0;
-  transform: translateY(10px);
-}
-.tool-badge.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .5s ease, transform .5s ease, background .3s, border-color .3s;
-}
-.tool-badge:hover {
-  background: rgba(0,180,166,.08);
-  border-color: rgba(0,180,166,.35);
-}
-.tool-badge.ai-tool {
-  border-color: rgba(0,180,166,.2);
-}
-.tool-badge.ai-tool:hover {
-  background: rgba(0,180,166,.1);
-}
-.tool-logo {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.tool-name {
-  font-family: 'Space Mono', monospace;
-  font-size: .68rem;
-  color: var(--cream);
-  letter-spacing: .08em;
-  white-space: nowrap;
-}
-.tool-badge.ai-tool .tool-name { color: var(--teal); }
-
-/* AI tools special highlight */
-.tool-badge.ai-tool {
-  border-color: rgba(0,180,166,.25);
-}
-.tool-badge.ai-tool .tool-name { color: var(--teal); }
-
-
-/* ── POSTES ── */
-#postes {
-  background: var(--dark);
-  border-top: 1px solid var(--card-border);
-}
-
-.postes-intro {
-  font-size: .97rem;
-  line-height: 1.85;
-  color: rgba(245,240,232,.6);
-  max-width: 60ch;
-  margin-bottom: 3rem;
-}
-
-.postes-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--card-border);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.poste-card {
-  background: var(--card-bg);
-  padding: 1.8rem;
-  position: relative;
-  overflow: hidden;
-  transition: background .3s;
-}
-.poste-card:hover { background: rgba(0,180,166,.04); }
-.poste-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-}
-.poste-card.tier-1::before { background: var(--teal); }
-.poste-card.tier-2::before { background: var(--amber); }
-.poste-card.tier-3::before { background: rgba(245,240,232,.3); }
-
-.poste-tier {
-  font-family: 'Space Mono', monospace;
-  font-size: .52rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  margin-bottom: .6rem;
-  display: block;
-}
-.poste-card.tier-1 .poste-tier { color: var(--teal); }
-.poste-card.tier-2 .poste-tier { color: var(--amber); }
-.poste-card.tier-3 .poste-tier { color: var(--light); }
-
-.poste-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--cream);
-  margin-bottom: .5rem;
-  line-height: 1.25;
-}
-
-.poste-desc {
-  font-size: .72rem;
-  color: var(--light);
-  line-height: 1.6;
-  margin-bottom: .8rem;
-}
-
-.poste-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .3rem;
-}
-.poste-tag {
-  font-family: 'Space Mono', monospace;
-  font-size: .5rem;
-  padding: .18rem .5rem;
-  border-radius: 100px;
-  letter-spacing: .06em;
-}
-.poste-card.tier-1 .poste-tag {
-  background: rgba(0,180,166,.12);
-  color: var(--teal);
-  border: 1px solid rgba(0,180,166,.2);
-}
-.poste-card.tier-2 .poste-tag {
-  background: rgba(212,134,58,.1);
-  color: var(--amber);
-  border: 1px solid rgba(212,134,58,.2);
-}
-.poste-card.tier-3 .poste-tag {
-  background: rgba(245,240,232,.05);
-  color: var(--light);
-  border: 1px solid var(--card-border);
-}
-
-.postes-note {
-  margin-top: 2.5rem;
-  padding: 1.5rem 2rem;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-left: 3px solid var(--teal);
-  font-size: .82rem;
-  color: rgba(245,240,232,.65);
-  line-height: 1.7;
-}
-.postes-note strong { color: var(--teal); }
-
-
-/* ── GLOBAL RADIUS ── */
-.skill-option { border-radius: 10px; }
-.acc-item { border-radius: 10px; overflow: hidden; }
-.whatido-card { border-radius: 12px; transition: transform .3s, box-shadow .3s, background .3s; }
-.whatido-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,.25); }
-.ss-card { border-radius: 0; }
-.tool-badge { border-radius: 10px; }
-.deep-skill-item { border-radius: 8px; }
-.poste-card { border-radius: 0; transition: background .3s, transform .3s; }
-.stats-grid { border-radius: 16px; overflow: hidden; }
-.formation-card { border-radius: 12px; }
-
-
-
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Portfolio de Gloria Tumsifu Kasunzu : stratégie, communication, design et solutions numériques. Projets et réalisations à Kinshasa.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gloria Tumsifu Kasunzu — Portfolio">
+  <meta property="og:description" content="Stratégie, communication, design et solutions numériques. Une sélection de projets et de créations à Kinshasa.">
+  <meta property="og:url" content="https://zeph-ria.github.io/Portfolio/">
+  <meta property="og:image" content="https://zeph-ria.github.io/Portfolio/assets/share-preview.jpg">
+  <meta property="og:image:width" content="1348">
+  <meta property="og:image:height" content="926">
+  <meta property="og:image:alt" content="Gloria Tumsifu Kasunzu — Portfolio">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://zeph-ria.github.io/Portfolio/">
+  <meta name="color-scheme" content="light">
+  <title>Gloria Tumsifu Kasunzu — Portfolio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/Wremena-Regular.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">GTK · Portfolio</div>
-  <div class="lang-switcher">
-    <button class="lang-btn" id="langBtn">FR &#9662;</button>
-    <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-option active" data-lang="fr">Français</button>
-      <button class="lang-option" data-lang="en">English</button>
-      <button class="lang-option" data-lang="es">Español</button>
-    </div>
-  </div>
-  <a href="https://wa.me/243815128665" class="nav-cta" id="i-nav-cta" target="_blank" rel="noopener">Me contacter</a>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-
-  <div class="hero-left">
-    <div class="hero-eyebrow" id="i-hero-eyebrow">Kinshasa, RDC · Disponible en remote</div>
-    <h1 class="hero-name">
-      Gloria<br>
-      <em>Tumsifu</em><br>
-      Kasunzu
-    </h1>
-    <div class="hero-role" id="i-hero-role">Marketing Digital & Performance</div>
-    <p class="hero-desc" id="i-hero-desc">
-      Stratégie de contenu, pilotage de campagnes et relation client. Une expérience transversale entre groupe industriel, entreprise et freelance, pour des résultats concrets avec des budgets maîtrisés.
-    </p>
-    <div class="hero-cta">
-      <a href="#projets" class="btn-primary" id="i-btn-projects">Voir mes projets</a>
-      <a href="#experience" class="btn-outline" id="i-btn-exp">Mon expérience →</a>
-    </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-num">100K</span>
-        <div class="stat-lbl" id="i-stat1-lbl">Impressions campagne vidéo Facebook</div>
-        <div class="stat-ctx" id="i-stat1-ctx">Budget total · 25 $</div>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="nav-brand" href="#accueil" aria-label="Gloria — accueil">GTK.</a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#realisations" data-fr="Réalisations" data-en="Work">Réalisations</a>
+        <a href="#galerie" data-fr="Galerie" data-en="Gallery">Galerie</a>
+        <a href="#sites" data-fr="Sites web" data-en="Websites">Sites web</a>
+        <a href="#apropos" data-fr="À propos" data-en="About">À propos</a>
+        <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <select class="language-select" id="language-select" aria-label="Choisir la langue"><option value="fr" lang="fr">FR</option><option value="en" lang="en">EN</option><option value="es" lang="es">ES</option></select>
+        <a class="social-link" href="https://www.linkedin.com/in/gloria-zephrine-kasunzu/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+        <a class="mail-link" href="#contact" aria-label="Contact"><svg width="23" height="19" viewBox="0 0 23 19" fill="none" aria-hidden="true"><path d="M1.5 2.5h20v14h-20zM2 3l9.5 7L21 3" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="stat-card">
-        <span class="stat-num">915</span>
-        <div class="stat-lbl" id="i-stat2-lbl">Abonnés LinkedIn générés from scratch</div>
-        <div class="stat-ctx" id="i-stat2-ctx">100 % organique · 10 mois</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">140</span>
-        <div class="stat-lbl" id="i-stat3-lbl">Conversations commerciales qualifiées</div>
-        <div class="stat-ctx" id="i-stat3-ctx">Budget total · 15 $</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">+1520%</span>
-        <div class="stat-lbl" id="i-stat4-lbl">Croissance communauté en 1 mois</div>
-        <div class="stat-ctx" id="i-stat4-ctx">2 $/jour · 7 jours</div>
-      </div>
-    </div>
-  </div>
-</div>
+    </header>
 
-<!-- BAND -->
-<div class="band">
-  <div class="band-item">
-    <span class="band-num">15 300</span>
-    <div class="band-lbl" id="i-band1">Impressions organiques Google</div>
-  </div>
-  <div class="band-item">
-    <span class="band-num">Pos. 5</span>
-    <div class="band-lbl" id="i-band2">Position moyenne Google en 10 mois</div>
-  </div>
-  <div class="band-item">
-    <span class="band-num">19 854</span>
-    <div class="band-lbl" id="i-band3">ThruPlays vidéo Facebook</div>
-  </div>
-  <div class="band-item">
-    <span class="band-num">1 000+</span>
-    <div class="band-lbl" id="i-band4">Prospects gérés via CRM</div>
-  </div>
-</div>
+    <main id="main">
+      <section class="hero" id="accueil" aria-labelledby="hero-title">
+        <div class="hero-kicker">
+          <span data-fr="Portfolio personnel · Kinshasa, RDC" data-en="Personal portfolio · Kinshasa, DR Congo">Portfolio personnel · Kinshasa, RDC</span>
+          <span>2026 / —</span>
+        </div>
+        <h1 id="hero-title"><span>GLORIA TUMSIFU</span><span>KASUNZU<span class="title-period">.</span></span></h1>
+        <div class="hero-bottom">
+          <p data-fr="Stratégie. Créativité. Innovation." data-en="Strategy. Creativity. Innovation.">Stratégie. Créativité. Innovation.</p>
+          <a href="#realisations" data-fr="Découvrir mes réalisations" data-en="Explore my work">Découvrir mes réalisations</a>
+        </div>
+      </section>
 
-<!-- PROFIL -->
-<section id="profil">
-  <div class="sec-label" id="i-label-profil">01, Profil</div>
-  <h2 class="sec-title" id="i-profil-title">Qui suis-je &<br>ce que je maîtrise</h2>
+      <section class="feature" aria-label="Présentation">
+        <div class="feature-text">
+          <span class="eyebrow eyebrow-light" data-fr="La rencontre des idées et de l'exécution" data-en="Where ideas meet execution">La rencontre des idées et de l'exécution</span>
+          <h2 data-fr="Je donne une forme <em>concrète</em> aux idées." data-en="I give ideas a <em>tangible</em> form.">Je donne une forme <em>concrète</em> aux idées.</h2>
+          <p data-fr="Communication, design, expériences numériques et systèmes intelligents : j'aime les projets qui exigent de penser autant que de créer." data-en="Communication, design, digital experiences and intelligent systems: I love projects that demand as much thought as creativity.">Communication, design, expériences numériques et systèmes intelligents : j'aime les projets qui exigent de penser autant que de créer.</p>
+        </div>
+        <div class="feature-art">
+          <a class="feature-piece feature-piece-back" href="#galerie"><img src="assets/thumbs/agorafrik-charte.webp" width="900" height="506" alt="Couverture orange de la charte graphique Agorafrik" decoding="async" data-full-src="assets/agorafrik-charte.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></a>
+          <a class="feature-piece feature-piece-front" href="#realisations"><img src="assets/thumbs/bloom-publication.webp" width="720" height="900" alt="Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées" decoding="async" data-full-src="assets/bloom-publication.webp" data-full-width="1080" data-full-height="1350" data-asset-quality="canva-export"></a>
+          <span class="art-script" aria-hidden="true">idées & matière</span>
+        </div>
+        <div class="feature-footer"><span>01 — 06</span><span>GLORIA / PORTFOLIO</span></div>
+      </section>
 
-  <div class="profil-grid">
-    <div>
-      <div class="profil-text">
-        <p id="i-profil-p1">Spécialiste en marketing digital, je conjugue vision stratégique et exécution opérationnelle sur l'ensemble de la chaîne de valeur marketing, de la conception d'une identité visuelle au reporting de campagne Meta Ads.</p>
-        <p id="i-profil-p2">Mon parcours entre groupe industriel (TEXAF), entreprise et freelance m'a permis de développer une adaptabilité rare et une capacité à produire des résultats concrets, y compris avec des budgets très contraints.</p>
-        <p id="i-profil-p3">Je m’intéresse profondément aux usages de l'IA dans le marketing, à l'optimisation SEO/AEO pour les moteurs nouvelle génération, et au développement du marketing digital en Afrique francophone.</p>
-      </div>
+      <section class="work-section section-pad" id="realisations" aria-labelledby="work-title">
+        <div class="section-topline"><span data-fr="Travaux sélectionnés" data-en="Selected work">Travaux sélectionnés</span><span>2024 — 2026</span></div>
+        <h2 class="display-title" id="work-title" data-fr="LE TRAVAIL<br><em>PARLE.</em>" data-en="THE WORK<br><em>SPEAKS.</em>">LE TRAVAIL<br><em>PARLE.</em></h2>
+        <p class="section-lede" data-fr="Une sélection de projets où se croisent stratégie, création et conception de solutions. Chaque réalisation indique clairement mon rôle et son état d'avancement." data-en="A selection of projects bringing together strategy, creation and solution design. Each project makes my role and its stage clear.">Une sélection de projets où se croisent stratégie, création et conception de solutions. Chaque réalisation indique clairement mon rôle et son état d'avancement.</p>
+        <div class="filters" role="group" aria-label="Filtrer les projets">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true" data-fr="Tout voir" data-en="All work">Tout voir</button>
+          <button class="filter" type="button" data-filter="communication" aria-pressed="false" data-fr="Communication" data-en="Communication">Communication</button>
+          <button class="filter" type="button" data-filter="design" aria-pressed="false">Design</button>
+          <button class="filter" type="button" data-filter="digital" aria-pressed="false" data-fr="Produits & digital" data-en="Products & digital">Produits & digital</button>
+        </div>
+        <p class="filter-status sr-only" id="project-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="project-grid" id="project-grid">
+          <article class="project-card" data-category="communication design">
+            <div class="project-visual visual-carrigres"><span class="visual-number">01</span><img class="real-artwork artwork-landscape" src="assets/thumbs/carrigres-brochure.webp" alt="Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle" width="900" height="424" decoding="async" loading="lazy" data-full-src="assets/carrigres-brochure.webp" data-full-width="2381" data-full-height="1122" data-asset-quality="canva-export"><span class="visual-caption">BROCHURE / COMMUNICATION</span></div>
+            <div class="project-details"><div><h3>Carrigrès</h3><p data-fr="Communication digitale, refonte web, campagnes et visibilité." data-en="Digital communications, website overhaul, campaigns and visibility.">Communication digitale, refonte web, campagnes et visibilité.</p></div><span class="project-year">2024–26</span></div>
+            <div class="project-proof"><span>15 300 impressions SEO</span><span>0 → 915 LinkedIn</span><a href="https://www.canva.com/design/DAGeqT9Hvco/view" target="_blank" rel="noopener noreferrer" data-fr="Consulter la brochure" data-en="View brochure">Consulter la brochure</a></div>
+            <details class="case-study"><summary data-fr="Dans les coulisses du projet" data-en="Behind the project" data-es="Detrás del proyecto">Dans les coulisses du projet</summary><dl>
+              <div><dt data-i18n="context">Le contexte</dt><dd data-fr="Présenter une activité industrielle et rendre son offre plus lisible, du web aux supports imprimés." data-en="Present an industrial business and make its offering clearer, across web and print." data-es="Presentar una actividad industrial y hacer más clara su oferta, tanto en la web como en los materiales impresos.">Présenter une activité industrielle et rendre son offre plus lisible, du web aux supports imprimés.</dd></div>
+              <div><dt data-i18n="role">Mon rôle</dt><dd data-fr="Communication digitale, refonte web et création de supports de marque." data-en="Digital communication, website redesign and brand materials." data-es="Comunicación digital, rediseño web y materiales de marca.">Communication digitale, refonte web et création de supports de marque.</dd></div>
+              <div><dt data-i18n="deliverables">Les livrables</dt><dd data-fr="Brochure, charte graphique et quatre formats de calendrier : mural, table A5, triptyque et sous-main. Tous sont visibles dans la galerie." data-en="Brochure, brand guidelines and four calendar formats: wall, A5 desk, three-panel and desk pad. All can be viewed in the gallery." data-es="Folleto, manual de identidad y cuatro formatos de calendario: mural, de mesa A5, tríptico y de escritorio. Todos se pueden ver en la galería.">Brochure, charte graphique et quatre formats de calendrier : mural, table A5, triptyque et sous-main. Tous sont visibles dans la galerie.</dd></div>
+            </dl></details>
+          </article>
+          <article class="project-card" data-category="communication design">
+            <div class="project-visual visual-bloom"><span class="visual-number">02</span><img class="real-artwork artwork-portrait" src="assets/thumbs/bloom-publication.webp" alt="Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées" width="720" height="900" decoding="async" loading="lazy" data-full-src="assets/bloom-publication.webp" data-full-width="1080" data-full-height="1350" data-asset-quality="canva-export"><span class="visual-caption">CRÉATION ÉDITORIALE / SOCIAL MEDIA</span></div>
+            <div class="project-details"><div><h3>Bloom Atelier 243</h3><p data-fr="Direction visuelle et création éditoriale pour une marque de roses stabilisées." data-en="Visual direction and editorial creation for a preserved-rose brand.">Direction visuelle et création éditoriale pour une marque de roses stabilisées.</p><a class="case-link" href="https://www.canva.com/design/DAHXR2GjJVc/view" target="_blank" rel="noopener noreferrer" data-fr="Voir les publications" data-en="View the posts">Voir les publications</a></div><span class="project-year">2026</span></div>
+          </article>
+          <article class="project-card" data-category="digital design">
+            <div class="project-visual visual-os"><span class="visual-number">03</span><div class="os-motif"><span>G</span><div><b>GLORIA OS</b><small>WORK. CLEARLY.</small></div></div><span class="visual-caption">PRODUCT DESIGN / OUTIL INTERNE</span></div>
+            <div class="project-details"><div><h3>Gloria OS</h3><p data-fr="Cockpit de gestion multi-projets, clients et opérations. Produit en développement." data-en="Multi-project, client and operations management cockpit. In development.">Cockpit de gestion multi-projets, clients et opérations. Produit en développement.</p></div><span class="project-year">2026</span></div>
+          </article>
+          <article class="project-card" data-category="digital">
+            <div class="project-visual visual-quoakoo"><span class="visual-number">04</span><span class="quoakoo-wordmark">quoakoo<span>✳</span></span><span class="visual-caption">AGENTS IA / PRODUIT EN DÉVELOPPEMENT</span></div>
+            <div class="project-details"><div><h3>Quoakoo</h3><p data-fr="Plateforme d'agents IA spécialisés, conçue autour d'objectifs mesurables." data-en="Specialized AI agents platform designed around measurable goals.">Plateforme d'agents IA spécialisés, conçue autour d'objectifs mesurables.</p></div><span class="project-year">2026</span></div>
+          </article>
+          <article class="project-card" data-category="communication design">
+            <div class="project-visual visual-anniecks"><span class="visual-number">05</span><img class="real-artwork artwork-portrait" src="assets/thumbs/anniecks-campagne.webp" alt="Composition photographique Annieck's Business montrant des t-shirts colorés" width="720" height="900" decoding="async" loading="lazy" data-full-src="assets/anniecks-campagne.webp" data-full-width="1080" data-full-height="1350" data-asset-quality="canva-export"><span class="visual-caption">MODE / E-COMMERCE / CONTENU</span></div>
+            <div class="project-details"><div><h3>Annieck's Business</h3><p data-fr="Contenus de marque, campagnes et parcours e-commerce." data-en="Brand content, campaigns and e-commerce journey.">Contenus de marque, campagnes et parcours e-commerce.</p><a class="case-link" href="https://www.canva.com/design/DAHZEBxh0sA/view" target="_blank" rel="noopener noreferrer" data-fr="Voir les créations" data-en="View the designs">Voir les créations</a></div><span class="project-year">2026</span></div>
+          </article>
+          <article class="project-card" data-category="digital communication">
+            <div class="project-visual visual-masdia"><span class="visual-number">06</span><span class="masdia-wordmark">MASDIA<span>.</span></span><span class="visual-caption">STRATÉGIE / AUTOMATISATION / DIGITAL</span></div>
+            <div class="project-details"><div><h3>MASDIA</h3><p data-fr="Agence indépendante : communication, marketing, web et automatisation." data-en="Independent studio: communication, marketing, web and automation.">Agence indépendante : communication, marketing, web et automatisation.</p></div><span class="project-year">2026</span></div>
+          </article>
+        </div>
+        <div class="archive-heading">
+          <h3 data-fr="AUTRES<br><em>CRÉATIONS.</em>" data-en="MORE<br><em>CREATIONS.</em>">AUTRES<br><em>CRÉATIONS.</em></h3>
+          <p data-fr="Édition, identité et supports de marque : quelques autres pièces tirées de mes archives de création." data-en="Editorial, identity and brand materials: more selected pieces from my design archive.">Édition, identité et supports de marque : quelques autres pièces tirées de mes archives de création.</p>
+        </div>
+        <div class="archive-grid">
+          <a class="archive-item" href="https://www.canva.com/design/DAGv-S68mys/view" target="_blank" rel="noopener noreferrer">
+            <div class="archive-image"><img src="assets/thumbs/revendre-lookbook.webp" alt="Couverture de lookbook mode Re-vendre" width="636" height="900" decoding="async" loading="lazy" data-full-src="assets/revendre-lookbook.webp" data-full-width="1414" data-full-height="2000" data-asset-quality="canva-export"></div>
+            <span>Re-vendre — Lookbook </span>
+          </a>
+          <a class="archive-item" href="https://www.canva.com/design/DAG6QM73mFc/view" target="_blank" rel="noopener noreferrer">
+            <div class="archive-image"><img src="assets/thumbs/utex-identite.webp" alt="Support d'identité UTEX, une communauté unique" width="900" height="635" decoding="async" loading="lazy" data-full-src="assets/utex-identite.webp" data-full-width="2000" data-full-height="1410" data-asset-quality="canva-export"></div>
+            <span>UTEX — Identité </span>
+          </a>
+        </div>
+        <p class="portfolio-note" data-fr="Les projets numériques en développement sont représentés par des compositions éditoriales, et non des captures d'interface. Les documents consultables restent la propriété de leurs auteurs et commanditaires respectifs." data-en="Digital products in development use editorial compositions, not interface screenshots. Viewable documents remain the property of their respective authors and clients.">Les projets numériques en développement sont représentés par des compositions éditoriales, et non des captures d'interface. Les documents consultables restent la propriété de leurs auteurs et commanditaires respectifs.</p>
+      </section>
 
-      <span class="deep-skills-label" id="i-dsi-label">Ce que je fais en plus de la fiche de poste</span>
-      <div class="deep-skills-grid">
-        <div class="deep-skill-item">
-          <div class="dsi-title">Budget optimization</div>
-          <div class="dsi-desc">Produire des résultats massifs avec des ressources limitées, 100 000 impressions pour 25 $.</div>
+      <section class="design-library section-pad" id="galerie" aria-labelledby="gallery-title">
+        <div class="section-topline"><span data-fr="Archives de création" data-en="Creative archive">Archives de création</span><span>PRINT / BRANDING / DIGITAL</span></div>
+        <h2 class="display-title gallery-display" id="gallery-title" data-fr="ENCORE<br><em>PLUS DE DESIGN.</em>" data-en="MORE<br><em>DESIGN WORK.</em>">ENCORE<br><em>PLUS DE DESIGN.</em></h2>
+        <p class="section-lede" data-fr="Des identités visuelles aux supports imprimés, des campagnes aux exercices de création : chaque pièce a son langage, son contexte et sa fonction." data-en="From identities to print materials, campaigns to creative exercises: each piece has its own visual language and purpose.">Des identités visuelles aux supports imprimés, des campagnes aux exercices de création : chaque pièce a son langage, son contexte et sa fonction.</p>
+        <div class="design-filters" role="group" aria-label="Filtrer la galerie">
+          <button type="button" class="design-filter active" data-design-filter="all" aria-pressed="true" data-fr="Tous les visuels" data-en="All designs">Tous les visuels</button>
+          <button type="button" class="design-filter" data-design-filter="print" aria-pressed="false" data-fr="Édition & print" data-en="Editorial & print">Édition & print</button>
+          <button type="button" class="design-filter" data-design-filter="branding" aria-pressed="false" data-fr="Identités" data-en="Identities">Identités</button>
+          <button type="button" class="design-filter" data-design-filter="digital" aria-pressed="false" data-fr="Communication" data-en="Communication">Communication</button>
+          <button type="button" class="design-filter" data-design-filter="academy" aria-pressed="false" data-fr="Kadea Academy" data-en="Kadea Academy">Kadea Academy</button>
         </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">Copywriting stratégique</div>
-          <div class="dsi-desc">Écrire pour convaincre : chaque mot est choisi, chaque phrase a une fonction précise.</div>
+        <p class="filter-status" id="design-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <h3 class="gallery-series" data-fr="Carrigrès — les quatre calendriers" data-en="Carrigrès — four calendar formats">Carrigrès — les quatre calendriers</h3>
+        <div class="design-grid" id="design-grid">
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAG6SKNUtdc/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/carrigres-calendrier-mural.webp" alt="Calendrier mural Carrigrès 2026 avec camion et grille annuelle" width="635" height="900" decoding="async" loading="lazy" data-full-src="assets/carrigres-calendrier-mural.webp" data-full-width="1815" data-full-height="2571" data-asset-quality="canva-export"></div>
+            <span><b>Calendrier mural</b><small>Carrigrès · 2026</small></span>
+          </a>
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAG6SNqAtV8/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/carrigres-calendrier-table.webp" alt="Calendrier de table Carrigrès 2026, identité bleu et jaune" width="900" height="622" decoding="async" loading="lazy" data-full-src="assets/carrigres-calendrier-table.webp" data-full-width="2000" data-full-height="1382" data-asset-quality="canva-export"></div>
+            <span><b>Calendrier de table A5</b><small>Carrigrès · 2026</small></span>
+          </a>
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAG6SAkW8x4/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/carrigres-calendrier-triptyque.webp" alt="Calendrier triptyque pliable Carrigrès 2026" width="365" height="900" decoding="async" loading="lazy" data-full-src="assets/carrigres-calendrier-triptyque.webp" data-full-width="1228" data-full-height="3024" data-asset-quality="canva-export"></div>
+            <span><b>Calendrier triptyque</b><small>Carrigrès · 2026</small></span>
+          </a>
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAG6SM-rZg0/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/carrigres-calendrier-sous-main.webp" alt="Sous-main de bureau Carrigrès avec calendrier 2026" width="900" height="600" decoding="async" loading="lazy" data-full-src="assets/carrigres-calendrier-sous-main.webp" data-full-width="2268" data-full-height="1512" data-asset-quality="canva-export"></div>
+            <span><b>Sous-main de bureau</b><small>Carrigrès · 2026</small></span>
+          </a>
         </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">Gestion de crise digitale</div>
-          <div class="dsi-desc">Gérer les tentatives de piratage, les bad buzz et les problèmes techniques sous pression.</div>
+        <h3 class="gallery-series gallery-series-secondary" data-fr="Identités, campagnes & exercices" data-en="Identities, campaigns & exercises">Identités, campagnes & exercices</h3>
+        <div class="design-grid">
+          <a class="design-tile" data-design-category="branding" href="https://www.canva.com/design/DAGY8DbdOfk/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/carrigres-charte.webp" alt="Couverture de la charte graphique Carrigrès" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/carrigres-charte.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Charte graphique</b><small>Carrigrès</small></span>
+          </a>
+          <a class="design-tile" data-design-category="branding" href="https://www.canva.com/design/DAGLZB_FIOI/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/agorafrik-charte.webp" alt="Couverture orange de la charte graphique Agorafrik" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/agorafrik-charte.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Charte graphique Agorafrik</b><small>Identité de marque</small></span>
+          </a>
+          <a class="design-tile" data-design-category="branding digital" href="https://www.canva.com/design/DAGafR69dyw/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/agorafrik-visuels.webp" alt="Couverture des créations de communication Agorafrik, rouge profond et orange" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/agorafrik-visuels.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Agorafrik — visuels</b><small>Direction de communication</small></span>
+          </a>
+          <a class="design-tile" data-design-category="digital" href="https://www.canva.com/design/DAGazb6JFFc/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/agorafrik-publication.webp" alt="Publication Agorafrik présentant une plateforme dédiée aux talents africains" width="720" height="900" decoding="async" loading="lazy" data-full-src="assets/agorafrik-publication.webp" data-full-width="1080" data-full-height="1350" data-asset-quality="canva-export"></div>
+            <span><b>Agorafrik — campagne</b><small>Social media</small></span>
+          </a>
+          <a class="design-tile" data-design-category="digital" href="https://www.canva.com/design/DAGN7a7mBuA/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/ardhi-organic-strategie.webp" alt="Présentation de stratégie digitale Ardhi Organic avec couleurs orange et vert" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/ardhi-organic-strategie.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Ardhi Organic</b><small>Stratégie de notoriété</small></span>
+          </a>
+          <a class="design-tile" data-design-category="academy" href="https://www.canva.com/design/DAGMPtVOboA/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/kadea-storytelling.webp" alt="Présentation d'exercice Kadea Academy sur le storytelling" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/kadea-storytelling.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Storytelling</b><small>Projet Kadea Academy</small></span>
+          </a>
+          <a class="design-tile" data-design-category="academy" href="https://www.canva.com/design/DAGJv1dVEEU/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/kadea-growth-hacking.webp" alt="Présentation Kadea Academy sur le growth hacking" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/kadea-growth-hacking.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Growth hacking</b><small>Projet Kadea Academy</small></span>
+          </a>
+          <a class="design-tile" data-design-category="academy" href="https://www.canva.com/design/DAGOTeAnLi0/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/kadea-affiche.webp" alt="Affiche de communication d'une formation Kadea Academy" width="636" height="900" decoding="async" loading="lazy" data-full-src="assets/kadea-affiche.webp" data-full-width="1414" data-full-height="2000" data-asset-quality="canva-export"></div>
+            <span><b>Affiche de formation</b><small>Exercice Kadea Academy</small></span>
+          </a>
+          <a class="design-tile" data-design-category="digital" href="https://www.canva.com/design/DAGf9aiAXCg/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/revendre-carte-cadeau.webp" alt="Carte cadeau Re-vendre avec typographie orange et ruban rouge" width="900" height="638" decoding="async" loading="lazy" data-full-src="assets/revendre-carte-cadeau.webp" data-full-width="1748" data-full-height="1240" data-asset-quality="canva-export"></div>
+            <span><b>Carte cadeau</b><small>Re-vendre</small></span>
+          </a>
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAGjq8ows78/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/atelier-prospectus.webp" alt="Prospectus de l'Atelier, salon de manucure et pédicure" width="375" height="533" decoding="async" loading="lazy" data-asset-quality="canva-preview"></div>
+            <span><b>Prospectus A5</b><small>L'Atelier</small></span>
+          </a>
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAGgUM90OG8/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/atelier-rollup.webp" alt="Roll-up vertical L'Atelier, prestations de manucure et pédicure" width="264" height="755" decoding="async" loading="lazy" data-asset-quality="canva-preview"></div>
+            <span><b>Roll-up vitrine</b><small>L'Atelier</small></span>
+          </a>
+          <a class="design-tile" data-design-category="digital print" href="https://www.canva.com/design/DAG1BKvRHUw/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/utex-halloween.webp" alt="Affiche Halloween UTEX aux couleurs sombres" width="636" height="900" decoding="async" loading="lazy" data-full-src="assets/utex-halloween.png" data-full-width="1414" data-full-height="2000" data-asset-quality="canva-export"></div>
+            <span><b>Campagne Halloween</b><small>UTEX</small></span>
+          </a>
+          <a class="design-tile" data-design-category="print" href="https://www.canva.com/design/DAGx6hlsUKI/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/utex-centenaire.webp" alt="Visuel de présentation centenaire TEXAF" width="636" height="900" decoding="async" loading="lazy" data-full-src="assets/utex-centenaire.webp" data-full-width="1414" data-full-height="2000" data-asset-quality="canva-export"></div>
+            <span><b>Centenaire TEXAF</b><small>UTEX / événementiel</small></span>
+          </a>
+          <a class="design-tile" data-design-category="branding" href="https://www.canva.com/design/DAGWf-5mlgI/view" target="_blank" rel="noopener noreferrer">
+            <div class="design-image"><img src="assets/thumbs/agorafrik-pitch.webp" alt="Page de conclusion du pitch deck Agorafrik, avec portrait artistique et motifs bordeaux et orange" width="900" height="506" decoding="async" loading="lazy" data-full-src="assets/agorafrik-pitch.webp" data-full-width="1920" data-full-height="1080" data-asset-quality="canva-export"></div>
+            <span><b>Pitch deck Agorafrik</b><small>Présentation de marque</small></span>
+          </a>
         </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">Coordination multi-équipes</div>
-          <div class="dsi-desc">Aligner prestataires, équipes internes et clients autour d'un même livrable, dans les délais.</div>
-        </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">IA appliquée au marketing</div>
-          <div class="dsi-desc">Utiliser Claude et ChatGPT comme de vrais outils de travail, prompting, itération, production.</div>
-        </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">Rédaction de projets stratégiques</div>
-          <div class="dsi-desc">Formaliser des visions complexes en documents actionnables : ESG, plans opérationnels, stratégies.</div>
-        </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">Conception de A à Z</div>
-          <div class="dsi-desc">Piloter un projet depuis l'idée jusqu'au livrable final, sans perdre le fil ni la qualité.</div>
-        </div>
-        <div class="deep-skill-item">
-          <div class="dsi-title">Analyse pipeline CRM</div>
-          <div class="dsi-desc">Lire, nettoyer et interpréter les données d'un CRM pour optimiser la conversion et le suivi.</div>
-        </div>
-      </div>
-    </div>
+        <details class="case-study gallery-case"><summary data-fr="Agorafrik — une identité déclinée" data-en="Agorafrik — an identity across formats" data-es="Agorafrik — una identidad en distintos formatos">Agorafrik — une identité déclinée</summary><dl>
+          <div><dt data-i18n="approach">Mon approche</dt><dd data-fr="Une même direction visuelle, du document de marque aux prises de parole digitales. Le bordeaux et l’orange relient les différents supports." data-en="One visual direction, from brand documents to digital communication. Burgundy and orange connect the different materials." data-es="Una misma dirección visual, desde los documentos de marca hasta la comunicación digital. El burdeos y el naranja conectan los distintos materiales.">Une même direction visuelle, du document de marque aux prises de parole digitales. Le bordeaux et l’orange relient les différents supports.</dd></div>
+          <div><dt data-i18n="deliverables">Les livrables</dt><dd data-fr="Charte graphique, visuels de communication, publication et présentation de marque. Les documents sources sont accessibles depuis chaque aperçu." data-en="Brand guidelines, communication visuals, a social post and a brand presentation. Source documents are linked from each preview." data-es="Manual de identidad, piezas de comunicación, una publicación y una presentación de marca. Los documentos originales están enlazados desde cada vista previa.">Charte graphique, visuels de communication, publication et présentation de marque. Les documents sources sont accessibles depuis chaque aperçu.</dd></div>
+        </dl></details>
+        <p class="portfolio-note" data-fr="Cliquez sur une création pour l’agrandir ou télécharger le visuel disponible. Les créations et les documents conservent leur langue d’origine." data-en="Select a design to enlarge it or download the available artwork. Designs and documents retain their original language." data-es="Selecciona un diseño para ampliarlo o descargar la imagen disponible. Los diseños y documentos conservan su idioma original.">Cliquez sur une création pour l’agrandir ou télécharger le visuel disponible. Les créations et les documents conservent leur langue d’origine.</p>
+      </section>
 
-    <div>
-      <div style="margin-bottom:1.4rem;padding-top:.5rem;">
-        <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--cream);display:block;margin-bottom:.3rem;" id="i-skills-title">Domaines de compétence</span>
-        <span style="font-family:'Space Mono',monospace;font-size:.55rem;color:var(--teal);letter-spacing:.2em;text-transform:uppercase;" id="i-skills-sub">Les 4 piliers de mon expertise</span>
-      </div>
-    <div class="skills-list">
-      <div class="skill-option">
-        <div class="skill-num">01</div>
-        <div class="skill-bar" style="background:linear-gradient(180deg,#00B4A6,#007A70);"></div>
-        <div class="skill-info">
-          <h4>Stratégie & Branding</h4>
-          <p>Marketing digital, identité visuelle, content marketing, social media, SEO / AEO / GEO</p>
+      <section class="websites-section section-pad" id="sites" aria-labelledby="websites-title">
+        <div class="section-topline"><span data-fr="Sites web & expériences digitales" data-en="Websites & digital experiences">Sites web & expériences digitales</span><span>WEB / UX / CMS</span></div>
+        <h2 class="display-title websites-title" id="websites-title" data-fr="DES IDÉES<br><em>EN LIGNE.</em>" data-en="IDEAS<br><em>ONLINE.</em>">DES IDÉES<br><em>EN LIGNE.</em></h2>
+        <p class="section-lede" data-fr="Des sites pensés pour répondre à un objectif réel : visibilité, clarté de l'offre et expérience de navigation." data-en="Websites built around real goals: visibility, clear offerings and a thoughtful browsing experience.">Des sites pensés pour répondre à un objectif réel : visibilité, clarté de l'offre et expérience de navigation.</p>
+        <div class="website-grid">
+          <article class="website-card">
+            <div class="browser-preview carrigres-browser" aria-label="Aperçu éditorial du site Carrigrès">
+              <div class="browser-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span>carrigres.com</span></div>
+              <div class="browser-content"><span class="browser-overline">CARRIGRÈS · GROUPE TEXAF</span><strong>Pour vos grands projets d'infra&shy;structure.</strong><span class="browser-label">MATÉRIAUX DE CONSTRUCTION · KINSHASA</span></div>
+            </div>
+            <div class="website-details"><div><h3>Carrigrès</h3><p data-fr="Refonte et optimisation du site WordPress, visibilité SEO et présentation de l'offre." data-en="WordPress redesign and optimization, SEO visibility and clearer service offering.">Refonte et optimisation du site WordPress, visibilité SEO et présentation de l'offre.</p></div><a href="https://www.carrigres.com/" target="_blank" rel="noopener noreferrer" data-fr="Visiter le site" data-en="Visit website">Visiter le site</a></div>
+          </article>
+          <article class="website-card">
+            <div class="browser-preview masdia-browser" aria-label="Composition éditoriale MASDIA, site en développement">
+              <div class="browser-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span>MASDIA / WEB</span><span>✳</span></div>
+              <div class="browser-content"><span class="browser-overline">COMMUNICATION · AUTOMATISATION · IA</span><strong>MASDIA<span>.</span></strong><span class="browser-label">SITE D'AGENCE EN ÉVOLUTION</span></div>
+            </div>
+            <div class="website-details"><div><h3>MASDIA</h3><p data-fr="Direction artistique et conception du site de mon agence. Projet en évolution." data-en="Art direction and website design for my agency. Work in progress.">Direction artistique et conception du site de mon agence. Projet en évolution.</p></div><span class="website-status" data-fr="En développement" data-en="In progress">En développement</span></div>
+          </article>
+          <article class="website-card" id="breathe-without-fear">
+            <div class="browser-preview breathe-browser" aria-label="Capture du site en ligne Breathe & Rise Without Fear">
+              <div class="browser-bar"><span class="browser-dots"><i></i><i></i><i></i></span><span>breathewithoutfear.org</span></div>
+              <img class="browser-screenshot" src="assets/breathe-without-fear-site.jpg" width="1348" height="926" loading="lazy" decoding="async" alt="Capture de la page d’accueil Breathe & Rise Without Fear, avec le portrait de Marie Desy et la présentation de son initiative">
+            </div>
+            <div class="website-details"><div><h3>Breathe & Rise Without Fear</h3><p data-fr="Conception du site de l’initiative de Marie Desy, dédiée à la sensibilisation aux violences faites aux femmes et à l’autonomie des jeunes mères en Irlande." data-en="Website design for Marie Desy’s initiative, raising awareness of violence against women and empowering young mothers in Ireland." data-es="Diseño del sitio de la iniciativa de Marie Desy, que sensibiliza sobre la violencia contra las mujeres y promueve la autonomía de madres jóvenes en Irlanda.">Conception du site de l’initiative de Marie Desy, dédiée à la sensibilisation aux violences faites aux femmes et à l’autonomie des jeunes mères en Irlande.</p></div><a href="https://breathewithoutfear.org/" target="_blank" rel="noopener noreferrer" data-fr="Visiter le site" data-en="Visit website" data-es="Visitar sitio">Visiter le site</a></div>
+          </article>
         </div>
-      </div>
-      <div class="skill-option">
-        <div class="skill-num">02</div>
-        <div class="skill-bar" style="background:linear-gradient(180deg,#D4863A,#A05820);"></div>
-        <div class="skill-info">
-          <h4>Performance & Acquisition</h4>
-          <p>Meta Ads, Google Ads, email marketing, reporting, analyse de performance</p>
-        </div>
-      </div>
-      <div class="skill-option">
-        <div class="skill-num">03</div>
-        <div class="skill-bar" style="background:linear-gradient(180deg,#C0254A,#8A1030);"></div>
-        <div class="skill-info">
-          <h4>CRM & Relation Client</h4>
-          <p>Qualification et suivi de prospects, gestion du parcours client, fiabilisation des données</p>
-        </div>
-      </div>
-      <div class="skill-option">
-        <div class="skill-num">04</div>
-        <div class="skill-bar" style="background:linear-gradient(180deg,#8A8A80,#4A4A45);"></div>
-        <div class="skill-info">
-          <h4>Création & Outils</h4>
-          <p>Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate</p>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
+        <p class="portfolio-note" data-fr="Breathe & Rise Without Fear est présenté par une capture du site en ligne. Les visuels Carrigrès et MASDIA sont des compositions éditoriales ; leurs liens et états d’avancement sont indiqués séparément." data-en="Breathe & Rise Without Fear is shown with a screenshot of the live website. The Carrigrès and MASDIA visuals are editorial compositions; their links and project status are shown separately." data-es="Breathe & Rise Without Fear se presenta con una captura del sitio en línea. Los visuales de Carrigrès y MASDIA son composiciones editoriales; sus enlaces y estados se indican por separado.">Breathe & Rise Without Fear est présenté par une capture du site en ligne. Les visuels Carrigrès et MASDIA sont des compositions éditoriales ; leurs liens et états d’avancement sont indiqués séparément.</p>
+      </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="sec-label" id="i-label-exp">02, Expérience</div>
-  <h2 class="sec-title" id="i-exp-title">Ce que je sais<br>faire concrètement</h2>
-
-  <p class="exp-intro">
-    Mon parcours couvre l'ensemble du spectre marketing : de la stratégie de marque à l'exécution opérationnelle, de la gestion de communauté au pilotage de campagnes d'acquisition, de la refonte de site à la conception de projets institutionnels.
-  </p>
-
-  <!-- WHAT I DO -->
-  <div class="whatido">
-    <div class="whatido-card">
-      <span class="icon">📣</span>
-      <h4>Campagnes & Acquisition</h4>
-      <p>Paramétrage, lancement et optimisation de campagnes Meta Ads et Google Ads. Reporting de performance et recommandations stratégiques. Résultats prouvés avec des micro-budgets.</p>
-    </div>
-    <div class="whatido-card">
-      <span class="icon">🔍</span>
-      <h4>SEO & Visibilité</h4>
-      <p>Optimisation on-page, stratégie de contenu SEO, configuration Rank Math, AEO pour moteurs IA, création de llms.txt. Position moyenne 5 sur Google en 10 mois sur un nouveau domaine.</p>
-    </div>
-    <div class="whatido-card">
-      <span class="icon">🎨</span>
-      <h4>Branding & Identité visuelle</h4>
-      <p>Conception complète d'identités visuelles : logo, charte graphique, supports institutionnels. Cohérence visuelle cross-canal, de Canva à Illustrator.</p>
-    </div>
-    <div class="whatido-card">
-      <span class="icon">🌐</span>
-      <h4>Web & CMS</h4>
-      <p>Création, refonte et maintenance de sites WordPress. Optimisation SEO technique, sécurisation, coordination des livrables avec les équipes.</p>
-    </div>
-    <div class="whatido-card">
-      <span class="icon">🤝</span>
-      <h4>CRM & Suivi client</h4>
-      <p>Gestion de portefeuilles de prospects, qualification des besoins, fiabilisation des données CRM, accompagnement jusqu'à la décision.</p>
-    </div>
-    <div class="whatido-card">
-      <span class="icon">📋</span>
-      <h4>Stratégie & Rédaction</h4>
-      <p>Conception de projets stratégiques de A à Z, rédaction de documents institutionnels (ESG, plans opérationnels), copywriting orienté conversion.</p>
-    </div>
-  </div>
-
-  <!-- ACCORDION -->
-  <div class="exp-accordion-title" id="i-acc-label">Détail des expériences</div>
-  <div class="acc-list">
-
-    <div class="acc-item open">
-      <div class="acc-header" onclick="toggleAcc(this.parentElement)">
-        <div class="acc-bar" style="background:linear-gradient(180deg,#00B4A6,#007A70);"></div>
-        <div class="acc-meta">
-          <h3 id="i-job1-title">Consultante en Marketing Digital & Communication</h3>
-          <div class="acc-sub">
-            <span class="acc-company" id="i-job1-co">Freelance</span>
-            <span class="acc-period">Fév. 2026 → Aujourd'hui</span>
+      <section class="about-section section-pad" id="apropos" aria-labelledby="about-title">
+        <div class="section-topline"><span data-fr="À propos de moi" data-en="About me">À propos de moi</span><span>GLORIA / 02</span></div>
+        <div class="about-grid">
+          <h2 class="display-title" id="about-title" data-fr="PLUS<br>QU'UNE<br><em>ÉTIQUETTE.</em>" data-en="MORE<br>THAN A<br><em>LABEL.</em>">PLUS<br>QU'UNE<br><em>ÉTIQUETTE.</em></h2>
+          <div class="about-copy">
+            <p class="about-lead" data-fr="Je suis Gloria, une professionnelle de la communication qui aime aussi concevoir des produits et construire des systèmes." data-en="I'm Gloria, a communications professional who also loves designing products and building systems.">Je suis Gloria, une professionnelle de la communication qui aime aussi concevoir des produits et construire des systèmes.</p>
+            <p data-fr="Formée en sciences politiques et relations internationales, puis en marketing digital, j'ai travaillé entre groupe industriel, suivi commercial et projets indépendants à Kinshasa. Ce parcours nourrit une approche à la fois analytique, humaine et créative." data-en="Trained in political science and international relations, then digital marketing, I have worked across an industrial group, commercial operations and independent projects in Kinshasa. That journey shapes an analytical, human and creative approach.">Formée en sciences politiques et relations internationales, puis en marketing digital, j'ai travaillé entre groupe industriel, suivi commercial et projets indépendants à Kinshasa. Ce parcours nourrit une approche à la fois analytique, humaine et créative.</p>
+            <p data-fr="J'aime comprendre les besoins réels, trouver une direction juste et la traduire en livrables utiles — du contenu à l'interface d'un outil métier." data-en="I like understanding real needs, finding the right direction and turning it into useful work — from content to business software interfaces.">J'aime comprendre les besoins réels, trouver une direction juste et la traduire en livrables utiles — du contenu à l'interface d'un outil métier.</p>
+            <div class="specialties"><span>Brand & Content</span><span>Digital Strategy</span><span>Product Thinking</span><span>Automation & AI</span></div>
           </div>
         </div>
-        <div class="acc-toggle">+</div>
-      </div>
-      <div class="acc-body" id="acc-body-1">
-        <ul>
-          <li>Création de contenu et gestion éditoriale pour des clients en communication et branding</li>
-          <li>Conseil en optimisation de campagnes Meta Ads, analyse de performance et recommandations</li>
-          <li>Refonte et mise à jour de sites web via CMS WordPress</li>
-        </ul>
-      </div>
-    </div>
+      </section>
 
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this.parentElement)">
-        <div class="acc-bar" style="background:linear-gradient(180deg,#D4863A,#A05820);"></div>
-        <div class="acc-meta">
-          <h3 id="i-job2-title">Chargée du Suivi Client</h3>
-          <div class="acc-sub">
-            <span class="acc-company">Utexafrica · Groupe TEXAF</span>
-            <span class="acc-period">Juil. 2025 → Jan. 2026</span>
-          </div>
+      <section class="numbers-section section-pad" aria-labelledby="numbers-title">
+        <div class="section-topline"><span data-fr="Résultats sélectionnés" data-en="Selected outcomes">Résultats sélectionnés</span><span>GLORIA / 03</span></div>
+        <h2 id="numbers-title" class="numbers-title" data-fr="DES IDÉES.<br><em>DES PREUVES.</em>" data-en="IDEAS.<br><em>EVIDENCE.</em>">DES IDÉES.<br><em>DES PREUVES.</em></h2>
+        <div class="number-grid">
+          <div><strong>100K</strong><p data-fr="Impressions vidéo Facebook · Carrigrès" data-en="Facebook video impressions · Carrigrès">Impressions vidéo Facebook · Carrigrès</p></div>
+          <div><strong>19 854</strong><p data-fr="ThruPlays sur une campagne vidéo" data-en="ThruPlays on a video campaign">ThruPlays sur une campagne vidéo</p></div>
+          <div><strong>15 300</strong><p data-fr="Impressions organiques sur Google" data-en="Organic Google impressions">Impressions organiques sur Google</p></div>
+          <div><strong>915</strong><p data-fr="Abonnés LinkedIn créés organiquement" data-en="Organically acquired LinkedIn followers">Abonnés LinkedIn créés organiquement</p></div>
         </div>
-        <div class="acc-toggle">+</div>
-      </div>
-      <div class="acc-body" id="acc-body-2">
-        <ul>
-          <li>Suivi portefeuille prospects via CRM Yourent <span class="chip chip-teal">426 logements · 1 000+ résidents</span></li>
-          <li>Fiabilisation des données CRM pour améliorer la visibilité du pipeline commercial</li>
-          <li>Coordination de projets événementiels (Halloween, Noël, Centenaire UTEX) : planning, équipes internes, partenaires et livrables</li>
-          <li>Conception du projet ESG : rédaction complète du document stratégique <span class="chip chip-amber">parties prenantes · axes d'action · plan de déploiement</span></li>
-        </ul>
-      </div>
-    </div>
+      </section>
 
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this.parentElement)">
-        <div class="acc-bar" style="background:linear-gradient(180deg,#C0254A,#8A1030);"></div>
-        <div class="acc-meta">
-          <h3 id="i-job3-title">Chargée de Communication Digitale</h3>
-          <div class="acc-sub">
-            <span class="acc-company">Carrigrès · Groupe TEXAF</span>
-            <span class="acc-period">Jan. 2025 → Jan. 2026</span>
-          </div>
+      <section class="experience-section section-pad" id="parcours" aria-labelledby="experience-title">
+        <div class="section-topline"><span data-fr="Parcours" data-en="Experience">Parcours</span><span>GLORIA / 04</span></div>
+        <h2 class="display-title" id="experience-title" data-fr="LE<br><em>PARCOURS.</em>" data-en="THE<br><em>JOURNEY.</em>">LE<br><em>PARCOURS.</em></h2>
+        <div class="timeline">
+          <div class="timeline-row"><span>2026 —</span><div><h3 data-fr="Consultante indépendante / MASDIA" data-en="Independent consultant / MASDIA">Consultante indépendante / MASDIA</h3><p data-fr="Communication, produits digitaux et automatisations" data-en="Communications, digital products and automation">Communication, produits digitaux et automatisations</p></div></div>
+          <div class="timeline-row"><span>2025–26</span><div><h3>UTEXAFRICA · Groupe TEXAF</h3><p data-fr="Suivi commercial, CRM et coordination" data-en="Commercial tracking, CRM and coordination">Suivi commercial, CRM et coordination</p></div></div>
+          <div class="timeline-row"><span>2024–25</span><div><h3>Carrigrès · Groupe TEXAF</h3><p data-fr="Communication digitale, web et campagnes" data-en="Digital communication, web and campaigns">Communication digitale, web et campagnes</p></div></div>
+          <div class="timeline-row"><span>2025</span><div><h3>Simplon RDC / Kadea Academy</h3><p data-fr="Certification marketing digital · Grande distinction" data-en="Digital marketing certification · High distinction">Certification marketing digital · Grande distinction</p></div></div>
         </div>
-        <div class="acc-toggle">+</div>
-      </div>
-      <div class="acc-body" id="acc-body-3">
-        <ul>
-          <li>Création identité visuelle complète, logo, charte graphique, supports institutionnels</li>
-          <li>Pilotage complet de la refonte WordPress <span class="chip chip-teal">15 300 impressions · position moy. 5 sur Google</span></li>
-          <li>LinkedIn from scratch <span class="chip chip-teal">0 → 915 abonnés · 19 500+ impressions · 100 % organique</span> en 10 mois</li>
-          <li>Campagnes Meta Ads <span class="chip chip-amber">12 758 atteintes · 140 conversations qualifiées · 15 $</span></li>
-          <li>Campagne vidéo Facebook <span class="chip chip-amber">100 000 impressions · 19 854 ThruPlays · 25 $</span></li>
-          <li>Sécurisation technique du site face aux tentatives de piratage</li>
-        </ul>
-      </div>
-    </div>
+      </section>
 
-    <div class="acc-item">
-      <div class="acc-header" onclick="toggleAcc(this.parentElement)">
-        <div class="acc-bar" style="background:linear-gradient(180deg,#8A8A80,#4A4A45);"></div>
-        <div class="acc-meta">
-          <h3 id="i-job4-title">Chargée de Projets Digitaux & Community Manager</h3>
-          <div class="acc-sub">
-            <span class="acc-company">Freelance · Kinshasa</span>
-            <span class="acc-period">Mai 2024 → Jan. 2025</span>
-          </div>
-        </div>
-        <div class="acc-toggle">+</div>
-      </div>
-      <div class="acc-body" id="acc-body-4">
-        <ul>
-          <li>Croissance communauté <span class="chip chip-teal">+1 520 % en 1 mois · portée +5 000 personnes</span>, budget 2 $/jour · 7 jours</li>
-          <li>Portefeuille clients diversifié : e-commerce, ONG éducative, galerie d'art, salon de beauté</li>
-          <li>Stratégie de contenu, campagnes sponsorisées et suivi de performance via Meta Business Suite</li>
-        </ul>
-      </div>
-    </div>
-
+      <section class="contact-section section-pad" id="contact" aria-labelledby="contact-title">
+        <div class="section-topline"><span data-fr="Échangeons" data-en="Let's connect">Échangeons</span><span>GLORIA / 05</span></div>
+        <h2 id="contact-title" data-fr="FAISONS<br><em>QUELQUE CHOSE</em><br>DE BEAU." data-en="LET'S MAKE<br><em>SOMETHING</em><br>MEANINGFUL.">FAISONS<br><em>QUELQUE CHOSE</em><br>DE BEAU.</h2>
+        <p data-fr="Pour une opportunité professionnelle, une mission ou une collaboration, retrouvons-nous sur LinkedIn." data-en="For a professional opportunity, a project or a collaboration, let's connect on LinkedIn.">Pour une opportunité professionnelle, une mission ou une collaboration, retrouvons-nous sur LinkedIn.</p>
+        <a class="contact-cta" href="https://www.linkedin.com/in/gloria-zephrine-kasunzu/" target="_blank" rel="noopener noreferrer" data-fr="Me contacter sur LinkedIn" data-en="Contact me on LinkedIn">Me contacter sur LinkedIn</a>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© <span id="year">2026</span> Gloria Tumsifu Kasunzu</span><a href="#accueil" data-fr="Retour en haut" data-en="Back to top">Retour en haut</a></footer>
   </div>
-</section>
-
-<!-- PROJETS -->
-<section id="projets">
-  <div class="sec-label" id="i-label-proj">03, Projets</div>
-  <h2 class="sec-title" id="i-proj-title">Ce que je construis<br>par moi-même</h2>
-
-  <!-- FEATURED -->
-  <div class="projet-featured">
-    <div>
-      <div class="projet-tag" id="i-proj-tag">Projet fondateur · En ligne</div>
-      <h3 class="projet-name">
-        Marketing<br><em>Africain</em>
-      </h3>
-      <p class="projet-tagline">
-        Plateforme francophone dédiée aux entrepreneurs africains : guides PDF pratiques sur le marketing digital, les outils IA, la monétisation et la croissance en ligne. Conçue pour rendre le marketing accessible sur le continent.
-      </p>
-      <a href="https://marketingafricain.com" target="_blank" class="projet-link" id="i-proj-link">Visiter marketingafricain.com</a>
+  <dialog id="design-dialog" aria-labelledby="preview-title" aria-describedby="preview-caption">
+    <div class="preview-shell">
+      <header class="preview-header"><div><p id="preview-counter" aria-live="polite" aria-atomic="true"></p><h2 id="preview-title"></h2></div><button id="preview-close" type="button" data-i18n-aria="close" aria-label="Fermer" autofocus><span aria-hidden="true">×</span></button></header>
+      <div class="preview-stage"><button id="preview-prev" type="button" data-i18n-aria="previous" aria-label="Précédent"><span aria-hidden="true">←</span></button><div class="preview-media"><img id="preview-image" alt="" hidden><p id="preview-error" role="status" data-i18n="error" hidden>Impossible de charger cet aperçu. Vous pouvez consulter le document source.</p></div><button id="preview-next" type="button" data-i18n-aria="next" aria-label="Suivant"><span aria-hidden="true">→</span></button></div>
+      <footer class="preview-footer"><p id="preview-caption" data-i18n="assetCaption">Aperçu de la création. Le document source peut nécessiter une connexion à Canva.</p><div class="preview-actions"><a id="preview-download" download data-i18n="downloadArtwork" hidden>Télécharger le visuel</a><a id="preview-document" target="_blank" rel="noopener noreferrer" data-i18n="viewDocument">Consulter le document</a></div></footer>
     </div>
-
-    <div class="projet-details">
-      <div class="projet-detail-row">
-        <div class="detail-key">Catégorie</div>
-        <div class="detail-val">Plateforme e-learning · Guides PDF</div>
-      </div>
-      <div class="projet-detail-row">
-        <div class="detail-key">Audience</div>
-        <div class="detail-val">Entrepreneurs francophones d'Afrique subsaharienne</div>
-      </div>
-      <div class="projet-detail-row">
-        <div class="detail-key">Offre</div>
-        <div class="detail-val"><strong>8 guides à 10 $</strong>, WhatsApp Business, Meta Ads, email marketing, outils IA (ChatGPT & Claude), freelancing, Mobile Money...</div>
-      </div>
-      <div class="projet-detail-row">
-        <div class="detail-key">Tech</div>
-        <div class="detail-val">WordPress · SEO / AEO / GEO · Rank Math · Boutique Chariow</div>
-      </div>
-      <div class="projet-detail-row">
-        <div class="detail-key">Vision</div>
-        <div class="detail-val">Devenir la référence marketing digital en Afrique francophone</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PLACEHOLDERS -->
-  </section>
-
-
-<!-- OUTILS -->
-<section id="outils">
-  <div class="sec-label" id="i-label-outils">02.5, Écosystème</div>
-  <h2 class="sec-title" id="i-outils-title">Les outils que<br>je maîtrise</h2>
-
-  <div class="tools-categories">
-
-    <div>
-      <div class="tools-category-label" id="i-cat-ai">Intelligence artificielle</div>
-      <div class="tools-row" id="tools-ai">
-        <div class="tool-badge ai-tool">
-          <span class="tool-name">Claude</span>
-        </div>
-        <div class="tool-badge ai-tool">
-          <span class="tool-name">ChatGPT</span>
-        </div>
-        <div class="tool-badge ai-tool">
-          <span class="tool-name">ImageFX · Gemini</span>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="tools-category-label" id="i-cat-design">Design & Création</div>
-      <div class="tools-row" id="tools-design">
-        <div class="tool-badge">
-          <span class="tool-name">Canva</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Illustrator</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Photoshop</span>
-        </div>
-        <div class="tool-badge">
-          <span class="tool-name">Figma</span>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="tools-category-label" id="i-cat-web">Web & Gestion de projet</div>
-      <div class="tools-row" id="tools-web">
-        <div class="tool-badge"><span class="tool-name">WordPress</span></div>
-        <div class="tool-badge"><span class="tool-name">Notion</span></div>
-        <div class="tool-badge"><span class="tool-name">Power Automate</span></div>
-        <div class="tool-badge"><span class="tool-name">Meta Business Suite</span></div>
-        <div class="tool-badge"><span class="tool-name">Google Ads</span></div>
-        <div class="tool-badge"><span class="tool-name">Google Analytics</span></div>
-        <div class="tool-badge"><span class="tool-name">Google Search Console</span></div>
-      </div>
-    </div>
-
-    <div>
-      <div class="tools-category-label" id="i-cat-social">Réseaux sociaux</div>
-      <div class="tools-row" id="tools-social">
-        <div class="tool-badge"><span class="tool-name">Instagram</span></div>
-        <div class="tool-badge"><span class="tool-name">Facebook</span></div>
-        <div class="tool-badge"><span class="tool-name">TikTok</span></div>
-        <div class="tool-badge"><span class="tool-name">LinkedIn</span></div>
-      </div>
-    </div>
-
-    <div>
-      <div class="tools-category-label" id="i-cat-office">Suite Microsoft Office</div>
-      <div class="tools-row" id="tools-office">
-        <div class="tool-badge"><span class="tool-name">Excel</span></div>
-        <div class="tool-badge"><span class="tool-name">PowerPoint</span></div>
-        <div class="tool-badge"><span class="tool-name">Word</span></div>
-      </div>
-    </div>
-
-    <div>
-      <div class="tools-category-label" id="i-cat-crm">CRM & Formulaires</div>
-      <div class="tools-row" id="tools-crm">
-        <div class="tool-badge"><span class="tool-name">Yourent CRM</span></div>
-        <div class="tool-badge"><span class="tool-name">Tally</span></div>
-        <div class="tool-badge"><span class="tool-name">Google Forms</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- POSTES -->
-<section id="postes">
-  <div class="sec-label" id="i-label-postes">06, Débouchés</div>
-  <h2 class="sec-title" id="i-postes-title">Les postes auxquels<br><em>je peux prétendre</em></h2>
-  <p class="postes-intro">
-    Mon profil transversal couvre la stratégie, l'exécution terrain, la donnée et la relation client. Voici les postes qui correspondent réellement à ce que je sais faire.
-  </p>
-
-  <div class="postes-grid">
-
-    <div class="poste-card tier-1">
-      <div class="poste-title" id="i-p01-title">Chargée de Communication Digitale</div>
-      <div class="poste-desc" id="i-p01-desc">Le poste que j'ai déjà occupé avec des résultats prouvés, refonte de site, SEO, LinkedIn, Meta Ads, branding complet.</div>
-      <div class="poste-tags"><span class="poste-tag">SEO</span><span class="poste-tag">Meta Ads</span><span class="poste-tag">WordPress</span><span class="poste-tag">Branding</span></div>
-    </div>
-
-    <div class="poste-card tier-1">
-      <div class="poste-title" id="i-p02-title">Social Media Manager</div>
-      <div class="poste-desc" id="i-p02-desc">Stratégie éditoriale, gestion de communauté, campagnes sponsorisées et reporting, mon quotidien pendant des mois.</div>
-      <div class="poste-tags"><span class="poste-tag">Content</span><span class="poste-tag">Community</span><span class="poste-tag">Reporting</span><span class="poste-tag">Meta</span></div>
-    </div>
-
-    <div class="poste-card tier-1">
-      <div class="poste-title" id="i-p03-title">Chargée Marketing Digital</div>
-      <div class="poste-desc" id="i-p03-desc">Vision 360° : acquisition, fidélisation, branding, SEO, email marketing. Le profil généraliste senior dont les PME ont besoin.</div>
-      <div class="poste-tags"><span class="poste-tag">360°</span><span class="poste-tag">Acquisition</span><span class="poste-tag">Email</span><span class="poste-tag">AEO</span></div>
-    </div>
-
-    <div class="poste-card tier-1">
-      <div class="poste-title" id="i-p04-title">Account Manager</div>
-      <div class="poste-desc" id="i-p04-desc">Gestion de portefeuille clients, suivi des performances, recommandations stratégiques. Mon expérience CRM et TEXAF parle d'elle-même.</div>
-      <div class="poste-tags"><span class="poste-tag">CRM</span><span class="poste-tag">Client</span><span class="poste-tag">Conseil</span><span class="poste-tag">B2B</span></div>
-    </div>
-
-    <div class="poste-card tier-2">
-      <div class="poste-title" id="i-p05-title">Brand Manager</div>
-      <div class="poste-desc" id="i-p05-desc">Gardienne de l'identité visuelle, de la cohérence de marque et de la stratégie de contenu long terme.</div>
-      <div class="poste-tags"><span class="poste-tag">Branding</span><span class="poste-tag">Identité</span><span class="poste-tag">Stratégie</span></div>
-    </div>
-
-    <div class="poste-card tier-2">
-      <div class="poste-title" id="i-p06-title">Content Strategist</div>
-      <div class="poste-desc" id="i-p06-desc">Architecte du contenu, planification éditoriale, SEO/AEO, optimisation pour moteurs IA. L'avenir du contenu est ma spécialité.</div>
-      <div class="poste-tags"><span class="poste-tag">SEO</span><span class="poste-tag">AEO</span><span class="poste-tag">IA</span><span class="poste-tag">Éditorial</span></div>
-    </div>
-
-    <div class="poste-card tier-2">
-      <div class="poste-title" id="i-p07-title">Digital Marketing Manager</div>
-      <div class="poste-desc" id="i-p07-desc">Coordination de l'ensemble des leviers digitaux avec reporting à la direction. Mon niveau de livrables y correspond.</div>
-      <div class="poste-tags"><span class="poste-tag">Management</span><span class="poste-tag">Stratégie</span><span class="poste-tag">KPIs</span></div>
-    </div>
-
-    <div class="poste-card tier-2">
-      <div class="poste-title" id="i-p08-title">Growth Marketer</div>
-      <div class="poste-desc" id="i-p08-desc">Acquisition, activation, rétention, avec des micro-budgets qui font des résultats macro. C'est exactement ce que j'ai fait chez TEXAF.</div>
-      <div class="poste-tags"><span class="poste-tag">Growth</span><span class="poste-tag">Funnel</span><span class="poste-tag">ROI</span></div>
-    </div>
-
-    <div class="poste-card tier-3">
-      <div class="poste-title" id="i-p09-title">Consultante Stratégie Digitale</div>
-      <div class="poste-desc" id="i-p09-desc">Audit, recommandations et accompagnement dans la transformation digitale. Mon profil freelance et TEXAF le prouve.</div>
-      <div class="poste-tags"><span class="poste-tag">Audit</span><span class="poste-tag">Conseil</span><span class="poste-tag">Remote</span></div>
-    </div>
-
-    <div class="poste-card tier-3">
-      <div class="poste-title" id="i-p10-title">AI Marketing Specialist</div>
-      <div class="poste-desc" id="i-p10-desc">Intégrer les outils IA dans les stratégies marketing. Un rôle émergent que peu de profils africains peuvent occuper aujourd'hui.</div>
-      <div class="poste-tags"><span class="poste-tag">IA</span><span class="poste-tag">Claude</span><span class="poste-tag">Automatisation</span></div>
-    </div>
-
-    <div class="poste-card tier-3">
-      <div class="poste-title" id="i-p11-title">Marketing Director, Afrique</div>
-      <div class="poste-desc" id="i-p11-desc">Piloter la stratégie marketing d'une organisation panafricaine. Mon Master RI + expertise terrain africaine y pointent.</div>
-      <div class="poste-tags"><span class="poste-tag">Leadership</span><span class="poste-tag">Afrique</span><span class="poste-tag">Panafricain</span></div>
-    </div>
-
-    <div class="poste-card tier-3">
-      <div class="poste-title" id="i-p12-title">Fondatrice, EdTech Marketing</div>
-      <div class="poste-desc" id="i-p12-desc">Marketing Africain préfigure déjà ce rôle, créer des formations et outils pour les professionnels du marketing africain.</div>
-      <div class="poste-tags"><span class="poste-tag">Entrepreneuriat</span><span class="poste-tag">EdTech</span><span class="poste-tag">Afrique</span></div>
-    </div>
-
-  </div>
-
-  <div class="postes-note">
-    <strong>Note :</strong> Cette liste est une boussole, pas un plafond. Le marché remote élargit encore davantage le spectre de ce qui est accessible aujourd'hui.
-  </div>
-</section>
-
-<!-- SOFT SKILLS -->
-<section id="softskills">
-  <div class="sec-label" id="i-label-ss">05, Profil humain</div>
-  <h2 class="sec-title" id="i-ss-title">Ce que les chiffres<br>ne disent pas</h2>
-
-  <div class="ss-grid">
-
-    <!-- 1. Créativité -->
-    <div class="ss-card">
-      <div class="ss-icon">
-        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
-          <!-- rays spinning slowly -->
-          <g style="transform-origin:45px 45px;animation:ray-spin 12s linear infinite;opacity:.35">
-            <line x1="45" y1="8" x2="45" y2="18" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-            <line x1="72" y1="18" x2="65" y2="25" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-            <line x1="82" y1="45" x2="72" y2="45" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-            <line x1="72" y1="72" x2="65" y2="65" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-            <line x1="18" y1="18" x2="25" y2="25" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-            <line x1="8"  y1="45" x2="18" y2="45" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-            <line x1="18" y1="72" x2="25" y2="65" stroke="#00B4A6" stroke-width="2" stroke-linecap="round"/>
-          </g>
-          <!-- bulb glow -->
-          <circle cx="45" cy="42" r="16" fill="rgba(0,180,166,0.08)" style="animation:bulb-glow 2.4s ease-in-out infinite"/>
-          <!-- bulb body -->
-          <path d="M38 54 Q32 46 32 38 A13 13 0 0 1 58 38 Q58 46 52 54 Z" fill="none" stroke="#00B4A6" stroke-width="1.8" stroke-linejoin="round"/>
-          <!-- filament -->
-          <path d="M39 54 L39 60 Q45 63 51 60 L51 54" fill="none" stroke="#00B4A6" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- filament coil -->
-          <path d="M41 57 Q43 55 45 57 Q47 59 49 57" fill="none" stroke="#D4863A" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- inner glow dot -->
-          <circle cx="45" cy="42" r="4" fill="#00B4A6" opacity=".6" style="animation:bulb-glow 2.4s ease-in-out infinite 0.4s"/>
-          <!-- sparks -->
-          <circle cx="45" cy="26" r="2" fill="#D4863A" style="animation:bulb-glow 1.8s ease-in-out infinite 0.2s; opacity:.0"/>
-          <circle cx="60" cy="35" r="1.5" fill="#00B4A6" style="animation:bulb-glow 2s ease-in-out infinite 0.6s; opacity:.0"/>
-          <circle cx="30" cy="38" r="1.5" fill="#D4863A" style="animation:bulb-glow 2.2s ease-in-out infinite 1s; opacity:.0"/>
-        </svg>
-      </div>
-      <div class="ss-label">Créativité</div>
-      <div class="ss-desc">Trouver des solutions originales là où les autres voient des contraintes.</div>
-    </div>
-
-    <!-- 2. Autonomie, compass -->
-    <div class="ss-card">
-      <div class="ss-icon">
-        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
-          <!-- outer ring -->
-          <circle cx="45" cy="45" r="30" stroke="#D4863A" stroke-width="1.5" opacity=".4"/>
-          <circle cx="45" cy="45" r="26" stroke="#D4863A" stroke-width=".5" opacity=".2"/>
-          <!-- cardinal marks -->
-          <line x1="45" y1="16" x2="45" y2="21" stroke="#D4863A" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="45" y1="69" x2="45" y2="74" stroke="#D4863A" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="16" y1="45" x2="21" y2="45" stroke="#D4863A" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="69" y1="45" x2="74" y2="45" stroke="#D4863A" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- N label -->
-          <text x="42" y="14" fill="#D4863A" font-size="7" font-family="Space Mono,monospace" opacity=".7">N</text>
-          <!-- needle group spinning -->
-          <g style="transform-origin:45px 45px; animation:needle-spin 4s cubic-bezier(.4,0,.2,1) infinite">
-            <!-- north needle teal -->
-            <polygon points="45,22 48,45 45,48 42,45" fill="#00B4A6"/>
-            <!-- south needle dim -->
-            <polygon points="45,68 48,45 45,42 42,45" fill="rgba(245,240,232,0.2)"/>
-          </g>
-          <!-- center dot -->
-          <circle cx="45" cy="45" r="3.5" fill="#D4863A"/>
-          <circle cx="45" cy="45" r="1.5" fill="#1A1A18"/>
-        </svg>
-      </div>
-      <div class="ss-label">Autonomie</div>
-      <div class="ss-desc">Conduire un projet de A à Z, sans attendre qu'on lui dise quoi faire.</div>
-    </div>
-
-    <!-- 3. Capacité d'analyse, chart -->
-    <div class="ss-card">
-      <div class="ss-icon">
-        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
-          <!-- axes -->
-          <line x1="16" y1="72" x2="16" y2="18" stroke="rgba(245,240,232,0.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="16" y1="72" x2="78" y2="72" stroke="rgba(245,240,232,0.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- bars, using foreignObject trick won't work, use rects with CSS -->
-          <rect x="24" y="36" width="10" height="36" rx="2" fill="#00B4A6" opacity=".7"
-            style="transform-origin:24px 72px; animation: bar1 3s ease-in-out infinite"/>
-          <rect x="38" y="17" width="10" height="55" rx="2" fill="#00B4A6" opacity=".9"
-            style="transform-origin:38px 72px; animation: bar2 3s ease-in-out infinite .3s"/>
-          <rect x="52" y="44" width="10" height="28" rx="2" fill="#D4863A" opacity=".7"
-            style="transform-origin:52px 72px; animation: bar3 3s ease-in-out infinite .6s"/>
-          <rect x="66" y="27" width="10" height="45" rx="2" fill="#D4863A" opacity=".9"
-            style="transform-origin:66px 72px; animation: bar4 3s ease-in-out infinite .9s"/>
-          <!-- trend line -->
-          <polyline points="29,36 43,17 57,44 71,27"
-            stroke="rgba(245,240,232,0.35)" stroke-width="1.2"
-            stroke-dasharray="120" stroke-dashoffset="120"
-            stroke-linecap="round" stroke-linejoin="round"
-            style="animation: line-draw 3s ease-out infinite"/>
-          <!-- dots on trend -->
-          <circle cx="29" cy="36" r="2.5" fill="#00B4A6" opacity=".8"/>
-          <circle cx="43" cy="17" r="2.5" fill="#00B4A6" opacity=".8"/>
-          <circle cx="57" cy="44" r="2.5" fill="#D4863A" opacity=".8"/>
-          <circle cx="71" cy="27" r="2.5" fill="#D4863A" opacity=".8"/>
-        </svg>
-      </div>
-      <div class="ss-label">Capacité d'analyse</div>
-      <div class="ss-desc">Lire les données, identifier les leviers, prendre les bonnes décisions.</div>
-    </div>
-
-    <!-- 4. Esprit stratégique, chess queen + path -->
-    <div class="ss-card">
-      <div class="ss-icon">
-        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
-          <!-- board squares subtle -->
-          <rect x="15" y="55" width="14" height="14" fill="rgba(212,134,58,.08)" rx="1"/>
-          <rect x="29" y="55" width="14" height="14" fill="rgba(212,134,58,.04)" rx="1"/>
-          <rect x="43" y="55" width="14" height="14" fill="rgba(212,134,58,.08)" rx="1"/>
-          <rect x="57" y="55" width="14" height="14" fill="rgba(212,134,58,.04)" rx="1"/>
-          <rect x="15" y="41" width="14" height="14" fill="rgba(212,134,58,.04)" rx="1"/>
-          <rect x="29" y="41" width="14" height="14" fill="rgba(212,134,58,.08)" rx="1"/>
-          <rect x="43" y="41" width="14" height="14" fill="rgba(212,134,58,.04)" rx="1"/>
-          <rect x="57" y="41" width="14" height="14" fill="rgba(212,134,58,.08)" rx="1"/>
-          <!-- move path dashed -->
-          <path d="M22 62 L22 48 L64 48 L64 62" stroke="#00B4A6" stroke-width="1"
-            stroke-dasharray="6 3" stroke-linecap="round" opacity=".5"
-            style="animation:line-draw 2.5s ease-out infinite 1s"/>
-          <!-- move dots -->
-          <circle cx="22" cy="62" r="3" fill="#00B4A6" opacity=".5"/>
-          <circle cx="64" cy="62" r="3" fill="#00B4A6" opacity=".5"/>
-          <!-- queen piece animated -->
-          <g style="animation: queen-bob 3s ease-in-out infinite; transform-origin:45px 40px">
-            <!-- crown -->
-            <path d="M33 38 L37 28 L41 34 L45 22 L49 34 L53 28 L57 38 Z" fill="#D4863A"/>
-            <!-- crown jewels -->
-            <circle cx="37" cy="28" r="2" fill="#00B4A6"/>
-            <circle cx="45" cy="22" r="2.5" fill="#00B4A6"/>
-            <circle cx="53" cy="28" r="2" fill="#00B4A6"/>
-            <!-- body -->
-            <path d="M33 38 Q33 46 30 50 L60 50 Q57 46 57 38 Z" fill="#D4863A" opacity=".9"/>
-            <!-- base -->
-            <rect x="28" y="50" width="34" height="5" rx="2" fill="#D4863A" opacity=".7"/>
-          </g>
-        </svg>
-      </div>
-      <div class="ss-label">Esprit stratégique</div>
-      <div class="ss-desc">Penser deux coups d'avance. Voir l'ensemble avant d'agir sur le détail.</div>
-    </div>
-
-    <!-- 5. Adaptabilité, morphing blob -->
-    <div class="ss-card">
-      <div class="ss-icon">
-        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
-          <!-- outer orbit ring -->
-          <circle cx="45" cy="45" r="32" stroke="rgba(0,180,166,.12)" stroke-width="1"
-            stroke-dasharray="4 4"
-            style="animation: ray-spin 20s linear infinite; transform-origin:45px 45px"/>
-          <!-- morphing blob -->
-          <path style="animation: blob-spin 8s ease-in-out infinite; transform-origin:45px 45px">
-            <animate attributeName="d" dur="6s" repeatCount="indefinite"
-              values="
-                M65 45 C65 56 56 65 45 65 C34 65 25 56 25 45 C25 34 34 25 45 25 C56 25 65 34 65 45;
-                M62 38 C68 50 60 68 46 67 C32 66 22 55 24 41 C26 27 38 20 52 24 C64 27 56 26 62 38;
-                M60 35 C70 47 65 65 50 68 C35 71 20 60 20 45 C20 30 32 22 47 22 C60 22 50 23 60 35;
-                M65 45 C65 56 56 65 45 65 C34 65 25 56 25 45 C25 34 34 25 45 25 C56 25 65 34 65 45"
-              fill="#D4863A" fill-opacity="0.15" stroke="#D4863A" stroke-width="1.5"/>
-          </path>
-          <!-- inner arrows indicating flexibility -->
-          <g opacity=".7">
-            <!-- rotating arrows -->
-            <g style="transform-origin:45px 45px; animation:ray-spin 6s linear infinite">
-              <path d="M45 30 L48 25 L42 25 Z" fill="#00B4A6"/>
-              <path d="M45 60 L48 65 L42 65 Z" fill="#00B4A6"/>
-              <path d="M30 45 L25 42 L25 48 Z" fill="#00B4A6"/>
-              <path d="M60 45 L65 42 L65 48 Z" fill="#00B4A6"/>
-            </g>
-          </g>
-          <!-- center dot -->
-          <circle cx="45" cy="45" r="4" fill="#D4863A" style="animation:bulb-glow 2s ease-in-out infinite"/>
-        </svg>
-      </div>
-      <div class="ss-label">Adaptabilité</div>
-      <div class="ss-desc">Changer d'environnement, de secteur ou d'outil sans perdre en efficacité.</div>
-    </div>
-
-    <!-- 6. Travail en équipe, network nodes -->
-    <div class="ss-card">
-      <div class="ss-icon">
-        <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
-          <!-- connection lines -->
-          <line x1="45" y1="45" x2="22" y2="25" stroke="#00B4A6" stroke-width="1.2" opacity=".3"
-            style="animation:link-flash 2s ease-in-out infinite"/>
-          <line x1="45" y1="45" x2="68" y2="25" stroke="#00B4A6" stroke-width="1.2" opacity=".3"
-            style="animation:link-flash 2s ease-in-out infinite .4s"/>
-          <line x1="45" y1="45" x2="22" y2="65" stroke="#D4863A" stroke-width="1.2" opacity=".3"
-            style="animation:link-flash 2s ease-in-out infinite .8s"/>
-          <line x1="45" y1="45" x2="68" y2="65" stroke="#D4863A" stroke-width="1.2" opacity=".3"
-            style="animation:link-flash 2s ease-in-out infinite 1.2s"/>
-          <line x1="22" y1="25" x2="68" y2="25" stroke="rgba(245,240,232,.1)" stroke-width="1"/>
-          <line x1="22" y1="65" x2="68" y2="65" stroke="rgba(245,240,232,.1)" stroke-width="1"/>
-          <!-- outer nodes -->
-          <circle cx="22" cy="25" r="6" fill="none" stroke="#00B4A6" stroke-width="1.5"
-            style="animation:node-pulse 2s ease-in-out infinite"/>
-          <circle cx="22" cy="25" r="3" fill="#00B4A6" opacity=".7"/>
-          <circle cx="68" cy="25" r="6" fill="none" stroke="#00B4A6" stroke-width="1.5"
-            style="animation:node-pulse 2s ease-in-out infinite .5s"/>
-          <circle cx="68" cy="25" r="3" fill="#00B4A6" opacity=".7"/>
-          <circle cx="22" cy="65" r="6" fill="none" stroke="#D4863A" stroke-width="1.5"
-            style="animation:node-pulse 2s ease-in-out infinite 1s"/>
-          <circle cx="22" cy="65" r="3" fill="#D4863A" opacity=".7"/>
-          <circle cx="68" cy="65" r="6" fill="none" stroke="#D4863A" stroke-width="1.5"
-            style="animation:node-pulse 2s ease-in-out infinite 1.5s"/>
-          <circle cx="68" cy="65" r="3" fill="#D4863A" opacity=".7"/>
-          <!-- center hub -->
-          <circle cx="45" cy="45" r="12" fill="rgba(0,180,166,.08)" stroke="#00B4A6" stroke-width="1.5"
-            style="animation:center-pulse 2s ease-in-out infinite"/>
-          <circle cx="45" cy="45" r="6" fill="#00B4A6" opacity=".8"/>
-          <circle cx="45" cy="45" r="2.5" fill="#1A1A18"/>
-        </svg>
-      </div>
-      <div class="ss-label">Travail en équipe</div>
-      <div class="ss-desc">Fédérer, coordonner et faire avancer des projets avec des équipes diverses.</div>
-    </div>
-
-  </div>
-</section>
-
-
-
-<!-- CONTACT STRIP -->
-<div class="contact-strip" id="contact">
-  <div class="contact-strip-left">
-    <h2 id="i-contact-title">Travaillons<br>ensemble.</h2>
-    <p id="i-contact-sub">Disponible pour des missions freelance, des postes en présentiel à Kinshasa ou en remote.</p>
-  </div>
-  <div class="contact-strip-links">
-    <a href="mailto:gzephrine@gmail.com" class="contact-btn">✉ gzephrine@gmail.com</a>
-    <a href="tel:+243815128665" class="contact-btn">☎ +243 815 128 665</a>
-    <a href="https://linkedin.com/in/gloria-zephrine-kasunzu" target="_blank" class="contact-btn">in LinkedIn</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Gloria Tumsifu Kasunzu</p>
-  <p id="i-footer-status">Kinshasa, RDC · Remote · Disponible</p>
-</footer>
-
-<script>
-// Staggered tool badge animation on scroll
-const toolObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const badges = entry.target.querySelectorAll('.tool-badge');
-      badges.forEach((badge, i) => {
-        setTimeout(() => badge.classList.add('visible'), i * 80);
-      });
-      toolObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll('.tools-row').forEach(row => toolObserver.observe(row));
-
-function toggleAcc(item) {
-  const body = item.querySelector('.acc-body');
-  const btn = item.querySelector('.acc-toggle');
-  const isOpen = item.classList.contains('open');
-  item.classList.toggle('open', !isOpen);
-  btn.textContent = isOpen ? '+' : '−';
-}
-// init open items
-document.querySelectorAll('.acc-item.open .acc-toggle').forEach(b => b.textContent = '−');
-
-// Side nav active state on scroll
-const sections = ['profil','experience','projets','outils','postes','softskills'];
-const sideItems = document.querySelectorAll('.side-nav-item');
-
-function updateSideNav() {
-  const scrollY = window.scrollY + window.innerHeight * 0.35;
-  let active = sections[0];
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && el.offsetTop <= scrollY) active = id;
-  });
-  sideItems.forEach(item => {
-    item.classList.toggle('active', item.dataset.section === active);
-  });
-}
-
-window.addEventListener('scroll', updateSideNav, { passive: true });
-updateSideNav();
-</script>
-
-<script>
-// ── BOOKMARK TABS ──
-(function() {
-  var sections = [
-    { id: 'profil',     label: 'Profil',     color: '#00968A' },
-    { id: 'experience', label: 'Expérience', color: '#9A4820' },
-    { id: 'projets',    label: 'Projets',    color: '#007A70' },
-    { id: 'outils',     label: 'Outils',     color: '#B87030' },
-    { id: 'postes',     label: 'Débouchés',  color: '#00968A' },
-    { id: 'softskills', label: 'Softskills', color: '#9A4820' },
-  ];
-
-  var nav = document.createElement('div');
-  Object.assign(nav.style, {
-    position:      'fixed',
-    right:         '0',
-    top:           '50%',
-    transform:     'translateY(-50%)',
-    zIndex:        '999999',
-    display:       'flex',
-    flexDirection: 'column',
-    gap:           '3px',
-    alignItems:    'flex-end',
-  });
-
-  var tabs = [];
-  var W = 32; // fixed width
-
-  sections.forEach(function(s) {
-    var tab = document.createElement('a');
-    tab.href = '#' + s.id;
-    tab.dataset.section = s.id;
-
-    // Height capped and reduced
-    var H = Math.min(72, Math.max(40, s.label.length * 7 + 18));
-
-    Object.assign(tab.style, {
-      display:        'flex',
-      alignItems:     'center',
-      justifyContent: 'center',
-      width:          W + 'px',
-      height:         H + 'px',
-      background:     s.color,
-      borderRadius:   '8px 0 0 8px',
-      textDecoration: 'none',
-      cursor:         'pointer',
-      opacity:        '0.38',
-      transition:     'opacity .25s, width .2s',
-      boxShadow:      '-3px 0 12px rgba(0,0,0,0.35)',
-      flexShrink:     '0',
-    });
-
-    var label = document.createElement('span');
-    label.textContent = s.label;
-    label.dataset.sectionId = s.id;
-    Object.assign(label.style, {
-      fontFamily:    'DM Sans, sans-serif',
-      fontSize:      '9px',
-      fontWeight:    '500',
-      color:         'white',
-      whiteSpace:    'nowrap',
-      writingMode:   'vertical-rl',
-      transform:     'rotate(180deg)',
-      letterSpacing: '0.5px',
-      userSelect:    'none',
-    });
-
-    tab.appendChild(label);
-    nav.appendChild(tab);
-    tabs.push(tab);
-
-    tab.addEventListener('mouseenter', function() {
-      this.style.opacity = '0.95';
-      this.style.width   = (W + 8) + 'px';
-    });
-    tab.addEventListener('mouseleave', function() {
-      var isActive = this.dataset.section === (nav.dataset.active || '');
-      this.style.opacity = isActive ? '0.85' : '0.38';
-      this.style.width   = isActive ? (W + 8) + 'px' : W + 'px';
-    });
-  });
-
-  document.body.appendChild(nav);
-
-  function update() {
-    var scrollY = window.scrollY + window.innerHeight * 0.35;
-    var active  = sections[0].id;
-    sections.forEach(function(s) {
-      var el = document.getElementById(s.id);
-      if (el && el.offsetTop <= scrollY) active = s.id;
-    });
-    nav.dataset.active = active;
-    tabs.forEach(function(tab) {
-      var isActive = tab.dataset.section === active;
-      tab.style.opacity = isActive ? '0.85' : '0.38';
-      tab.style.width   = isActive ? (W + 12) + 'px' : W + 'px';
-    });
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-})();
-</script>
-
-
-
-<script>
-(function () {
-  "use strict";
-
-  /* =============================================================
-     TRANSLATION DICTIONARY
-     Every piece of text that changes between languages.
-     Numbers, proper nouns and dates are kept identical.
-  ============================================================= */
-  var T = {
-
-    /* ── FRENCH (default) ── */
-    fr: {
-      code: "FR",
-
-      /* NAV */
-      "i-nav-cta": "Me contacter",
-
-      /* HERO */
-      "i-hero-eyebrow": "Kinshasa, RDC · Disponible en remote",
-      "i-hero-role":    "Marketing Digital & Performance",
-      "i-hero-desc":    "Stratégie de contenu, pilotage de campagnes et relation client. Une expérience transversale entre groupe industriel, entreprise et freelance, pour des résultats concrets avec des budgets maîtrisés.",
-      "i-btn-projects": "Voir mes projets",
-      "i-btn-exp":      "Mon expérience →",
-
-      /* STAT CARDS */
-      "i-stat1-lbl": "Impressions campagne vidéo Facebook",
-      "i-stat1-ctx": "Budget total · 25 $",
-      "i-stat2-lbl": "Abonnés LinkedIn générés from scratch",
-      "i-stat2-ctx": "100 % organique · 10 mois",
-      "i-stat3-lbl": "Conversations commerciales qualifiées",
-      "i-stat3-ctx": "Budget total · 15 $",
-      "i-stat4-lbl": "Croissance communauté en 1 mois",
-      "i-stat4-ctx": "2 $/jour · 7 jours",
-
-      /* BAND */
-      "i-band1": "Impressions organiques Google",
-      "i-band2": "Position moyenne Google en 10 mois",
-      "i-band3": "ThruPlays vidéo Facebook",
-      "i-band4": "Prospects gérés via CRM",
-
-      /* PROFIL */
-      "i-label-profil": "01, Profil",
-      "i-profil-title": "Qui suis-je &<br>ce que je maîtrise",
-      "i-profil-p1": "Spécialiste en marketing digital, je conjugue vision stratégique et exécution opérationnelle sur l’ensemble de la chaîne de valeur marketing, de la conception d’une identité visuelle au reporting de campagne Meta Ads.",
-      "i-profil-p2": "Mon parcours entre groupe industriel (TEXAF), entreprise et freelance m’a permis de développer une adaptabilité rare et une capacité à produire des résultats concrets, y compris avec des budgets très contraints.",
-      "i-profil-p3": "Je m’intéresse profondément aux usages de l’IA dans le marketing, à l’optimisation SEO/AEO pour les moteurs nouvelle génération, et au développement du marketing digital en Afrique francophone.",
-      "i-dsi-label":    "Ce que je fais en plus de la fiche de poste",
-      "i-skills-title": "Domaines de compétence",
-      "i-skills-sub":   "Les 4 piliers de mon expertise",
-
-      /* EXPERIENCE */
-      "i-label-exp": "02, Expérience",
-      "i-exp-title": "Ce que je sais<br>faire concrètement",
-      "i-acc-label": "Détail des expériences",
-
-      /* ACCORDION JOBS */
-      "i-job1-title": "Consultante en Marketing Digital & Communication",
-      "i-job2-title": "Chargée du Suivi Client",
-      "i-job3-title": "Chargée de Communication Digitale",
-      "i-job4-title": "Chargée de Projets Digitaux & Community Manager",
-
-      /* PROJETS */
-      "i-label-proj": "03, Projets",
-      "i-proj-title": "Ce que je construis<br>par moi-même",
-      "i-proj-tag":   "Projet fondateur · En ligne",
-      "i-proj-link":  "Visiter marketingafricain.com",
-
-      /* OUTILS */
-      "i-label-outils": "02.5, Écosystème",
-      "i-outils-title": "Les outils que<br>je maîtrise",
-      "i-cat-ai":       "Intelligence artificielle",
-      "i-cat-design":   "Design & Création",
-      "i-cat-web":      "Web & Gestion de projet",
-      "i-cat-social":   "Réseaux sociaux",
-      "i-cat-office":   "Suite Microsoft Office",
-      "i-cat-crm":      "CRM & Formulaires",
-
-      /* POSTES */
-      "i-label-postes": "06, Débouchés",
-      "i-postes-title": "Les postes auxquels<br><em>je peux prétendre</em>",
-      "i-p01-title": "Chargée de Communication Digitale",
-      "i-p01-desc":  "Le poste que j’ai déjà occupé avec des résultats prouvés : refonte de site, SEO, LinkedIn, Meta Ads, branding complet.",
-      "i-p02-title": "Social Media Manager",
-      "i-p02-desc":  "Stratégie éditoriale, gestion de communauté, campagnes sponsorisées et reporting, mon quotidien pendant des mois.",
-      "i-p03-title": "Chargée Marketing Digital",
-      "i-p03-desc":  "Vision 360° : acquisition, fidélisation, branding, SEO, email marketing. Le profil généraliste senior dont les PME ont besoin.",
-      "i-p04-title": "Account Manager",
-      "i-p04-desc":  "Gestion de portefeuille clients, suivi des performances, recommandations stratégiques. Mon expérience CRM et TEXAF parle d’elle-même.",
-      "i-p05-title": "Brand Manager",
-      "i-p05-desc":  "Gardienne de l’identité visuelle, de la cohérence de marque et de la stratégie de contenu long terme.",
-      "i-p06-title": "Content Strategist",
-      "i-p06-desc":  "Architecte du contenu, planification éditoriale, SEO/AEO, optimisation pour moteurs IA. L’avenir du contenu est ma spécialité.",
-      "i-p07-title": "Digital Marketing Manager",
-      "i-p07-desc":  "Coordination de l’ensemble des leviers digitaux avec reporting à la direction. Mon niveau de livrables y correspond.",
-      "i-p08-title": "Growth Marketer",
-      "i-p08-desc":  "Acquisition, activation, rétention, avec des micro-budgets qui font des résultats macro. C’est exactement ce que j’ai fait chez TEXAF.",
-      "i-p09-title": "Consultante Stratégie Digitale",
-      "i-p09-desc":  "Audit, recommandations et accompagnement dans la transformation digitale. Mon profil freelance et TEXAF le prouve.",
-      "i-p10-title": "AI Marketing Specialist",
-      "i-p10-desc":  "Intégrer les outils IA dans les stratégies marketing. Un rôle émergent que peu de profils africains peuvent occuper aujourd’hui.",
-      "i-p11-title": "Marketing Director, Afrique",
-      "i-p11-desc":  "Piloter la stratégie marketing d’une organisation panafricaine. Mon Master RI + expertise terrain africaine y pointent.",
-      "i-p12-title": "Fondatrice, EdTech Marketing",
-      "i-p12-desc":  "Marketing Africain préfigure déjà ce rôle : créer des formations et outils pour les professionnels du marketing africain.",
-
-      /* SOFTSKILLS */
-      "i-label-ss": "05, Profil humain",
-      "i-ss-title": "Ce que les chiffres<br>ne disent pas",
-
-      /* CONTACT + FOOTER */
-      "i-contact-title": "Travaillons<br>ensemble.",
-      "i-contact-sub":   "Disponible pour des missions freelance, des postes en présentiel à Kinshasa ou en remote.",
-      "i-footer-status": "Kinshasa, RDC · Remote · Disponible",
-
-      "sideNav": {
-        "profil": "Profil",
-        "experience": "Expérience",
-        "projets": "Projets",
-        "outils": "Outils",
-        "postes": "Débouchés",
-        "softskills": "Softskills"
-      },
-    },
-
-    /* ── ENGLISH ── */
-    en: {
-      code: "EN",
-
-      "i-nav-cta": "Contact me",
-
-      "i-hero-eyebrow": "Kinshasa, DRC · Available Remote",
-      "i-hero-role":    "Digital Marketing & Performance",
-      "i-hero-desc":    "Content strategy, campaign management and client relations. Cross-sector experience spanning an industrial group, companies and freelance work, delivering concrete results on tight budgets.",
-      "i-btn-projects": "See my projects",
-      "i-btn-exp":      "My experience →",
-
-      "i-stat1-lbl": "Facebook video campaign impressions",
-      "i-stat1-ctx": "Total budget · $25",
-      "i-stat2-lbl": "LinkedIn followers generated from scratch",
-      "i-stat2-ctx": "100% organic · 10 months",
-      "i-stat3-lbl": "Qualified commercial conversations",
-      "i-stat3-ctx": "Total budget · $15",
-      "i-stat4-lbl": "Community growth in 1 month",
-      "i-stat4-ctx": "$2/day · 7 days",
-
-      "i-band1": "Organic Google impressions",
-      "i-band2": "Average Google position in 10 months",
-      "i-band3": "Facebook video ThruPlays",
-      "i-band4": "Prospects managed via CRM",
-
-      "i-label-profil": "01, Profile",
-      "i-profil-title": "Who I am &<br>what I master",
-      "i-profil-p1": "Digital marketing specialist, I combine strategic vision and operational execution across the full marketing value chain, from visual identity design to Meta Ads campaign reporting.",
-      "i-profil-p2": "My background spanning an industrial group (TEXAF), companies and freelance work has given me a rare adaptability and the ability to deliver concrete results, even on very tight budgets.",
-      "i-profil-p3": "I am deeply interested in AI applications in marketing, SEO/AEO optimisation for next-generation search engines, and the development of digital marketing in francophone Africa.",
-      "i-dsi-label":    "What I do beyond the job description",
-      "i-skills-title": "Areas of expertise",
-      "i-skills-sub":   "The 4 pillars of my skillset",
-
-      "i-label-exp": "02, Experience",
-      "i-exp-title": "What I can<br>actually do",
-      "i-acc-label": "Experience breakdown",
-
-      "i-job1-title": "Digital Marketing & Communication Consultant",
-      "i-job2-title": "Client Relations Officer",
-      "i-job3-title": "Digital Communications Manager",
-      "i-job4-title": "Digital Project Manager & Community Manager",
-
-      "i-label-proj": "03, Projects",
-      "i-proj-title": "What I build<br>on my own",
-      "i-proj-tag":   "Founding project · Live",
-      "i-proj-link":  "Visit marketingafricain.com",
-
-      "i-label-outils": "02.5, Ecosystem",
-      "i-outils-title": "Tools I<br>master",
-      "i-cat-ai":       "Artificial intelligence",
-      "i-cat-design":   "Design & Creation",
-      "i-cat-web":      "Web & Project management",
-      "i-cat-social":   "Social media",
-      "i-cat-office":   "Microsoft Office Suite",
-      "i-cat-crm":      "CRM & Forms",
-
-      "i-label-postes": "06, Opportunities",
-      "i-postes-title": "Positions I can<br><em>apply for</em>",
-      "i-p01-title": "Digital Communications Manager",
-      "i-p01-desc":  "A role I have already held with proven results: website redesign, SEO, LinkedIn, Meta Ads, full branding.",
-      "i-p02-title": "Social Media Manager",
-      "i-p02-desc":  "Editorial strategy, community management, sponsored campaigns and reporting, my day-to-day for months.",
-      "i-p03-title": "Digital Marketing Officer",
-      "i-p03-desc":  "360° vision: acquisition, retention, branding, SEO, email marketing. The senior generalist profile SMEs need.",
-      "i-p04-title": "Account Manager",
-      "i-p04-desc":  "Client portfolio management, performance tracking, strategic recommendations. My CRM and TEXAF experience speaks for itself.",
-      "i-p05-title": "Brand Manager",
-      "i-p05-desc":  "Guardian of visual identity, brand consistency and long-term content strategy.",
-      "i-p06-title": "Content Strategist",
-      "i-p06-desc":  "Content architect, editorial planning, SEO/AEO, AI engine optimisation. The future of content is my speciality.",
-      "i-p07-title": "Digital Marketing Manager",
-      "i-p07-desc":  "Coordinating all digital levers with reporting to senior management. My deliverable level matches this role.",
-      "i-p08-title": "Growth Marketer",
-      "i-p08-desc":  "Acquisition, activation, retention, with micro-budgets delivering macro results. Exactly what I did at TEXAF.",
-      "i-p09-title": "Digital Strategy Consultant",
-      "i-p09-desc":  "Audit, recommendations and support through digital transformation. My freelance and TEXAF profile proves it.",
-      "i-p10-title": "AI Marketing Specialist",
-      "i-p10-desc":  "Integrating AI tools into marketing strategies. An emerging role that few African profiles can fill today.",
-      "i-p11-title": "Marketing Director, Africa",
-      "i-p11-desc":  "Leading the marketing strategy of a pan-African organisation. My IR Master’s + African field expertise point there.",
-      "i-p12-title": "Founder, EdTech Marketing",
-      "i-p12-desc":  "Marketing Africain already prefigures this role: building courses and tools for African marketing professionals.",
-
-      "i-label-ss": "05, Human profile",
-      "i-ss-title": "What the numbers<br>don’t show",
-
-      "i-contact-title": "Let’s work<br>together.",
-      "i-contact-sub":   "Available for freelance projects, on-site positions in Kinshasa or remote work.",
-      "i-footer-status": "Kinshasa, DRC · Remote · Available",
-
-      "sideNav": {
-        "profil": "Profile",
-        "experience": "Experience",
-        "projets": "Projects",
-        "outils": "Tools",
-        "postes": "Positions",
-        "softskills": "Soft skills"
-      },
-    },
-
-    /* ── SPANISH ── */
-    es: {
-      code: "ES",
-
-      "i-nav-cta": "Contáctame",
-
-      "i-hero-eyebrow": "Kinshasa, RDC · Disponible en remoto",
-      "i-hero-role":    "Marketing Digital & Rendimiento",
-      "i-hero-desc":    "Estrategia de contenido, gestión de campañas y relación con clientes. Experiencia transversal entre grupo industrial, empresa y trabajo freelance, con resultados concretos y presupuestos ajustados.",
-      "i-btn-projects": "Ver mis proyectos",
-      "i-btn-exp":      "Mi experiencia →",
-
-      "i-stat1-lbl": "Impresiones de campaña de vídeo en Facebook",
-      "i-stat1-ctx": "Presupuesto total · 25 $",
-      "i-stat2-lbl": "Seguidores de LinkedIn generados desde cero",
-      "i-stat2-ctx": "100 % orgánico · 10 meses",
-      "i-stat3-lbl": "Conversaciones comerciales cualificadas",
-      "i-stat3-ctx": "Presupuesto total · 15 $",
-      "i-stat4-lbl": "Crecimiento de comunidad en 1 mes",
-      "i-stat4-ctx": "2 $/día · 7 días",
-
-      "i-band1": "Impresiones orgánicas en Google",
-      "i-band2": "Posición media en Google en 10 meses",
-      "i-band3": "ThruPlays de vídeo en Facebook",
-      "i-band4": "Prospectos gestionados vía CRM",
-
-      "i-label-profil": "01, Perfil",
-      "i-profil-title": "Quién soy &<br>qué domino",
-      "i-profil-p1": "Especialista en marketing digital, combino visión estratégica y ejecución operativa en toda la cadena de valor del marketing, desde el diseño de identidad visual hasta el reporte de campañas Meta Ads.",
-      "i-profil-p2": "Mi trayectoria entre un grupo industrial (TEXAF), empresas y trabajo freelance me ha permitido desarrollar una adaptabilidad poco común y la capacidad de producir resultados concretos con presupuestos muy ajustados.",
-      "i-profil-p3": "Me interesa profundamente el uso de la IA en el marketing, la optimización SEO/AEO para motores de nueva generación y el desarrollo del marketing digital en África francofóna.",
-      "i-dsi-label":    "Lo que hago más allá de la descripción del puesto",
-      "i-skills-title": "Áreas de competencia",
-      "i-skills-sub":   "Los 4 pilares de mi experiencia",
-
-      "i-label-exp": "02, Experiencia",
-      "i-exp-title": "Lo que sé<br>hacer concretamente",
-      "i-acc-label": "Detalle de experiencias",
-
-      "i-job1-title": "Consultora de Marketing Digital & Comunicación",
-      "i-job2-title": "Responsable de Atención al Cliente",
-      "i-job3-title": "Responsable de Comunicación Digital",
-      "i-job4-title": "Gestora de Proyectos Digitales & Community Manager",
-
-      "i-label-proj": "03, Proyectos",
-      "i-proj-title": "Lo que construyo<br>por mi cuenta",
-      "i-proj-tag":   "Proyecto fundador · En línea",
-      "i-proj-link":  "Visitar marketingafricain.com",
-
-      "i-label-outils": "02.5, Ecosistema",
-      "i-outils-title": "Herramientas que<br>domino",
-      "i-cat-ai":       "Inteligencia artificial",
-      "i-cat-design":   "Diseño & Creación",
-      "i-cat-web":      "Web & Gestión de proyectos",
-      "i-cat-social":   "Redes sociales",
-      "i-cat-office":   "Suite Microsoft Office",
-      "i-cat-crm":      "CRM & Formularios",
-
-      "i-label-postes": "06, Oportunidades",
-      "i-postes-title": "Puestos a los que<br><em>puedo aspirar</em>",
-      "i-p01-title": "Responsable de Comunicación Digital",
-      "i-p01-desc":  "Un puesto que ya ocupé con resultados probados: rediseño web, SEO, LinkedIn, Meta Ads, branding completo.",
-      "i-p02-title": "Social Media Manager",
-      "i-p02-desc":  "Estrategia editorial, gestión de comunidad, campañas patrocinadas y reporting, mi día a día durante meses.",
-      "i-p03-title": "Responsable de Marketing Digital",
-      "i-p03-desc":  "Visión 360°: adquisición, fidelización, branding, SEO, email marketing. El perfil generalista sénior que las pymes necesitan.",
-      "i-p04-title": "Account Manager",
-      "i-p04-desc":  "Gestión de cartera de clientes, seguimiento del rendimiento, recomendaciones estratégicas. Mi experiencia CRM y TEXAF habla por sí sola.",
-      "i-p05-title": "Brand Manager",
-      "i-p05-desc":  "Guardiana de la identidad visual, la coherencia de marca y la estrategia de contenido a largo plazo.",
-      "i-p06-title": "Content Strategist",
-      "i-p06-desc":  "Arquitecta de contenido, planificación editorial, SEO/AEO, optimización para motores IA. El futuro del contenido es mi especialidad.",
-      "i-p07-title": "Digital Marketing Manager",
-      "i-p07-desc":  "Coordinación de todos los canales digitales con reporte a la dirección. Mi nivel de entregables corresponde a este rol.",
-      "i-p08-title": "Growth Marketer",
-      "i-p08-desc":  "Adquisición, activación, retención, con micro-presupuestos que producen resultados macro. Es exactamente lo que hice en TEXAF.",
-      "i-p09-title": "Consultora de Estrategia Digital",
-      "i-p09-desc":  "Auditoría, recomendaciones y acompañamiento en la transformación digital. Mi perfil freelance y TEXAF lo demuestran.",
-      "i-p10-title": "AI Marketing Specialist",
-      "i-p10-desc":  "Integrar herramientas de IA en las estrategias de marketing. Un rol emergente que pocos perfiles africanos pueden ocupar hoy.",
-      "i-p11-title": "Directora de Marketing, África",
-      "i-p11-desc":  "Pilotar la estrategia de marketing de una organización panafricana. Mi Máster en RRII + experiencia en terreno africano apuntan a ello.",
-      "i-p12-title": "Fundadora, EdTech Marketing",
-      "i-p12-desc":  "Marketing Africain ya prefigura este rol: crear formaciones y herramientas para los profesionales del marketing africano.",
-
-      "i-label-ss": "05, Perfil humano",
-      "i-ss-title": "Lo que los números<br>no dicen",
-
-      "i-contact-title": "Trabajemos<br>juntos.",
-      "i-contact-sub":   "Disponible para misiones freelance, puestos presenciales en Kinshasa o trabajo remoto.",
-      "i-footer-status": "Kinshasa, RDC · Remoto · Disponible",
-
-      "sideNav": {
-        "profil": "Perfil",
-        "experience": "Experiencia",
-        "projets": "Proyectos",
-        "outils": "Herramientas",
-        "postes": "Puestos",
-        "softskills": "Aptitudes"
-      },
-    }
-  };
-
-  /* =============================================================
-     DYNAMIC CONTENT ARRAYS
-     Text for elements selected by class (not ID)
-  ============================================================= */
-  var DC = {
-    fr: {
-      whatido: [
-        { h:"Campagnes & Acquisition",       p:"Paramétrage, lancement et optimisation de campagnes Meta Ads et Google Ads. Reporting de performance et recommandations stratégiques. Résultats prouvés avec des micro-budgets." },
-        { h:"SEO & Visibilité",              p:"Optimisation on-page, stratégie de contenu SEO, AEO pour moteurs IA, création de llms.txt. Position moyenne 5 sur Google en 10 mois sur un nouveau domaine." },
-        { h:"Branding & Identité visuelle",  p:"Conception complète d’identités visuelles : logo, charte graphique, supports institutionnels. Cohérence visuelle cross-canal." },
-        { h:"Web & CMS",                      p:"Création, refonte et maintenance de sites WordPress. Optimisation SEO technique, sécurisation, coordination des livrables." },
-        { h:"CRM & Suivi client",             p:"Gestion de portefeuilles de prospects, qualification des besoins, fiabilisation des données CRM, accompagnement jusqu’à la décision." },
-        { h:"Stratégie & Rédaction",       p:"Conception de projets stratégiques de A à Z, rédaction de documents institutionnels (ESG, plans opérationnels), copywriting orienté conversion." }
-      ],
-      skills: [
-        { h:"Stratégie & Branding",       p:"Marketing digital, identité visuelle, content marketing, social media, SEO / AEO / GEO" },
-        { h:"Performance & Acquisition",   p:"Meta Ads, Google Ads, email marketing, reporting, analyse de performance" },
-        { h:"CRM & Relation Client",       p:"Qualification et suivi de prospects, gestion du parcours client, fiabilisation des données" },
-        { h:"Création & Outils",          p:"Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate" }
-      ],
-      deepskills: [
-        { t:"Budget optimization",               d:"Produire des résultats massifs avec des ressources limitées, 100 000 impressions pour 25 $." },
-        { t:"Copywriting stratégique",           d:"Écrire pour convaincre : chaque mot est choisi, chaque phrase a une fonction précise." },
-        { t:"Gestion de crise digitale",         d:"Gérer les tentatives de piratage, les bad buzz et les problèmes techniques sous pression." },
-        { t:"Coordination multi-équipes",       d:"Aligner prestataires, équipes internes et clients autour d’un même livrable, dans les délais." },
-        { t:"IA appliquée au marketing",        d:"Utiliser Claude et ChatGPT comme de vrais outils de travail : prompting, itération, production." },
-        { t:"Rédaction de projets stratégiques", d:"Formaliser des visions complexes en documents actionnables : ESG, plans opérationnels, stratégies." },
-        { t:"Conception de A à Z",              d:"Piloter un projet depuis l’idée jusqu’au livrable final, sans perdre le fil ni la qualité." },
-        { t:"Analyse pipeline CRM",              d:"Lire, nettoyer et interpréter les données d’un CRM pour optimiser la conversion et le suivi." }
-      ],
-      sslabels: ["Créativité", "Autonomie", "Capacité d’analyse", "Esprit stratégique", "Adaptabilité", "Travail en équipe"],
-      ssdescs:  [
-        "Trouver des solutions originales là où les autres voient des contraintes.",
-        "Conduire un projet de A à Z sans attendre qu’on lui dise quoi faire.",
-        "Lire les données, identifier les leviers, prendre les bonnes décisions.",
-        "Penser deux coups d’avance. Voir l’ensemble avant d’agir sur le détail.",
-        "Changer d’environnement, de secteur ou d’outil sans perdre en efficacité.",
-        "Fédérer, coordonner et faire avancer des projets avec des équipes diverses."
-      ],
-      expIntro: "Mon parcours couvre l’ensemble du spectre marketing : de la stratégie de marque à l’exécution opérationnelle, de la gestion de communauté au pilotage de campagnes d’acquisition, de la refonte de site à la conception de projets institutionnels.",
-      projTagline: "Plateforme francophone dédiée aux entrepreneurs africains : guides PDF pratiques sur le marketing digital, les outils IA, la monétisation et la croissance en ligne. Conçue pour rendre le marketing accessible sur le continent.",
-      projKeys:   ["Catégorie", "Audience", "Offre", "Tech", "Vision"],
-      projVals:   [
-        "Plateforme e-learning · Guides PDF",
-        "Entrepreneurs francophones d’Afrique subsaharienne",
-        "<strong>8 guides à 10 $</strong> : WhatsApp Business, Meta Ads, email marketing, outils IA (ChatGPT & Claude), freelancing, Mobile Money…",
-        "WordPress · SEO / AEO / GEO · Rank Math · Boutique Chariow",
-        "Devenir la référence marketing digital en Afrique francophone"
-      ],
-      postesIntro: "Mon profil transversal couvre la stratégie, l’exécution terrain, la donnée et la relation client. Voici les postes qui correspondent réellement à ce que je sais faire.",
-      postesNote:  "<strong>Note :</strong> Cette liste est une boussole, pas un plafond. Le marché remote élargit encore davantage le spectre de ce qui est accessible aujourd’hui."
-    },
-
-    en: {
-      whatido: [
-        { h:"Campaigns & Acquisition",     p:"Setup, launch and optimisation of Meta Ads and Google Ads campaigns. Performance reporting and strategic recommendations. Proven results on micro-budgets." },
-        { h:"SEO & Visibility",            p:"On-page optimisation, SEO content strategy, AEO for AI engines, llms.txt creation. Average position 5 on Google in 10 months on a new domain." },
-        { h:"Branding & Visual Identity",  p:"Full visual identity design: logo, brand guidelines, institutional materials. Cross-channel visual consistency." },
-        { h:"Web & CMS",                   p:"WordPress site creation, redesign and maintenance. Technical SEO, security hardening, deliverable coordination." },
-        { h:"CRM & Client Management",     p:"Prospect portfolio management, needs qualification, CRM data reliability, end-to-end client journey support." },
-        { h:"Strategy & Copywriting",      p:"End-to-end strategic project design, institutional document writing (ESG, operational plans), conversion-focused copywriting." }
-      ],
-      skills: [
-        { h:"Strategy & Branding",         p:"Digital marketing, visual identity, content marketing, social media, SEO / AEO / GEO" },
-        { h:"Performance & Acquisition",   p:"Meta Ads, Google Ads, email marketing, reporting, performance analysis" },
-        { h:"CRM & Client Relations",      p:"Prospect qualification and tracking, client journey management, data reliability" },
-        { h:"Creation & Tools",            p:"Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate" }
-      ],
-      deepskills: [
-        { t:"Budget optimization",            d:"Delivering massive results with limited resources, 100,000 impressions for $25." },
-        { t:"Strategic copywriting",          d:"Writing to persuade: every word chosen, every sentence with a precise purpose." },
-        { t:"Digital crisis management",      d:"Handling hacking attempts, bad buzz and technical issues under pressure." },
-        { t:"Multi-team coordination",        d:"Aligning contractors, internal teams and clients around one deliverable, on time." },
-        { t:"AI applied to marketing",        d:"Using Claude and ChatGPT as real work tools: prompting, iteration, production." },
-        { t:"Strategic document writing",     d:"Turning complex visions into actionable documents: ESG reports, operational plans, strategies." },
-        { t:"End-to-end project management",  d:"Driving a project from idea to final delivery without losing direction or quality." },
-        { t:"CRM pipeline analysis",          d:"Reading, cleaning and interpreting CRM data to optimise conversion and follow-up." }
-      ],
-      sslabels: ["Creativity", "Autonomy", "Analytical thinking", "Strategic mindset", "Adaptability", "Teamwork"],
-      ssdescs:  [
-        "Finding original solutions where others see only constraints.",
-        "Running a project from A to Z without waiting to be told what to do.",
-        "Reading data, identifying levers, making the right decisions.",
-        "Thinking two moves ahead. Seeing the whole before acting on the detail.",
-        "Switching environment, sector or tool without losing effectiveness.",
-        "Uniting, coordinating and moving projects forward with diverse teams."
-      ],
-      expIntro: "My background covers the full marketing spectrum: from brand strategy to operational execution, community management to acquisition campaign management, website redesign to institutional project design.",
-      projTagline: "A French-language platform for African entrepreneurs: practical PDF guides on digital marketing, AI tools, monetisation and online growth. Designed to make marketing accessible across the continent.",
-      projKeys:   ["Category", "Audience", "Offer", "Tech", "Vision"],
-      projVals:   [
-        "E-learning platform · PDF Guides",
-        "French-speaking entrepreneurs in sub-Saharan Africa",
-        "<strong>8 guides at $10</strong>: WhatsApp Business, Meta Ads, email marketing, AI tools (ChatGPT & Claude), freelancing, Mobile Money…",
-        "WordPress · SEO / AEO / GEO · Rank Math · Chariow shop",
-        "Becoming the digital marketing reference in francophone Africa"
-      ],
-      postesIntro: "My cross-functional profile covers strategy, field execution, data and client relations. Here are the positions that genuinely match what I can do.",
-      postesNote:  "<strong>Note:</strong> This list is a compass, not a ceiling. The remote market expands the scope of what is accessible today even further."
-    },
-
-    es: {
-      whatido: [
-        { h:"Campañas & Adquisición",   p:"Configuración, lanzamiento y optimización de campañas Meta Ads y Google Ads. Reportes de rendimiento y recomendaciones estratégicas. Resultados probados con micro-presupuestos." },
-        { h:"SEO & Visibilidad",          p:"Optimización on-page, estrategia de contenido SEO, AEO para motores IA, creación de llms.txt. Posición media 5 en Google en 10 meses en un dominio nuevo." },
-        { h:"Branding & Identidad visual", p:"Diseño completo de identidades visuales: logo, manual de marca, materiales institucionales. Coherencia visual cross-canal." },
-        { h:"Web & CMS",                  p:"Creación, rediseño y mantenimiento de sitios WordPress. SEO técnico, seguridad, coordinación de entregables." },
-        { h:"CRM & Atención al cliente", p:"Gestión de carteras de prospectos, cualificación de necesidades, fiabilización de datos CRM, acompañamiento hasta la decisión." },
-        { h:"Estrategia & Redacción",    p:"Diseño de proyectos estratégicos de A a Z, redacción de documentos institucionales (ESG, planes operativos), copywriting orientado a la conversión." }
-      ],
-      skills: [
-        { h:"Estrategia & Branding",       p:"Marketing digital, identidad visual, content marketing, social media, SEO / AEO / GEO" },
-        { h:"Rendimiento & Adquisición", p:"Meta Ads, Google Ads, email marketing, reporting, análisis de rendimiento" },
-        { h:"CRM & Relación con clientes", p:"Cualificación y seguimiento de prospectos, gestión del recorrido del cliente, fiabilización de datos" },
-        { h:"Creación & Herramientas",   p:"Canva, Illustrator, Photoshop, Figma, WordPress, Notion, Power Automate" }
-      ],
-      deepskills: [
-        { t:"Optimización de presupuesto",       d:"Producir resultados masivos con recursos limitados, 100.000 impresiones por 25 $." },
-        { t:"Copywriting estratégico",            d:"Escribir para convencer: cada palabra elegida, cada frase con un propósito preciso." },
-        { t:"Gestión de crisis digitales",        d:"Manejar intentos de hackeo, malas noticias y problemas técnicos bajo presión." },
-        { t:"Coordinación multi-equipo",          d:"Alinear proveedores, equipos internos y clientes en torno a un mismo entregable, a tiempo." },
-        { t:"IA aplicada al marketing",             d:"Usar Claude y ChatGPT como herramientas de trabajo reales: prompting, iteración, producción." },
-        { t:"Redacción de proyectos estratégicos", d:"Convertir visiones complejas en documentos ejecutables: ESG, planes operativos, estrategias." },
-        { t:"Gestión de proyectos de A a Z",     d:"Pilotar un proyecto desde la idea hasta la entrega final sin perder el hilo ni la calidad." },
-        { t:"Análisis de pipeline CRM",           d:"Leer, limpiar e interpretar datos de un CRM para optimizar la conversión y el seguimiento." }
-      ],
-      sslabels: ["Creatividad", "Autonomía", "Capacidad analítica", "Visión estratégica", "Adaptabilidad", "Trabajo en equipo"],
-      ssdescs:  [
-        "Encontrar soluciones originales donde otros ven solo limitaciones.",
-        "Llevar un proyecto de A a Z sin esperar que le digan qué hacer.",
-        "Leer los datos, identificar las palancas, tomar las decisiones correctas.",
-        "Pensar dos movimientos por adelantado. Ver el conjunto antes de actuar en el detalle.",
-        "Cambiar de entorno, sector o herramienta sin perder eficacia.",
-        "Federar, coordinar y hacer avanzar proyectos con equipos diversos."
-      ],
-      expIntro: "Mi trayectoria cubre todo el espectro del marketing: desde la estrategia de marca hasta la ejecución operativa, la gestión de comunidades hasta el pilotaje de campañas, el rediseño web hasta la concepción de proyectos institucionales.",
-      projTagline: "Plataforma en francés para emprendedores africanos: guías PDF prácticas sobre marketing digital, herramientas IA, monetización y crecimiento online. Diseñada para hacer el marketing accesible en el continente.",
-      projKeys:   ["Categoría", "Público", "Oferta", "Tech", "Visión"],
-      projVals:   [
-        "Plataforma e-learning · Guías PDF",
-        "Emprendedores francofónos del África subsahariana",
-        "<strong>8 guías a 10 $</strong>: WhatsApp Business, Meta Ads, email marketing, herramientas IA (ChatGPT & Claude), freelancing, Mobile Money…",
-        "WordPress · SEO / AEO / GEO · Rank Math · Tienda Chariow",
-        "Convertirse en la referencia de marketing digital en África francofóna"
-      ],
-      postesIntro: "Mi perfil transversal cubre la estrategia, la ejecución en terreno, los datos y la relación con clientes. Aquí están los puestos que corresponden realmente a lo que sé hacer.",
-      postesNote:  "<strong>Nota:</strong> Esta lista es una brújula, no un techo. El mercado remoto amplía aún más el espectro de lo que es accesible hoy."
-    }
-  };
-
-  /* =============================================================
-     ENGINE
-  ============================================================= */
-  function byId(id) { return document.getElementById(id); }
-  function all(sel) { return document.querySelectorAll(sel); }
-
-  function set(id, val) {
-    var el = byId(id);
-    if (!el || !val) return;
-    if (val.indexOf("<") !== -1) el.innerHTML = val;
-    else el.textContent = val;
-  }
-
-  function apply(lang) {
-    var t  = T[lang];
-    var dc = DC[lang];
-    if (!t || !dc) return;
-
-    /* ── Static IDs ── */
-    Object.keys(t).forEach(function(k) {
-      if (k !== "code") set(k, t[k]);
-    });
-
-    /* ── whatido cards ── */
-    all(".whatido-card").forEach(function(c, i) {
-      if (!dc.whatido[i]) return;
-      var h = c.querySelector("h4"); if (h) h.textContent = dc.whatido[i].h;
-      var p = c.querySelector("p");  if (p) p.textContent = dc.whatido[i].p;
-    });
-
-    /* ── skill pillars ── */
-    all(".skill-info").forEach(function(c, i) {
-      if (!dc.skills[i]) return;
-      var h = c.querySelector("h4"); if (h) h.textContent = dc.skills[i].h;
-      var p = c.querySelector("p");  if (p) p.textContent = dc.skills[i].p;
-    });
-
-    /* ── deep skills ── */
-    all(".deep-skill-item").forEach(function(c, i) {
-      if (!dc.deepskills[i]) return;
-      var t2 = c.querySelector(".dsi-title"); if (t2) t2.textContent = dc.deepskills[i].t;
-      var d  = c.querySelector(".dsi-desc");  if (d)  d.textContent  = dc.deepskills[i].d;
-    });
-
-    /* ── softskills ── */
-    all(".ss-card").forEach(function(c, i) {
-      var lbl  = c.querySelector(".ss-label"); if (lbl  && dc.sslabels[i]) lbl.textContent  = dc.sslabels[i];
-      var desc = c.querySelector(".ss-desc");  if (desc && dc.ssdescs[i])  desc.textContent = dc.ssdescs[i];
-    });
-
-    /* ── exp intro ── */
-    var intro = document.querySelector(".exp-intro");
-    if (intro) intro.textContent = dc.expIntro;
-
-    /* ── projet tagline ── */
-    var pt = document.querySelector(".projet-tagline");
-    if (pt) pt.textContent = dc.projTagline;
-
-    /* ── projet details ── */
-    all(".projet-detail-row").forEach(function(row, i) {
-      var k = row.querySelector(".detail-key"); if (k && dc.projKeys[i]) k.textContent = dc.projKeys[i];
-      var v = row.querySelector(".detail-val"); if (v && dc.projVals[i]) v.innerHTML   = dc.projVals[i];
-    });
-
-    /* ── postes intro + note ── */
-    var pi = document.querySelector(".postes-intro");
-    if (pi) pi.textContent = dc.postesIntro;
-    var pn = document.querySelector(".postes-note");
-    if (pn) pn.innerHTML = dc.postesNote;
-
-    /* ── lang btn ── */
-    var lb = byId("langBtn");
-    if (lb) lb.innerHTML = t.code + " &#9662;";
-
-    /* ── active state ── */
-    all(".lang-option").forEach(function(o) {
-      o.classList.toggle("active", o.dataset.lang === lang);
-    });
-
-    /* ── side nav tabs ── */
-    if (t.sideNav) {
-      all("[data-section-id]").forEach(function(el) {
-        var sec = el.dataset.sectionId;
-        if (t.sideNav[sec]) el.textContent = t.sideNav[sec];
-      });
-    }
-
-    try { localStorage.setItem("gtk-lang", lang); } catch(e) {}
-    document.documentElement.lang = lang;
-  }
-
-  /* ── Dropdown ── */
-  var btn = byId("langBtn");
-  var dd  = byId("langDropdown");
-  if (btn && dd) {
-    btn.addEventListener("click", function(e) {
-      e.stopPropagation();
-      dd.classList.toggle("open");
-    });
-    document.addEventListener("click", function() { dd.classList.remove("open"); });
-    all(".lang-option").forEach(function(o) {
-      o.addEventListener("click", function() {
-        apply(this.dataset.lang);
-        dd.classList.remove("open");
-      });
-    });
-  }
-
-  /* ── Init ── */
-  var saved = "fr";
-  try { saved = localStorage.getItem("gtk-lang") || "fr"; } catch(e) {}
-  apply(saved);
-
-})();
-</script>
+  </dialog>
 </body>
 </html>

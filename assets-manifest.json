@@ -1,0 +1,883 @@
+{
+  "auditedAt": "2026-11-19",
+  "measurement": "Native WebP, PNG and JPEG dimensions decoded from the installed files; SHA-256 verified against retained Canva exports where available.",
+  "notes": [
+    "Canva exports and Canva previews are distinguished per image; previews are never labelled as high-resolution exports.",
+    "The Breathe & Rise Without Fear JPEG is an unretouched browser screenshot of the confirmed live website, captured on 2026-11-18.",
+    "Canva source links identify the source design; the portfolio hosts selected exported images directly and does not depend on Canva login to display them.",
+    "Original export dimensions are retained. Responsive derivatives, when present, are listed under variants and do not replace the full-resolution source."
+  ],
+  "images": [
+    {
+      "path": "assets/breathe-without-fear-site.jpg",
+      "width": 1348,
+      "height": 926,
+      "quality": "live-website-screenshot",
+      "sourceUrl": "https://breathewithoutfear.org/en",
+      "capturedAt": "2026-11-18",
+      "bytes": 84947,
+      "sha256": "2d8fd7caaf99162d530a266477f18e1855cdc7b7b764e65e505ccfcc6dd5ec0d"
+    },
+    {
+      "path": "assets/agorafrik-charte.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGLZB_FIOI/view",
+      "bytes": 41926,
+      "sha256": "aa632d121ab054739f747d4283f6ab7cd069884ae82d52a6df31a80884f7ac77",
+      "designId": "DAGLZB_FIOI",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "0f4a13156011345f5649670d1907faff01973d19141e1f8a3412595d7a71c6a6",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/agorafrik-charte.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 14642,
+          "sha256": "5a382025a5d0b4ee70c68dd31ea8ad40319f8ca7e309dfb192278fa7f695efce",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/agorafrik-pitch.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGWf-5mlgI/view",
+      "bytes": 582500,
+      "sha256": "d5a9ae4877ed47580422f0a14326717240a9342d2321612c739f3d495d1c9f27",
+      "designId": "DAGWf-5mlgI",
+      "page": 17,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "ee5e19e40179a1fdc64202989f008691e6ac825cdcf32ff6957cb36ee351f352",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "selectionNote": "Conclusion page 17 replaces the cover page containing a stock-photo watermark. No watermark was removed.",
+      "variants": [
+        {
+          "path": "assets/thumbs/agorafrik-pitch.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 68048,
+          "sha256": "0157734a6b9a33166fca315ab1268fe503ecd513bce2b5f254e3b5b396f55c6b",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/agorafrik-publication.webp",
+      "width": 1080,
+      "height": 1350,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGazb6JFFc/view",
+      "bytes": 81272,
+      "sha256": "67b9bbf841e7e4e5edb9820f40773da6ac8f523bf25edae7369fbe80ef3eef92",
+      "designId": "DAGazb6JFFc",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "efd17d94b1c5c707bd689e5a980ea3771509ce1278301175f024b3a3265fbc91",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/agorafrik-publication.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 45872,
+          "sha256": "df3cf3123461ffdd2f21e78c9bbd3de3b429e5d2e597683093b261cc12cafe87",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/agorafrik-visuels.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGafR69dyw/view",
+      "bytes": 321462,
+      "sha256": "8ccda98dcf1e3842c5b33c8b76a8d4f6a197b62e58a8e247a9c36a6ca5b57e57",
+      "designId": "DAGafR69dyw",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "9d350b76b5e9407136b1c214a5115e99778a6d6bb1f5ea697fac32493036e83a",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/agorafrik-visuels.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 34518,
+          "sha256": "f7878abc1c9df209593346a5538225f001364a1d62212bddbf7e9fa09c028a8c",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/anniecks-campagne.webp",
+      "width": 1080,
+      "height": 1350,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAHZEBxh0sA/view",
+      "bytes": 1283560,
+      "sha256": "c342ac0f1e5684c2cdc09349911f61de969422b0e607a5f36a276bddf7b647c2",
+      "designId": "DAHZEBxh0sA",
+      "page": 3,
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "80c08068da3830911b0cdc0e6b731071093ab1bf6ca1249a6aabf23aeb783267",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/anniecks-campagne.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 103304,
+          "sha256": "c4a29d9f141c5727815ab80d01871c183bc426dfb0440e7ea98efb11b0e82c31",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/ardhi-organic-strategie.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGN7a7mBuA/view",
+      "bytes": 859284,
+      "sha256": "2d77d56f78482d405ee74739fcf5e14b20af93858b53d4e473e211821e4b2f56",
+      "designId": "DAGN7a7mBuA",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "88ef29fe52f4a54db6da42234e77d970d733e3a97cca7eab4f6bdf79040fff3b",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/ardhi-organic-strategie.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 59376,
+          "sha256": "5a80423db6f4d6e5563870db49c5af83c440c10fd095c800b428c68203972acb",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/atelier-prospectus.webp",
+      "width": 375,
+      "height": 533,
+      "quality": "canva-preview",
+      "sourceUrl": "https://www.canva.com/design/DAGjq8ows78/view",
+      "bytes": 41006,
+      "sha256": "644fe4cc178d2e23b7d4858f05c317b2a39f2ae2be2e554dae5f6bae92314022",
+      "designId": "DAGjq8ows78",
+      "page": 1,
+      "exportStatus": "source-media-unavailable",
+      "note": "Existing Canva preview retained at its native dimensions."
+    },
+    {
+      "path": "assets/atelier-rollup.webp",
+      "width": 264,
+      "height": 755,
+      "quality": "canva-preview",
+      "sourceUrl": "https://www.canva.com/design/DAGgUM90OG8/view",
+      "bytes": 39240,
+      "sha256": "112b548fd9f486dc4a79db203dcfff65758790e50484fad2a26de482e6fc4f89",
+      "designId": "DAGgUM90OG8",
+      "page": 1,
+      "exportStatus": "source-media-unavailable",
+      "note": "Existing Canva preview retained at its native dimensions."
+    },
+    {
+      "path": "assets/bloom-publication.webp",
+      "width": 1080,
+      "height": 1350,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAHXR2GjJVc/view",
+      "bytes": 998294,
+      "sha256": "f36dd2cf7eba67af17b04d692707cd5ddec0435b76b3461a511f7f0ad3bf4be1",
+      "designId": "DAHXR2GjJVc",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "42d809091ddb16aacb385d9f8e5bbe272b6462426e12ac70edf60591d33b7b32",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/bloom-publication.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 102806,
+          "sha256": "f62e91445e3187c3ba6c2f17818acbc1ff46a8d777ec29d2b7e642e5ad4bed0a",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/carrigres-brochure.webp",
+      "width": 2381,
+      "height": 1122,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGeqT9Hvco/view",
+      "bytes": 1294718,
+      "sha256": "3265b59e8da46f3ac7a5d93571c90f577257e5c2801d6404a7ebd743b4e58522",
+      "designId": "DAGeqT9Hvco",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 2381,
+        "height": 1122,
+        "sha256": "06020b54ad6fa737fcf0a7ebdd5ec6e784a37b3d99b9a50afcebdea0124762c8",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/carrigres-brochure.webp",
+          "width": 900,
+          "height": 424,
+          "bytes": 79916,
+          "sha256": "02b8e9d87b15712259869daaad435736aa964081e2d4f58634df4519b296bd76",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/carrigres-calendrier-mural.webp",
+      "width": 1815,
+      "height": 2571,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAG6SKNUtdc/view",
+      "bytes": 1993832,
+      "sha256": "9fe67b2f6f74cb0c0830d349cb9ff6f548a90731488365b30cbfef58c01fab82",
+      "designId": "DAG6SKNUtdc",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1815,
+        "height": 2571,
+        "sha256": "a13f3acd262b28dc143312dd5759553b542077a5a085bffc2184d36f8ed9699c",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/carrigres-calendrier-mural.webp",
+          "width": 635,
+          "height": 900,
+          "bytes": 132234,
+          "sha256": "69d76eed8d7a4a01d39d450e51a04103444c825a8ca03a988609855a3f07db58",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/carrigres-calendrier-sous-main.webp",
+      "width": 2268,
+      "height": 1512,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAG6SM-rZg0/view",
+      "bytes": 688510,
+      "sha256": "9f53a0029b6e2f24723a9646784ba8e366f721f0bde98f9c1d9389f6fcc0963b",
+      "designId": "DAG6SM-rZg0",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 2268,
+        "height": 1512,
+        "sha256": "82e0fd97e1acde0ced165e188bdcfb35ab6e8149cafb6f37d29710b9082dfdc4",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/carrigres-calendrier-sous-main.webp",
+          "width": 900,
+          "height": 600,
+          "bytes": 77634,
+          "sha256": "55585cc8c910bc00598aa58b58e9eda5069ef69403dca5e70161b053390d554b",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/carrigres-calendrier-table.webp",
+      "width": 2000,
+      "height": 1382,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAG6SNqAtV8/view",
+      "bytes": 1580358,
+      "sha256": "a4dcb56789b8790b4a378b8457e607065dbd6cc48e3171e0eeb213cc487f755d",
+      "designId": "DAG6SNqAtV8",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 2000,
+        "height": 1382,
+        "sha256": "619aa847ab518fe5aca9c9d9109c7dd38e4c8ec2bb1e10f049a06e6a2342bedf",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "contentProvenance": "Source XMP content-provenance declarations preserved in the WebP.",
+      "variants": [
+        {
+          "path": "assets/thumbs/carrigres-calendrier-table.webp",
+          "width": 900,
+          "height": 622,
+          "bytes": 92552,
+          "sha256": "4867ba6297810a7f49d00c0d6a8ee2afffe2189775545e0d86523aab00fc658d",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/carrigres-calendrier-triptyque.webp",
+      "width": 1228,
+      "height": 3024,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAG6SAkW8x4/view",
+      "bytes": 762680,
+      "sha256": "d4dd8c4559b79486b4204f25c4c3c36582dec032e72753dbacc5b38b2782afbd",
+      "designId": "DAG6SAkW8x4",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1228,
+        "height": 3024,
+        "sha256": "5d20e007fd3e17a091b717bd4c26b4671ff7136a9243773c20b30d2126bbaed0",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/carrigres-calendrier-triptyque.webp",
+          "width": 365,
+          "height": 900,
+          "bytes": 34216,
+          "sha256": "614a48a8df3cf918261d9c11ccacf6f3edc14d1a4205700ebca649fc33296b30",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/carrigres-charte.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGY8DbdOfk/view",
+      "bytes": 1723938,
+      "sha256": "13441f18ac6324b771439f134a3681f94eaedf5e581d40a9448a4dfb2dbe03d8",
+      "designId": "DAGY8DbdOfk",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "4c85c9f0ec3752053d1e65a337b3ad16bda8a0e0d6c8a0ca489f8d6008e7d9b2",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/carrigres-charte.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 46112,
+          "sha256": "7fedb7222b1e77258f9206227bf9d46c347256f4248cc431d104c2b0569b56fc",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/kadea-affiche.webp",
+      "width": 1414,
+      "height": 2000,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGOTeAnLi0/view",
+      "bytes": 1145638,
+      "sha256": "3f74670ab86f80b340d9289f32c289c31104da04d147097554d00d4e4192a571",
+      "designId": "DAGOTeAnLi0",
+      "page": 3,
+      "export": {
+        "format": "PNG",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "4410b9ecefb5cc0bf808deef7860c2bd9a44633ad0caad0aa80d03d37bcc749c",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "historicalArtwork": true,
+      "variants": [
+        {
+          "path": "assets/thumbs/kadea-affiche.webp",
+          "width": 636,
+          "height": 900,
+          "bytes": 87160,
+          "sha256": "72ea7a8e272d6c036825586059aeca624e10c5211ae775ba2f58df57e7134c5a",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/kadea-growth-hacking.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGJv1dVEEU/view",
+      "bytes": 76984,
+      "sha256": "a03ec48e3aa3043243c506ddc94953ad6f09360c6db66ff4c455c154fb655fad",
+      "designId": "DAGJv1dVEEU",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "bb20b2ae435e7aec0b60f8657b8223ed5f3095a4798494d6987a9eeda50c8d64",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/kadea-growth-hacking.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 25028,
+          "sha256": "c12da7f1b403a65fc93c5eb2786b5eaca1ef495c3340fe5093a83cd57f49c65c",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/kadea-storytelling.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGMPtVOboA/view",
+      "bytes": 25328,
+      "sha256": "5c3ef2660727964e82c7efbad0b95f134d0dcc6cfbe3bdb0f90e2bdc84da9c9d",
+      "designId": "DAGMPtVOboA",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "66619462e9a75ae9f0d8c40bccd3706055866e248e2a9b546879ae0ccc283677",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/kadea-storytelling.webp",
+          "width": 900,
+          "height": 506,
+          "bytes": 16602,
+          "sha256": "9fb580986bcacda1ade851ee65b15d33a97ce23229fdd40fee76d17ae97ac532",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/revendre-carte-cadeau.webp",
+      "width": 1748,
+      "height": 1240,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGf9aiAXCg/view",
+      "bytes": 235182,
+      "sha256": "c8c3b341e6575aad12891a314132b78f2d5be325a511170a023ee556b6060de3",
+      "designId": "DAGf9aiAXCg",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1748,
+        "height": 1240,
+        "sha256": "be64f71e95b9ff094a1e12f835b4d8eaca0a3e6782adc47b20fe94e114d13f69",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/revendre-carte-cadeau.webp",
+          "width": 900,
+          "height": 638,
+          "bytes": 51156,
+          "sha256": "560ccec280033472d120c69029b30e1ff14bd7c8b2443aadc34b58ac4645ea68",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/revendre-lookbook.webp",
+      "width": 1414,
+      "height": 2000,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGv-S68mys/view",
+      "bytes": 861908,
+      "sha256": "49a6543618b79622eb151f1c905e54a4dea94a8d748b1ddaa7fce08d12e367c3",
+      "designId": "DAGv-S68mys",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "3fd227cf8e8fd1a8410772ee3cae870350be0a5ddc964c8e3f9e4e00f275711c",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/revendre-lookbook.webp",
+          "width": 636,
+          "height": 900,
+          "bytes": 47196,
+          "sha256": "59bae1ebf53eda53f7258e42f0aee099e8906fc644b743dc2a31485eb19c7665",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/utex-centenaire.webp",
+      "width": 1414,
+      "height": 2000,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAGx6hlsUKI/view",
+      "bytes": 302368,
+      "sha256": "e50b4bbae9f3db230fbc2f127103cb0161527b011b6778aefa9ed8d23e5a3110",
+      "designId": "DAGx6hlsUKI",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "6f9114ca5e019cd1cc7b91a5e83b311f0a7ce8c3f15353f59519a2d40520cd71",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/utex-centenaire.webp",
+          "width": 636,
+          "height": 900,
+          "bytes": 35884,
+          "sha256": "7d10c35d777f985c6d6949d3cc6e9546db70e82631fbb17fedfa4255130ff4dc",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/utex-halloween.png",
+      "width": 1414,
+      "height": 2000,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAG1BKvRHUw/view",
+      "bytes": 3846104,
+      "sha256": "88e3b28a388e71002b7dc80d3d9dfd2cbffc726267ebc0885067f4e78835eb09",
+      "designId": "DAG1BKvRHUw",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "88e3b28a388e71002b7dc80d3d9dfd2cbffc726267ebc0885067f4e78835eb09",
+        "conversion": "original-png",
+        "resized": false,
+        "cropped": false
+      },
+      "historicalArtwork": true,
+      "contentProvenance": "Original PNG preserved byte for byte, including its embedded content credentials; signature not independently validated.",
+      "variants": [
+        {
+          "path": "assets/thumbs/utex-halloween.webp",
+          "width": 636,
+          "height": 900,
+          "bytes": 109864,
+          "sha256": "7f974c4eb2744e3a7b9e945df67480983e0bff5f994f773a86fcebaa285542e2",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/utex-identite.webp",
+      "width": 2000,
+      "height": 1410,
+      "quality": "canva-export",
+      "sourceUrl": "https://www.canva.com/design/DAG6QM73mFc/view",
+      "bytes": 10640,
+      "sha256": "a9327c2f3a894ab47b7b6441f334558baaa2c859d947866aac05ea1d726a1f11",
+      "designId": "DAG6QM73mFc",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 2000,
+        "height": 1410,
+        "sha256": "d69bbb7b7c51d58d446b2eb680136cd83f52372dae8afc41e2ab3dc0dbee1cf1",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/utex-identite.webp",
+          "width": 900,
+          "height": 635,
+          "bytes": 6074,
+          "sha256": "c93aac6c1e0d304b7353d5bf660008415eb0e75677a8b0a28aca9fedf2db01ac",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 2,
+  "delivery": {
+    "exportCount": 21,
+    "previewCount": 2,
+    "websiteScreenshotCount": 1,
+    "thumbnailCount": 21,
+    "fullResolutionBytes": 18716486,
+    "thumbnailBytes": 1270194,
+    "thumbnailByteReductionPercent": 93.2,
+    "scope": "Only the 21 exported artworks; excludes website screenshot, retained Canva previews, HTML, scripts and fonts."
+  }
+}
