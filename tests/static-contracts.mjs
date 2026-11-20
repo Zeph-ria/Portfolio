@@ -23,7 +23,7 @@ const ancestor = (node, predicate) => {
   while (current && !predicate(current)) current = current.parent;
   return current;
 };
-const localStylePaths = byTag('link').filter(node => node.attrs.rel === 'stylesheet' && !/^https?:/i.test(node.attrs.href || '')).map(node => node.attrs.href);
+const localStylePaths = byTag('link').filter(node => node.attrs.rel === 'stylesheet' && !/^https?:/i.test(node.attrs.href || '')).map(node => localPath(node.attrs.href));
 const stylesheets = localStylePaths.filter(path => existsSync(resolve(root, path))).map(path => ({ path, css: readFileSync(resolve(root, path), 'utf8') }));
 
 function assertLocalFile(reference, label = 'Resource') {
@@ -115,6 +115,20 @@ test('Local scripts, styles, media and fonts exist and are non-empty', () => {
   }
   for (const node of byTag('script').filter(node => node.attrs.src)) {
     assert(Object.hasOwn(node.attrs, 'defer') || node.attrs.type === 'module', `Script should not block parser: ${node.attrs.src}`);
+  }
+});
+
+test('Published scripts and styles use versions matching their current contents', () => {
+  const resources = [
+    ...byTag('script').map(node => node.attrs.src),
+    ...byTag('link').filter(node => node.attrs.rel === 'stylesheet').map(node => node.attrs.href)
+  ].filter(reference => reference && !/^https?:/i.test(reference));
+  assert.equal(resources.length, 5, 'All local runtime resources must be checked');
+  for (const reference of resources) {
+    const filename = assertLocalFile(reference, 'Runtime resource');
+    const expected = createHash('sha256').update(readFileSync(filename)).digest('hex').slice(0, 12);
+    const actual = new URL(reference, 'https://portfolio.example/').searchParams.get('v');
+    assert.equal(actual, expected, `Stale browser-cache version for ${reference}; regenerate the portfolio before publishing`);
   }
 });
 

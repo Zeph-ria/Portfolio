@@ -10,6 +10,7 @@ not-yet-imported files keep their declared Canva dimensions for local assembly.
 No placeholder is substituted for missing artwork.
 """
 import argparse
+import hashlib
 import html
 import json
 import re
@@ -214,6 +215,22 @@ def collect_assets(content):
     slides += [calendar['slide'] for calendar in content['calendars']]
     return sorted({item[key] for item in slides for key in ('path','thumb') if item.get(key)})
 
+def version_runtime_assets(document):
+    # A returning visitor can receive new HTML while the browser still caches
+    # an older script or stylesheet. Bind their URLs to the reviewed contents.
+    resources = ('styles.css', 'portfolio-ui.css', 'editorial.css', 'i18n.js', 'script.js')
+    for resource in resources:
+        version = hashlib.sha256((ROOT / resource).read_bytes()).hexdigest()[:12]
+        pattern = r'((?:src|href)=["\'])' + re.escape(resource) + r'(?:\?[^"\']*)?(["\'])'
+        document, count = re.subn(
+            pattern,
+            lambda match: match.group(1) + resource + '?v=' + version + match.group(2),
+            document,
+        )
+        if count != 1:
+            raise ValueError(f'Expected one runtime resource reference: {resource}')
+    return document
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--strict',action='store_true',help='Fail if a selected local artwork or thumbnail has not been imported.')
@@ -232,6 +249,7 @@ def main():
     document=replace_section(document,'galerie',render_calendars(content,manifest))
     document=replace_section(document,'sites',render_sites(manifest))
     document=replace_section(document,'preuves',render_metrics(content),'numbers-section section-pad')
+    document=version_runtime_assets(document)
     (ROOT/'index.html').write_text('\n'.join(line.rstrip() for line in document.splitlines())+'\n')
     print(f'Rendered {len(content["projects"])} projects, {sum(len(project["slides"]) for project in content["projects"])} project pages, four calendars and six website screenshots.')
     if missing:print(f'Local assembly: {len(missing)} image files still await export. Run --strict before release.')
