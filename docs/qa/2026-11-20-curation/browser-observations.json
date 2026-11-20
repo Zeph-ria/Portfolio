@@ -1,0 +1,562 @@
+{
+  "method": "CUA real-browser interactions; not the standalone Playwright suite",
+  "images": [
+    {
+      "group": "Carrigrès",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 5,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 6,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 5,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 6,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 7,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 8,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 9,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 10,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 11,
+      "ok": true
+    },
+    {
+      "group": "Agorafrik",
+      "page": 12,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 5,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 6,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 7,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 8,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 9,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 10,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 11,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 12,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 13,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 14,
+      "ok": true
+    },
+    {
+      "group": "Re-vendre",
+      "page": 15,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 5,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 6,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 7,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 8,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 9,
+      "ok": true
+    },
+    {
+      "group": "L’Atelier Nail Salon",
+      "page": 10,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 5,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 6,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 7,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 8,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 9,
+      "ok": true
+    },
+    {
+      "group": "Wali",
+      "page": 10,
+      "ok": true
+    },
+    {
+      "group": "Bloom Atelier",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Bloom Atelier",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Bloom Atelier",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Bloom Atelier",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "Ardhi Organic",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Ardhi Organic",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Ardhi Organic",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Ardhi Organic",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "Ardhi Organic",
+      "page": 5,
+      "ok": true
+    },
+    {
+      "group": "Ardhi Organic",
+      "page": 6,
+      "ok": true
+    },
+    {
+      "group": "Luminary",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Luminary",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Luminary",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Annieck’s",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Annieck’s",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Annieck’s",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Annieck’s",
+      "page": 4,
+      "ok": true
+    },
+    {
+      "group": "UTEX / TEXAF",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "UTEX / TEXAF",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Carrigrès",
+      "page": 3,
+      "ok": true
+    },
+    {
+      "group": "Breathe & Rise Without Fear",
+      "page": 1,
+      "ok": true
+    },
+    {
+      "group": "Breathe & Rise Without Fear",
+      "page": 2,
+      "ok": true
+    },
+    {
+      "group": "Breathe & Rise Without Fear",
+      "page": 3,
+      "ok": true
+    }
+  ],
+  "responsive": [
+    {
+      "width": 320,
+      "language": "fr",
+      "viewport": 305,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "viewport": 305,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "viewport": 305,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 390,
+      "language": "fr",
+      "viewport": 375,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "viewport": 375,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "viewport": 375,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 700,
+      "language": "fr",
+      "viewport": 685,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 700,
+      "language": "en",
+      "viewport": 685,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 700,
+      "language": "es",
+      "viewport": 685,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "language": "fr",
+      "viewport": 753,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "viewport": 753,
+      "overflow": false,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "language": "es",
+      "viewport": 753,
+      "overflow": false,
+      "issues": []
+    }
+  ],
+  "calendars": [
+    {
+      "language": "fr",
+      "format": "mural",
+      "fits": true,
+      "ratioError": 2.190140844016142e-05,
+      "controlsFit": true
+    },
+    {
+      "language": "fr",
+      "format": "table",
+      "fits": true,
+      "ratioError": 0.00010046147587816634,
+      "controlsFit": true
+    },
+    {
+      "language": "fr",
+      "format": "triptyque",
+      "fits": true,
+      "ratioError": 5.478138502268415e-07,
+      "controlsFit": true
+    },
+    {
+      "language": "fr",
+      "format": "sous-main",
+      "fits": true,
+      "ratioError": 0,
+      "controlsFit": true
+    },
+    {
+      "language": "en",
+      "format": "sous-main",
+      "fits": true,
+      "ratioError": 0,
+      "controlsFit": true
+    },
+    {
+      "language": "es",
+      "format": "sous-main",
+      "fits": true,
+      "ratioError": 0,
+      "controlsFit": true
+    }
+  ],
+  "download": {
+    "file": "assets/utex-halloween.png",
+    "bytes": 3846104,
+    "sha256": "88e3b28a388e71002b7dc80d3d9dfd2cbffc726267ebc0885067f4e78835eb09",
+    "byteIdentical": true
+  },
+  "desktop": {
+    "width": 1363,
+    "languages": [
+      "fr",
+      "en",
+      "es"
+    ],
+    "horizontalOverflow": false,
+    "burgundy": "#652936",
+    "headingFont": "Wremena"
+  }
+}

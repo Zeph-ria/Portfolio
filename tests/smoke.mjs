@@ -7,6 +7,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
 const css = readFileSync(join(root, 'styles.css'), 'utf8');
 const js = readFileSync(join(root, 'script.js'), 'utf8');
+const localization = readFileSync(join(root, 'i18n.js'), 'utf8');
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(ids.length, new Set(ids).size, 'Duplicate HTML IDs');
@@ -25,16 +26,20 @@ assert(html.includes('id="project-grid"'));
 assert(html.includes('id="language-select"'));
 assert(html.includes('src="i18n.js"'));
 assert(html.includes('id="design-dialog"'));
+assert(html.includes('id="main-menu"'));
+assert(html.includes('id="menu-toggle"'));
+assert(html.includes('id="preview-zoom"'));
 assert(!html.includes('gzephrine@gmail.com'), 'Personal email unexpectedly exposed');
-assert(html.match(/<article class="project-card"/g)?.length === 6, 'Unexpected project count');
-assert(html.match(/class="design-tile"/g)?.length === 18, 'Unexpected design gallery count');
-assert(html.includes('id="design-grid"'), 'Design gallery missing');
+const projects = [...html.matchAll(/\bdata-project="([^"]+)"/g)].map(match => match[1]);
+assert(projects.length > 0 && new Set(projects).size === projects.length, 'Unique project identities are required');
+assert(html.includes('data-slideshow'), 'Local project presentations missing');
+assert(html.includes('data-preview'), 'Local artwork links missing');
 assert(html.includes('id="sites"'), 'Dedicated websites section missing');
 assert(!html.includes('Just1Pulse'), 'Excluded project unexpectedly shown');
 for (const [, path] of html.matchAll(/src="(assets\/[^"]+\.webp)"/g)) {
   assert(existsSync(join(root, path)), `Missing design thumbnail: ${path}`);
 }
-assert(!/Prayer Machine|Génération/i.test(html), 'Excluded project found');
-assert(js.includes('aria-pressed'), 'Filter accessibility state missing');
+assert(!/Prayer Machine|Génération|Quoakoo|Gloria OS|\bexercices?\b|\bexercises?\b|\bejercicios?\b/i.test(html + '\n' + localization), 'Excluded project or unprofessional label found');
+assert(js.trim().length > 0, 'Interaction script missing');
 assert(css.includes('prefers-reduced-motion'), 'Reduced-motion support missing');
 console.log('Portfolio smoke checks passed.');

@@ -1,96 +1,67 @@
 # Gloria Tumsifu Kasunzu — Portfolio
 
-Portfolio personnel en français, anglais et espagnol, développé en HTML/CSS/JavaScript sans dépendance de build. Il rassemble 6 projets sélectionnés, une galerie de 18 créations, 2 pièces d’archives et une section distincte de 3 projets web.
+Portfolio professionnel en français, anglais et espagnol, publié sur [GitHub Pages](https://zeph-ria.github.io/Portfolio/) depuis le dépôt [Zeph-ria/Portfolio](https://github.com/Zeph-ria/Portfolio).
 
-Le dépôt [Zeph-ria/Portfolio](https://github.com/Zeph-ria/Portfolio) est la source du projet. L’adresse publique est [https://zeph-ria.github.io/Portfolio/](https://zeph-ria.github.io/Portfolio/). GitHub Pages publie la branche `main`. La refonte est suivie dans la [PR #3](https://github.com/Zeph-ria/Portfolio/pull/3) et [l’objectif #2](https://github.com/Zeph-ria/Portfolio/issues/2).
+## Sélection du 20 novembre 2026
 
-## État des visuels — 19 novembre 2026
+Le portfolio présente **11 projets, 77 pages de réalisations, 4 calendriers et 6 captures de sites web**. Les **87 pages** se consultent dans des présentations et une visionneuse locales. La sélection explique les objectifs, les choix, les livrables et le rôle de Gloria. Les liens Canva sont facultatifs et limités aux documents dont l’ensemble peut être montré.
 
-Les 23 créations utilisent désormais **21 vrais exports Canva et 2 miniatures conservées pour L’Atelier**. Les exports sont servis par le portfolio : leur agrandissement et leur téléchargement ne demandent pas de compte Canva. Les liens des documents de travail restent disponibles séparément ; leur ouverture peut demander une connexion à Canva.
+| Projet | Pages | Angle présenté |
+| --- | ---: | --- |
+| Carrigrès | 6 | Identité, communication, WordPress et collecte des demandes de devis |
+| UTEX Empreinte | 5 | Conception d’un programme ESG, architecture des actions et communication pédagogique |
+| Agorafrik | 12 | Logo, charte actualisée, photographie et applications |
+| Re-vendre | 15 | Identité, silhouettes et campagne carte cadeau |
+| L’Atelier Nail Salon | 10 | Identité, manucure et série de conseils |
+| Wali | 10 | Mise en scène produit, matières et nuanciers |
+| Bloom Atelier | 4 | Roses préservées et contenus de marque |
+| Ardhi Organic | 6 | Stratégie de notoriété et direction de contenu |
+| Luminary | 3 | Storyboard, structure narrative et script |
+| Annieck’s | 4 | Gamme, couleurs et silhouettes |
+| UTEX / TEXAF | 2 | Communication événementielle |
 
-Les quatre calendriers Carrigrès, les réalisations Agorafrik, Ardhi Organic et Kadea sont présents. Les sélections corrigées sont la page 17 du pitch Agorafrik et la page 3 de l’affiche Kadea ; Annieck conserve sa page 3. L’affiche Halloween UTEX reste une réalisation historique de 2025.
+La section édition réunit les quatre calendriers Carrigrès : mural, table, triptyque et sous-main. Les sites Carrigrès et Breathe & Rise Without Fear disposent chacun de trois captures réelles, avec accès au site public.
 
-Les cartes utilisent des variantes WebP légères dans `assets/thumbs/`. La visionneuse et le téléchargement chargent le fichier de pleine définition. Le PNG original Halloween est conservé intact. Les deux documents L’Atelier restent indiqués comme miniatures : des médias manquent dans leurs sources Canva, ce qui a empêché leur export normal.
+Les projets exclus par Gloria ne figurent plus dans l’interface ni dans les traductions. Les créations du parcours Kadea sont présentées comme des projets de marque ou des concepts, avec leur contexte et leur rôle.
 
-Les dimensions, les pages et la provenance figurent dans [assets-manifest.json](assets-manifest.json), [EXPORT_PLAN.md](EXPORT_PLAN.md) et [docs/ASSET_EXPORTS.md](docs/ASSET_EXPORTS.md).
+## Direction artistique conservée
 
-## Aperçu local
+La feuille `styles.css` et les fichiers Wremena restent identiques à la version validée. Bordeaux `#652936`, noir `#0e0e0e`, blanc, Wremena et DM Sans sont conservés. Les deux feuilles complémentaires organisent les présentations, la navigation mobile et la visionneuse. Les titres ont un ajustement ciblé sous 360 px pour éviter leur découpe.
 
-Depuis la racine d’un clone local :
+La navigation a trois destinations : **Travaux, À propos, Contact**. Sur téléphone, le bouton Menu ouvre une liste accessible au clavier ; Échap ferme le menu et rend le focus. Les liens de compétences réaffichent les projets éventuellement masqués par un filtre.
+
+## Présentations et visionneuse
+
+- Feuilletage par boutons, clavier ou défilement horizontal natif.
+- Agrandissement de chaque page directement dans le portfolio.
+- Calendriers en aperçu plein cadre ; image complète et non déformée dans la visionneuse.
+- Zoom à la définition originale, téléchargement du fichier local et lien Canva facultatif.
+- Retour du focus au visuel à la fermeture.
+- FR/EN/ES pour l’interface, les légendes, les descriptions d’images et les études de cas ; les créations conservent leur langue d’origine.
+- Préférence linguistique conservée ; les paramètres `?lang=fr`, `?lang=en` et `?lang=es` sont pris en charge.
+
+Les documents sources qui contiennent des budgets, coordonnées, notes internes ou pages non finalisées ne sont pas proposés dans l’interface. Les seules pages sélectionnées et contrôlées sont exportées. Un visuel dont l’attribution personnelle n’est pas établie n’est pas présenté comme une création de Gloria.
+
+## Données éditoriales et provenance
+
+`content/projects.json` contient les textes FR/EN/ES et la sélection. `assets-manifest.json` documente les **88 fichiers originaux affichés** (87 pages de la visionneuse et un visuel de composition d’accueil distinct) et **82 variantes de cartes**, avec dimensions, taille et SHA-256.
+
+Le reporting Carrigrès utilisé couvre janvier–septembre 2025 ; les données Google couvrent cinq mois depuis l’indexation. Le parcours documenté est WordPress → Tally → Google Sheets → suivi commercial. Aucune génération automatique de devis ni vente n’est déduite des conversations WhatsApp.
+
+Les sources de travail complètes et les reçus d’import locaux ne sont pas destinés à la publication. Les sources publiques retenues figurent dans le contenu et le manifeste. La provenance typographique reste dans `docs/FONT_PROVENANCE.md`.
+
+## Mise à jour des contenus
+
+Aucune dépendance JavaScript ni étape de compilation n’est requise pour servir le site. Pour régénérer les sections après une modification du JSON ou un export contrôlé :
 
 ```bash
-python -m http.server 8000 --bind 127.0.0.1
+python scripts/build_portfolio.py --strict
+python scripts/update_asset_manifest.py
 ```
 
-Ouvrir [http://localhost:8000](http://localhost:8000). Aucun build n’est requis. Un serveur HTTP permet de retrouver le comportement normal des ressources, des téléchargements et de la préférence de langue. Dans un environnement disposant d’un service de prévisualisation géré, utiliser ce service.
+Pillow est utilisé pour l’import et la mesure des images. Les imports conservent la composition entière dans les originaux et créent séparément les variantes légères.
 
-## Direction artistique
-
-- Noir : `#0e0e0e`
-- Blanc : `#ffffff`
-- Bordeaux : `#652936`
-- Titres : Wremena, fichiers WOFF locaux
-- Texte courant : DM Sans, chargé via Google Fonts, avec Arial comme repli
-
-La palette, les familles typographiques et les tailles de la direction artistique validée sont conservées pendant l’intégration des exports. Les variantes d’image changent le poids des fichiers chargés, pas la mise en page des cartes.
-
-La livraison du 20 novembre utilise les **WOFF officiels historiques de Wremena**, rattachés à la déclaration de diffusion de la fonderie à cette époque. Les sources et empreintes figurent dans [docs/FONT_PROVENANCE.md](docs/FONT_PROVENANCE.md). Ces fichiers remplacent les conversions tierces sans changer la famille, les tailles ou la palette. L’enquête antérieure sur la référence Nice People reste disponible dans [AUDIT_ASSETS.md](AUDIT_ASSETS.md).
-
-L’adresse canonique et l’aperçu de partage utilisent le domaine GitHub Pages confirmé. L’image de partage est une capture réelle du rendu du portfolio, conservée dans `assets/share-preview.jpg`.
-
-## Structure
-
-| Fichier ou dossier | Responsabilité |
-| --- | --- |
-| `index.html` | Contenu français de référence, structure sémantique, dimensions des médias et dialogue d’aperçu |
-| `styles.css` | Direction artistique, responsive, focus et réduction des animations |
-| `i18n.js` | Traductions FR/EN/ES, métadonnées, textes alternatifs et préférence de langue |
-| `script.js` | Filtres, compteurs, visionneuse et téléchargement du visuel affiché |
-| `assets/` | 21 exports de pleine définition, 2 miniatures Canva, capture web JPEG, polices et favicon |
-| `assets/thumbs/` | Variantes WebP des exports pour les cartes, de 900 px au maximum sur le côté long |
-| `assets-manifest.json` | Provenance, pages, dimensions, empreintes et variantes des médias |
-| `tests/` | Contrats statiques, tests unitaires et suite navigateur distincte |
-| `AUDIT_ASSETS.md` | État des visuels, enquête typographique datée et domaine confirmé |
-| `EXPORT_PLAN.md` | Inventaire des 23 créations et des pages sélectionnées |
-| `docs/ASSET_EXPORTS.md` | Résumé technique des exports et de leur conversion |
-| `QA_REPORT.md` | Contrôles réellement exécutés, résultats et limites |
-| `docs/qa/` | Captures de la prévisualisation contrôlée |
-
-## Langues et ajout de contenu
-
-Le sélecteur propose FR, EN et ES. La langue choisie est conservée sous la clé `gtk-lang` dans `localStorage`. Une préférence invalide est ignorée ; un stockage indisponible ne bloque pas les contrôles. Les paramètres `?lang=fr`, `?lang=en` et `?lang=es` permettent d’ouvrir une langue précise.
-
-La traduction couvre l’interface, les légendes, les descriptions alternatives des images, les libellés accessibles, le titre et les métadonnées. Les textes contenus dans les créations conservent leur langue d’origine.
-
-Pour ajouter une réalisation :
-
-1. Fournir les textes FR/EN/ES et les descriptions d’image dans `i18n.js` ou les attributs de traduction appropriés.
-2. Conserver le nom de marque, les crédits visibles et la langue de l’œuvre.
-3. Enregistrer le fichier de pleine définition et, si utile, une variante légère pour la carte.
-4. Renseigner les dimensions réelles, la page sélectionnée et les variantes dans `assets-manifest.json`. Les attributs `width`/`height` décrivent l’image de la carte ; `data-full-src`, `data-full-width` et `data-full-height` désignent le fichier chargé par la visionneuse.
-5. Exécuter les contrôles correspondant au changement et vérifier les trois langues.
-
-Le contrôleur `window.PortfolioI18n` expose `setLanguage`, `t`, `translate` et `registerMessages`. L’événement `portfolio:languagechange` actualise aussi les libellés et le contenu d’une visionneuse déjà ouverte.
-
-## Galerie et visionneuse
-
-Les filtres des projets et de la galerie sont indépendants. Les cartes écartées, les grilles vides et leurs titres sont masqués ensemble. Les quatre formats de calendriers restent distincts : mural, table A5, triptyque et sous-main.
-
-Le dialogue natif présente le visuel, son titre, un compteur, les commandes précédente/suivante, le téléchargement et le lien du document Canva. Les flèches du clavier naviguent dans les créations visibles du même groupe ; Échap ferme le dialogue et rend le focus au déclencheur.
-
-Le téléchargement vise le fichier local de la création affichée. Pour L’Atelier, ce fichier reste la miniature disponible, signalée comme telle. La consultation du document complet est une action distincte et peut nécessiter une session Canva.
-
-Sans JavaScript ou sans dialogue natif, les cartes de galerie et d’archives continuent d’ouvrir leur document Canva. Les clics Ctrl/Cmd conservent la navigation native. Les images des trois projets disposant d’un document source reçoivent un bouton d’aperçu lorsque le dialogue est pris en charge.
-
-## Sites web
-
-La section distingue Carrigrès, MASDIA en développement et **Breathe & Rise Without Fear** en ligne. Le domaine [breathewithoutfear.org](https://breathewithoutfear.org/) a été confirmé par Gloria. La carte utilise une capture réelle du site, prise le 18 novembre 2026 en 1348 × 926 px. Les visuels Carrigrès et MASDIA sont présentés comme des compositions éditoriales.
-
-Les projets « Génération », « Prayer Machine » et « Just1Pulse » restent exclus.
-
-## Vérification et suivi
-
-Les contrôles de code ne nécessitent aucune nouvelle dépendance npm :
+## Vérification
 
 ```bash
 node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs tests/domain.test.mjs
@@ -98,8 +69,6 @@ node tests/smoke.mjs
 git diff --check
 ```
 
-Les résultats de la dernière passe sont consignés dans [QA_REPORT.md](QA_REPORT.md). Les tests d’interaction exécutent le vrai script sur une fixture DOM ; les observations de rendu sont rapportées séparément.
+**44/44 tests réussis**, smoke test et contrôle du diff réussis. La première passe réelle dans le navigateur a parcouru 82 pages, contrôlé les quatre calendriers sur petit écran, le menu, le zoom, les filtres, les trois langues et un téléchargement identique au fichier original. Une passe complémentaire a contrôlé les cinq pages UTEX Empreinte, le zoom, le lien depuis les compétences et les textes FR/EN/ES à 320 px. Les observations et captures figurent dans `QA_REPORT.md` et `docs/qa/2026-11-20-curation/`.
 
-La suite `node tests/browser.mjs` est prévue pour un environnement où Playwright et un navigateur compatible sont disponibles. Elle accepte `PORTFOLIO_BROWSER_EXECUTABLE` et `PORTFOLIO_BASE_URL`. **Un code de sortie 2 signale une infrastructure indisponible, pas une réussite des tests navigateur.**
-
-Le suivi du chantier reste centralisé dans [l’objectif #2](https://github.com/Zeph-ria/Portfolio/issues/2) et la PR #3. Les deux exports L’Atelier restent à remplacer lorsque leurs médias source seront de nouveau disponibles. Cette limite n’empêche pas leur présentation actuelle en miniature.
+`node tests/browser.mjs` est une suite d’acceptation autonome pour un environnement disposant de Playwright et Chromium. Elle n’installe rien et retourne le code 2 si l’infrastructure est indisponible. Elle n’a pas été exécutée dans cet environnement ; les contrôles réels rapportés proviennent de CUA et sont distingués des tests Node.

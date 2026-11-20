@@ -1,12 +1,12 @@
 /**
- * Real-browser acceptance suite. It never installs browsers, bypasses permissions,
- * or substitutes a DOM mock for browser evidence.
+ * End-to-end acceptance against the real portfolio and its selected files.
+ * This suite does not install a browser or substitute a DOM mock for rendering.
  *
  * Run: node tests/browser.mjs
- * Optional: PORTFOLIO_BROWSER_EXECUTABLE=/path/to/approved/chromium
- * Optional: PORTFOLIO_BASE_URL=https://an-authorized-preview.example/
- * Without BASE_URL a temporary read-only HTTP server serves this checkout.
- * Exit 2 means browser infrastructure unavailable, NOT a passing test result.
+ * Optional PORTFOLIO_BASE_URL points to an authorised preview of this checkout.
+ * Optional PORTFOLIO_BROWSER_EXECUTABLE selects an already available Chromium.
+ * Without BASE_URL a temporary, read-only HTTP server serves the checkout.
+ * Exit 2 means browser/server infrastructure was unavailable: no checks passed.
  */
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
@@ -15,353 +15,408 @@ import { dirname, extname, resolve, sep } from 'node:path';
 import { createRequire } from 'node:module';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { imageDimensions } from './helpers/image.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff': 'font/woff', '.woff2': 'font/woff2', '.json': 'application/json' };
-let server;
-let browser;
-let baseURL = process.env.PORTFOLIO_BASE_URL;
-let passes = 0;
-let failures = 0;
-
-async function run(name, action) {
-  try { await action(); passes++; console.log(`PASS ${name}`); }
-  catch (error) { failures++; console.error(`FAIL ${name}: ${error.stack ?? error}`); }
-}
+const languages = ['fr', 'en', 'es'];
 
 async function localServer() {
   const instance = createServer(async (request, response) => {
     try {
       const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
       const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
-      if (file !== root && !file.startsWith(root + sep)) { response.writeHead(403); response.end(); return; }
-      if (!(await stat(file)).isFile()) { response.writeHead(404); response.end(); return; }
+      if (!file.startsWith(root + sep)) { response.writeHead(403).end(); return; }
+      if (!(await stat(file)).isFile()) { response.writeHead(404).end(); return; }
       response.writeHead(200, { 'content-type': mime[extname(file)] ?? 'application/octet-stream', 'cache-control': 'no-store' });
       response.end(await readFile(file));
-    } catch { response.writeHead(404); response.end(); }
+    } catch { response.writeHead(404).end(); }
   });
   await new Promise((done, reject) => { instance.once('error', reject); instance.listen(0, '127.0.0.1', done); });
   return instance;
 }
 
-async function settleFonts(page) {
-  await page.evaluate(async () => { await Promise.race([document.fonts.ready, new Promise(resolve => setTimeout(resolve, 5000))]); });
-}
-
-async function assertFilter(page, filterAttribute, cardAttribute, category) {
-  await page.locator(`[${filterAttribute}="${category}"]`).click();
-  const state = await page.evaluate(({ filterAttribute, cardAttribute, category }) => ({
-    pressed: [...document.querySelectorAll(`[${filterAttribute}]`)].filter(element => element.getAttribute('aria-pressed') === 'true').map(element => element.getAttribute(filterAttribute)),
-    mismatches: [...document.querySelectorAll(`[${cardAttribute}]`)].filter(element => {
-      const expected = category === 'all' || element.getAttribute(cardAttribute).split(/\s+/).includes(category);
-      const visible = !element.hidden && getComputedStyle(element).display !== 'none';
-      return visible !== expected;
-    }).map(element => element.textContent.trim())
-  }), { filterAttribute, cardAttribute, category });
-  assert.deepEqual(state.pressed, [category]);
-  assert.deepEqual(state.mismatches, []);
-}
-
-try {
-  const { chromium } = require('playwright');
-  if (!baseURL) {
-    server = await localServer();
-    baseURL = `http://127.0.0.1:${server.address().port}/`;
+async function main() {
+  const content = JSON.parse(await readFile(resolve(root, 'content/projects.json'), 'utf8'));
+  const captures = JSON.parse(await readFile(resolve(root, 'assets/sites/manifest.json'), 'utf8')).images;
+  const groups = [
+    ...content.projects.map(project => ({ type: 'project', id: project.id, name: project.name, slides: project.slides })),
+    ...content.calendars.map(calendar => ({ type: 'calendar', id: calendar.id, name: calendar.name.fr, slides: [calendar.slide] })),
+    ...[...new Set(captures.map(capture => capture.project))].map(name => ({ type: 'website', name, slides: captures.filter(capture => capture.project === name) }))
+  ];
+  const expectedSlides = groups.flatMap(group => group.slides);
+  assert(groups.length > 0 && expectedSlides.length > 0, 'No reviewed portfolio selection found');
+  const originals = new Map();
+  for (const slide of expectedSlides) {
+    assert.match(slide.path, /^assets\//, 'Selected artwork must be served by the portfolio');
+    const file = resolve(root, slide.path);
+    assert(file.startsWith(root + sep), 'Selected file leaves the checkout');
+    if (!originals.has(slide.path)) {
+      const bytes = await readFile(file);
+      originals.set(slide.path, { ...imageDimensions(bytes), sha256: createHash('sha256').update(bytes).digest('hex') });
+    }
   }
-  browser = await chromium.launch({ headless: true, ...(process.env.PORTFOLIO_BROWSER_EXECUTABLE ? { executablePath: process.env.PORTFOLIO_BROWSER_EXECUTABLE } : {}) });
-} catch (error) {
-  console.error(`BROWSER QA UNAVAILABLE — no browser tests ran.\n${error.message}`);
-  server?.close();
-  process.exitCode = 2;
-}
 
-if (browser) {
+  let browser;
+  let server;
+  let baseURL = process.env.PORTFOLIO_BASE_URL;
   try {
-  const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
-  const page = await context.newPage();
-  const pageErrors = [];
-  const failedLocalRequests = [];
-  page.on('pageerror', error => pageErrors.push(error.message));
-  page.on('requestfailed', request => { if (new URL(request.url()).origin === new URL(baseURL).origin) failedLocalRequests.push(request.url()); });
-  page.on('response', response => { if (response.status() >= 400 && new URL(response.url()).origin === new URL(baseURL).origin) failedLocalRequests.push(`${response.status()} ${response.url()}`); });
-  await page.goto(baseURL, { waitUntil: 'domcontentloaded' });
-  await settleFonts(page);
-
-  await run('font loading and local media are real, not broken placeholders', async () => {
-    const typography = await page.evaluate(() => ({
-      loaded: [...document.fonts].some(face => face.family.replace(/["']/g, '') === 'Wremena' && face.status === 'loaded'),
-      heading: getComputedStyle(document.querySelector('h1')).fontFamily,
-      featureColor: getComputedStyle(document.querySelector('.feature')).backgroundColor
-    }));
-    assert(typography.loaded, 'The actual Wremena font face has not loaded');
-    assert.match(typography.heading, /^Wremena(?:,|$)/, 'Primary heading font changed');
-    assert.equal(typography.featureColor, 'rgb(101, 41, 54)', 'Approved burgundy changed');
-    const images = page.locator('img[src]').filter({ visible: true });
-    for (let i = 0; i < await images.count(); i++) {
-      const image = images.nth(i);
-      await image.scrollIntoViewIfNeeded();
-      await image.evaluate(element => element.decode());
-      assert(await image.evaluate(element => element.naturalWidth > 0 && element.naturalHeight > 0), 'Broken image');
+    const { chromium } = require('playwright');
+    browser = await chromium.launch({ headless: true, ...(process.env.PORTFOLIO_BROWSER_EXECUTABLE ? { executablePath: process.env.PORTFOLIO_BROWSER_EXECUTABLE } : {}) });
+    if (!baseURL) {
+      server = await localServer();
+      baseURL = `http://127.0.0.1:${server.address().port}/`;
     }
-  });
-
-  await run('project and gallery filters work independently with correct selection state', async () => {
-    for (const category of ['communication', 'design', 'digital', 'all']) await assertFilter(page, 'data-filter', 'data-category', category);
-    await assertFilter(page, 'data-filter', 'data-category', 'digital');
-    for (const category of ['branding', 'digital', 'academy', 'print', 'all']) await assertFilter(page, 'data-design-filter', 'data-design-category', category);
-    assert.equal(await page.locator('[data-filter="digital"]').getAttribute('aria-pressed'), 'true');
-    await assertFilter(page, 'data-filter', 'data-category', 'all');
-  });
-
-  await run('empty calendar group and heading disappear outside the print filter', async () => {
-    await assertFilter(page, 'data-design-filter', 'data-design-category', 'branding');
-    assert.equal(await page.locator('#design-grid').isVisible(), false, 'Empty calendar grid consumes space');
-    assert.equal(await page.locator('.gallery-series').first().isVisible(), false, 'Empty calendar group title remains');
-    await assertFilter(page, 'data-design-filter', 'data-design-category', 'all');
-  });
-
-  await run('all four Carrigrès calendars share a desktop row', async () => {
-    const calendars = await page.locator('#design-grid > .design-tile').evaluateAll(elements => elements.map(element => {
-      const { top, left, width } = element.getBoundingClientRect();
-      return { top, left, width };
-    }));
-    assert.equal(calendars.length, 4);
-    assert(calendars.every(item => Math.abs(item.top - calendars[0].top) <= 1), 'The four calendar formats wrap at 1440px');
-    for (let i = 1; i < calendars.length; i++) assert(calendars[i].left >= calendars[i - 1].left + calendars[i - 1].width, 'Calendar columns overlap');
-  });
-
-  await run('gallery opens an accessible native dialog and preserves document link', async () => {
-    const trigger = page.locator('.design-tile').first();
-    const originalHref = await trigger.getAttribute('href');
-    const originalImage = await trigger.locator('img').evaluate(image => ({
-      thumbnail: image.currentSrc || image.src,
-      source: new URL(image.dataset.fullSrc, document.baseURI).href,
-      width: Number(image.dataset.fullWidth),
-      height: Number(image.dataset.fullHeight)
-    }));
-    await trigger.click();
-    assert.equal(await page.locator('#design-dialog').evaluate(element => element.open), true);
-    assert((await page.locator('#preview-title').textContent()).trim(), 'Preview title empty');
-    assert.equal(await page.locator('#preview-document').getAttribute('href'), originalHref);
-    await page.locator('#preview-image').evaluate(image => image.decode());
-    const preview = await page.locator('#preview-image').evaluate(image => ({ src: image.src, width: image.naturalWidth, height: image.naturalHeight }));
-    assert.equal(preview.src, originalImage.source, 'The lightbox must load the full-size original');
-    assert.notEqual(preview.src, originalImage.thumbnail, 'The lightbox must not reuse the optimized thumbnail');
-    assert.deepEqual({ width: preview.width, height: preview.height }, { width: originalImage.width, height: originalImage.height });
-    const counter = await page.locator('#preview-counter').textContent();
-    await page.locator('#preview-next').click();
-    assert.notEqual(await page.locator('#preview-counter').textContent(), counter);
-    await page.locator('#preview-prev').click();
-    assert.equal(await page.locator('#preview-counter').textContent(), counter);
-    await page.keyboard.press('Escape');
-    assert.equal(await page.locator('#design-dialog').evaluate(element => element.open), false);
-    assert.equal(await trigger.evaluate(element => element === document.activeElement), true, 'Focus not restored after closing preview');
-  });
-
-  await run('local artwork download follows the displayed image and preserves the source document', async () => {
-    const trigger = page.locator('.design-tile').first();
-    const sourceHref = await trigger.getAttribute('href');
-    await trigger.click();
-    const artwork = await page.locator('#preview-image').evaluate(element => element.src);
-    const link = page.locator('#preview-download');
-    const filename = new URL(artwork).pathname.split('/').pop();
-    assert.equal(await link.getAttribute('href'), artwork);
-    assert.equal(await link.getAttribute('download'), filename);
-    assert.equal(await link.textContent(), 'Télécharger le visuel');
-    const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
-    assert.equal(download.suggestedFilename(), filename);
-    assert.equal(download.url(), artwork);
-    assert.equal(await download.failure(), null);
-    assert.equal(await page.locator('#design-dialog').evaluate(element => element.open), true);
-    assert.equal(await page.locator('#preview-document').getAttribute('href'), sourceHref);
-    await page.locator('#preview-next').click();
-    const nextArtwork = await page.locator('#preview-image').evaluate(element => element.src);
-    assert.notEqual(nextArtwork, artwork);
-    assert.equal(await link.getAttribute('href'), nextArtwork);
-    assert.equal(await link.getAttribute('download'), new URL(nextArtwork).pathname.split('/').pop());
-    await page.locator('#preview-prev').click();
-    assert.equal(await link.getAttribute('href'), artwork);
-    assert.equal(await link.getAttribute('download'), filename);
-    await page.keyboard.press('Escape');
-    assert.equal(await trigger.evaluate(element => element === document.activeElement), true);
-  });
-
-  await run('PNG download preserves the exact original file bytes', async () => {
-    const trigger = page.locator('.design-tile:has(img[data-full-src$="utex-halloween.png"])');
-    await trigger.click();
-    try {
-      const link = page.locator('#preview-download');
-      const artwork = await page.locator('#preview-image').evaluate(element => element.src);
-      assert.equal(await link.getAttribute('href'), artwork);
-      assert.equal(await link.getAttribute('download'), 'utex-halloween.png');
-      const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
-      assert.equal(download.url(), artwork, 'The original PNG must not become a transcoded blob');
-      assert.equal(download.suggestedFilename(), 'utex-halloween.png');
-      assert.equal(await download.failure(), null);
-      const downloadedPath = await download.path();
-      assert(downloadedPath, 'The browser did not save the PNG download');
-      const downloaded = await readFile(downloadedPath);
-      const original = await readFile(resolve(root, 'assets/utex-halloween.png'));
-      const hash = bytes => createHash('sha256').update(bytes).digest('hex');
-      assert.equal(hash(downloaded), hash(original), 'PNG bytes, including embedded provenance, must be unchanged');
-    } finally {
-      if (await page.locator('#design-dialog').evaluate(element => element.open)) await page.locator('#preview-close').click();
-    }
-  });
-
-  await run('preview remains keyboard-contained and its open mobile footer fits in FR/EN/ES', async () => {
-    const trigger = page.locator('.design-tile').first();
-    await trigger.click();
-    try {
-    const frenchTitle = await page.locator('#preview-title').textContent();
-    for (let i = 0; i < 8; i++) {
-      await page.keyboard.press('Tab');
-      assert.equal(await page.evaluate(() => document.querySelector('#design-dialog').contains(document.activeElement)), true, 'Keyboard focus escaped the modal');
-    }
-    await page.setViewportSize({ width: 360, height: 900 });
-    for (const [language, label] of [['en', 'Download artwork'], ['es', 'Descargar diseño'], ['fr', 'Télécharger le visuel']]) {
-      await page.evaluate(language => window.PortfolioI18n.setLanguage(language), language);
-      await settleFonts(page);
-      if (language !== 'fr') assert.notEqual(await page.locator('#preview-title').textContent(), frenchTitle, 'Open preview did not translate with the interface');
-      assert.equal(await page.locator('#preview-image').getAttribute('alt'), await trigger.locator('img').getAttribute('alt'));
-      assert.equal(await page.locator('#preview-download').textContent(), label);
-      assert.equal(await page.locator('#preview-download').getAttribute('href'), await page.locator('#preview-image').evaluate(element => element.src));
-      const footer = await page.locator('#design-dialog').evaluate(dialog => {
-        const bounds = dialog.getBoundingClientRect();
-        const items = [...dialog.querySelectorAll('.preview-actions, #preview-download, #preview-document')];
-        return {
-          open: dialog.open,
-          overflow: dialog.scrollWidth > dialog.clientWidth + 1,
-          clipped: items.filter(item => {
-            const rect = item.getBoundingClientRect();
-            return !rect.width || rect.left < bounds.left - 1 || rect.right > bounds.right + 1 || item.scrollWidth > item.clientWidth + 1;
-          }).map(item => item.id || item.className),
-          targetHeights: [...dialog.querySelectorAll('.preview-actions a')].map(item => item.getBoundingClientRect().height)
-        };
-      });
-      assert.equal(footer.open, true, 'Mobile footer must be checked with the dialog open');
-      assert.equal(footer.overflow, false, `Dialog overflows at 360px / ${language}`);
-      assert.deepEqual(footer.clipped, [], `Footer actions are clipped at 360px / ${language}`);
-      assert.equal(footer.targetHeights.length, 2);
-      assert(footer.targetHeights.every(height => height >= 44), 'Download and document links need usable touch targets');
-    }
-    } finally {
-      if (await page.locator('#design-dialog').evaluate(element => element.open)) await page.locator('#preview-close').click();
-      await page.setViewportSize({ width: 1440, height: 1000 });
-    }
-    assert.equal(await trigger.evaluate(element => element === document.activeElement), true);
-    await page.locator('#language-select').selectOption('fr');
-  });
-
-  const originalAlt = await page.locator('.design-tile img').first().getAttribute('alt');
-  const originalCaption = await page.locator('.design-tile b').first().textContent();
-  await run('FR/EN/ES switch translates captions, alt text, metadata and survives reload', async () => {
-    for (const language of ['en', 'es', 'fr']) {
-      await page.locator('#language-select').selectOption(language);
-      assert.equal(await page.locator('html').getAttribute('lang'), language);
-      assert.equal(await page.evaluate(() => localStorage.getItem('gtk-lang')), language);
-      const caption = await page.locator('.design-tile b').first().textContent();
-      const alt = await page.locator('.design-tile img').first().getAttribute('alt');
-      if (language !== 'fr') {
-        assert.notEqual(caption, originalCaption, 'Gallery caption remains French');
-        assert.notEqual(alt, originalAlt, 'Image description remains French');
-      }
-      const meta = await page.locator('meta[name="description"]').getAttribute('content');
-      assert(meta && meta.length > 30);
-      const diagnostics = await page.evaluate(() => window.PortfolioI18n.diagnostics);
-      assert.deepEqual(diagnostics, [], 'Missing or unknown translations were reported');
-      await page.reload({ waitUntil: 'domcontentloaded' });
-      assert.equal(await page.locator('html').getAttribute('lang'), language, 'Language preference did not persist');
-      assert.equal(await page.locator('#language-select').inputValue(), language);
-    }
-  });
-
-  for (const language of ['fr', 'en', 'es']) {
-    for (const width of [360, 390, 650, 700, 768, 1440]) {
-      await run(`no horizontal overflow or clipped headings at ${width}px / ${language}`, async () => {
-        await page.setViewportSize({ width, height: 1000 });
-        await page.locator('#language-select').selectOption(language);
-        await settleFonts(page);
-        await page.evaluate(() => window.scrollTo(0, 0));
-        const overflow = await page.evaluate(() => {
-          const viewport = document.documentElement.clientWidth;
-          const offenders = [...document.querySelectorAll('h1, h2, h3, .hero h1 > span, .main-nav a, .header-actions, .browser-content strong, .visual-caption, .design-tile b, .design-tile small, #sites .website-card, #sites .website-details p, .preview-actions, #preview-download, #preview-document')].filter(element => {
-            if (!element.getClientRects().length) return false;
-            const bounds = element.getBoundingClientRect();
-            if (bounds.left < -1 || bounds.right > viewport + 1 || element.scrollWidth > element.clientWidth + 2) return true;
-            for (let ancestor = element.parentElement; ancestor; ancestor = ancestor.parentElement) {
-              if (!['hidden', 'clip'].includes(getComputedStyle(ancestor).overflowX)) continue;
-              const clip = ancestor.getBoundingClientRect();
-              if (bounds.left < clip.left - 1 || bounds.right > clip.right + 1) return true;
-            }
-            return false;
-          }).map(element => element.textContent.trim().slice(0, 90));
-          return { pageOverflow: document.documentElement.scrollWidth > viewport + 1, offenders };
-        });
-        assert.equal(overflow.pageOverflow, false, 'Page scrolls sideways');
-        assert.deepEqual(overflow.offenders, [], 'Heading/nav content exceeds its visible box');
-        const capture = await page.locator('.breathe-browser').evaluate(element => {
-          const image = element.querySelector('img');
-          const box = element.getBoundingClientRect();
-          const picture = image.getBoundingClientRect();
-          const bar = element.querySelector('.browser-bar').getBoundingClientRect();
-          return {
-            gap: box.height - picture.height - bar.height,
-            ratioError: Math.abs(picture.height - picture.width * image.naturalHeight / image.naturalWidth)
-          };
-        });
-        assert(Math.abs(capture.gap) <= 1, 'Website capture is cropped or followed by artificial empty space');
-        assert(capture.ratioError <= 1, 'Website capture proportions changed');
-      });
-    }
+  } catch (error) {
+    console.error(`BROWSER QA UNAVAILABLE — no browser acceptance checks ran.\n${error.message}`);
+    if (browser) await browser.close();
+    if (server) await new Promise(done => server.close(done));
+    process.exitCode = 2;
+    return;
   }
 
-  await run('scripts do not throw and local resources do not fail', async () => {
-    assert.deepEqual(pageErrors, []);
-    assert.deepEqual(failedLocalRequests, []);
-  });
+  let passed = 0;
+  let failed = 0;
+  let decoded = 0;
+  const pageErrors = new Set();
+  const resourceFailures = new Set();
+  const origin = new URL(baseURL).origin;
+  const groupElement = (page, group) => group.type === 'website'
+    ? page.locator('.website-card').filter({ has: page.getByRole('heading', { name: group.name, exact: true }) }).locator('[data-slideshow]')
+    : page.locator(group.type === 'project' ? `[data-project="${group.id}"] [data-slideshow]` : `#calendrier-${group.id} [data-slideshow]`);
+  const urlFor = path => new URL(path, baseURL).href;
 
-  await run('blocked storage does not break language controls', async () => {
-    const deniedContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
-    await deniedContext.addInitScript(() => {
-      Storage.prototype.getItem = () => { throw new DOMException('Storage denied', 'SecurityError'); };
-      Storage.prototype.setItem = () => { throw new DOMException('Storage denied', 'SecurityError'); };
-    });
-    const deniedPage = await deniedContext.newPage();
-    const errors = [];
-    deniedPage.on('pageerror', error => errors.push(error.message));
-    await deniedPage.goto(baseURL, { waitUntil: 'domcontentloaded' });
-    await deniedPage.locator('#language-select').selectOption('en');
-    assert.equal(await deniedPage.locator('html').getAttribute('lang'), 'en');
-    assert.deepEqual(errors, []);
-    await deniedContext.close();
-  });
-
-  await run('without JavaScript, every gallery design still links to its source document', async () => {
-    const fallbackContext = await browser.newContext({ javaScriptEnabled: false });
+  async function run(name, action, options = {}) {
+    let context;
     try {
-      const fallbackPage = await fallbackContext.newPage();
-      await fallbackPage.goto(baseURL, { waitUntil: 'domcontentloaded' });
-      assert.equal(await fallbackPage.locator('html').getAttribute('lang'), 'fr');
-      const links = fallbackPage.locator('.design-tile');
-      assert.equal(await links.count(), await page.locator('.design-tile').count());
-      for (let i = 0; i < await links.count(); i++) {
-        assert.equal(await links.nth(i).isVisible(), true);
-        assert.match(await links.nth(i).getAttribute('href'), /^https:\/\/www\.canva\.com\/(?:d\/[^/?#]+|design\/[^/?#]+\/view)(?:[?#].*)?$/);
-      }
-      assert.equal(await fallbackPage.locator('#design-dialog').isVisible(), false);
-    } finally { await fallbackContext.close(); }
-  });
+      context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce', acceptDownloads: true, ...options });
+      const page = await context.newPage();
+      page.setDefaultTimeout(12000);
+      page.on('pageerror', error => pageErrors.add(error.message));
+      page.on('response', response => {
+        if (new URL(response.url()).origin === origin && response.status() >= 400) resourceFailures.add(`${response.status()} ${response.url()}`);
+      });
+      page.on('requestfailed', request => {
+        // Closing a scenario may cancel lazy requests; that is not an asset error.
+        if (new URL(request.url()).origin === origin && request.failure()?.errorText !== 'net::ERR_ABORTED') resourceFailures.add(`${request.failure()?.errorText} ${request.url()}`);
+      });
+      await page.goto(baseURL, { waitUntil: 'domcontentloaded' });
+      await action(page, context);
+      passed++;
+      console.log(`PASS ${name}`);
+    } catch (error) {
+      failed++;
+      console.error(`FAIL ${name}\n${error.stack ?? error}`);
+    } finally { if (context) await context.close(); }
+  }
 
-  await context.close();
-  } catch (error) {
-    failures++;
-    console.error(`FAIL browser suite initialization: ${error.stack ?? error}`);
+  async function closePreview(page) {
+    if (await page.locator('#design-dialog').evaluate(dialog => dialog.open)) await page.locator('#preview-close').click();
+  }
+
+  async function settleFonts(page) {
+    await page.evaluate(() => Promise.race([document.fonts.ready, new Promise(done => setTimeout(done, 5000))]));
+  }
+
+  async function decodePreview(page) {
+    await page.locator('#preview-image').evaluate(async image => {
+      let timeout;
+      try {
+        await Promise.race([image.decode(), new Promise((_, reject) => {
+          timeout = setTimeout(() => reject(new Error('The original artwork did not decode within 12 seconds')), 12000);
+        })]);
+      } finally { clearTimeout(timeout); }
+    });
+  }
+
+  async function openFirst(page, group) {
+    const element = groupElement(page, group);
+    const trigger = element.locator('[data-slide]').first().locator('a[data-preview]');
+    await trigger.click();
+    assert.equal(await page.locator('#design-dialog').evaluate(dialog => dialog.open), true, `${group.name}: viewer did not open`);
+    return trigger;
+  }
+
+  try {
+    await run('approved typography, burgundy and selected project structure remain intact', async page => {
+      await settleFonts(page);
+      const style = await page.evaluate(() => ({
+        wremenaLoaded: [...document.fonts].some(face => face.family.replace(/["']/g, '') === 'Wremena' && face.status === 'loaded'),
+        heading: getComputedStyle(document.querySelector('h1')).fontFamily,
+        headingSize: parseFloat(getComputedStyle(document.querySelector('h1')).fontSize),
+        burgundy: getComputedStyle(document.querySelector('.feature')).backgroundColor,
+        body: getComputedStyle(document.body).fontFamily
+      }));
+      assert(style.wremenaLoaded, 'The actual Wremena font file did not load');
+      assert.match(style.heading, /^Wremena(?:,|$)/);
+      assert.match(style.body, /DM Sans/);
+      assert(Math.abs(style.headingSize - 148.32) < 0.1, 'Approved hero sizing changed at 1440px');
+      assert.equal(style.burgundy, 'rgb(101, 41, 54)');
+      assert.deepEqual(await page.locator('article.project-card[data-project]').evaluateAll(cards => cards.map(card => card.dataset.project)), content.projects.map(project => project.id));
+      assert.equal(await page.locator('[data-slideshow]').count(), groups.length);
+      assert.equal(await page.locator('a[data-preview]').count(), expectedSlides.length);
+      for (const project of content.projects) {
+        const study = page.locator(`[data-project="${project.id}"] details.case-study`);
+        await study.locator('summary').click();
+        assert.equal(await study.getAttribute('open'), '');
+        assert((await study.locator('dl').innerText()).includes(project.objective.fr));
+      }
+    });
+
+    await run('every selected page opens locally at full definition and stays within its project', async (page, context) => {
+      const portfolioURL = page.url();
+      for (const group of groups) {
+        const element = groupElement(page, group);
+        assert.equal(await element.count(), 1, `${group.name}: missing or duplicated sequence`);
+        assert.equal(await element.locator('[data-slide]').count(), group.slides.length, `${group.name}: missing selected pages`);
+        const trigger = await openFirst(page, group);
+        try {
+          for (const [index, slide] of group.slides.entries()) {
+            if (index) await page.locator('#preview-next').click();
+            await decodePreview(page);
+            const image = await page.locator('#preview-image').evaluate(image => ({ src: image.src, width: image.naturalWidth, height: image.naturalHeight }));
+            assert.equal(image.src, urlFor(slide.path), `${group.name} / page ${index + 1}: wrong original`);
+            const expected = originals.get(slide.path);
+            assert.deepEqual({ width: image.width, height: image.height }, { width: expected.width, height: expected.height });
+            assert.equal(await page.locator('#preview-counter').textContent(), `${index + 1} sur ${group.slides.length}`);
+            assert((await page.locator('#preview-caption').textContent()).trim(), 'A page explanation is missing');
+            assert.equal(await page.locator('#preview-download').getAttribute('href'), image.src);
+            if (slide.source) {
+              assert.equal(await page.locator('#preview-document').isVisible(), true);
+              assert.equal(await page.locator('#preview-document').getAttribute('href'), slide.source);
+            } else {
+              assert.equal(await page.locator('#preview-document').isVisible(), false, 'A previous Canva reference leaked into a website screenshot');
+              assert.equal(await page.locator('#preview-document').getAttribute('href'), null);
+            }
+            decoded++;
+          }
+          if (group.slides.length > 1) {
+            await page.locator('#preview-next').click();
+            assert.equal(await page.locator('#preview-image').getAttribute('src'), group.slides[0].path, 'Next must wrap inside the same project');
+          }
+          assert.equal(context.pages().length, 1, 'Previewing artwork opened an external tab');
+          assert.equal(page.url(), portfolioURL, 'Previewing artwork left the portfolio');
+          await page.keyboard.press('Escape');
+          assert(await trigger.evaluate(link => document.activeElement === link), 'The opener did not regain focus');
+        } finally { await closePreview(page); }
+      }
+      assert.equal(decoded, expectedSlides.length);
+    });
+
+    await run('mobile navigation fits, reaches its links and closes without losing keyboard focus', async page => {
+      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#apropos', '#contact']);
+      assert.equal(await page.locator('#menu-toggle').isVisible(), false);
+      for (const width of [320, 390, 700]) {
+        await page.setViewportSize({ width, height: 844 });
+        assert.equal(await page.locator('#main-menu').isVisible(), false);
+        assert((await page.locator('.site-header').boundingBox()).height <= 100, `Mobile header takes too much space at ${width}px`);
+        await page.locator('#menu-toggle').click();
+        assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'), 'true');
+        assert(await page.locator('#main-menu a').first().evaluate(link => document.activeElement === link));
+        await page.keyboard.press('Escape');
+        assert.equal(await page.locator('#main-menu').isVisible(), false);
+        assert(await page.locator('#menu-toggle').evaluate(button => document.activeElement === button));
+      }
+      await page.locator('#menu-toggle').click();
+      await page.locator('#main-menu a[href="#apropos"]').click();
+      assert.equal(await page.locator('#main-menu').isVisible(), false);
+      assert(await page.locator('#apropos').evaluate(section => document.activeElement === section));
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      await page.locator('#main-menu a').first().focus();
+      await page.setViewportSize({ width: 390, height: 844 });
+      assert(await page.locator('#menu-toggle').evaluate(button => document.activeElement === button), 'Resizing left focus on a hidden link');
+      await page.locator('#menu-toggle').click();
+      await page.locator('.hero-bottom a').focus();
+      assert.equal(await page.locator('#main-menu').isVisible(), false, 'Menu remains open after keyboard focus leaves the header');
+    });
+
+    await run('filters show the right work and competency or history links reveal a hidden project', async page => {
+      const categories = await page.locator('[data-filter]').evaluateAll(buttons => buttons.map(button => button.dataset.filter));
+      for (const category of categories) {
+        await page.locator(`[data-filter="${category}"]`).click();
+        const expected = content.projects.filter(project => category === 'all' || project.categories.includes(category)).map(project => project.id);
+        assert.deepEqual(await page.locator('article.project-card[data-project]:visible').evaluateAll(cards => cards.map(card => card.dataset.project)), expected);
+        assert.equal(await page.locator('[data-filter][aria-pressed="true"]').count(), 1);
+        assert.equal(await page.locator('#project-status').textContent(), `${expected.length} projets`);
+      }
+      let pair;
+      for (const project of content.projects) {
+        const category = categories.find(category => category !== 'all' && !project.categories.includes(category));
+        if (category && await page.locator(`.competency-links a[href="#projet-${project.id}"]`).count()) { pair = { project, category }; break; }
+      }
+      assert(pair, 'The selection needs an independently reachable project outside a category');
+      const target = page.locator(`#projet-${pair.project.id}`);
+      await page.locator(`[data-filter="${pair.category}"]`).click();
+      assert.equal(await target.isVisible(), false);
+      await page.locator(`.competency-links a[href="#projet-${pair.project.id}"]`).first().click();
+      assert.equal(await target.isVisible(), true);
+      assert.equal(await page.locator('[data-filter="all"]').getAttribute('aria-pressed'), 'true');
+      assert(await target.evaluate(card => document.activeElement === card));
+      await page.locator(`[data-filter="${pair.category}"]`).click();
+      await page.evaluate(() => { location.hash = '#apropos'; });
+      await page.evaluate(id => { location.hash = '#projet-' + id; }, pair.project.id);
+      await target.waitFor({ state: 'visible' });
+      assert.equal(await page.locator('[data-filter="all"]').getAttribute('aria-pressed'), 'true');
+      await page.reload({ waitUntil: 'domcontentloaded' });
+      assert.equal(await target.isVisible(), true, 'A direct project URL lost its destination');
+    });
+
+    await run('FR, EN and ES persist and translate both the page and an already open viewer', async page => {
+      const group = groups.find(group => group.type === 'project');
+      const first = group.slides[0];
+      for (const language of languages) {
+        await page.locator('#language-select').selectOption(language);
+        assert.equal(await page.locator('html').getAttribute('lang'), language);
+        assert.equal(await page.evaluate(() => localStorage.getItem('gtk-lang')), language);
+        assert.equal(await groupElement(page, group).locator('[data-slide-title]').first().textContent(), first.title[language]);
+        assert((await page.locator('meta[name="description"]').getAttribute('content')).length > 30);
+        await page.reload({ waitUntil: 'domcontentloaded' });
+        assert.equal(await page.locator('#language-select').inputValue(), language);
+      }
+      await page.locator('#language-select').selectOption('fr');
+      const trigger = await openFirst(page, group);
+      try {
+        const actions = { fr: 'Télécharger le visuel', en: 'Download artwork', es: 'Descargar diseño' };
+        for (const language of languages) {
+          // The public language controller also supports updates while the native
+          // modal makes the underlying select intentionally inert.
+          await page.evaluate(language => window.PortfolioI18n.setLanguage(language), language);
+          assert((await page.locator('#preview-title').textContent()).includes(first.title[language]));
+          assert.equal(await page.locator('#preview-caption').textContent(), first.caption[language]);
+          assert.equal(await page.locator('#preview-image').getAttribute('alt'), await trigger.locator('img').getAttribute('alt'));
+          assert.equal(await page.locator('#preview-download').textContent(), actions[language]);
+          assert.deepEqual(await page.evaluate(() => window.PortfolioI18n.diagnostics), []);
+        }
+      } finally { await closePreview(page); }
+    });
+
+    await run('calendar previews fill their frames and open complete images with readable zoom', async page => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      for (const group of groups.filter(group => group.type === 'calendar')) {
+        const trigger = groupElement(page, group).locator('a[data-preview]');
+        const fill = await trigger.evaluate(link => {
+          const frame = link.getBoundingClientRect();
+          const image = link.querySelector('img');
+          const bounds = image.getBoundingClientRect();
+          return { fit: getComputedStyle(image).objectFit, width: Math.abs(bounds.width - frame.width), height: Math.abs(bounds.height - frame.height) };
+        });
+        assert.equal(fill.fit, 'cover');
+        assert(fill.width <= 1 && fill.height <= 1, `${group.name}: preview does not fill its frame`);
+        await trigger.click();
+        try {
+          await decodePreview(page);
+          for (const language of languages) {
+            await page.evaluate(language => window.PortfolioI18n.setLanguage(language), language);
+            const layout = await page.locator('#design-dialog').evaluate(dialog => {
+              const image = dialog.querySelector('#preview-image');
+              const box = image.getBoundingClientRect();
+              const media = image.closest('.preview-media').getBoundingClientRect();
+              const bounds = dialog.getBoundingClientRect();
+              const actions = [...dialog.querySelectorAll('button, .preview-actions a')].filter(item => item.getClientRects().length);
+              return {
+                fit: getComputedStyle(image).objectFit,
+                inside: box.left >= media.left - 1 && box.right <= media.right + 1 && box.top >= media.top - 1 && box.bottom <= media.bottom + 1,
+                ratioError: Math.abs(box.width / box.height - image.naturalWidth / image.naturalHeight),
+                size: Math.min(box.width, box.height),
+                clippedActions: actions.filter(item => { const r = item.getBoundingClientRect(); return r.left < bounds.left - 1 || r.right > bounds.right + 1 || r.top < bounds.top - 1 || r.bottom > bounds.bottom + 1 || r.height < 44; }).map(item => item.id),
+                overflow: dialog.scrollWidth > dialog.clientWidth + 1
+              };
+            });
+            assert.equal(layout.fit, 'contain');
+            assert(layout.inside && layout.size > 0 && layout.ratioError < 0.02, `${group.name}/${language}: full artwork is cropped or distorted`);
+            assert.deepEqual(layout.clippedActions, [], `${group.name}/${language}: viewer actions clipped`);
+            assert.equal(layout.overflow, false);
+          }
+          await page.locator('#preview-zoom').click();
+          assert.equal(await page.locator('#preview-zoom').getAttribute('aria-pressed'), 'true');
+          assert(await page.locator('#preview-image').evaluate(image => Math.abs(image.getBoundingClientRect().width - image.naturalWidth) < 1), 'Zoom does not expose original detail');
+          const media = page.locator('.preview-media');
+          assert(await media.evaluate(element => element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight), 'Actual-size artwork cannot be panned');
+          await media.focus();
+          const before = await page.locator('#preview-image').getAttribute('src');
+          await page.keyboard.press('ArrowRight');
+          assert.equal(await page.locator('#preview-image').getAttribute('src'), before, 'Panning zoomed artwork changed pages');
+          await page.locator('#preview-zoom').click();
+          assert.equal(await page.locator('#preview-zoom').getAttribute('aria-pressed'), 'false');
+          for (let step = 0; step < 8; step++) {
+            await page.keyboard.press('Tab');
+            assert(await page.locator('#design-dialog').evaluate(dialog => dialog.contains(document.activeElement)), 'Focus escaped the native modal');
+          }
+        } finally { await closePreview(page); }
+      }
+    });
+
+    await run('a local download preserves the displayed original byte for byte', async page => {
+      const group = groups.find(group => group.slides.some(slide => slide.path.endsWith('.png'))) || groups[0];
+      const selectedIndex = Math.max(0, group.slides.findIndex(slide => slide.path.endsWith('.png')));
+      const selected = group.slides[selectedIndex];
+      await openFirst(page, group);
+      try {
+        for (let index = 0; index < selectedIndex; index++) await page.locator('#preview-next').click();
+        await decodePreview(page);
+        const link = page.locator('#preview-download');
+        assert.equal(await link.getAttribute('href'), urlFor(selected.path));
+        const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
+        assert.equal(download.suggestedFilename(), selected.path.split('/').pop());
+        assert.equal(download.url(), urlFor(selected.path));
+        assert.equal(await download.failure(), null);
+        const destination = await download.path();
+        assert(destination, 'No downloaded file was saved by the browser');
+        const bytes = await readFile(destination);
+        assert.equal(createHash('sha256').update(bytes).digest('hex'), originals.get(selected.path).sha256, 'Download altered the original file');
+        assert.equal(await page.locator('#design-dialog').evaluate(dialog => dialog.open), true);
+      } finally { await closePreview(page); }
+    });
+
+    await run('all languages retain unclipped page headings and controls across mobile and desktop widths', async page => {
+      for (const language of languages) {
+        await page.locator('#language-select').selectOption(language);
+        for (const width of [320, 390, 768, 1440]) {
+          await page.setViewportSize({ width, height: 1000 });
+          await settleFonts(page);
+          const result = await page.evaluate(() => {
+            const width = document.documentElement.clientWidth;
+            const items = [...document.querySelectorAll('h1,h2,h3,.hero h1>span,.main-nav a,.header-actions,.filters,.slide-controls,.is-current [data-slide-title],.competency-links')];
+            const clipped = items.filter(element => {
+              if (!element.getClientRects().length || element.closest('[aria-hidden="true"]')) return false;
+              const rect = element.getBoundingClientRect();
+              return rect.left < -1 || rect.right > width + 1 || (element.clientWidth > 0 && element.scrollWidth > element.clientWidth + 2);
+            }).map(element => element.textContent.trim().slice(0, 90));
+            return { overflow: document.documentElement.scrollWidth > width + 1, clipped };
+          });
+          assert.equal(result.overflow, false, `${width}px/${language}: page scrolls sideways`);
+          assert.deepEqual(result.clipped, [], `${width}px/${language}: heading or controls are clipped`);
+        }
+      }
+    });
+
+    await run('without JavaScript, navigation and every original artwork remain available locally', async page => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      assert.equal(await page.locator('#main-menu').isVisible(), true);
+      assert.equal(await page.locator('#menu-toggle').isVisible(), false);
+      assert.equal(await page.locator('#design-dialog').isVisible(), false);
+      const references = await page.locator('a[data-preview]').evaluateAll(links => links.map(link => link.getAttribute('href')));
+      assert.deepEqual(references, expectedSlides.map(slide => slide.path));
+      const first = page.locator('a[data-preview]').first();
+      await first.click();
+      assert.equal(page.url(), urlFor(expectedSlides[0].path), 'No-script reading requires an external application');
+    }, { javaScriptEnabled: false });
+
+    // Runtime and asset errors are collected from all the preceding journeys.
+    if (pageErrors.size || resourceFailures.size) {
+      failed++;
+      console.error(`FAIL no uncaught errors or failed local resources\n${JSON.stringify({ pageErrors: [...pageErrors], resourceFailures: [...resourceFailures] }, null, 2)}`);
+    } else {
+      passed++;
+      console.log('PASS no uncaught errors or failed local resources');
+    }
+    console.log(`Browser acceptance: ${passed} passed, ${failed} failed. Decoded selected pages: ${decoded}/${expectedSlides.length}.`);
+    if (failed) process.exitCode = 1;
   } finally {
     await browser.close();
-    if (server) await new Promise(resolve => server.close(resolve));
+    if (server) await new Promise(done => server.close(done));
   }
-  console.log(`Browser acceptance results: ${passes} passed, ${failures} failed.`);
-  if (failures) process.exitCode = 1;
 }
+
+main().catch(error => { console.error(`FAIL browser acceptance setup\n${error.stack ?? error}`); process.exitCode = 1; });

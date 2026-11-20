@@ -30,12 +30,22 @@
     close: triple('Fermer', 'Close', 'Cerrar'),
     previous: triple('Précédent', 'Previous', 'Anterior'),
     next: triple('Suivant', 'Next', 'Siguiente'),
-    viewDocument: triple('Consulter le document', 'View document', 'Consultar documento'),
+    viewDocument: triple('Approfondir sur Canva', 'Explore on Canva', 'Ampliar en Canva'),
     downloadArtwork: triple('Télécharger le visuel', 'Download artwork', 'Descargar diseño'),
-    assetCaption: triple('Aperçu de la création. Le document source peut nécessiter une connexion à Canva.', 'Design preview. The source document may require a Canva login.', 'Vista previa del diseño. El documento original puede requerir iniciar sesión en Canva.'),
-    thumbnailCaption: triple('Miniature disponible. Le document source peut nécessiter une connexion à Canva.', 'Thumbnail available. The source document may require a Canva login.', 'Miniatura disponible. El documento original puede requerir iniciar sesión en Canva.'),
+    assetCaption: triple('Les pages sélectionnées se consultent ici. Canva est disponible pour approfondir.', 'View the selected pages here. Canva is available for further detail.', 'Consulta aquí las páginas seleccionadas. Canva está disponible para ampliar la información.'),
+    thumbnailCaption: triple('Aperçu de la sélection en définition limitée.', 'Selection preview at limited resolution.', 'Vista previa de la selección en resolución limitada.'),
     loading: triple('Chargement de la création…', 'Loading design…', 'Cargando diseño…'),
-    error: triple('Impossible de charger cet aperçu. Vous pouvez consulter le document source.', 'This preview could not be loaded. You can open the source document.', 'No se pudo cargar esta vista previa. Puedes consultar el documento original.'),
+    error: triple('Impossible de charger cet aperçu. Réessayez ou passez à la page suivante.', 'This preview could not be loaded. Try again or continue to the next page.', 'No se pudo cargar esta vista previa. Inténtalo de nuevo o continúa a la página siguiente.'),
+    openMenu: triple('Ouvrir le menu', 'Open menu', 'Abrir menú'),
+    closeMenu: triple('Fermer le menu', 'Close menu', 'Cerrar menú'),
+    zoom: triple('Agrandir pour lire les détails', 'Zoom in to read the details', 'Ampliar para leer los detalles'),
+    fit: triple('Voir la création entière', 'View the whole design', 'Ver el diseño completo'),
+    selectedPages: triple('Pages sélectionnées', 'Selected pages', 'Páginas seleccionadas'),
+    caseStudy: triple('Étude de cas', 'Case study', 'Caso de estudio'),
+    brandIdentity: triple('Identité de marque', 'Brand identity', 'Identidad de marca'),
+    photographicDirection: triple('Direction photographique', 'Photographic direction', 'Dirección fotográfica'),
+    mockups: triple('Mises en situation', 'Mockups', 'Simulaciones'),
+    conceptStudy: triple('Concept de marque', 'Brand concept', 'Concepto de marca'),
     count: triple('{current} sur {total}', '{current} of {total}', '{current} de {total}'),
     itemCount: triple('{count} créations', '{count} designs', '{count} diseños'),
     noResults: triple('Aucune création dans cette catégorie.', 'No designs in this category.', 'No hay diseños en esta categoría.'),
@@ -84,23 +94,15 @@
     'Consulter la brochure': 'Consultar folleto',
     'Direction visuelle et création éditoriale pour une marque de roses stabilisées.': 'Dirección visual y creación editorial para una marca de rosas preservadas.',
     'Voir les publications': 'Ver publicaciones',
-    'Cockpit de gestion multi-projets, clients et opérations. Produit en développement.': 'Panel de gestión de proyectos, clientes y operaciones. Producto en desarrollo.',
-    "Plateforme d'agents IA spécialisés, conçue autour d'objectifs mesurables.": 'Plataforma de agentes de IA especializados, diseñada en torno a objetivos medibles.',
     'Contenus de marque, campagnes et parcours e-commerce.': 'Contenido de marca, campañas y experiencia de comercio electrónico.',
     'Voir les créations': 'Ver diseños',
     'Agence indépendante : communication, marketing, web et automatisation.': 'Agencia independiente: comunicación, marketing, web y automatización.',
-    'AUTRES<br><em>CRÉATIONS.</em>': 'OTRAS<br><em>CREACIONES.</em>',
-    'Édition, identité et supports de marque : quelques autres pièces tirées de mes archives de création.': 'Edición, identidad y materiales de marca: otras piezas seleccionadas de mi archivo creativo.',
-    "Les projets numériques en développement sont représentés par des compositions éditoriales, et non des captures d'interface. Les documents consultables restent la propriété de leurs auteurs et commanditaires respectifs.": 'Los productos digitales en desarrollo se representan con composiciones editoriales, no con capturas de interfaz. Los documentos siguen siendo propiedad de sus respectivos autores y clientes.',
-    'Archives de création': 'Archivo creativo',
     'ENCORE<br><em>PLUS DE DESIGN.</em>': 'MÁS<br><em>DISEÑO.</em>',
-    'Des identités visuelles aux supports imprimés, des campagnes aux exercices de création : chaque pièce a son langage, son contexte et sa fonction.': 'Desde identidades visuales hasta materiales impresos, campañas y ejercicios creativos: cada pieza tiene su lenguaje, contexto y función.',
     'Tous les visuels': 'Todos los diseños',
     'Édition & print': 'Edición e impresión',
     'Identités': 'Identidades',
     'Kadea Academy': 'Kadea Academy',
     'Carrigrès — les quatre calendriers': 'Carrigrès — cuatro formatos de calendario',
-    'Identités, campagnes & exercices': 'Identidades, campañas y ejercicios',
     'Sites web & expériences digitales': 'Sitios web y experiencias digitales',
     'DES IDÉES<br><em>EN LIGNE.</em>': 'IDEAS<br><em>EN LÍNEA.</em>',
     "Des sites pensés pour répondre à un objectif réel : visibilité, clarté de l'offre et expérience de navigation.": 'Sitios web diseñados para cumplir un objetivo real: visibilidad, claridad de la oferta y experiencia de navegación.',
@@ -139,22 +141,14 @@
     ['[data-filter="design"]', triple('Design', 'Design', 'Diseño')],
     ['.visual-carrigres .visual-caption', triple('BROCHURE / COMMUNICATION', 'BROCHURE / COMMUNICATION', 'FOLLETO / COMUNICACIÓN')],
     ['.visual-bloom .visual-caption', triple('CRÉATION ÉDITORIALE / SOCIAL MEDIA', 'EDITORIAL DESIGN / SOCIAL MEDIA', 'DISEÑO EDITORIAL / REDES SOCIALES')],
-    ['.visual-os .visual-caption', triple('PRODUCT DESIGN / OUTIL INTERNE', 'PRODUCT DESIGN / INTERNAL TOOL', 'DISEÑO DE PRODUCTO / HERRAMIENTA INTERNA')],
-    ['.visual-quoakoo .visual-caption', triple('AGENTS IA / PRODUIT EN DÉVELOPPEMENT', 'AI AGENTS / PRODUCT IN DEVELOPMENT', 'AGENTES IA / PRODUCTO EN DESARROLLO')],
     ['.visual-anniecks .visual-caption', triple('MODE / E-COMMERCE / CONTENU', 'FASHION / E-COMMERCE / CONTENT', 'MODA / COMERCIO ELECTRÓNICO / CONTENIDO')],
     ['.visual-masdia .visual-caption', triple('STRATÉGIE / AUTOMATISATION / DIGITAL', 'STRATEGY / AUTOMATION / DIGITAL', 'ESTRATEGIA / AUTOMATIZACIÓN / DIGITAL')],
-    ['.project-proof > span:first-child', triple('15 300 impressions SEO', '15,300 SEO impressions', '15.300 impresiones SEO')],
-    ['.os-motif small', triple('TRAVAILLER. CLAIREMENT.', 'WORK. CLEARLY.', 'TRABAJAR. CON CLARIDAD.')],
     ['.design-library .section-topline > span:last-child', triple('PRINT / IDENTITÉ / DIGITAL', 'PRINT / BRANDING / DIGITAL', 'IMPRESIÓN / IDENTIDAD / DIGITAL')],
     ['.carrigres-browser .browser-content strong', triple("Pour vos grands projets d'infra\u00adstructure.", 'For your major infrastructure projects.', 'Para tus grandes proyectos de infraestructura.')],
     ['.carrigres-browser .browser-overline', triple('CARRIGRÈS · GROUPE TEXAF', 'CARRIGRÈS · TEXAF GROUP', 'CARRIGRÈS · GRUPO TEXAF')],
     ['.carrigres-browser .browser-label', triple('MATÉRIAUX DE CONSTRUCTION · KINSHASA', 'CONSTRUCTION MATERIALS · KINSHASA', 'MATERIALES DE CONSTRUCCIÓN · KINSHASA')],
     ['.masdia-browser .browser-overline', triple('COMMUNICATION · AUTOMATISATION · IA', 'COMMUNICATION · AUTOMATION · AI', 'COMUNICACIÓN · AUTOMATIZACIÓN · IA')],
-    ['.masdia-browser .browser-label', triple("SITE D'AGENCE EN ÉVOLUTION", 'AGENCY WEBSITE IN DEVELOPMENT', 'SITIO DE AGENCIA EN DESARROLLO')],
-    ['.specialties > span:nth-child(1)', triple('Marque & contenu', 'Brand & Content', 'Marca y contenido')],
-    ['.specialties > span:nth-child(2)', triple('Stratégie digitale', 'Digital Strategy', 'Estrategia digital')],
-    ['.specialties > span:nth-child(3)', triple('Conception produit', 'Product Thinking', 'Diseño de producto')],
-    ['.specialties > span:nth-child(4)', triple('Automatisation & IA', 'Automation & AI', 'Automatización e IA')]
+    ['.masdia-browser .browser-label', triple("SITE D'AGENCE EN ÉVOLUTION", 'AGENCY WEBSITE IN DEVELOPMENT', 'SITIO DE AGENCIA EN DESARROLLO')]
   ]);
 
   const ATTRIBUTE_BINDINGS = Object.freeze([
@@ -177,19 +171,15 @@
     'carrigres-brochure.webp': triple('Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle', 'Carrigrès company brochure designed for institutional communication', 'Folleto corporativo de Carrigrès para comunicación institucional'),
     'bloom-publication.webp': triple('Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées', 'Bloom Atelier 243 design featuring a bouquet of preserved red roses', 'Diseño de Bloom Atelier 243 con un ramo de rosas rojas preservadas'),
     'anniecks-campagne.webp': triple("Composition photographique Annieck's Business montrant des t-shirts colorés", "Annieck's Business photo composition with colourful T-shirts", "Composición fotográfica de Annieck's Business con camisetas de colores"),
-    'revendre-lookbook.webp': triple('Couverture de lookbook mode Re-vendre', 'Re-vendre fashion lookbook cover', 'Portada del catálogo de moda Re-vendre'),
-    'utex-identite.webp': triple("Support d'identité UTEX, une communauté unique", 'UTEX identity material, a unique community', 'Material de identidad de UTEX, una comunidad única'),
     'carrigres-calendrier-mural.webp': triple('Calendrier mural Carrigrès 2026 avec camion et grille annuelle', 'Carrigrès 2026 wall calendar with a truck and annual date grid', 'Calendario de pared Carrigrès 2026 con un camión y cuadrícula anual'),
     'carrigres-calendrier-table.webp': triple('Calendrier de table Carrigrès 2026, identité bleu et jaune', 'Carrigrès 2026 desk calendar in blue and yellow', 'Calendario de mesa Carrigrès 2026 en azul y amarillo'),
     'carrigres-calendrier-triptyque.webp': triple('Calendrier triptyque pliable Carrigrès 2026', 'Carrigrès 2026 folding triptych calendar', 'Calendario tríptico plegable Carrigrès 2026'),
     'carrigres-calendrier-sous-main.webp': triple('Sous-main de bureau Carrigrès avec calendrier 2026', 'Carrigrès desk pad with a 2026 calendar', 'Protector de escritorio Carrigrès con calendario 2026'),
     'carrigres-charte.webp': triple('Couverture de la charte graphique Carrigrès', 'Carrigrès brand guidelines cover', 'Portada del manual de identidad visual de Carrigrès'),
-    'agorafrik-charte.webp': triple('Couverture orange de la charte graphique Agorafrik', 'Orange cover of the Agorafrik brand guidelines', 'Portada naranja del manual de identidad visual de Agorafrik'),
+    'agorafrik-charte.webp': triple('Couverture de la charte graphique Agorafrik', 'Agorafrik brand guidelines cover', 'Portada del manual de identidad visual de Agorafrik'),
     'agorafrik-visuels.webp': triple('Couverture des créations de communication Agorafrik, rouge profond et orange', 'Agorafrik communication designs cover in deep red and orange', 'Portada de los diseños de comunicación Agorafrik en rojo oscuro y naranja'),
     'agorafrik-publication.webp': triple('Publication Agorafrik présentant une plateforme dédiée aux talents africains', 'Agorafrik post introducing a platform for African talent', 'Publicación de Agorafrik sobre una plataforma para el talento africano'),
     'ardhi-organic-strategie.webp': triple('Présentation de stratégie digitale Ardhi Organic avec couleurs orange et vert', 'Ardhi Organic digital strategy presentation in orange and green', 'Presentación de estrategia digital de Ardhi Organic en naranja y verde'),
-    'kadea-storytelling.webp': triple('Présentation d’exercice Kadea Academy sur le storytelling', 'Kadea Academy storytelling exercise presentation', 'Presentación de un ejercicio de narrativa en Kadea Academy'),
-    'kadea-growth-hacking.webp': triple('Présentation Kadea Academy sur le growth hacking', 'Kadea Academy growth hacking presentation', 'Presentación de growth hacking en Kadea Academy'),
     'kadea-affiche.webp': triple('Affiche de communication d’une formation Kadea Academy', 'Promotional poster for a Kadea Academy course', 'Cartel promocional de una formación de Kadea Academy'),
     'revendre-carte-cadeau.webp': triple('Carte cadeau Re-vendre avec typographie orange et ruban rouge', 'Re-vendre gift card with orange lettering and a red ribbon', 'Tarjeta regalo de Re-vendre con letras naranjas y lazo rojo'),
     'atelier-prospectus.webp': triple("Prospectus de L'Atelier, salon de manucure et pédicure", "Leaflet for L'Atelier manicure and pedicure salon", "Folleto de L'Atelier, salón de manicura y pedicura"),
@@ -211,9 +201,7 @@
     'agorafrik-visuels.webp': [triple('Agorafrik — visuels', 'Agorafrik — visuals', 'Agorafrik — diseños'), triple('Direction de communication', 'Communication direction', 'Dirección de comunicación')],
     'agorafrik-publication.webp': [triple('Agorafrik — campagne', 'Agorafrik — campaign', 'Agorafrik — campaña'), triple('Réseaux sociaux', 'Social media', 'Redes sociales')],
     'ardhi-organic-strategie.webp': [triple('Ardhi Organic', 'Ardhi Organic', 'Ardhi Organic'), triple('Stratégie de notoriété', 'Brand awareness strategy', 'Estrategia de notoriedad')],
-    'kadea-storytelling.webp': [triple('Storytelling', 'Storytelling', 'Narrativa'), triple('Projet Kadea Academy', 'Kadea Academy project', 'Proyecto de Kadea Academy')],
-    'kadea-growth-hacking.webp': [triple('Growth hacking', 'Growth hacking', 'Growth hacking'), triple('Projet Kadea Academy', 'Kadea Academy project', 'Proyecto de Kadea Academy')],
-    'kadea-affiche.webp': [triple('Affiche de formation', 'Course poster', 'Cartel de formación'), triple('Exercice Kadea Academy', 'Kadea Academy exercise', 'Ejercicio de Kadea Academy')],
+    'kadea-affiche.webp': [triple('Affiche de formation', 'Course poster', 'Cartel de formación'), triple('Kadea Academy · 2024', 'Kadea Academy · 2024', 'Kadea Academy · 2024')],
     'revendre-carte-cadeau.webp': [triple('Carte cadeau', 'Gift card', 'Tarjeta regalo'), triple('Re-vendre', 'Re-vendre', 'Re-vendre')],
     'atelier-prospectus.webp': [triple('Prospectus A5', 'A5 leaflet', 'Folleto A5'), triple("L'Atelier", "L'Atelier", "L'Atelier")],
     'atelier-rollup.webp': [triple('Roll-up vitrine', 'Window roll-up banner', 'Banner para escaparate'), triple("L'Atelier", "L'Atelier", "L'Atelier")],
@@ -223,10 +211,7 @@
     'agorafrik-pitch.webp': [triple('Pitch deck Agorafrik', 'Agorafrik pitch deck', 'Presentación de Agorafrik'), triple('Présentation de marque', 'Brand presentation', 'Presentación de marca')]
   });
 
-  const ARCHIVE_LABELS = Object.freeze({
-    'revendre-lookbook.webp': triple('Re-vendre — Lookbook', 'Re-vendre — Lookbook', 'Re-vendre — Catálogo de moda'),
-    'utex-identite.webp': triple('UTEX — Identité', 'UTEX — Identity', 'UTEX — Identidad')
-  });
+  const ARCHIVE_LABELS = Object.freeze({});
 
   function readPreference(storage) {
     try { const value = storage && storage.getItem(STORAGE_KEY); return isLocale(value) ? value : null; }
@@ -290,7 +275,12 @@
         if (!value) { diagnostics.add(`Missing ${language} inline translation: ${element.getAttribute('data-fr')}`); return; }
         renderText(element, value, document);
       });
-      for (const [selector, message] of TEXT_BINDINGS) queryAll(selector, scope).forEach(element => { element.textContent = message[language]; });
+      // Inline copy belongs to its case study; legacy selectors are fallbacks.
+      // This keeps a reused visual class from replacing a new reviewed caption.
+      const hasExplicitText = element => element.getAttribute('data-fr') !== null || element.getAttribute('data-i18n') !== null;
+      for (const [selector, message] of TEXT_BINDINGS) queryAll(selector, scope).forEach(element => {
+        if (!hasExplicitText(element)) element.textContent = message[language];
+      });
       for (const [selector, attribute, message] of ATTRIBUTE_BINDINGS) queryAll(selector, scope).forEach(element => element.setAttribute(attribute, message[language]));
       for (const [filename, description] of Object.entries(ASSETS)) queryAll(`img[src$="${filename}"]`, scope).forEach(element => element.setAttribute('alt', description[language]));
       for (const [filename, labels] of Object.entries(DESIGN_LABELS)) {
@@ -298,15 +288,15 @@
           const tile = image.closest('.design-tile');
           const title = tile && tile.querySelector('b');
           const category = tile && tile.querySelector('small');
-          if (title) title.textContent = labels[0][language];
-          if (category) category.textContent = labels[1][language];
+          if (title && !hasExplicitText(title)) title.textContent = labels[0][language];
+          if (category && !hasExplicitText(category)) category.textContent = labels[1][language];
         });
       }
       // Only these known archive captions are localized, never user documents.
       for (const [filename, captionText] of Object.entries(ARCHIVE_LABELS)) {
         queryAll(`.archive-item img[src$="${filename}"]`, scope).forEach(image => {
           const caption = image.closest('.archive-item').querySelector(':scope > span');
-          if (caption) caption.textContent = captionText[language];
+          if (caption && !hasExplicitText(caption)) caption.textContent = captionText[language];
         });
       }
       queryAll('[data-i18n]', scope).forEach(element => renderText(element, get(element.getAttribute('data-i18n')), document));

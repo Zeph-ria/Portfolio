@@ -10,11 +10,29 @@ import { imageDimensions } from './helpers/image.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
 const css = readFileSync(join(root, 'styles.css'), 'utf8');
+const localization = readFileSync(join(root, 'i18n.js'), 'utf8');
 const { elements, errors } = readHtml(html);
 const byTag = tag => elements.filter(node => node.tag === tag);
 const withAttr = key => elements.filter(node => Object.hasOwn(node.attrs, key));
 const ids = new Map(withAttr('id').map(node => [node.attrs.id, node]));
 const localPath = reference => decodeURIComponent(reference.split(/[?#]/)[0]);
+const hasClass = (node, value) => node.attrs.class?.split(/\s+/).includes(value);
+const descendants = node => node.children.flatMap(child => [child, ...descendants(child)]);
+const ancestor = (node, predicate) => {
+  let current = node.parent;
+  while (current && !predicate(current)) current = current.parent;
+  return current;
+};
+const localStylePaths = byTag('link').filter(node => node.attrs.rel === 'stylesheet' && !/^https?:/i.test(node.attrs.href || '')).map(node => node.attrs.href);
+const stylesheets = localStylePaths.filter(path => existsSync(resolve(root, path))).map(path => ({ path, css: readFileSync(resolve(root, path), 'utf8') }));
+
+function assertLocalFile(reference, label = 'Resource') {
+  const filename = resolve(root, localPath(reference));
+  assert(filename.startsWith(root + '/'), `${label} escapes repository: ${reference}`);
+  assert(existsSync(filename), `Missing ${label.toLowerCase()}: ${reference}`);
+  assert(statSync(filename).isFile() && statSync(filename).size > 0, `Empty or invalid ${label.toLowerCase()}: ${reference}`);
+  return filename;
+}
 
 test('HTML nesting, landmarks and ID references are valid', () => {
   assert.deepEqual(errors, []);
@@ -40,6 +58,15 @@ test('Navigation, buttons and external links have safe, real targets', () => {
   const skip = byTag('a').find(node => node.attrs.class?.split(/\s+/).includes('skip-link'));
   assert(skip?.attrs.href?.startsWith('#'), 'Keyboard skip link is required');
   assert(ids.has(skip.attrs.href.slice(1)));
+  const menu = ids.get('main-menu');
+  assert(menu?.tag === 'nav', 'The primary menu must be a native navigation landmark');
+  const destinations = descendants(menu).filter(node => node.tag === 'a').map(node => node.attrs.href);
+  assert.equal(destinations.length, 3, 'The agreed navigation has three destinations');
+  assert.deepEqual(new Set(destinations), new Set(['#realisations', '#apropos', '#contact']));
+  const menuToggle = ids.get('menu-toggle');
+  assert.equal(menuToggle?.tag, 'button');
+  assert.equal(menuToggle?.attrs['aria-controls'], 'main-menu');
+  assert.equal(menuToggle?.attrs['aria-expanded'], 'false', 'The mobile disclosure starts closed');
   for (const node of byTag('button')) {
     assert.equal(node.attrs.type, 'button', `Explicit type=button missing on ${node.attrs.id ?? textContent(node)}`);
     assert(textContent(node) || node.attrs['aria-label'] || node.attrs['aria-labelledby'], 'Button has no accessible name');
@@ -70,14 +97,16 @@ test('Local scripts, styles, media and fonts exist and are non-empty', () => {
     if (node.attrs.src) references.push(node.attrs.src);
     if (node.attrs['data-full-src']) references.push(node.attrs['data-full-src']);
     if (node.tag === 'link' && node.attrs.href) references.push(node.attrs.href);
+    if (Object.hasOwn(node.attrs, 'data-preview')) references.push(node.attrs.href);
   }
-  for (const [, reference] of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) references.push(reference);
+  for (const stylesheet of stylesheets) {
+    for (const [, reference] of stylesheet.css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
+      if (!/^(?:https?:|data:|#)/i.test(reference)) references.push(join(dirname(stylesheet.path), reference));
+    }
+  }
   for (const reference of references) {
     if (/^(https?:|data:|#)/i.test(reference)) continue;
-    const filename = resolve(root, localPath(reference));
-    assert(filename.startsWith(root + '/'), `Resource escapes repository: ${reference}`);
-    assert(existsSync(filename), `Missing resource: ${reference}`);
-    assert(statSync(filename).size > 0, `Empty resource: ${reference}`);
+    assertLocalFile(reference);
   }
   for (const node of byTag('img').filter(node => node.attrs.src)) {
     assert(Object.hasOwn(node.attrs, 'alt'), `Image lacks alt: ${node.attrs.src}`);
@@ -90,13 +119,19 @@ test('Local scripts, styles, media and fonts exist and are non-empty', () => {
 });
 
 test('Portfolio exclusions and private contact guardrails are enforced', () => {
-  const corpus = normalizeForExclusions(html);
-  for (const forbidden of ['generation', 'prayer machine', 'just1pulse', 'just one pulse']) {
+  // Translated strings are part of the public page too. Removing a card must not
+  // leave its old copy available when the visitor changes language.
+  const publicCopy = html + '\n' + localization;
+  const corpus = normalizeForExclusions(publicCopy);
+  for (const forbidden of ['generation', 'prayer machine', 'just1pulse', 'just one pulse', 'quoakoo', 'gloria os']) {
     assert(!corpus.includes(forbidden), `Excluded project remains: ${forbidden}`);
   }
-  assert(!html.toLowerCase().includes('gzephrine@gmail.com'), 'Unapproved personal email exposed');
-  for (const node of byTag('a')) {
-    assert(!/canva\.com\/(?:design\/[^/]+\/edit|d\/.*[?&](?:edit|mode=edit))/i.test(node.attrs.href ?? ''), 'Do not publish a Canva editing URL');
+  assert(!/\b(?:exercices?|exercises?|ejercicios?)\b/.test(corpus), 'Professional presentation must not be labelled as exercises');
+  assert(!publicCopy.toLowerCase().includes('gzephrine@gmail.com'), 'Unapproved personal email exposed');
+  for (const node of elements) {
+    for (const reference of [node.attrs.href, node.attrs['data-source']]) {
+      assert(!/canva\.com\/(?:design\/[^/]+\/edit|d\/.*[?&](?:edit|mode=edit))/i.test(reference ?? ''), 'Do not publish a Canva editing URL');
+    }
   }
 });
 
@@ -104,6 +139,8 @@ test('Thumbnails and full-size originals match their files and asset manifest', 
   const manifest = JSON.parse(readFileSync(join(root, 'assets-manifest.json'), 'utf8'));
   const records = new Map();
   for (const image of manifest.images) {
+    assert(!records.has(image.path), `Duplicate asset manifest path: ${image.path}`);
+    assert(Number(image.bytes) > 0 && /^[a-f0-9]{64}$/.test(image.sha256 || ''), `Missing image integrity metadata: ${image.path}`);
     records.set(image.path, image);
     for (const variant of image.variants || []) {
       assert(!records.has(variant.path), `Duplicate asset manifest path: ${variant.path}`);
@@ -111,23 +148,23 @@ test('Thumbnails and full-size originals match their files and asset manifest', 
       records.set(variant.path, variant);
     }
   }
-  for (const node of byTag('img').filter(node => /\.(?:webp|png)$/.test(node.attrs.src || ''))) {
-    const actual = imageDimensions(readFileSync(resolve(root, node.attrs.src)));
+  for (const node of byTag('img').filter(node => /\.(?:webp|png|jpe?g)$/i.test(node.attrs.src || ''))) {
+    const actual = imageDimensions(readFileSync(assertLocalFile(node.attrs.src, 'Image')));
     assert.deepEqual({ width: Number(node.attrs.width), height: Number(node.attrs.height) }, actual, `Incorrect intrinsic dimensions: ${node.attrs.src}`);
     assert(records.has(node.attrs.src), `Displayed image is absent from asset manifest: ${node.attrs.src}`);
     const fullPath = node.attrs['data-full-src'];
     if (fullPath) {
       const original = manifest.images.find(image => image.path === fullPath);
       assert(original, `Full-size original is absent from asset manifest: ${fullPath}`);
-      assert(original.variants?.some(variant => variant.path === node.attrs.src), `Thumbnail belongs to a different original: ${node.attrs.src}`);
-      const fullSize = imageDimensions(readFileSync(resolve(root, fullPath)));
+      assert(original.path === node.attrs.src || original.variants?.some(variant => variant.path === node.attrs.src), `Thumbnail belongs to a different original: ${node.attrs.src}`);
+      const fullSize = imageDimensions(readFileSync(assertLocalFile(fullPath, 'Original')));
       assert.deepEqual({ width: Number(node.attrs['data-full-width']), height: Number(node.attrs['data-full-height']) }, fullSize, `Incorrect full-size dimensions: ${fullPath}`);
-      assert.equal(node.attrs['data-asset-quality'], original.quality, `Incorrect original quality: ${fullPath}`);
+      if (node.attrs['data-asset-quality']) assert.equal(node.attrs['data-asset-quality'], original.quality, `Incorrect original quality: ${fullPath}`);
     }
   }
   for (const image of records.values()) {
-    const buffer = readFileSync(resolve(root, image.path));
-    if (/\.(?:webp|png)$/.test(image.path)) {
+    const buffer = readFileSync(assertLocalFile(image.path, 'Manifest image'));
+    if (/\.(?:webp|png|jpe?g)$/i.test(image.path)) {
       const actual = imageDimensions(buffer);
       assert.deepEqual({ width: image.width, height: image.height }, actual, `Stale asset manifest dimensions: ${image.path}`);
     }
@@ -136,17 +173,92 @@ test('Thumbnails and full-size originals match their files and asset manifest', 
   }
 });
 
-test('Every filter corresponds to content and every category is reachable', () => {
-  for (const [filterAttribute, cardAttribute] of [['data-filter', 'data-category'], ['data-design-filter', 'data-design-category']]) {
-    const controls = withAttr(filterAttribute);
-    const cards = withAttr(cardAttribute);
-    const controlValues = new Set(controls.map(node => node.attrs[filterAttribute]));
-    const categories = new Set(cards.flatMap(node => node.attrs[cardAttribute].split(/\s+/)));
-    assert(controlValues.has('all'), `${filterAttribute} needs an all option`);
-    assert.equal(controls.filter(node => node.attrs['aria-pressed'] === 'true').length, 1, 'Exactly one selected filter on load');
-    for (const category of categories) assert(controlValues.has(category), `Unreachable category: ${category}`);
-    for (const value of controlValues) assert(value === 'all' || categories.has(value), `Empty filter: ${value}`);
+test('Project filters represent actual work without empty or unreachable categories', () => {
+  const controls = withAttr('data-filter');
+  const cards = byTag('article').filter(node => hasClass(node, 'project-card'));
+  assert(cards.length > 0, 'At least one professional case study is required');
+  const controlValues = new Set(controls.map(node => node.attrs['data-filter']));
+  const categories = new Set(cards.flatMap(node => (node.attrs['data-category'] || '').trim().split(/\s+/).filter(Boolean)));
+  assert(controlValues.has('all'), 'Project filters need an all option');
+  assert.equal(controlValues.size, controls.length, 'Filter choices must be unique');
+  assert.equal(controls.filter(node => node.attrs['aria-pressed'] === 'true').length, 1, 'Exactly one selected filter on load');
+  for (const category of categories) assert(controlValues.has(category), `Unreachable category: ${category}`);
+  for (const value of controlValues) assert(value === 'all' || categories.has(value), `Empty filter: ${value}`);
+  const names = cards.map(card => card.attrs['data-project']);
+  assert(names.every(Boolean), 'Every project needs a stable identity');
+  assert.equal(new Set(names).size, names.length, 'Project identities must be unique');
+  for (const card of cards) {
+    assert(descendants(card).some(node => node.tag === 'h3' && textContent(node)), `Project ${card.attrs['data-project']} lacks its title`);
+    assert(descendants(card).some(node => Object.hasOwn(node.attrs, 'data-slideshow')), `Project ${card.attrs['data-project']} lacks local artwork`);
   }
+});
+
+test('Project slides have local originals, explanations and optional source documents', () => {
+  const carousels = withAttr('data-slideshow');
+  assert(carousels.length > 0, 'Selected work must be presented within the portfolio');
+  let hasMultiplePages = false;
+  for (const carousel of carousels) {
+    assert(!ancestor(carousel, node => Object.hasOwn(node.attrs, 'data-slideshow')), 'Project sequences must not be nested');
+    const track = descendants(carousel).find(node => hasClass(node, 'slide-track'));
+    assert.equal(track?.tag, 'ol', 'A project sequence is an ordered set of pages');
+    const slides = descendants(track).filter(node => Object.hasOwn(node.attrs, 'data-slide'));
+    assert(slides.length > 0, 'A project sequence cannot be empty');
+    hasMultiplePages ||= slides.length > 1;
+    for (const slide of slides) {
+      assert.equal(ancestor(slide, node => Object.hasOwn(node.attrs, 'data-slideshow')), carousel);
+      const previews = descendants(slide).filter(node => Object.hasOwn(node.attrs, 'data-preview'));
+      assert.equal(previews.length, 1, 'Each selected page has one local preview');
+      const preview = previews[0];
+      assert.equal(preview.tag, 'a');
+      assert(/^assets\/.+\.(?:webp|png|jpe?g)$/i.test(preview.attrs.href || ''), 'The primary preview must open a local original, not Canva');
+      assert(!preview.attrs.target || preview.attrs.target === '_self', 'The primary preview should keep visitors in the portfolio');
+      assertLocalFile(preview.attrs.href, 'Preview');
+      const image = descendants(preview).find(node => node.tag === 'img');
+      assert(image, 'Every selected page must have a visible image');
+      assert.equal(image.attrs['data-full-src'] || image.attrs.src, preview.attrs.href, 'The preview and original download must refer to the same artwork');
+      for (const language of ['fr', 'en', 'es']) {
+        assert(image.attrs[`data-alt-${language}`]?.trim(), `Missing ${language} alternative text on ${image.attrs.src}`);
+      }
+      for (const field of ['data-slide-title', 'data-slide-caption']) {
+        const label = descendants(slide).find(node => Object.hasOwn(node.attrs, field));
+        assert(label && textContent(label), `Each page needs an explanatory ${field}`);
+        for (const language of ['fr', 'en', 'es']) assert(label.attrs[`data-${language}`]?.trim(), `Missing ${language} ${field}`);
+      }
+      const reference = preview.attrs['data-source'];
+      if (reference) {
+        const source = new URL(reference);
+        assert.equal(source.protocol, 'https:');
+        assert(['www.canva.com', 'canva.com'].includes(source.hostname), 'Source link must identify the actual Canva document');
+        assert(/^\/design\/[A-Za-z0-9_-]+\/view\/?$/.test(source.pathname), 'The optional source must be a viewing URL');
+      }
+    }
+    if (slides.length > 1) {
+      for (const attribute of ['data-slide-prev', 'data-slide-next']) {
+        assert(descendants(carousel).some(node => node.tag === 'button' && Object.hasOwn(node.attrs, attribute)), 'Multipage work needs accessible navigation controls');
+      }
+      assert(descendants(carousel).some(node => Object.hasOwn(node.attrs, 'data-slide-count')), 'A project sequence needs a page count');
+    }
+  }
+  assert(hasMultiplePages, 'The portfolio must show more than document covers');
+  assert.equal(ids.get('design-dialog')?.tag, 'dialog', 'Local artwork needs an accessible native viewer');
+  for (const id of ['preview-close', 'preview-prev', 'preview-next', 'preview-zoom']) assert.equal(ids.get(id)?.tag, 'button', `Viewer control ${id} is missing`);
+});
+
+test('Approved Wremena files and the original palette are retained', () => {
+  const fonts = {
+    'assets/Wremena-Regular.woff': '7e06b3641d48bdf6a816e3539ae685ed9f0323da8c670a1d4d45e7ca86f487ed',
+    'assets/Wremena-Bold.woff': 'ae7996a3a935f2958241cd9765c025dac3f0492ecb0974c3544b2d7eabac797f'
+  };
+  for (const [path, expected] of Object.entries(fonts)) {
+    assert.equal(createHash('sha256').update(readFileSync(assertLocalFile(path, 'Font'))).digest('hex'), expected, `Approved font file changed: ${path}`);
+  }
+  const expectedTokens = { ink: '#0e0e0e', paper: '#fff', wine: '#652936' };
+  for (const [name, expected] of Object.entries(expectedTokens)) {
+    const declarations = [...stylesheets.flatMap(sheet => [...sheet.css.matchAll(new RegExp(`--${name}\\s*:\\s*([^;}]+)`, 'g'))])];
+    assert(declarations.length > 0, `Approved palette token --${name} is missing`);
+    assert(declarations.every(match => match[1].trim().toLowerCase() === expected), `Approved palette token --${name} changed`);
+  }
+  // Exact visual size, layout and computed fonts remain browser acceptance work.
 });
 
 test('The four calendar formats and requested website section remain present', () => {

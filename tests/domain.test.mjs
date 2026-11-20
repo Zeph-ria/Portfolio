@@ -16,7 +16,7 @@ const html = readFileSync(resolve(root, 'index.html'), 'utf8');
 const { elements } = readHtml(html);
 const i18n = createRequire(import.meta.url)('../i18n.js');
 const confirmedDomain = 'breathewithoutfear.org';
-const screenshotPath = 'assets/breathe-without-fear-site.jpg';
+const siteCaptures = JSON.parse(readFileSync(resolve(root, 'assets/sites/manifest.json'), 'utf8')).images.filter(item => item.project === 'Breathe & Rise Without Fear');
 const obsoleteDomain = /\bbreathwithoutfear\.org\b/i;
 const waitingState = /coming[\s-]*soon|waiting page|in preparation|under construction|in development|page d['’]attente|en pr[ée]paration|en d[ée]veloppement|bient[oô]t disponible|pr[oó]ximo lanzamiento|pr[oó]ximamente|p[aá]gina de espera|en preparaci[oó]n|en desarrollo/i;
 
@@ -88,32 +88,32 @@ test('Breathe Without Fear card has complete FR/EN/ES copy without a coming-soon
 });
 
 test('dynamic Breathe Without Fear labels do not restore the obsolete preparation status', () => {
-  const messages = [
-    ...i18n.TEXT_BINDINGS.filter(([selector]) => selector.includes('.breathe-browser')).map(([selector, message]) => [selector, message]),
-    ...i18n.ATTRIBUTE_BINDINGS.filter(([selector]) => selector.includes('.breathe-browser')).map(([selector, attribute, message]) => [selector + '/' + attribute, message]),
-    ...(i18n.ASSETS['breathe-without-fear-site.jpg'] ? [[screenshotPath + '/alt', i18n.ASSETS['breathe-without-fear-site.jpg']]] : [])
-  ];
+  const messages = siteCaptures.flatMap(capture => ['title', 'caption', 'alt'].map(field => [capture.path + '/' + field, capture[field]]));
   assert(messages.length > 0, 'Breathe Without Fear accessible labels must remain localized');
   for (const [label, message] of messages) {
     for (const language of ['fr', 'en', 'es']) assertActiveCopy(message[language], label + '/' + language);
   }
 });
 
-test('Breathe Without Fear shows the actual website capture with matching intrinsic dimensions', () => {
-  const images = descendants(websiteCard()).filter(node => node.tag === 'img' && node.attrs.src === screenshotPath);
-  assert.equal(images.length, 1, 'The Breathe Without Fear card must contain its real website screenshot');
-  const image = images[0];
-  const actual = jpegDimensions(readFileSync(resolve(root, screenshotPath)));
-  assert(actual.width > 0 && actual.height > 0);
-  assert.deepEqual({ width: Number(image.attrs.width), height: Number(image.attrs.height) }, actual, 'Screenshot HTML dimensions do not match the JPEG');
-  assert.match(image.attrs.alt ?? '', /breathe/i, 'The screenshot needs a meaningful project-specific alt');
-  const alt = i18n.ASSETS['breathe-without-fear-site.jpg'];
-  for (const language of ['fr', 'en', 'es']) assertActiveCopy(alt?.[language], 'screenshot alt/' + language);
+test('Breathe Without Fear presents real homepage and interior captures with matching dimensions', () => {
+  assert.equal(siteCaptures.length, 3, 'The selection must include homepage and two interior views');
+  const images = descendants(websiteCard()).filter(node => node.tag === 'img');
+  assert.equal(images.length, siteCaptures.length, 'Each selected capture must be presented');
   const manifest = JSON.parse(readFileSync(resolve(root, 'assets-manifest.json'), 'utf8'));
-  const record = manifest.images.find(item => item.path === screenshotPath);
-  assert(record, 'The website screenshot must be documented in the asset manifest');
-  assert.deepEqual({ width: record.width, height: record.height }, actual, 'Screenshot manifest dimensions do not match the JPEG');
-  const source = new URL(record.sourceUrl);
-  assert.equal(source.protocol, 'https:');
-  assert.equal(source.hostname, confirmedDomain, 'The screenshot source must be the confirmed website');
+  for (const capture of siteCaptures) {
+    const image = images.find(node => node.attrs.src === capture.path);
+    assert(image, 'Missing selected real capture: ' + capture.path);
+    const actual = jpegDimensions(readFileSync(resolve(root, capture.path)));
+    assert(actual.width > 0 && actual.height > 0);
+    assert.deepEqual({ width: Number(image.attrs.width), height: Number(image.attrs.height) }, actual, 'Capture HTML dimensions must match the JPEG');
+    const alt = Object.fromEntries(['fr', 'en', 'es'].map(language => [language, image.attrs['data-alt-' + language]]));
+    for (const language of ['fr', 'en', 'es']) assertActiveCopy(alt[language], capture.path + '/alt/' + language);
+    const record = manifest.images.find(item => item.path === capture.path);
+    assert(record, 'The website capture must be documented in the asset manifest');
+    assert.deepEqual({ width: record.width, height: record.height }, actual, 'Capture manifest dimensions must match the JPEG');
+    const source = new URL(record.sourceUrl);
+    assert.equal(source.protocol, 'https:');
+    assert.equal(source.hostname, confirmedDomain, 'The screenshot source must be the confirmed website');
+    assert.equal(record.quality, 'live-website-screenshot');
+  }
 });

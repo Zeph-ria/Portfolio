@@ -1,0 +1,2046 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "id": "carrigres",
+      "name": "Carrigrès",
+      "categories": [
+        "branding",
+        "communication",
+        "digital"
+      ],
+      "format": "landscape",
+      "category": {
+        "fr": "Communication · identité · web",
+        "en": "Communication · identity · web",
+        "es": "Comunicación · identidad · web"
+      },
+      "summary": {
+        "fr": "Construire une présence digitale cohérente, de l’identité industrielle à la demande de devis : charte, contenus, site WordPress et collecte automatisée des demandes.",
+        "en": "Building a coherent digital presence, from industrial identity to quotation enquiry: brand guidelines, content, a WordPress website and automated enquiry collection.",
+        "es": "Construir una presencia digital coherente, desde la identidad industrial hasta la solicitud de presupuesto: manual de marca, contenidos, sitio WordPress y recopilación automatizada de solicitudes."
+      },
+      "role": {
+        "fr": "Identité visuelle, communication digitale, refonte WordPress et automatisation de la collecte des demandes de devis.",
+        "en": "Visual identity, digital communication, WordPress redesign and automated quotation-enquiry collection.",
+        "es": "Identidad visual, comunicación digital, rediseño WordPress y automatización de la recopilación de solicitudes de presupuesto."
+      },
+      "objective": {
+        "fr": "Rendre l’offre de matériaux de construction plus lisible et permettre aux visiteurs de passer de la découverte des produits à une demande de devis.",
+        "en": "Make the construction-material offering clearer and help visitors move from discovering products to requesting a quotation.",
+        "es": "Hacer más clara la oferta de materiales de construcción y facilitar el paso de descubrir los productos a solicitar un presupuesto."
+      },
+      "approach": {
+        "fr": "Donner un rôle précis à chaque point de contact : la charte et les supports installent les repères de marque, LinkedIn développe la présence professionnelle, le référencement rend l’offre accessible sur Google et les campagnes Facebook suscitent des échanges sur WhatsApp. Le site rassemble l’offre et le formulaire de devis dans un même parcours.",
+        "en": "Give each touchpoint a clear role: guidelines and materials establish the brand identity, LinkedIn builds professional presence, search optimisation makes the offering discoverable on Google and Facebook campaigns encourage WhatsApp conversations. The website brings the offering and quotation form into one journey.",
+        "es": "Dar una función precisa a cada punto de contacto: el manual y los soportes establecen la identidad, LinkedIn desarrolla la presencia profesional, el posicionamiento facilita encontrar la oferta en Google y las campañas de Facebook promueven conversaciones por WhatsApp. El sitio reúne la oferta y el formulario de presupuesto en un mismo recorrido."
+      },
+      "deliverables": {
+        "fr": "Charte et déclinaisons du logo, brochure, quatre formats de calendrier, refonte du site et formulaire de demande de devis relié à Google Sheets.",
+        "en": "Brand guidelines and logo variations, a brochure, four calendar formats, website redesign and a quotation-request form connected to Google Sheets.",
+        "es": "Manual y variantes del logotipo, folleto, cuatro formatos de calendario, rediseño web y formulario de presupuesto conectado a Google Sheets."
+      },
+      "journey": [
+        {
+          "title": {
+            "fr": "Comprendre l’offre",
+            "en": "Understand the offer",
+            "es": "Entender la oferta"
+          },
+          "body": {
+            "fr": "Les pages WordPress présentent les matériaux et leurs usages, puis donnent accès à la demande de devis.",
+            "en": "The WordPress pages present materials and their uses, then provide access to the quotation request.",
+            "es": "Las páginas WordPress presentan los materiales y sus usos, y dan acceso a la solicitud de presupuesto."
+          }
+        },
+        {
+          "title": {
+            "fr": "Exprimer le besoin",
+            "en": "Describe the need",
+            "es": "Expresar la necesidad"
+          },
+          "body": {
+            "fr": "Le formulaire Tally intégré au site permet au visiteur de transmettre sa demande.",
+            "en": "The Tally form embedded in the website lets visitors submit their enquiry.",
+            "es": "El formulario Tally integrado en el sitio permite enviar la solicitud."
+          }
+        },
+        {
+          "title": {
+            "fr": "Centraliser pour le suivi",
+            "en": "Centralise for follow-up",
+            "es": "Centralizar para el seguimiento"
+          },
+          "body": {
+            "fr": "Les réponses alimentent automatiquement Google Sheets. Les demandes sont regroupées dans un même tableau pour le suivi commercial.",
+            "en": "Responses automatically feed into Google Sheets. Enquiries are brought together in one spreadsheet for commercial follow-up.",
+            "es": "Las respuestas alimentan automáticamente Google Sheets. Las solicitudes se reúnen en una misma hoja para el seguimiento comercial."
+          }
+        }
+      ],
+      "outcome": {
+        "fr": "Le bilan janvier–septembre 2025 fait état d’une communauté LinkedIn passée de zéro à 832 abonnés en neuf mois, de 144 conversations WhatsApp et de 19 854 lectures vidéo ThruPlay. Les cinq mois suivant l’indexation du site ont apporté 6 060 impressions et 347 clics organiques sur Google. Ces indicateurs montrent la visibilité acquise et les échanges engagés avec le public.",
+        "en": "The January–September 2025 report records LinkedIn growth from zero to 832 followers in nine months, 144 WhatsApp conversations and 19,854 video ThruPlays. The five months following website indexing brought 6,060 impressions and 347 organic clicks from Google. These indicators show the visibility gained and conversations started with the audience.",
+        "es": "El balance de enero–septiembre de 2025 registra un crecimiento de cero a 832 seguidores en LinkedIn en nueve meses, 144 conversaciones por WhatsApp y 19.854 reproducciones ThruPlay. Los cinco meses posteriores a la indexación del sitio generaron 6.060 impresiones y 347 clics orgánicos en Google. Estos indicadores reflejan la visibilidad obtenida y las conversaciones iniciadas con el público."
+      },
+      "slides": [
+        {
+          "path": "assets/carrigres-brochure.webp",
+          "thumb": "assets/thumbs/carrigres-brochure.webp",
+          "source": "https://www.canva.com/design/DAGeqT9Hvco/view",
+          "width": 2381,
+          "height": 1122,
+          "title": {
+            "fr": "Présenter l’offre",
+            "en": "Presenting the offer",
+            "es": "Presentar la oferta"
+          },
+          "caption": {
+            "fr": "La brochure réunit les produits, les usages et les repères de la marque dans un support de présentation.",
+            "en": "The brochure brings products, uses and brand cues together in a presentation document.",
+            "es": "El folleto reúne los productos, sus usos y los elementos de marca en un documento de presentación."
+          }
+        },
+        {
+          "page": 7,
+          "path": "assets/projects/carrigres-identite-p07.webp",
+          "thumb": "assets/projects/thumbs/carrigres-identite-p07.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La construction du logo — matière et solidité",
+            "en": "Logo construction — material and strength",
+            "es": "Construcción del logotipo — materia y solidez"
+          },
+          "caption": {
+            "fr": "La structure du signe traduit la matière et la solidité attendues d’une marque de construction.",
+            "en": "The structure of the mark expresses the material and strength associated with a construction brand.",
+            "es": "La estructura del signo expresa la materia y la solidez propias de una marca de construcción."
+          }
+        },
+        {
+          "page": 8,
+          "path": "assets/projects/carrigres-identite-p08.webp",
+          "thumb": "assets/projects/thumbs/carrigres-identite-p08.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Les variantes de l’identité",
+            "en": "Identity variations",
+            "es": "Variantes de identidad"
+          },
+          "caption": {
+            "fr": "Les variantes permettent de conserver une signature reconnaissable sur différents fonds.",
+            "en": "The variations keep the signature recognisable across different backgrounds.",
+            "es": "Las variantes mantienen una firma reconocible sobre distintos fondos."
+          }
+        },
+        {
+          "page": 23,
+          "path": "assets/projects/carrigres-identite-p23.webp",
+          "thumb": "assets/projects/thumbs/carrigres-identite-p23.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "L’identité sur les vêtements — mises en situation",
+            "en": "Identity on workwear — mockups",
+            "es": "La identidad en la ropa de trabajo — simulaciones"
+          },
+          "caption": {
+            "fr": "Les mises en situation montrent comment l’identité s’applique aux vêtements de travail.",
+            "en": "These mockups show how the identity extends to workwear.",
+            "es": "Estas simulaciones muestran cómo se aplica la identidad a la ropa de trabajo."
+          }
+        },
+        {
+          "page": 24,
+          "path": "assets/projects/carrigres-identite-p24.webp",
+          "thumb": "assets/projects/thumbs/carrigres-identite-p24.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Les casques de chantier — mises en situation",
+            "en": "Construction helmets — mockups",
+            "es": "Cascos de obra — simulaciones"
+          },
+          "caption": {
+            "fr": "Le logo reste identifiable sur les casques, un support directement lié au terrain.",
+            "en": "The logo remains recognisable on helmets, a touchpoint directly connected with site work.",
+            "es": "El logotipo sigue siendo reconocible en los cascos, un soporte vinculado al trabajo en obra."
+          }
+        },
+        {
+          "page": 27,
+          "path": "assets/projects/carrigres-identite-p27.webp",
+          "thumb": "assets/projects/thumbs/carrigres-identite-p27.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Les objets de marque — mises en situation",
+            "en": "Branded objects — mockups",
+            "es": "Objetos de marca — simulaciones"
+          },
+          "caption": {
+            "fr": "La même identité se décline sur des objets de marque et des supports du quotidien.",
+            "en": "The same identity carries across branded objects and everyday materials.",
+            "es": "La misma identidad se extiende a objetos de marca y soportes cotidianos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "utex-empreinte",
+      "name": "UTEX Empreinte",
+      "categories": [
+        "digital",
+        "communication"
+      ],
+      "format": "landscape",
+      "category": {
+        "fr": "Stratégie ESG · communication interne & communautaire",
+        "en": "ESG strategy · internal & community communication",
+        "es": "Estrategia ESG · comunicación interna y comunitaria"
+      },
+      "summary": {
+        "fr": "Traduire les engagements environnementaux, sociaux et de gouvernance en un programme pour la vie de la résidence. UTEX Empreinte réunit une identité commune, des campagnes de sensibilisation et des activités pensées pour les résidents, les enfants et les équipes.",
+        "en": "Translate environmental, social and governance commitments into a programme for residential life. UTEX Empreinte brings together a shared identity, awareness campaigns and activities designed for residents, children and staff.",
+        "es": "Traducir los compromisos ambientales, sociales y de gobernanza en un programa para la vida de la residencia. UTEX Empreinte reúne una identidad común, campañas de sensibilización y actividades pensadas para residentes, niños y equipos."
+      },
+      "role": {
+        "fr": "Conception et rédaction du programme ESG, structuration des axes et des actions de communication.",
+        "en": "ESG programme concept and writing, structuring its strategic pillars and communication activities.",
+        "es": "Concepción y redacción del programa ESG, estructuración de sus ejes y acciones de comunicación."
+      },
+      "context": {
+        "fr": "Conception de programme · proposition ESG",
+        "en": "Programme concept · ESG proposal",
+        "es": "Concepción de programa · propuesta ESG"
+      },
+      "objective": {
+        "fr": "Donner aux engagements ESG d’UTEX une expression concrète dans le quotidien et proposer à chaque public une manière de participer.",
+        "en": "Give UTEX’s ESG commitments a concrete expression in everyday life and offer each audience a way to participate.",
+        "es": "Dar a los compromisos ESG de UTEX una expresión concreta en la vida cotidiana y proponer a cada público una forma de participar."
+      },
+      "approach": {
+        "fr": "Relier trois axes — environnement, social et gouvernance — à des gestes et des formats accessibles. Adapter les propositions aux publics : signalétique et messages courts dans les espaces communs, sensibilisation des équipes, activités ludiques et Passeport Vert pour les enfants.",
+        "en": "Connect three pillars — environment, social responsibility and governance — with accessible actions and formats. Adapt the proposals to each audience: signage and short messages in shared spaces, staff awareness activities, and playful activities and a Green Passport for children.",
+        "es": "Relacionar tres ejes — medioambiente, responsabilidad social y gobernanza — con acciones y formatos accesibles. Adaptar las propuestas a cada público: señalética y mensajes breves en los espacios comunes, sensibilización de los equipos, actividades lúdicas y Pasaporte Verde para los niños."
+      },
+      "deliverables": {
+        "fr": "Dossier de programme, vision et axes stratégiques, proposition de charte commune, concept de campagne « 1 geste = 100 sourires » et programme UTEX Green Kids.",
+        "en": "Programme proposal, vision and strategic pillars, a proposed shared charter, the “1 gesture = 100 smiles” campaign concept and UTEX Green Kids.",
+        "es": "Propuesta de programa, visión y ejes estratégicos, propuesta de carta común, concepto de campaña «1 gesto = 100 sonrisas» y UTEX Green Kids."
+      },
+      "slides": [
+        {
+          "page": 2,
+          "path": "assets/projects/utex-empreinte-p02.webp",
+          "thumb": "assets/projects/thumbs/utex-empreinte-p02.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Une identité pour fédérer le programme",
+            "en": "An identity to bring the programme together",
+            "es": "Una identidad para unir el programa"
+          },
+          "caption": {
+            "fr": "L’identité existante d’UTEX s’associe à la signature Empreinte, déclinée sur deux fonds, pour donner un repère commun au programme.",
+            "en": "UTEX’s existing identity combines with the Empreinte signature, shown on two backgrounds, to give the programme a shared visual reference.",
+            "es": "La identidad existente de UTEX se une a la firma Empreinte, presentada sobre dos fondos, para dar al programa una referencia visual común."
+          }
+        },
+        {
+          "page": 3,
+          "path": "assets/projects/utex-empreinte-p03.webp",
+          "thumb": "assets/projects/thumbs/utex-empreinte-p03.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La vision — vivre durablement à UTEX",
+            "en": "The vision — sustainable living at UTEX",
+            "es": "La visión — vivir de forma sostenible en UTEX"
+          },
+          "caption": {
+            "fr": "Associer résidents, équipes et communauté locale à un cadre de vie plus respectueux, sain et solidaire : l’intention qui guide le programme.",
+            "en": "Bring residents, staff and the local community into a more considerate, healthy and supportive living environment: the intention guiding the programme.",
+            "es": "Asociar a residentes, equipos y comunidad local en un entorno más respetuoso, saludable y solidario: la intención que orienta el programa."
+          }
+        },
+        {
+          "page": 6,
+          "path": "assets/projects/utex-empreinte-p06.webp",
+          "thumb": "assets/projects/thumbs/utex-empreinte-p06.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Trois axes pour structurer l’action",
+            "en": "Three pillars to structure action",
+            "es": "Tres ejes para estructurar la acción"
+          },
+          "caption": {
+            "fr": "Environnement, social et gouvernance organisent les propositions, des écogestes à la participation des résidents et au suivi du programme.",
+            "en": "Environment, social responsibility and governance organise the proposals, from everyday eco-friendly actions to resident participation and programme monitoring.",
+            "es": "Medioambiente, responsabilidad social y gobernanza organizan las propuestas, desde los gestos ecológicos hasta la participación de los residentes y el seguimiento del programa."
+          }
+        },
+        {
+          "page": 15,
+          "path": "assets/projects/utex-empreinte-p15.webp",
+          "thumb": "assets/projects/thumbs/utex-empreinte-p15.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "« 1 geste = 100 sourires » — sensibiliser au quotidien",
+            "en": "“1 gesture = 100 smiles” — everyday awareness",
+            "es": "«1 gesto = 100 sonrisas» — sensibilización cotidiana"
+          },
+          "caption": {
+            "fr": "Une proposition de campagne autour de l’eau, de l’énergie, de la propreté et du tri, avec des messages courts et des activités collectives.",
+            "en": "A campaign proposal around water, energy, cleanliness and waste sorting, using short messages and shared activities.",
+            "es": "Una propuesta de campaña sobre agua, energía, limpieza y separación de residuos, con mensajes breves y actividades colectivas."
+          }
+        },
+        {
+          "page": 16,
+          "path": "assets/projects/utex-empreinte-p16.webp",
+          "thumb": "assets/projects/thumbs/utex-empreinte-p16.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "UTEX Green Kids — apprendre par le jeu",
+            "en": "UTEX Green Kids — learning through play",
+            "es": "UTEX Green Kids — aprender jugando"
+          },
+          "caption": {
+            "fr": "Le concept associe potager, ateliers citoyens et Passeport Vert pour faire découvrir aux enfants l’écologie et la vie en communauté.",
+            "en": "The concept combines a vegetable garden, citizenship workshops and a Green Passport to introduce children to ecology and community life.",
+            "es": "El concepto combina huerto, talleres de ciudadanía y Pasaporte Verde para acercar a los niños a la ecología y a la vida en comunidad."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Agorafrik",
+      "categories": [
+        "branding",
+        "communication"
+      ],
+      "category": {
+        "fr": "Identité · direction visuelle",
+        "en": "Identity · visual direction",
+        "es": "Identidad · dirección visual"
+      },
+      "role": {
+        "fr": "Positionnement, conception du logo, charte et déclinaisons de marque.",
+        "en": "Positioning, logo design, guidelines and brand applications.",
+        "es": "Posicionamiento, diseño de logotipo, manual y aplicaciones de marca."
+      },
+      "objective": {
+        "fr": "Donner une identité reconnaissable à une plateforme dédiée aux talents et à la culture africaine.",
+        "en": "Create a recognisable identity for a platform devoted to African talent and culture.",
+        "es": "Crear una identidad reconocible para una plataforma dedicada al talento y la cultura africana."
+      },
+      "approach": {
+        "fr": "Faire dialoguer le logotype, le bordeaux et l’orange avec une sélection d’images d’art, de mode et d’artisanat.",
+        "en": "Connect the logotype, burgundy and orange with a selection of art, fashion and craftsmanship imagery.",
+        "es": "Conectar el logotipo, el burdeos y el naranja con una selección de imágenes de arte, moda y artesanía."
+      },
+      "deliverables": {
+        "fr": "Charte graphique actualisée, logo et variantes, direction photographique, campagne digitale et mockups d’affichage, de textile et de tote-bags.",
+        "en": "Updated brand guidelines, logo and variations, photographic direction, digital campaign and poster, textile and tote-bag mockups.",
+        "es": "Manual actualizado, logotipo y variantes, dirección fotográfica, campaña digital y simulaciones de cartelería, textil y bolsas."
+      },
+      "context": {
+        "fr": "Projet de marque · parcours Kadea Academy",
+        "en": "Brand project · Kadea Academy programme",
+        "es": "Proyecto de marca · formación Kadea Academy"
+      },
+      "id": "agorafrik",
+      "format": "landscape",
+      "summary": {
+        "fr": "Donner un visage à une plateforme dédiée aux talents et à la culture africaine. Le travail relie positionnement, logo typographique, langage photographique et déclinaisons sur des supports digitaux et physiques.",
+        "en": "Creating a visual identity for a platform devoted to African talent and culture. The work connects positioning, a typographic logo, photographic direction, and applications across digital and physical media.",
+        "es": "Dar una identidad visual a una plataforma dedicada al talento y la cultura africana. El trabajo conecta posicionamiento, logotipo tipográfico, dirección fotográfica y aplicaciones digitales y físicas."
+      },
+      "slides": [
+        {
+          "page": 30,
+          "path": "assets/projects/agorafrik-identite-p30.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p30.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "L’identité en situation — série d’affiches",
+            "en": "Identity in context — poster series",
+            "es": "La identidad en contexto — serie de carteles"
+          },
+          "caption": {
+            "fr": "La série d’affiches met le logo et la photographie au contact d’un support réel.",
+            "en": "The poster series brings the logo and photography into a real-world format.",
+            "es": "La serie de carteles lleva el logotipo y la fotografía a un soporte real."
+          }
+        },
+        {
+          "page": 2,
+          "path": "assets/projects/agorafrik-identite-p02.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p02.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Le logo et la signature de marque",
+            "en": "The logo and brand signature",
+            "es": "El logotipo y la firma de marca"
+          },
+          "caption": {
+            "fr": "Le logotype et la signature donnent à la plateforme un premier repère immédiatement identifiable.",
+            "en": "The logotype and signature give the platform an immediately recognisable starting point.",
+            "es": "El logotipo y la firma ofrecen a la plataforma una referencia reconocible."
+          }
+        },
+        {
+          "page": 6,
+          "path": "assets/projects/agorafrik-identite-p06.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p06.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La construction typographique du logo",
+            "en": "The logo’s typographic construction",
+            "es": "La construcción tipográfica del logotipo"
+          },
+          "caption": {
+            "fr": "Le travail typographique précise la construction du nom et ses rapports de proportions.",
+            "en": "The typographic work defines the construction of the name and its proportions.",
+            "es": "El trabajo tipográfico define la construcción del nombre y sus proporciones."
+          }
+        },
+        {
+          "page": 7,
+          "path": "assets/projects/agorafrik-identite-p07.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p07.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Un logo décliné sur les fonds de la marque",
+            "en": "Logo variations on the brand backgrounds",
+            "es": "Variantes del logotipo sobre los fondos de marca"
+          },
+          "caption": {
+            "fr": "Les contrastes sont étudiés pour garder le logo lisible sur les couleurs de la marque.",
+            "en": "The contrasts keep the logo legible across the brand colours.",
+            "es": "Los contrastes mantienen legible el logotipo sobre los colores de la marca."
+          }
+        },
+        {
+          "page": 25,
+          "path": "assets/projects/agorafrik-identite-p25.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p25.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Direction photographique — art et artisanat",
+            "en": "Photographic direction — art and craft",
+            "es": "Dirección fotográfica — arte y artesanía"
+          },
+          "caption": {
+            "fr": "Les images d’art et d’artisanat installent un univers culturel concret autour de la marque.",
+            "en": "Images of art and craftsmanship build a tangible cultural world around the brand.",
+            "es": "Las imágenes de arte y artesanía construyen un universo cultural concreto alrededor de la marca."
+          }
+        },
+        {
+          "page": 27,
+          "path": "assets/projects/agorafrik-identite-p27.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p27.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Direction photographique — mode et culture",
+            "en": "Photographic direction — fashion and culture",
+            "es": "Dirección fotográfica — moda y cultura"
+          },
+          "caption": {
+            "fr": "Les portraits et silhouettes prolongent la direction photographique vers la mode et la création.",
+            "en": "Portraits and silhouettes extend the photographic direction into fashion and creativity.",
+            "es": "Los retratos y siluetas amplían la dirección fotográfica hacia la moda y la creación."
+          }
+        },
+        {
+          "page": 33,
+          "path": "assets/projects/agorafrik-identite-p33.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p33.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Application textile — mise en situation",
+            "en": "Textile application — mockup",
+            "es": "Aplicación textil — simulación"
+          },
+          "caption": {
+            "fr": "La mise en situation textile vérifie la présence de l’identité au-delà de l’écran.",
+            "en": "The textile mockup tests how the identity works beyond the screen.",
+            "es": "La simulación textil muestra cómo funciona la identidad fuera de la pantalla."
+          }
+        },
+        {
+          "page": 35,
+          "path": "assets/projects/agorafrik-identite-p35.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p35.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Trois déclinaisons de tote-bags — mockups",
+            "en": "Three tote-bag variations — mockups",
+            "es": "Tres variantes de bolsas de tela — simulaciones"
+          },
+          "caption": {
+            "fr": "Trois tote-bags explorent différentes façons d’associer signature, couleur et support.",
+            "en": "Three tote-bag mockups explore different ways to combine signature, colour and material.",
+            "es": "Tres bolsas exploran distintas formas de combinar firma, color y soporte."
+          }
+        },
+        {
+          "page": 40,
+          "path": "assets/projects/agorafrik-identite-p40.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p40.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La campagne dans l’espace urbain — mockups",
+            "en": "The campaign in urban spaces — mockups",
+            "es": "La campaña en el espacio urbano — simulaciones"
+          },
+          "caption": {
+            "fr": "Les mockups urbains projettent la campagne dans l’espace public et à plusieurs échelles.",
+            "en": "Urban mockups place the campaign in public spaces and at several scales.",
+            "es": "Las simulaciones urbanas proyectan la campaña en el espacio público y a distintas escalas."
+          }
+        },
+        {
+          "designId": "DAGafR69dyw",
+          "page": 7,
+          "path": "assets/projects/agorafrik-campagne-p07.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-campagne-p07.webp",
+          "source": "https://www.canva.com/design/DAGafR69dyw/view",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Une même campagne, plusieurs formats digitaux",
+            "en": "One campaign across digital formats",
+            "es": "Una campaña en varios formatos digitales"
+          },
+          "caption": {
+            "fr": "Une même idée se décline en plusieurs formats pour conserver son impact dans le fil social.",
+            "en": "One idea adapts to several formats while keeping its impact in a social feed.",
+            "es": "Una misma idea se adapta a varios formatos y mantiene su fuerza en el feed social."
+          }
+        },
+        {
+          "page": 5,
+          "path": "assets/projects/agorafrik-mission-p05.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-mission-p05.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La mission traduite en présentation de marque",
+            "en": "The mission expressed through a brand presentation",
+            "es": "La misión expresada en una presentación de marca"
+          },
+          "caption": {
+            "fr": "La mission de la plateforme sert de fil conducteur à la présentation de marque.",
+            "en": "The platform mission provides the guiding thread for the brand presentation.",
+            "es": "La misión de la plataforma guía la presentación de marca."
+          }
+        },
+        {
+          "page": 1,
+          "path": "assets/projects/agorafrik-identite-p01.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p01.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Charte graphique — couverture actualisée",
+            "en": "Brand guidelines — updated cover",
+            "es": "Manual de identidad — portada actualizada"
+          },
+          "caption": {
+            "fr": "La couverture actualisée rassemble le nom, le territoire visuel et la promesse de la charte.",
+            "en": "The updated cover brings together the name, visual world and purpose of the guidelines.",
+            "es": "La portada actualizada reúne el nombre, el universo visual y la intención del manual."
+          }
+        }
+      ]
+    },
+    {
+      "id": "revendre",
+      "name": "Re-vendre",
+      "categories": [
+        "branding",
+        "communication"
+      ],
+      "format": "portrait",
+      "category": {
+        "fr": "Mode · identité · campagne",
+        "en": "Fashion · identity · campaign",
+        "es": "Moda · identidad · campaña"
+      },
+      "summary": {
+        "fr": "Une identité visuelle et une ligne de contenu qui relient inspiration vestimentaire, choix de silhouettes et campagne commerciale.",
+        "en": "A visual identity and content direction connecting outfit inspiration, styling choices and a retail campaign.",
+        "es": "Una identidad visual y una línea de contenido que conectan inspiración, estilismo y campaña comercial."
+      },
+      "role": {
+        "fr": "Identité, direction de contenu, composition visuelle et campagnes sociales.",
+        "en": "Identity, content direction, visual composition and social campaigns.",
+        "es": "Identidad, dirección de contenido, composición visual y campañas sociales."
+      },
+      "objective": {
+        "fr": "Rendre la marque identifiable et aider le public à se projeter dans un style avant de découvrir l'offre.",
+        "en": "Make the brand recognisable and help people imagine a style before exploring the offer.",
+        "es": "Hacer reconocible la marca y ayudar al público a imaginar un estilo antes de descubrir la oferta."
+      },
+      "approach": {
+        "fr": "Décliner le bleu et l’orange de la marque, sélectionner les images par univers de style et alterner inspiration et offre commerciale. La campagne carte cadeau avance en quatre temps : attirer l’attention, présenter le cadeau, mettre en valeur le choix et expliquer comment commander.",
+        "en": "Extend the brand’s blue and orange palette, curate images by style and alternate inspiration with the retail offer. The gift-card campaign unfolds in four stages: capture attention, present the gift, highlight personal choice and explain how to order.",
+        "es": "Desarrollar la paleta azul y naranja, seleccionar imágenes por universos de estilo y alternar inspiración y oferta comercial. La campaña de tarjeta regalo avanza en cuatro etapas: captar la atención, presentar el regalo, destacar la elección personal y explicar cómo pedirlo."
+      },
+      "deliverables": {
+        "fr": "Logo, campagne carte cadeau en quatre visuels, série éditoriale en sept visuels et trois compositions de looks.",
+        "en": "Logo, a four-frame gift-card campaign, a seven-frame editorial series and three outfit compositions.",
+        "es": "Logotipo, campaña de tarjeta regalo en cuatro piezas, serie editorial de siete piezas y tres composiciones de looks."
+      },
+      "slides": [
+        {
+          "designId": "DAGgJgPlcLk",
+          "page": 3,
+          "path": "assets/projects/revendre-cadeau-p03.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p03.webp",
+          "source": "https://www.canva.com/design/DAGgJgPlcLk/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Carte cadeau — l’accroche du 8 mars 2025",
+            "en": "Gift card — the March 8, 2025 campaign opening",
+            "es": "Tarjeta regalo — apertura de la campaña del 8 de marzo de 2025"
+          },
+          "caption": {
+            "fr": "L’accroche du 8 mars associe un personnage expressif à la carte cadeau et aux couleurs de la marque.",
+            "en": "The March 8 headline pairs an expressive character with the gift card and brand colours.",
+            "es": "El titular del 8 de marzo asocia un personaje expresivo con la tarjeta regalo y los colores de marca."
+          }
+        },
+        {
+          "designId": "DAGgJgPlcLk",
+          "page": 4,
+          "path": "assets/projects/revendre-cadeau-p04.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p04.webp",
+          "source": "https://www.canva.com/design/DAGgJgPlcLk/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Carte cadeau — présenter l’offre",
+            "en": "Gift card — presenting the offer",
+            "es": "Tarjeta regalo — presentar la oferta"
+          },
+          "caption": {
+            "fr": "La carte et son ruban deviennent le sujet central pour expliquer l’idée du cadeau.",
+            "en": "The card and ribbon become the central subject to explain the gift idea.",
+            "es": "La tarjeta y su lazo se convierten en el tema central para explicar la idea del regalo."
+          }
+        },
+        {
+          "designId": "DAGgJgPlcLk",
+          "page": 5,
+          "path": "assets/projects/revendre-cadeau-p05.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p05.webp",
+          "source": "https://www.canva.com/design/DAGgJgPlcLk/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Carte cadeau — la liberté de choisir",
+            "en": "Gift card — the freedom to choose",
+            "es": "Tarjeta regalo — la libertad de elegir"
+          },
+          "caption": {
+            "fr": "La répétition des cartes donne du rythme au message et présente le cadeau comme un choix personnel.",
+            "en": "Repeating the cards gives the message rhythm and presents the gift as a personal choice.",
+            "es": "La repetición de tarjetas da ritmo al mensaje y presenta el regalo como una elección personal."
+          }
+        },
+        {
+          "designId": "DAGgJgPlcLk",
+          "page": 6,
+          "path": "assets/projects/revendre-cadeau-p06.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p06.webp",
+          "source": "https://www.canva.com/design/DAGgJgPlcLk/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Carte cadeau — guider vers la commande",
+            "en": "Gift card — guiding the order",
+            "es": "Tarjeta regalo — guiar hacia el pedido"
+          },
+          "caption": {
+            "fr": "La dernière page transforme l’attention en une démarche d’achat simple à comprendre.",
+            "en": "The final frame turns the gesture into a purchase process that is easy to understand.",
+            "es": "La última pieza transforma el gesto en un proceso de compra fácil de entender."
+          }
+        },
+        {
+          "designId": "DAGPKRNNkl4",
+          "page": 1,
+          "path": "assets/projects/revendre-logo-p01.webp",
+          "thumb": "assets/projects/thumbs/revendre-logo-p01.webp",
+          "source": "https://www.canva.com/design/DAGPKRNNkl4/view",
+          "width": 1247,
+          "height": 945,
+          "title": {
+            "fr": "Logo Re-vendre — signature et couleurs de marque",
+            "en": "Re-vendre logo — brand signature and colours",
+            "es": "Logotipo Re-vendre — firma y colores de marca"
+          },
+          "caption": {
+            "fr": "Le logo réunit le nom et le sac de shopping dans une signature bleue et orange.",
+            "en": "The logo brings the name and shopping bag together in a blue-and-orange signature.",
+            "es": "El logotipo reúne el nombre y la bolsa de compra en una firma azul y naranja."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 39,
+          "path": "assets/projects/revendre-styles-p39.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p39.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Quel est votre style ? — ouvrir la conversation",
+            "en": "What is your style? — opening the conversation",
+            "es": "¿Cuál es tu estilo? — abrir la conversación"
+          },
+          "caption": {
+            "fr": "La question d’ouverture rassemble plusieurs silhouettes pour inviter à explorer son style.",
+            "en": "The opening question brings several silhouettes together to invite people to explore their style.",
+            "es": "La pregunta inicial reúne varias siluetas e invita a explorar el estilo personal."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 40,
+          "path": "assets/projects/revendre-styles-p40.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p40.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "All Black — construire une ambiance",
+            "en": "All Black — creating a mood",
+            "es": "All Black — crear un ambiente"
+          },
+          "caption": {
+            "fr": "Trois images composent l’univers All Black avant de passer à une silhouette en détail.",
+            "en": "Three images build the All Black visual world before moving to a detailed silhouette.",
+            "es": "Tres imágenes construyen el universo All Black antes de mostrar una silueta en detalle."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 41,
+          "path": "assets/projects/revendre-styles-p41.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p41.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "All Black — la silhouette en détail",
+            "en": "All Black — the silhouette in detail",
+            "es": "All Black — la silueta en detalle"
+          },
+          "caption": {
+            "fr": "Une silhouette noire prolonge le thème et rend l’inspiration plus concrète.",
+            "en": "A black outfit extends the theme and makes the inspiration more tangible.",
+            "es": "Un conjunto negro prolonga el tema y hace más concreta la inspiración."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 42,
+          "path": "assets/projects/revendre-styles-p42.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p42.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Couleur — proposer un autre registre",
+            "en": "Colour — introducing another direction",
+            "es": "Color — proponer otro registro"
+          },
+          "caption": {
+            "fr": "Les vestes colorées installent un second registre visuel, plus vif et contrasté.",
+            "en": "Colourful jackets introduce a second visual register with brighter contrasts.",
+            "es": "Las chaquetas de colores introducen un segundo registro visual, más vivo y contrastado."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 43,
+          "path": "assets/projects/revendre-styles-p43.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p43.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Couleur — le détail de la coupe",
+            "en": "Colour — focusing on the cut",
+            "es": "Color — el detalle del corte"
+          },
+          "caption": {
+            "fr": "Le cadrage sur le blazer vert met l’accent sur la couleur, la coupe et les détails.",
+            "en": "The crop around the green blazer draws attention to colour, cut and details.",
+            "es": "El encuadre del blazer verde destaca el color, el corte y los detalles."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 44,
+          "path": "assets/projects/revendre-styles-p44.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p44.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Minimalisme — composer une harmonie",
+            "en": "Minimalism — composing a harmony",
+            "es": "Minimalismo — componer una armonía"
+          },
+          "caption": {
+            "fr": "Le triptyque clair présente une direction minimaliste à travers des tons et des formes proches.",
+            "en": "The light triptych presents a minimalist direction through related tones and shapes.",
+            "es": "El tríptico claro presenta una dirección minimalista mediante tonos y formas afines."
+          }
+        },
+        {
+          "designId": "DAGN_nlsdNs",
+          "page": 45,
+          "path": "assets/projects/revendre-styles-p45.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p45.webp",
+          "source": "https://www.canva.com/design/DAGN_nlsdNs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Minimalisme — passer à la silhouette",
+            "en": "Minimalism — bringing it to the silhouette",
+            "es": "Minimalismo — pasar a la silueta"
+          },
+          "caption": {
+            "fr": "La silhouette crème clôt la série avec une proposition de tenue immédiatement lisible.",
+            "en": "The cream outfit closes the series with an immediately readable styling suggestion.",
+            "es": "El conjunto crema cierra la serie con una propuesta de estilo fácil de interpretar."
+          }
+        },
+        {
+          "designId": "DAGhJ18FyTo",
+          "page": 96,
+          "path": "assets/projects/revendre-looks-p96.webp",
+          "thumb": "assets/projects/thumbs/revendre-looks-p96.webp",
+          "source": "https://www.canva.com/design/DAGhJ18FyTo/view",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Look inspiration — beige et noir",
+            "en": "Outfit inspiration — beige and black",
+            "es": "Inspiración de estilo — beige y negro"
+          },
+          "caption": {
+            "fr": "Le blazer beige, la jupe noire et les accessoires composent une proposition de tenue structurée.",
+            "en": "A beige blazer, black skirt and accessories form a structured outfit proposal.",
+            "es": "El blazer beige, la falda negra y los accesorios componen una propuesta de conjunto estructurada."
+          }
+        },
+        {
+          "designId": "DAGhJ18FyTo",
+          "page": 97,
+          "path": "assets/projects/revendre-looks-p97.webp",
+          "thumb": "assets/projects/thumbs/revendre-looks-p97.webp",
+          "source": "https://www.canva.com/design/DAGhJ18FyTo/view",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Look inspiration — de la photo aux pièces",
+            "en": "Outfit inspiration — from the photo to the pieces",
+            "es": "Inspiración de estilo — de la foto a las prendas"
+          },
+          "caption": {
+            "fr": "La photo portée et les pièces détourées relient l’inspiration à une association de vêtements.",
+            "en": "The styled photograph and isolated pieces connect inspiration with an outfit combination.",
+            "es": "La foto del conjunto y las piezas aisladas conectan la inspiración con una combinación de prendas."
+          }
+        },
+        {
+          "designId": "DAGhJ18FyTo",
+          "page": 100,
+          "path": "assets/projects/revendre-looks-p100.webp",
+          "thumb": "assets/projects/thumbs/revendre-looks-p100.webp",
+          "source": "https://www.canva.com/design/DAGhJ18FyTo/view",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Look inspiration — rayures et satin",
+            "en": "Outfit inspiration — stripes and satin",
+            "es": "Inspiración de estilo — rayas y satén"
+          },
+          "caption": {
+            "fr": "La jupe brune, les rayures et les accessoires construisent une autre harmonie de look.",
+            "en": "A brown skirt, stripes and accessories create a different outfit harmony.",
+            "es": "La falda marrón, las rayas y los accesorios construyen otra armonía de look."
+          }
+        }
+      ]
+    },
+    {
+      "id": "atelier",
+      "name": "L’Atelier Nail Salon",
+      "categories": [
+        "branding",
+        "communication"
+      ],
+      "format": "portrait",
+      "category": {
+        "fr": "Identité · contenu · conseils",
+        "en": "Identity · content · advice",
+        "es": "Identidad · contenido · consejos"
+      },
+      "summary": {
+        "fr": "Une identité chaleureuse, des photographies centrées sur le travail de l'ongle et des contenus qui mettent en valeur le savoir-faire du salon.",
+        "en": "A warm visual identity, photography focused on nail craftsmanship and content that highlights the salon's expertise.",
+        "es": "Una identidad cálida, fotografías centradas en el trabajo de las uñas y contenidos que muestran la experiencia del salón."
+      },
+      "role": {
+        "fr": "Évolution d’identité, création éditoriale et carrousel de conseils.",
+        "en": "Identity development, editorial creation and an advice carousel.",
+        "es": "Evolución de identidad, creación editorial y carrusel de consejos."
+      },
+      "objective": {
+        "fr": "Présenter le changement d'identité et donner aux différents points de contact une expression cohérente.",
+        "en": "Present the identity change and give every touchpoint a coherent expression.",
+        "es": "Presentar el cambio de identidad y dar coherencia a los distintos puntos de contacto."
+      },
+      "approach": {
+        "fr": "Installer l’orange comme repère visuel, choisir des gros plans qui mettent la manucure au centre, puis organiser les conseils en un carrousel qui mène de la question de la cliente à la prise de rendez-vous.",
+        "en": "Establish orange as a visual signature, select close-ups that centre the manicure, then structure advice into a carousel leading from a customer’s question to booking an appointment.",
+        "es": "Establecer el naranja como referencia visual, seleccionar primeros planos que destaquen la manicura y organizar los consejos en un carrusel que lleve de la pregunta de la clienta a la reserva de una cita."
+      },
+      "deliverables": {
+        "fr": "Annonce du changement d’identité, comparaison des logos et applications, photographie mise en page et carrousel de conseils en six visuels.",
+        "en": "Identity-change announcement, logo comparison and applications, photographic layout and a six-frame advice carousel.",
+        "es": "Anuncio del cambio de identidad, comparación de logotipos y aplicaciones, composición fotográfica y carrusel de consejos de seis piezas."
+      },
+      "slides": [
+        {
+          "page": 7,
+          "path": "assets/projects/atelier-identite-p07.webp",
+          "thumb": "assets/projects/thumbs/atelier-identite-p07.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "L’image de marque — la manucure au premier plan",
+            "en": "Brand imagery — the manicure in focus",
+            "es": "Imagen de marca — la manicura en primer plano"
+          },
+          "caption": {
+            "fr": "Le gros plan sur la manucure et la signature orange placent le résultat du salon au premier plan.",
+            "en": "The manicure close-up and orange signature put the salon’s work first.",
+            "es": "El primer plano de la manicura y la firma naranja dan protagonismo al trabajo del salón."
+          }
+        },
+        {
+          "page": 8,
+          "path": "assets/projects/atelier-identite-p08.webp",
+          "thumb": "assets/projects/thumbs/atelier-identite-p08.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Nouvelle identité — annoncer le changement",
+            "en": "New identity — announcing the change",
+            "es": "Nueva identidad — anunciar el cambio"
+          },
+          "caption": {
+            "fr": "L’annonce du changement prépare la communauté à découvrir la nouvelle identité du salon.",
+            "en": "The change announcement prepares the community to discover the salon’s new identity.",
+            "es": "El anuncio del cambio prepara a la comunidad para descubrir la nueva identidad del salón."
+          }
+        },
+        {
+          "page": 9,
+          "path": "assets/projects/atelier-identite-p09.webp",
+          "thumb": "assets/projects/thumbs/atelier-identite-p09.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Nouvelle identité — l’évolution du logo",
+            "en": "New identity — the evolution of the logo",
+            "es": "Nueva identidad — la evolución del logotipo"
+          },
+          "caption": {
+            "fr": "La comparaison entre les deux signatures rend l’évolution de l’identité immédiatement visible.",
+            "en": "The comparison between the two signatures makes the identity change immediately visible.",
+            "es": "La comparación entre ambas firmas hace visible de inmediato la evolución de la identidad."
+          }
+        },
+        {
+          "page": 10,
+          "path": "assets/projects/atelier-identite-p10.webp",
+          "thumb": "assets/projects/thumbs/atelier-identite-p10.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Nouvelle identité — présenter le savoir-faire",
+            "en": "New identity — presenting the expertise",
+            "es": "Nueva identidad — presentar el saber hacer"
+          },
+          "caption": {
+            "fr": "La composition décline le nouveau nom, l’orange et la promesse autour de l’art de l’ongle.",
+            "en": "The composition extends the new name, orange palette and promise around nail artistry.",
+            "es": "La composición desarrolla el nuevo nombre, el naranja y la promesa alrededor del arte de las uñas."
+          }
+        },
+        {
+          "designId": "DAGkkpsu5Fs",
+          "page": 1,
+          "path": "assets/projects/atelier-conseils-p01.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p01.webp",
+          "source": "https://www.canva.com/design/DAGkkpsu5Fs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils — partir d’une question de cliente",
+            "en": "Advice — starting with a customer’s question",
+            "es": "Consejos — partir de una pregunta de la clienta"
+          },
+          "caption": {
+            "fr": "L’accroche transforme une question de cliente en point d’entrée vers l’expertise du salon.",
+            "en": "The headline turns a client question into an introduction to the salon’s expertise.",
+            "es": "El titular convierte una pregunta de clienta en una entrada a la experiencia del salón."
+          }
+        },
+        {
+          "designId": "DAGkkpsu5Fs",
+          "page": 2,
+          "path": "assets/projects/atelier-conseils-p02.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p02.webp",
+          "source": "https://www.canva.com/design/DAGkkpsu5Fs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils — expliquer la préparation",
+            "en": "Advice — explaining preparation",
+            "es": "Consejos — explicar la preparación"
+          },
+          "caption": {
+            "fr": "Le premier conseil associe préparation de l’ongle et photographie du résultat attendu.",
+            "en": "The first tip pairs nail preparation with a photograph of the intended finish.",
+            "es": "El primer consejo asocia la preparación de la uña con una fotografía del acabado deseado."
+          }
+        },
+        {
+          "designId": "DAGkkpsu5Fs",
+          "page": 3,
+          "path": "assets/projects/atelier-conseils-p03.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p03.webp",
+          "source": "https://www.canva.com/design/DAGkkpsu5Fs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils — rendre la technique accessible",
+            "en": "Advice — making the technique accessible",
+            "es": "Consejos — hacer accesible la técnica"
+          },
+          "caption": {
+            "fr": "Le contraste orange et noir donne de la place au conseil sur la base et le top coat.",
+            "en": "The orange-and-black contrast gives prominence to the advice on base and top coat.",
+            "es": "El contraste naranja y negro destaca el consejo sobre la base y el top coat."
+          }
+        },
+        {
+          "designId": "DAGkkpsu5Fs",
+          "page": 4,
+          "path": "assets/projects/atelier-conseils-p04.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p04.webp",
+          "source": "https://www.canva.com/design/DAGkkpsu5Fs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils — prolonger l’accompagnement",
+            "en": "Advice — extending support",
+            "es": "Consejos — prolongar el acompañamiento"
+          },
+          "caption": {
+            "fr": "L’entretien entre deux poses prolonge le récit au-delà du rendez-vous au salon.",
+            "en": "Care between appointments extends the story beyond the salon visit.",
+            "es": "El mantenimiento entre aplicaciones prolonga el relato más allá de la cita en el salón."
+          }
+        },
+        {
+          "designId": "DAGkkpsu5Fs",
+          "page": 5,
+          "path": "assets/projects/atelier-conseils-p05.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p05.webp",
+          "source": "https://www.canva.com/design/DAGkkpsu5Fs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils — mettre en valeur la méthode",
+            "en": "Advice — highlighting the method",
+            "es": "Consejos — destacar el método"
+          },
+          "caption": {
+            "fr": "La méthode du salon rassemble les conseils sous une promesse de tenue et de soin.",
+            "en": "The salon’s method brings the tips together around lasting wear and care.",
+            "es": "El método del salón reúne los consejos alrededor de la duración y el cuidado."
+          }
+        },
+        {
+          "designId": "DAGkkpsu5Fs",
+          "page": 6,
+          "path": "assets/projects/atelier-conseils-p06.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p06.webp",
+          "source": "https://www.canva.com/design/DAGkkpsu5Fs/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils — inviter à prendre rendez-vous",
+            "en": "Advice — inviting a booking",
+            "es": "Consejos — invitar a reservar una cita"
+          },
+          "caption": {
+            "fr": "La séquence se termine par une invitation à réserver, soutenue par trois exemples de manucure.",
+            "en": "The sequence ends with an invitation to book, supported by three manicure examples.",
+            "es": "La secuencia termina con una invitación a reservar, apoyada por tres ejemplos de manicura."
+          }
+        }
+      ]
+    },
+    {
+      "id": "wali",
+      "name": "Wali",
+      "categories": [
+        "communication"
+      ],
+      "format": "portrait",
+      "category": {
+        "fr": "Beauté · contenu · gamme produit",
+        "en": "Beauty · content · product range",
+        "es": "Belleza · contenido · gama de producto"
+      },
+      "summary": {
+        "fr": "Des mises en scène produit, des associations de matières et des nuanciers qui rapprochent l'univers beauté de la lecture d'une gamme professionnelle.",
+        "en": "Product compositions, texture pairings and colour charts connecting the beauty world with a clear professional product range.",
+        "es": "Composiciones de producto, asociaciones de texturas y cartas de color que conectan el universo de la belleza con una gama profesional clara."
+      },
+      "role": {
+        "fr": "Direction de contenu, compositions produit, mockups et nuanciers.",
+        "en": "Content direction, product compositions, mockups and colour charts.",
+        "es": "Dirección de contenido, composiciones de producto, maquetas y cartas de color."
+      },
+      "objective": {
+        "fr": "Donner une expression cohérente aux produits et aider à distinguer les teintes, les matières et les usages.",
+        "en": "Give products a coherent visual expression and help distinguish shades, textures and uses.",
+        "es": "Dar coherencia visual a los productos y ayudar a distinguir tonos, texturas y usos."
+      },
+      "approach": {
+        "fr": "Montrer la cohérence d'un fil Instagram, composer des ambiances autour des produits, puis organiser les couleurs par familles avec leurs références.",
+        "en": "Show a coherent Instagram feed, build product-led visual worlds, then organise colours into families with their references.",
+        "es": "Mostrar un feed de Instagram coherente, construir ambientes alrededor de los productos y organizar los colores por familias con sus referencias."
+      },
+      "deliverables": {
+        "fr": "Deux mises en situation de fil Instagram, trois compositions produit, deux planches de matières et trois nuanciers.",
+        "en": "Two Instagram-feed mockups, three product compositions, two texture boards and three colour charts.",
+        "es": "Dos maquetas de feed de Instagram, tres composiciones de producto, dos paneles de texturas y tres cartas de color."
+      },
+      "slides": [
+        {
+          "page": 13,
+          "path": "assets/projects/wali-visuels-p13.webp",
+          "thumb": "assets/projects/thumbs/wali-visuels-p13.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Mise en scène produit — équilibre et volume",
+            "en": "Product composition — balance and volume",
+            "es": "Composición de producto — equilibrio y volumen"
+          },
+          "caption": {
+            "fr": "Les socles, le vase et les flacons construisent une mise en scène équilibrée de la gamme.",
+            "en": "Plinths, a vase and bottles build a balanced composition of the range.",
+            "es": "Las peanas, el jarrón y los frascos construyen una composición equilibrada de la gama."
+          }
+        },
+        {
+          "page": 4,
+          "path": "assets/projects/wali-visuels-p04.webp",
+          "thumb": "assets/projects/thumbs/wali-visuels-p04.webp",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Le fil Instagram — une identité en situation",
+            "en": "The Instagram feed — identity in context",
+            "es": "El feed de Instagram — una identidad en contexto"
+          },
+          "caption": {
+            "fr": "La maquette de téléphone montre comment les créations forment un fil Instagram cohérent.",
+            "en": "The phone mockup shows how the designs form a coherent Instagram feed.",
+            "es": "La maqueta de teléfono muestra cómo las piezas forman un feed de Instagram coherente."
+          }
+        },
+        {
+          "page": 6,
+          "path": "assets/projects/wali-visuels-p06.webp",
+          "thumb": "assets/projects/thumbs/wali-visuels-p06.webp",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Le fil Instagram — rythmer les publications",
+            "en": "The Instagram feed — creating visual rhythm",
+            "es": "El feed de Instagram — dar ritmo a las publicaciones"
+          },
+          "caption": {
+            "fr": "La mosaïque permet de lire ensemble les visuels produit, les couleurs et la présence de marque.",
+            "en": "The mosaic brings the product visuals, colours and brand presence into one view.",
+            "es": "El mosaico permite leer juntos los visuales de producto, los colores y la presencia de marca."
+          }
+        },
+        {
+          "page": 11,
+          "path": "assets/projects/wali-visuels-p11.webp",
+          "thumb": "assets/projects/thumbs/wali-visuels-p11.webp",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Mise en scène produit — lumière et végétal",
+            "en": "Product composition — light and foliage",
+            "es": "Composición de producto — luz y vegetación"
+          },
+          "caption": {
+            "fr": "Les flacons clairs et le végétal composent une scène produit douce et lumineuse.",
+            "en": "Light-coloured bottles and foliage create a soft, luminous product scene.",
+            "es": "Los frascos claros y el elemento vegetal componen una escena de producto suave y luminosa."
+          }
+        },
+        {
+          "page": 12,
+          "path": "assets/projects/wali-visuels-p12.webp",
+          "thumb": "assets/projects/thumbs/wali-visuels-p12.webp",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Mise en scène produit — contraste des matières",
+            "en": "Product composition — contrasting textures",
+            "es": "Composición de producto — contraste de texturas"
+          },
+          "caption": {
+            "fr": "Le contraste entre les flacons menthe et la matière rose donne au produit une présence tactile.",
+            "en": "Mint-coloured bottles against a pink texture give the product a tactile presence.",
+            "es": "El contraste entre los frascos menta y la textura rosa da al producto una presencia táctil."
+          }
+        },
+        {
+          "page": 8,
+          "path": "assets/projects/wali-matieres-p08.webp",
+          "thumb": "assets/projects/thumbs/wali-matieres-p08.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Une teinte, un univers — bronze",
+            "en": "One shade, one visual world — bronze",
+            "es": "Un tono, un universo — bronce"
+          },
+          "caption": {
+            "fr": "La teinte bronze relie le vernis, les matières et la manucure dans une même ambiance.",
+            "en": "The bronze shade connects polish, textures and manicure in one visual mood.",
+            "es": "El tono bronce conecta el esmalte, las texturas y la manicura en un mismo ambiente."
+          }
+        },
+        {
+          "page": 9,
+          "path": "assets/projects/wali-matieres-p09.webp",
+          "thumb": "assets/projects/thumbs/wali-matieres-p09.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Une teinte, un univers — bleu royal",
+            "en": "One shade, one visual world — royal blue",
+            "es": "Un tono, un universo — azul real"
+          },
+          "caption": {
+            "fr": "Le bleu royal circule entre textile, produit et ongles pour rendre la couleur désirable.",
+            "en": "Royal blue moves between fabric, product and nails to make the colour desirable.",
+            "es": "El azul real conecta tela, producto y uñas para hacer deseable el color."
+          }
+        },
+        {
+          "page": 38,
+          "path": "assets/projects/wali-matieres-p38.webp",
+          "thumb": "assets/projects/thumbs/wali-matieres-p38.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Nuancier — roses et orangés",
+            "en": "Colour chart — pinks and oranges",
+            "es": "Carta de color — rosas y naranjas"
+          },
+          "caption": {
+            "fr": "Les nuances roses et orangées sont présentées avec leurs références pour faciliter le choix.",
+            "en": "Pink and orange shades are shown with their references to make selection easier.",
+            "es": "Los tonos rosas y naranjas se presentan con sus referencias para facilitar la elección."
+          }
+        },
+        {
+          "page": 45,
+          "path": "assets/projects/wali-matieres-p45.webp",
+          "thumb": "assets/projects/thumbs/wali-matieres-p45.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Nuancier — la famille des rouges",
+            "en": "Colour chart — the red family",
+            "es": "Carta de color — la familia de los rojos"
+          },
+          "caption": {
+            "fr": "La famille des rouges rassemble plusieurs intensités dans un nuancier directement comparable.",
+            "en": "The red family brings several intensities together in a directly comparable colour chart.",
+            "es": "La familia de rojos reúne varias intensidades en una carta de color fácil de comparar."
+          }
+        },
+        {
+          "page": 48,
+          "path": "assets/projects/wali-matieres-p48.webp",
+          "thumb": "assets/projects/thumbs/wali-matieres-p48.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Nuancier — la famille des verts",
+            "en": "Colour chart — the green family",
+            "es": "Carta de color — la familia de los verdes"
+          },
+          "caption": {
+            "fr": "Les verts sont organisés dans une même composition pour rendre les différences de teinte lisibles.",
+            "en": "Greens are organised in one composition to make the shade differences easy to read.",
+            "es": "Los verdes se organizan en una misma composición para facilitar la comparación de tonos."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bloom",
+      "name": "Bloom Atelier",
+      "categories": [
+        "communication"
+      ],
+      "format": "portrait",
+      "category": {
+        "fr": "Direction visuelle · contenu de marque",
+        "en": "Visual direction · brand content",
+        "es": "Dirección visual · contenido de marca"
+      },
+      "summary": {
+        "fr": "Une série de contenus autour des roses préservées : présence du produit, richesse des matières, mots d'attention et conseils utiles.",
+        "en": "A content series built around preserved roses: product presence, rich textures, thoughtful words and useful care advice.",
+        "es": "Una serie de contenidos sobre rosas preservadas: presencia del producto, riqueza de texturas, palabras de afecto y consejos útiles."
+      },
+      "role": {
+        "fr": "Direction de contenu, composition des visuels et rédaction des messages.",
+        "en": "Content direction, visual composition and message writing.",
+        "es": "Dirección de contenido, composición visual y redacción de mensajes."
+      },
+      "objective": {
+        "fr": "Donner une expression visuelle à l'émotion du cadeau.",
+        "en": "Giving the emotion of gifting a visual expression.",
+        "es": "Dar una expresión visual a la emoción de regalar."
+      },
+      "approach": {
+        "fr": "Associer les tons crème et bordeaux, faire dialoguer les coffrets avec le tissu et le papier, puis varier les messages entre émotion, collection et entretien.",
+        "en": "Pair cream and burgundy tones, combine the gift boxes with fabric and paper, then vary the message between emotion, collection and care.",
+        "es": "Combinar tonos crema y burdeos, relacionar las cajas con tela y papel y alternar mensajes de emoción, colección y cuidado."
+      },
+      "deliverables": {
+        "fr": "Direction de contenu et quatre publications sélectionnées dans une série de quinze.",
+        "en": "Content direction and four selected posts from a fifteen-piece series.",
+        "es": "Dirección de contenido y cuatro publicaciones seleccionadas de una serie de quince."
+      },
+      "slides": [
+        {
+          "designId": "DAHXR2GjJVc",
+          "page": 1,
+          "path": "assets/projects/bloom-collection-p01.webp",
+          "thumb": "assets/projects/thumbs/bloom-collection-p01.webp",
+          "source": "https://www.canva.com/design/DAHXR2GjJVc/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Coffret signature — faire ressentir la durée du cadeau",
+            "en": "Signature box — expressing a lasting gift",
+            "es": "Caja emblemática — expresar un regalo duradero"
+          },
+          "caption": {
+            "fr": "Le coffret, le tissu crème et les roses rouges installent la promesse d’un cadeau qui dure.",
+            "en": "The box, cream fabric and red roses establish the promise of a lasting gift.",
+            "es": "La caja, la tela crema y las rosas rojas expresan la promesa de un regalo duradero."
+          }
+        },
+        {
+          "designId": "DAHXR2GjJVc",
+          "page": 5,
+          "path": "assets/projects/bloom-collection-p05.webp",
+          "thumb": "assets/projects/thumbs/bloom-collection-p05.webp",
+          "source": "https://www.canva.com/design/DAHXR2GjJVc/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Collection — une création pour chaque attention",
+            "en": "Collection — a creation for every gesture",
+            "es": "Colección — una creación para cada gesto"
+          },
+          "caption": {
+            "fr": "Les différents formats de coffrets réunis sur le satin bordeaux donnent à voir l’étendue de la collection.",
+            "en": "Different box formats gathered on burgundy satin reveal the breadth of the collection.",
+            "es": "Los distintos formatos de cajas sobre satén burdeos muestran la amplitud de la colección."
+          }
+        },
+        {
+          "designId": "DAHXR2GjJVc",
+          "page": 11,
+          "path": "assets/projects/bloom-collection-p11.webp",
+          "thumb": "assets/projects/thumbs/bloom-collection-p11.webp",
+          "source": "https://www.canva.com/design/DAHXR2GjJVc/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Conseils de conservation — un contenu utile après l'achat",
+            "en": "Care advice — useful content after purchase",
+            "es": "Consejos de conservación — contenido útil después de la compra"
+          },
+          "caption": {
+            "fr": "Les conseils de conservation ajoutent une information utile à l’univers émotionnel de la marque.",
+            "en": "Care advice adds useful information to the brand’s emotional world.",
+            "es": "Los consejos de conservación añaden información útil al universo emocional de la marca."
+          }
+        },
+        {
+          "designId": "DAHXR2GjJVc",
+          "page": 13,
+          "path": "assets/projects/bloom-collection-p13.webp",
+          "thumb": "assets/projects/thumbs/bloom-collection-p13.webp",
+          "source": "https://www.canva.com/design/DAHXR2GjJVc/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "L'intention du cadeau — raconter avec les matières et les mots",
+            "en": "The meaning of a gift — storytelling through textures and words",
+            "es": "La intención del regalo — contar con texturas y palabras"
+          },
+          "caption": {
+            "fr": "Le mot manuscrit, le papier et le ruban racontent l’intention du cadeau sans multiplier les éléments.",
+            "en": "The handwritten note, paper and ribbon express the intent of the gift through a restrained composition.",
+            "es": "La nota manuscrita, el papel y el lazo expresan la intención del regalo mediante una composición sobria."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ardhi Organic",
+      "categories": [
+        "digital",
+        "communication"
+      ],
+      "category": {
+        "fr": "Stratégie · direction de contenu",
+        "en": "Strategy · content direction",
+        "es": "Estrategia · dirección de contenido"
+      },
+      "role": {
+        "fr": "Stratégie de notoriété, définition des publics et concepts éditoriaux.",
+        "en": "Awareness strategy, audience definition and editorial concepts.",
+        "es": "Estrategia de notoriedad, definición de públicos y conceptos editoriales."
+      },
+      "objective": {
+        "fr": "Construire une présence de marque cohérente pour une offre de produits biologiques.",
+        "en": "Build a coherent brand presence for an organic-product range.",
+        "es": "Construir una presencia de marca coherente para una gama de productos orgánicos."
+      },
+      "approach": {
+        "fr": "Partir des publics, définir les thèmes de contenu, attribuer un rôle aux canaux et prévoir des indicateurs de suivi.",
+        "en": "Start with audiences, define content themes, give channels clear roles and plan measurement indicators.",
+        "es": "Partir de los públicos, definir temas, asignar funciones a los canales y prever indicadores de seguimiento."
+      },
+      "deliverables": {
+        "fr": "Proposition stratégique, ligne éditoriale, premières applications visuelles et cadre de mesure.",
+        "en": "Strategy proposal, editorial direction, initial visual applications and a measurement framework.",
+        "es": "Propuesta estratégica, línea editorial, primeras aplicaciones visuales y marco de medición."
+      },
+      "context": {
+        "fr": "Projet de marque · proposition stratégique",
+        "en": "Brand project · strategic proposal",
+        "es": "Proyecto de marca · propuesta estratégica"
+      },
+      "id": "ardhi",
+      "format": "landscape",
+      "summary": {
+        "fr": "Partir des publics à toucher, définir les thèmes de contenu, puis organiser leur diffusion et leur mesure. La présentation montre comment une offre de produits biologiques peut devenir une présence éditoriale cohérente.",
+        "en": "Starting with the audiences to reach, defining content themes, then organising distribution and measurement. The presentation shows how an organic product offering can become a coherent editorial presence.",
+        "es": "Partir de los públicos, definir temas de contenido y organizar su difusión y medición. La presentación muestra cómo una oferta de productos orgánicos puede convertirse en una presencia editorial coherente."
+      },
+      "slides": [
+        {
+          "page": 13,
+          "path": "assets/projects/ardhi-strategie-p13.webp",
+          "thumb": "assets/projects/thumbs/ardhi-strategie-p13.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Une direction de contenu concrète",
+            "en": "A tangible content direction",
+            "es": "Una dirección de contenido concreta"
+          },
+          "caption": {
+            "fr": "Les premiers concepts rendent la ligne éditoriale visible à travers des contenus de marque.",
+            "en": "The initial concepts make the editorial direction visible through branded content.",
+            "es": "Los primeros conceptos hacen visible la línea editorial mediante contenidos de marca."
+          }
+        },
+        {
+          "page": 6,
+          "path": "assets/projects/ardhi-strategie-p06.webp",
+          "thumb": "assets/projects/thumbs/ardhi-strategie-p06.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Les publics qui guident la stratégie",
+            "en": "The audiences guiding the strategy",
+            "es": "Los públicos que orientan la estrategia"
+          },
+          "caption": {
+            "fr": "Les publics sont définis en amont pour donner une direction aux messages et aux formats.",
+            "en": "Audiences are defined first to guide the messages and formats.",
+            "es": "Los públicos se definen primero para orientar los mensajes y formatos."
+          }
+        },
+        {
+          "page": 14,
+          "path": "assets/projects/ardhi-strategie-p14.webp",
+          "thumb": "assets/projects/thumbs/ardhi-strategie-p14.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Des thèmes aux premières applications visuelles",
+            "en": "From content themes to visual applications",
+            "es": "De los temas a las primeras aplicaciones visuales"
+          },
+          "caption": {
+            "fr": "Les applications relient les thèmes de contenu à des propositions visuelles concrètes.",
+            "en": "The applications connect content themes with tangible visual proposals.",
+            "es": "Las aplicaciones conectan los temas de contenido con propuestas visuales concretas."
+          }
+        },
+        {
+          "page": 15,
+          "path": "assets/projects/ardhi-strategie-p15.webp",
+          "thumb": "assets/projects/thumbs/ardhi-strategie-p15.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Le rôle de chaque canal de diffusion",
+            "en": "The role of each distribution channel",
+            "es": "El papel de cada canal de difusión"
+          },
+          "caption": {
+            "fr": "Chaque canal reçoit un rôle dans la diffusion afin de soutenir une présence cohérente.",
+            "en": "Each channel receives a distribution role that supports a coherent presence.",
+            "es": "Cada canal recibe una función de difusión para sostener una presencia coherente."
+          }
+        },
+        {
+          "page": 5,
+          "path": "assets/projects/ardhi-strategie-p05.webp",
+          "thumb": "assets/projects/thumbs/ardhi-strategie-p05.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Les indicateurs prévus pour évaluer la démarche",
+            "en": "The indicators proposed to assess the approach",
+            "es": "Los indicadores previstos para evaluar el enfoque"
+          },
+          "caption": {
+            "fr": "Les indicateurs précisent comment la proposition pourrait être évaluée après sa mise en œuvre.",
+            "en": "The indicators set out how the proposal could be assessed after implementation.",
+            "es": "Los indicadores precisan cómo podría evaluarse la propuesta después de su implementación."
+          }
+        },
+        {
+          "page": 1,
+          "path": "assets/projects/ardhi-strategie-p01.webp",
+          "thumb": "assets/projects/thumbs/ardhi-strategie-p01.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La proposition de stratégie",
+            "en": "The strategy proposal",
+            "es": "La propuesta de estrategia"
+          },
+          "caption": {
+            "fr": "La présentation réunit la démarche de notoriété et les axes de contenu proposés.",
+            "en": "The presentation brings together the awareness approach and proposed content directions.",
+            "es": "La presentación reúne el enfoque de notoriedad y las líneas de contenido propuestas."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luminary",
+      "categories": [
+        "communication"
+      ],
+      "category": {
+        "fr": "Storytelling · conception éditoriale",
+        "en": "Storytelling · editorial concept",
+        "es": "Storytelling · concepto editorial"
+      },
+      "role": {
+        "fr": "Concept narratif, personnages, storyboard et script de voix off.",
+        "en": "Narrative concept, characters, storyboard and voice-over script.",
+        "es": "Concepto narrativo, personajes, storyboard y guion de voz en off."
+      },
+      "objective": {
+        "fr": "Inscrire la promesse d’une marque de soin dans des situations quotidiennes auxquelles le public peut s’identifier.",
+        "en": "Place a skincare brand promise in everyday situations people can relate to.",
+        "es": "Situar la promesa de una marca de cuidado de la piel en situaciones cotidianas con las que el público pueda identificarse."
+      },
+      "approach": {
+        "fr": "Relier trois personnages à un même bénéfice, structurer le déroulé, puis traduire le message en images et en voix off.",
+        "en": "Connect three characters through one benefit, structure the sequence, then translate the message into imagery and voice-over.",
+        "es": "Conectar tres personajes mediante un mismo beneficio, estructurar la secuencia y traducir el mensaje en imágenes y voz en off."
+      },
+      "deliverables": {
+        "fr": "Structure narrative, storyboard, script et image de concept audiovisuel.",
+        "en": "Narrative structure, storyboard, script and audiovisual concept frame.",
+        "es": "Estructura narrativa, storyboard, guion y fotograma del concepto audiovisual."
+      },
+      "context": {
+        "fr": "Concept de storytelling · Kadea Academy, 2024",
+        "en": "Storytelling concept · Kadea Academy, 2024",
+        "es": "Concepto de storytelling · Kadea Academy, 2024"
+      },
+      "id": "luminary",
+      "format": "landscape",
+      "summary": {
+        "fr": "Mettre la promesse d’une marque de soin dans le quotidien de trois personnages. Personnages, situations, bénéfice, message et appel à l’action se répondent dans un storyboard, puis dans un script de voix off.",
+        "en": "Placing a skincare brand’s promise within the everyday lives of three characters. Characters, situations, benefits, message and call to action come together in a storyboard and a voice-over script.",
+        "es": "Situar la promesa de una marca de cuidado de la piel en la vida de tres personajes. Personajes, situaciones, beneficio, mensaje y llamada a la acción se articulan en un storyboard y un guion de voz en off."
+      },
+      "slides": [
+        {
+          "designId": "DAGMPtVOboA",
+          "page": 7,
+          "path": "assets/projects/luminary-storytelling-p07.webp",
+          "thumb": "assets/projects/thumbs/luminary-storytelling-p07.webp",
+          "source": "https://www.canva.com/design/DAGMPtVOboA/view",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Le storyboard — personnages, message et déroulé",
+            "en": "The storyboard — characters, message and sequence",
+            "es": "El storyboard — personajes, mensaje y secuencia"
+          },
+          "caption": {
+            "fr": "Le storyboard relie trois personnages, leurs situations et la promesse de la marque dans un même déroulé.",
+            "en": "The storyboard connects three characters, their situations and the brand promise in one sequence.",
+            "es": "El storyboard conecta tres personajes, sus situaciones y la promesa de marca en una misma secuencia."
+          }
+        },
+        {
+          "designId": "DAGMPtVOboA",
+          "page": 6,
+          "path": "assets/projects/luminary-storytelling-p06.webp",
+          "thumb": "assets/projects/thumbs/luminary-storytelling-p06.webp",
+          "source": "https://www.canva.com/design/DAGMPtVOboA/view",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "La structure du récit de marque",
+            "en": "The structure of the brand story",
+            "es": "La estructura del relato de marca"
+          },
+          "caption": {
+            "fr": "La structure précise le bénéfice, le message et l’appel à l’action qui portent le récit.",
+            "en": "The structure defines the benefit, message and call to action carrying the story.",
+            "es": "La estructura define el beneficio, el mensaje y la llamada a la acción que sostienen el relato."
+          }
+        },
+        {
+          "designId": "DAGMPtVOboA",
+          "page": 8,
+          "path": "assets/projects/luminary-storytelling-p08.webp",
+          "thumb": "assets/projects/thumbs/luminary-storytelling-p08.webp",
+          "source": "https://www.canva.com/design/DAGMPtVOboA/view",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Le script et une image du film de concept",
+            "en": "The script and a frame from the concept film",
+            "es": "El guion y un fotograma del vídeo conceptual"
+          },
+          "caption": {
+            "fr": "Le script de voix off et l’image de concept montrent comment le récit se traduit en proposition audiovisuelle.",
+            "en": "The voice-over script and concept frame show how the story becomes an audiovisual proposal.",
+            "es": "El guion de voz en off y el fotograma conceptual muestran cómo el relato se convierte en propuesta audiovisual."
+          }
+        }
+      ]
+    },
+    {
+      "id": "anniecks",
+      "name": "Annieck’s",
+      "categories": [
+        "communication"
+      ],
+      "format": "portrait",
+      "category": {
+        "fr": "Direction visuelle · contenu de marque",
+        "en": "Visual direction · brand content",
+        "es": "Dirección visual · contenido de marca"
+      },
+      "summary": {
+        "fr": "Des publications qui alternent lecture de la gamme, associations de couleurs et silhouettes mises en situation.",
+        "en": "Posts alternating product-range clarity, colour combinations and styled everyday scenes.",
+        "es": "Publicaciones que alternan claridad de la gama, combinaciones de colores y escenas de estilo cotidiano."
+      },
+      "role": {
+        "fr": "Direction de contenu, composition des visuels et rédaction des messages.",
+        "en": "Content direction, visual composition and message writing.",
+        "es": "Dirección de contenido, composición visual y redacción de mensajes."
+      },
+      "objective": {
+        "fr": "Relier le vêtement à une allure et à des moments de vie.",
+        "en": "Connecting clothing with personal style and everyday moments.",
+        "es": "Conectar la ropa con un estilo y momentos cotidianos."
+      },
+      "approach": {
+        "fr": "Mettre les nuances au centre, garder les accroches courtes et construire une continuité entre les vêtements présentés seuls et les silhouettes.",
+        "en": "Place colour at the centre, keep headlines concise and connect stand-alone product compositions with styled silhouettes.",
+        "es": "Dar protagonismo a los matices, mantener titulares breves y conectar las composiciones de producto con las siluetas."
+      },
+      "deliverables": {
+        "fr": "Direction de contenu et quatre publications sélectionnées : gamme, silhouette, matière et moment partagé.",
+        "en": "Content direction and four selected posts: range, silhouette, material and a shared moment.",
+        "es": "Dirección de contenido y cuatro publicaciones seleccionadas: gama, silueta, material y momento compartido."
+      },
+      "slides": [
+        {
+          "designId": "DAHZEBxh0sA",
+          "page": 4,
+          "path": "assets/projects/anniecks-collection-p04.webp",
+          "thumb": "assets/projects/thumbs/anniecks-collection-p04.webp",
+          "source": "https://www.canva.com/design/DAHZEBxh0sA/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "La gamme en couleurs — une lecture immédiate de l'offre",
+            "en": "The range in colour — understanding the offer at a glance",
+            "es": "La gama en colores — entender la oferta de un vistazo"
+          },
+          "caption": {
+            "fr": "Les tee-shirts disposés à plat permettent de comparer les teintes d’un seul regard.",
+            "en": "The flat-lay T-shirts make the shades easy to compare at a glance.",
+            "es": "Las camisetas dispuestas en plano permiten comparar los tonos de un vistazo."
+          }
+        },
+        {
+          "designId": "DAHZEBxh0sA",
+          "page": 12,
+          "path": "assets/projects/anniecks-collection-p12.webp",
+          "thumb": "assets/projects/thumbs/anniecks-collection-p12.webp",
+          "source": "https://www.canva.com/design/DAHZEBxh0sA/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Menthe et bleu — proposer une association de couleurs",
+            "en": "Mint and blue — suggesting a colour combination",
+            "es": "Menta y azul — proponer una combinación de colores"
+          },
+          "caption": {
+            "fr": "La silhouette portée montre comment associer le menthe et le bleu dans une tenue quotidienne.",
+            "en": "The styled silhouette shows how mint and blue work together in an everyday outfit.",
+            "es": "La silueta muestra cómo combinar menta y azul en un conjunto cotidiano."
+          }
+        },
+        {
+          "designId": "DAHZEBxh0sA",
+          "page": 22,
+          "path": "assets/projects/anniecks-collection-p22.webp",
+          "thumb": "assets/projects/thumbs/anniecks-collection-p22.webp",
+          "source": "https://www.canva.com/design/DAHZEBxh0sA/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Le cardigan — élargir le registre de la collection",
+            "en": "The cardigan — extending the collection's style",
+            "es": "El cárdigan — ampliar el registro de la colección"
+          },
+          "caption": {
+            "fr": "Le cardigan et la chemise blanche élargissent la série vers une allure plus habillée.",
+            "en": "The cardigan and white shirt extend the series into a more dressed-up style.",
+            "es": "El cárdigan y la camisa blanca amplían la serie hacia un estilo más elegante."
+          }
+        },
+        {
+          "designId": "DAHZEBxh0sA",
+          "page": 25,
+          "path": "assets/projects/anniecks-collection-p25.webp",
+          "thumb": "assets/projects/thumbs/anniecks-collection-p25.webp",
+          "source": "https://www.canva.com/design/DAHZEBxh0sA/view",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Le style se partage — donner une dimension humaine à la série",
+            "en": "Style is shared — bringing a human dimension to the series",
+            "es": "El estilo se comparte — aportar una dimensión humana a la serie"
+          },
+          "caption": {
+            "fr": "La scène de conversation relie plusieurs façons de porter la collection à un moment partagé.",
+            "en": "The conversation scene connects different ways to wear the collection with a shared moment.",
+            "es": "La escena de conversación conecta distintas formas de llevar la colección con un momento compartido."
+          }
+        }
+      ]
+    },
+    {
+      "id": "utex",
+      "name": "UTEX / TEXAF",
+      "categories": [
+        "communication"
+      ],
+      "format": "portrait",
+      "category": {
+        "fr": "Affiche · communication événementielle",
+        "en": "Poster · event communication",
+        "es": "Cartel · comunicación de eventos"
+      },
+      "summary": {
+        "fr": "Deux affiches événementielles : adapter le ton, la composition et la hiérarchie de l’information à des occasions très différentes.",
+        "en": "Two event posters: adapting tone, composition and information hierarchy to very different occasions.",
+        "es": "Dos carteles de eventos: adaptar el tono, la composición y la jerarquía informativa a ocasiones muy distintas."
+      },
+      "role": {
+        "fr": "Conception graphique et composition des supports événementiels.",
+        "en": "Graphic design and composition of event materials.",
+        "es": "Diseño gráfico y composición de soportes para eventos."
+      },
+      "objective": {
+        "fr": "Donner à chaque événement une présence visuelle identifiable et une information facile à parcourir.",
+        "en": "Give each event an identifiable visual presence and information that is easy to scan.",
+        "es": "Dar a cada evento una presencia visual reconocible e información fácil de recorrer."
+      },
+      "approach": {
+        "fr": "Construire deux univers distincts, entre imaginaire d’Halloween et célébration institutionnelle du centenaire.",
+        "en": "Build two distinct visual worlds, from Halloween imagery to an institutional centenary celebration.",
+        "es": "Construir dos universos distintos, entre el imaginario de Halloween y una celebración institucional del centenario."
+      },
+      "deliverables": {
+        "fr": "Affiche Halloween UTEX et visuel du centenaire TEXAF.",
+        "en": "UTEX Halloween poster and TEXAF centenary visual.",
+        "es": "Cartel de Halloween UTEX y pieza del centenario TEXAF."
+      },
+      "slides": [
+        {
+          "path": "assets/utex-halloween.png",
+          "thumb": "assets/thumbs/utex-halloween.webp",
+          "source": "https://www.canva.com/design/DAG1BKvRHUw/view",
+          "width": 1414,
+          "height": 2000,
+          "title": {
+            "fr": "Halloween — un univers événementiel",
+            "en": "Halloween — an event identity",
+            "es": "Halloween — un universo de evento"
+          },
+          "caption": {
+            "fr": "L’affiche utilise une ambiance sombre et une composition expressive pour annoncer l’événement.",
+            "en": "The poster uses a dark atmosphere and expressive composition to announce the event.",
+            "es": "El cartel utiliza una atmósfera oscura y una composición expresiva para anunciar el evento."
+          }
+        },
+        {
+          "path": "assets/utex-centenaire.webp",
+          "thumb": "assets/thumbs/utex-centenaire.webp",
+          "source": "https://www.canva.com/design/DAGx6hlsUKI/view",
+          "width": 1414,
+          "height": 2000,
+          "title": {
+            "fr": "Centenaire TEXAF — une célébration institutionnelle",
+            "en": "TEXAF centenary — an institutional celebration",
+            "es": "Centenario TEXAF — una celebración institucional"
+          },
+          "caption": {
+            "fr": "Le visuel adopte un registre institutionnel pour mettre en valeur une date marquante de l’histoire du groupe.",
+            "en": "The visual adopts an institutional tone to highlight a milestone in the group’s history.",
+            "es": "La pieza adopta un tono institucional para destacar una fecha clave en la historia del grupo."
+          }
+        }
+      ]
+    }
+  ],
+  "calendars": [
+    {
+      "id": "mural",
+      "name": {
+        "fr": "Calendrier mural",
+        "en": "Wall calendar",
+        "es": "Calendario mural"
+      },
+      "slide": {
+        "path": "assets/carrigres-calendrier-mural.webp",
+        "thumb": "assets/thumbs/carrigres-calendrier-mural.webp",
+        "source": "https://www.canva.com/design/DAG6SKNUtdc/view",
+        "width": 1815,
+        "height": 2571,
+        "title": {
+          "fr": "Carrigrès — calendrier mural",
+          "en": "Carrigrès — wall calendar",
+          "es": "Carrigrès — calendario mural"
+        },
+        "caption": {
+          "fr": "Une composition verticale pour associer les repères de l’année à la présence de marque.",
+          "en": "A vertical composition combining the year’s reference points with the brand presence.",
+          "es": "Una composición vertical que combina los puntos de referencia del año con la presencia de marca."
+        }
+      }
+    },
+    {
+      "id": "table",
+      "name": {
+        "fr": "Calendrier de table",
+        "en": "Desk calendar",
+        "es": "Calendario de mesa"
+      },
+      "slide": {
+        "path": "assets/carrigres-calendrier-table.webp",
+        "thumb": "assets/thumbs/carrigres-calendrier-table.webp",
+        "source": "https://www.canva.com/design/DAG6SNqAtV8/view",
+        "width": 2000,
+        "height": 1382,
+        "title": {
+          "fr": "Carrigrès — calendrier de table",
+          "en": "Carrigrès — desk calendar",
+          "es": "Carrigrès — calendario de mesa"
+        },
+        "caption": {
+          "fr": "Le format de bureau adapte l’identité à un support consulté au quotidien.",
+          "en": "The desk format adapts the identity to an item used every day.",
+          "es": "El formato de mesa adapta la identidad a un soporte de consulta cotidiana."
+        }
+      }
+    },
+    {
+      "id": "triptyque",
+      "name": {
+        "fr": "Calendrier triptyque",
+        "en": "Three-panel calendar",
+        "es": "Calendario tríptico"
+      },
+      "slide": {
+        "path": "assets/carrigres-calendrier-triptyque.webp",
+        "thumb": "assets/thumbs/carrigres-calendrier-triptyque.webp",
+        "source": "https://www.canva.com/design/DAG6SAkW8x4/view",
+        "width": 1228,
+        "height": 3024,
+        "title": {
+          "fr": "Carrigrès — calendrier triptyque",
+          "en": "Carrigrès — three-panel calendar",
+          "es": "Carrigrès — calendario tríptico"
+        },
+        "caption": {
+          "fr": "Les trois volets organisent une lecture continue du calendrier dans un format vertical.",
+          "en": "The three panels organise continuous calendar reading in a vertical format.",
+          "es": "Los tres paneles organizan una lectura continua del calendario en formato vertical."
+        }
+      }
+    },
+    {
+      "id": "sous-main",
+      "name": {
+        "fr": "Calendrier sous-main",
+        "en": "Desk-pad calendar",
+        "es": "Calendario de escritorio"
+      },
+      "slide": {
+        "path": "assets/carrigres-calendrier-sous-main.webp",
+        "thumb": "assets/thumbs/carrigres-calendrier-sous-main.webp",
+        "source": "https://www.canva.com/design/DAG6SM-rZg0/view",
+        "width": 2268,
+        "height": 1512,
+        "title": {
+          "fr": "Carrigrès — calendrier sous-main",
+          "en": "Carrigrès — desk-pad calendar",
+          "es": "Carrigrès — calendario de escritorio"
+        },
+        "caption": {
+          "fr": "La surface horizontale rassemble l’année sur un support de travail pensé pour le bureau.",
+          "en": "The horizontal surface brings the year together on a working surface designed for a desk.",
+          "es": "La superficie horizontal reúne el año en un soporte de trabajo pensado para el escritorio."
+        }
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "value": "832",
+      "label": {
+        "fr": "Abonnés LinkedIn",
+        "en": "LinkedIn followers",
+        "es": "Seguidores de LinkedIn"
+      },
+      "period": {
+        "fr": "En neuf mois · bilan janvier–septembre 2025",
+        "en": "In nine months · January–September 2025 report",
+        "es": "En nueve meses · balance enero–septiembre de 2025"
+      }
+    },
+    {
+      "value": "347",
+      "label": {
+        "fr": "Clics organiques sur Google",
+        "en": "Organic clicks from Google",
+        "es": "Clics orgánicos desde Google"
+      },
+      "period": {
+        "fr": "Cinq mois depuis l’indexation · bilan septembre 2025",
+        "en": "Five months since indexing · September 2025 report",
+        "es": "Cinco meses desde la indexación · balance de septiembre de 2025"
+      }
+    },
+    {
+      "value": "19 854",
+      "label": {
+        "fr": "Lectures vidéo ThruPlay",
+        "en": "Video ThruPlays",
+        "es": "Reproducciones ThruPlay"
+      },
+      "period": {
+        "fr": "Campagne vidéo · bilan janvier–septembre 2025",
+        "en": "Video campaign · January–September 2025 report",
+        "es": "Campaña de vídeo · balance enero–septiembre de 2025"
+      }
+    },
+    {
+      "value": "144",
+      "label": {
+        "fr": "Conversations WhatsApp",
+        "en": "WhatsApp conversations",
+        "es": "Conversaciones por WhatsApp"
+      },
+      "period": {
+        "fr": "Campagne messages · bilan janvier–septembre 2025",
+        "en": "Messaging campaign · January–September 2025 report",
+        "es": "Campaña de mensajes · balance enero–septiembre de 2025"
+      }
+    }
+  ]
+}
