@@ -31,7 +31,9 @@
     previous: triple('Précédent', 'Previous', 'Anterior'),
     next: triple('Suivant', 'Next', 'Siguiente'),
     viewDocument: triple('Consulter le document', 'View document', 'Consultar documento'),
+    downloadArtwork: triple('Télécharger le visuel', 'Download artwork', 'Descargar diseño'),
     assetCaption: triple('Aperçu de la création. Le document source peut nécessiter une connexion à Canva.', 'Design preview. The source document may require a Canva login.', 'Vista previa del diseño. El documento original puede requerir iniciar sesión en Canva.'),
+    thumbnailCaption: triple('Miniature disponible. Le document source peut nécessiter une connexion à Canva.', 'Thumbnail available. The source document may require a Canva login.', 'Miniatura disponible. El documento original puede requerir iniciar sesión en Canva.'),
     loading: triple('Chargement de la création…', 'Loading design…', 'Cargando diseño…'),
     error: triple('Impossible de charger cet aperçu. Vous pouvez consulter le document source.', 'This preview could not be loaded. You can open the source document.', 'No se pudo cargar esta vista previa. Puedes consultar el documento original.'),
     count: triple('{current} sur {total}', '{current} of {total}', '{current} de {total}'),
@@ -168,6 +170,8 @@
   ]);
 
   // Per-asset descriptions keep every image meaningful in all interface languages.
+  // Both filenames share their copy while the original PNG replaces the preview.
+  const HALLOWEEN_ALT = triple('Affiche Halloween UTEX aux couleurs sombres', 'UTEX Halloween poster in dark colours', 'Cartel de Halloween de UTEX en tonos oscuros');
   const ASSETS = Object.freeze({
     'breathe-without-fear-site.jpg': triple('Capture de la page d’accueil Breathe & Rise Without Fear, avec le portrait de Marie Desy et la présentation de son initiative', 'Screenshot of the Breathe & Rise Without Fear homepage, with Marie Desy’s portrait and an introduction to her initiative', 'Captura de la página de inicio de Breathe & Rise Without Fear, con el retrato de Marie Desy y la presentación de su iniciativa'),
     'carrigres-brochure.webp': triple('Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle', 'Carrigrès company brochure designed for institutional communication', 'Folleto corporativo de Carrigrès para comunicación institucional'),
@@ -190,11 +194,13 @@
     'revendre-carte-cadeau.webp': triple('Carte cadeau Re-vendre avec typographie orange et ruban rouge', 'Re-vendre gift card with orange lettering and a red ribbon', 'Tarjeta regalo de Re-vendre con letras naranjas y lazo rojo'),
     'atelier-prospectus.webp': triple("Prospectus de L'Atelier, salon de manucure et pédicure", "Leaflet for L'Atelier manicure and pedicure salon", "Folleto de L'Atelier, salón de manicura y pedicura"),
     'atelier-rollup.webp': triple("Roll-up vertical de L'Atelier, prestations de manucure et pédicure", "Vertical roll-up banner for L'Atelier manicure and pedicure services", "Banner vertical de L'Atelier para servicios de manicura y pedicura"),
-    'utex-halloween.webp': triple('Affiche Halloween UTEX aux couleurs sombres', 'UTEX Halloween poster in dark colours', 'Cartel de Halloween de UTEX en tonos oscuros'),
+    'utex-halloween.webp': HALLOWEEN_ALT,
+    'utex-halloween.png': HALLOWEEN_ALT,
     'utex-centenaire.webp': triple('Visuel de présentation du centenaire TEXAF', 'TEXAF centenary presentation design', 'Diseño de presentación del centenario de TEXAF'),
-    'agorafrik-pitch.webp': triple('Couverture d’un pitch deck Agorafrik bordeaux et orange', 'Agorafrik pitch deck cover in burgundy and orange', 'Portada de la presentación de Agorafrik en burdeos y naranja')
+    'agorafrik-pitch.webp': triple('Page de conclusion du pitch deck Agorafrik, avec portrait artistique et motifs bordeaux et orange', 'Conclusion page of the Agorafrik pitch deck, with an artistic portrait and burgundy and orange motifs', 'Página de conclusión de la presentación de Agorafrik, con un retrato artístico y motivos en burdeos y naranja')
   });
 
+  const HALLOWEEN_LABELS = Object.freeze([triple('Campagne Halloween', 'Halloween campaign', 'Campaña de Halloween'), triple('UTEX', 'UTEX', 'UTEX')]);
   const DESIGN_LABELS = Object.freeze({
     'carrigres-calendrier-mural.webp': [triple('Calendrier mural', 'Wall calendar', 'Calendario de pared'), triple('Carrigrès · 2026', 'Carrigrès · 2026', 'Carrigrès · 2026')],
     'carrigres-calendrier-table.webp': [triple('Calendrier de table A5', 'A5 desk calendar', 'Calendario de mesa A5'), triple('Carrigrès · 2026', 'Carrigrès · 2026', 'Carrigrès · 2026')],
@@ -211,7 +217,8 @@
     'revendre-carte-cadeau.webp': [triple('Carte cadeau', 'Gift card', 'Tarjeta regalo'), triple('Re-vendre', 'Re-vendre', 'Re-vendre')],
     'atelier-prospectus.webp': [triple('Prospectus A5', 'A5 leaflet', 'Folleto A5'), triple("L'Atelier", "L'Atelier", "L'Atelier")],
     'atelier-rollup.webp': [triple('Roll-up vitrine', 'Window roll-up banner', 'Banner para escaparate'), triple("L'Atelier", "L'Atelier", "L'Atelier")],
-    'utex-halloween.webp': [triple('Campagne Halloween', 'Halloween campaign', 'Campaña de Halloween'), triple('UTEX', 'UTEX', 'UTEX')],
+    'utex-halloween.webp': HALLOWEEN_LABELS,
+    'utex-halloween.png': HALLOWEEN_LABELS,
     'utex-centenaire.webp': [triple('Centenaire TEXAF', 'TEXAF centenary', 'Centenario de TEXAF'), triple('UTEX / événementiel', 'UTEX / events', 'UTEX / eventos')],
     'agorafrik-pitch.webp': [triple('Pitch deck Agorafrik', 'Agorafrik pitch deck', 'Presentación de Agorafrik'), triple('Présentation de marque', 'Brand presentation', 'Presentación de marca')]
   });

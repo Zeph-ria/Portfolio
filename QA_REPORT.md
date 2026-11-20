@@ -1,39 +1,40 @@
 # Rapport de vérification du portfolio
 
-Date de la passe : **18 novembre 2026**
+Date de la passe : **19 novembre 2026**
 
 Branche contrôlée : `feat/editorial-portfolio-2026`
 
-Périmètre : fichiers locaux de la branche et prévisualisation locale servie par le mécanisme Sites, observée dans un vrai navigateur via CUA.
+Périmètre : fichiers de la branche et prévisualisation gérée, observée dans un vrai navigateur via CUA.
 
-## Conclusion
+## Résultat de la passe
 
-Les **38 tests unitaires et contrats**, ainsi que le smoke test, réussissent. Les vérifications interactives initiales ont confirmé les langues FR/EN/ES, leur mémorisation, le filtrage de la galerie, le dialogue et le chargement des 23 œuvres. La passe complémentaire intègre le domaine confirmé par Gloria et une vraie capture de Breathe & Rise Without Fear. La section « Sites web » a été contrôlée dans **18 combinaisons langue/largeur** ; les défauts de hauteur et de débordement découverts ont été corrigés puis revérifiés.
+**46 tests Node sur 46 réussis, smoke test réussi et `git diff --check` sans anomalie.** Les **23 créations** ont été ouvertes et décodées dans le navigateur : 18 dans la galerie, 3 dans les projets et 2 dans les archives. La visionneuse charge les fichiers de pleine définition prévus ; les deux créations L’Atelier restent correctement identifiées comme miniatures.
 
-Ce résultat n'est ni une garantie d'absence de toute erreur, ni une validation de publication finale. La qualité HD des œuvres, les droits de diffusion, l'accès public aux documents et la distribution des polices restent des validations distinctes. Le domaine Breathe Without Fear est désormais confirmé et intégré. Aucune mise en production finale n'est attestée par ce rapport.
+Le téléchargement de l’affiche Halloween a été déclenché dans le navigateur. Le fichier reçu est **identique octet pour octet au PNG source**. Les changements de langue FR/EN/ES, la persistance de l’anglais après rechargement, les filtres, la fermeture par Échap et le retour du focus ont été contrôlés. La matrice de 18 combinaisons langue/largeur ne révèle aucun débordement dans les éléments mesurés ; la visionneuse ouverte a aussi été vérifiée à 360 px dans les trois langues.
 
-## Inventaire contrôlé
+Cette passe conserve le bordeaux `#652936`, Wremena et les tailles de la direction artistique validée. Elle établit le fonctionnement de la version testée ; elle n’atteste ni fusion dans la branche principale ni mise en production. La sauvegarde du chantier est suivie dans la [PR #3](https://github.com/Zeph-ria/Portfolio/pull/3).
 
-| Élément | Quantité ou état |
+## Inventaire vérifié
+
+| Élément | État |
 | --- | --- |
-| Projets sélectionnés | 6 |
+| Projets sélectionnés | 6, dont 3 avec création réelle ouvrable dans la visionneuse |
 | Galerie filtrable | 18 créations |
 | Archives complémentaires | 2 créations |
-| Section « Sites web » | 3 projets |
-| Fichiers WebP uniques | 23, tous recensés dans `assets-manifest.json` |
-| Capture JPEG de site | 1 fichier réel, 1348 × 926 px ; Breathe & Rise Without Fear |
-| Images sources dans le HTML | 26 occurrences ; deux œuvres sont réutilisées dans le bandeau |
-| Image du dialogue | 1 élément dynamique, sans `src` initial ; source et dimensions affectées à l'ouverture |
-| Calendriers Carrigrès | 4 fichiers distincts : mural, table, triptyque, sous-main |
-| Langues d'interface | FR, EN, ES |
+| Ensemble des créations | 23 : **21 vrais exports Canva et 2 miniatures L’Atelier** |
+| Fichiers de pleine définition | 20 WebP et 1 PNG original Halloween |
+| Variantes des cartes | 21 WebP, 900 px au maximum sur le côté long |
+| Capture de site | JPEG réel de Breathe & Rise Without Fear, 1348 × 926 px |
+| Manifeste | **45 fichiers** contrôlés : 23 créations, la capture et 21 variantes ; dimensions et SHA-256 vérifiés |
+| Calendriers Carrigrès | 4 formats distincts : mural, table A5, triptyque et sous-main |
+| Sites web | Carrigrès, MASDIA et Breathe & Rise Without Fear |
+| Langues | FR, EN, ES |
 
-Les dimensions déclarées des images sources et celles du manifeste correspondent aux dimensions lues directement dans les en-têtes des 23 WebP et du JPEG. Cette vérification établit les proportions et la cohérence des fichiers ; elle ne transforme pas les miniatures en exports HD.
+Les choix de pages sont documentés dans [EXPORT_PLAN.md](EXPORT_PLAN.md) : page 17 du pitch Agorafrik, page 3 de l’affiche Kadea, page 3 d’Annieck, page 1 pour les autres créations. La couverture Agorafrik portant un filigrane a été écartée ; aucun filigrane n’a été effacé. Le PNG Halloween conserve ses données de provenance et son contexte historique de 2025.
 
-Les créations Agorafrik, Ardhi Organic et Kadea sont présentes. Les projets Génération, Prayer Machine et Just1Pulse ne figurent pas dans le contenu public de la page. L'adresse personnelle interdite par les garde-fous du projet n'est pas réintroduite ; le contact proposé reste LinkedIn.
+Les exclusions Génération, Prayer Machine et Just1Pulse restent couvertes par les contrôles statiques. Le domaine confirmé `breathewithoutfear.org` et sa capture réelle sont conservés.
 
-## Vérifications automatisées réellement exécutées
-
-Commandes depuis la racine du dépôt :
+## Contrôles de code exécutés
 
 ```bash
 node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs tests/domain.test.mjs
@@ -41,144 +42,95 @@ node tests/smoke.mjs
 git diff --check
 ```
 
-| Suite | Résultat | Ce qu'elle vérifie |
+| Contrôle | Résultat | Périmètre |
 | --- | --- | --- |
-| `tests/i18n.test.cjs` | 16/16 réussis | Couverture FR/EN/ES, légendes et alt, métadonnées, mémoire de langue, stockage refusé, interpolation et rendu sûr |
-| `tests/interactions.test.mjs` | 11/11 réussis | Vrai script exécuté sur fixture DOM : filtres, groupes, navigation d'aperçu, liens sources, langue, fermeture et états d'erreur |
-| `tests/static-contracts.mjs` | 7/7 réussis | Structure HTML, références d'ID, cibles de liens, ressources, dimensions WebP, exclusions et catégories |
-| `tests/domain.test.mjs` | 4/4 réussis | Domaine confirmé, absence de statut provisoire FR/EN/ES, libellés accessibles, vraie capture JPEG et dimensions/manifeste |
-| `tests/smoke.mjs` | Réussi | Contrôles structurels complémentaires et invariants de contenu |
-| `git diff --check` | Aucune anomalie signalée | Erreurs d'espacement et de patch dans le diff suivi |
+| Suites Node | **46/46 réussis** | Structure, ressources, dimensions, variantes et sources de pleine définition, langues, interactions, téléchargement, domaine confirmé et exclusions |
+| Smoke test | Réussi | Invariants structurels et de contenu |
+| Diff | Sans anomalie signalée | Espacements et validité du patch suivi |
+| Fichiers du manifeste | **45/45 vérifiés** | Dimensions réelles et empreintes SHA-256 |
 
-La fixture DOM teste les états et les événements, pas le moteur de rendu, le décodage réel des images ou l'accessibilité avec un lecteur d'écran. Les tests statiques ne sont pas un validateur HTML normatif complet ni un audit de sécurité exhaustif.
+Les tests d’interaction exécutent le vrai script sur une fixture DOM. Ils vérifient les états et les événements ; les observations de rendu et le décodage des images ci-dessous proviennent du navigateur réel.
 
-## Vérifications dans le vrai navigateur
+## Contrôles dans le navigateur réel
 
-La prévisualisation a été servie localement par Sites puis ouverte via CUA. Ces observations sont distinctes de la suite Playwright.
+La prévisualisation gérée a été contrôlée via CUA. Ces observations ne sont pas présentées comme l’exécution de la suite Playwright.
 
-| Scénario | Observation confirmée |
+| Scénario | Résultat observé |
 | --- | --- |
-| Changement de langue | FR, EN et ES sélectionnables ; légendes, alt et métadonnées traduits |
-| Rechargement | Langue choisie conservée après rechargement |
-| Filtre « Identités » | 4 créations affichées ; les calendriers et leur titre sont masqués |
-| Calendriers sur desktop | Les 4 formats sont visibles sur une même rangée de 4 colonnes |
-| Ouverture d'un aperçu Agorafrik | Titre et lien source correspondant exactement à la création choisie |
-| Navigation du dialogue | Compteur observé : `2/4 → 3/4 → 2/4` |
-| Fermeture | Échap ferme le dialogue et restitue le focus au déclencheur |
-| Médias | 23/23 fichiers uniques chargés via les groupes de la visionneuse ; `naturalWidth` et `naturalHeight` strictement positifs, aucun échec de chargement constaté |
+| Galerie | **18/18 créations** décodées, avec dimensions naturelles positives et source attendue |
+| Projets et archives | **5/5 créations** supplémentaires décodées : 3 projets et 2 archives |
+| Agrandissement | Fichier de pleine définition utilisé lorsqu’il est disponible ; miniatures L’Atelier identifiées comme telles |
+| Filtre Kadea | 3 créations attendues visibles |
+| Filtre Tous | Retour aux 18 créations de galerie |
+| Langues | FR, EN et ES sélectionnables ; libellés de la visionneuse actualisés |
+| Persistance | Anglais conservé après rechargement d’une URL sans paramètre de langue |
+| Fermeture | Échap ferme la visionneuse et rend le focus au calendrier mural qui l’avait ouverte |
+| Direction artistique | Bordeaux `#652936` et Wremena observés ; fichiers de police inchangés |
+| Visionneuse mobile | À 360 px en FR/EN/ES, les liens Télécharger et Consulter le document restent dans leur cadre |
 
-Les tests unitaires apportent une couverture supplémentaire des clics Ctrl/Cmd, des erreurs d'image et du repli sans dialogue natif ; cette couverture ne doit pas être présentée comme une campagne manuelle sur plusieurs navigateurs.
+Les changements CSS de cette intégration concernent le pied de la visionneuse et le repli de ses actions. Ils ne remplacent pas les familles de police, la palette ou les tailles de titres du portfolio.
 
-### Journaux du navigateur
+### Téléchargement vérifié
 
-Les journaux récupérés contenaient 60 erreurs attribuées à une extension Chrome. Aucun message d'erreur ou d'avertissement attribué à l'application n'a été identifié dans ces journaux. Cela décrit les messages effectivement récupérés, pas une promesse de zéro bug ni une collecte exhaustive de toutes les erreurs possibles.
+Le bouton de téléchargement de l’affiche Halloween a été cliqué dans la visionneuse. Le fichier reçu et le PNG source ont la même taille et la même empreinte :
 
-### Accès aux documents sources
+- Fichier : `utex-halloween.png`
+- Taille : **3 846 104 octets**
+- SHA-256 : `88e3b28a388e71002b7dc80d3d9dfd2cbffc726267ebc0885067f4e78835eb09`
 
-Le lien Canva du [calendrier mural Carrigrès](https://www.canva.com/d/4Yteo_gyYVViINO) a été testé sans session connectée : il redirige vers la page de connexion. Le dialogue indique donc qu'un compte Canva peut être nécessaire.
+Cela vérifie le téléchargement réel d’un fichier local complet, sans connexion Canva. La consultation du document Canva reste une action distincte et peut nécessiter une session Canva.
 
-Ce constat ne doit être étendu ni à la disponibilité ni à l'indisponibilité de tous les autres documents, qui n'ont pas fait l'objet d'une vérification anonyme exhaustive. Avant de promettre un accès public, obtenir un lien de consultation autorisé ou un PDF publiable et le vérifier sans session. Aucun changement implicite des droits de partage n'est autorisé par cette vérification.
+### Responsive : 18 combinaisons
 
-## Responsive : 12 combinaisons contrôlées
+La page a été chargée dans des iframes de six largeurs pour chacune des trois langues. La barre de défilement occupe 15 px dans cet environnement.
 
-La vérification utilise des iframes de largeur fixée dans le navigateur réel. La barre de défilement occupe 15 pixels dans cet environnement ; la largeur intérieure mesurée diffère donc de la largeur de l'iframe.
-
-| Largeur de l'iframe | Largeur intérieure mesurée | FR | EN | ES |
+| Largeur d’iframe | Largeur intérieure mesurée | FR | EN | ES |
 | --- | --- | --- | --- | --- |
-| 360 px | 345 px | Sans débordement détecté après correction | Sans débordement détecté après correction | Sans débordement détecté après correction |
-| 390 px | 375 px | Sans débordement détecté après correction | Sans débordement détecté après correction | Sans débordement détecté après correction |
-| 768 px | 753 px | Sans débordement détecté après correction | Sans débordement détecté après correction | Sans débordement détecté après correction |
-| 1440 px | 1425 px | Sans débordement détecté après correction | Sans débordement détecté après correction | Sans débordement détecté après correction |
+| 360 px | 345 px | Aucun débordement détecté | Aucun débordement détecté | Aucun débordement détecté |
+| 390 px | 375 px | Aucun débordement détecté | Aucun débordement détecté | Aucun débordement détecté |
+| 650 px | 635 px | Aucun débordement détecté | Aucun débordement détecté | Aucun débordement détecté |
+| 700 px | 685 px | Aucun débordement détecté | Aucun débordement détecté | Aucun débordement détecté |
+| 768 px | 753 px | Aucun débordement détecté | Aucun débordement détecté | Aucun débordement détecté |
+| 1440 px | 1425 px | Aucun débordement détecté | Aucun débordement détecté | Aucun débordement détecté |
 
-Le contrôle porte sur les titres, la navigation, le texte des compositions de produits et des aperçus web, ainsi que leur dépassement des conteneurs. Il ne se limite pas à l'absence de barre de défilement horizontale : un parent avec `overflow:hidden` peut masquer une coupure.
+Le résultat porte sur les sélecteurs effectivement contrôlés : titres, navigation, libellés des créations et éléments des cartes web. Les mesures détaillées sont conservées dans [responsive-results.json](docs/qa/2026-11-19/responsive-results.json).
 
-### Défauts détectés puis corrigés dans cette passe
+Une seconde passe vérifie le **dialogue ouvert** en FR/EN/ES à 360 px. Le viewport intérieur mesure alors 360 px, la barre de défilement étant absente pendant l’ouverture ; le dialogue mesure 322 px de large. Les deux actions restent dans le cadre ; les résultats sont enregistrés dans [mobile-dialog-results.json](docs/qa/2026-11-19/mobile-dialog-results.json). Ces mesures en navigateur ne constituent pas un test sur téléphone physique.
 
-- **Composition Gloria OS :** débordement du texte dans les formats étroits. Espacement, taille de la lettre et contraintes de largeur ajustés.
-- **Grands titres espagnols :** débordements de certaines formes plus longues, notamment les rubriques d'archives, résultats et parcours. Échelles mobiles adaptées aux chaînes espagnoles.
-- **Titre de contact anglais :** débordement en petit format. Taille mobile ajustée pour cette langue.
+### Journaux récupérés
 
-La matrice complète a été contrôlée à nouveau après les corrections, sans retrouver de débordement dans les éléments couverts. Cette méthode ne constitue pas un test sur téléphone physique : elle ne couvre pas les variations Safari/iOS, clavier virtuel, zoom utilisateur ou toutes les largeurs intermédiaires.
+Les journaux récupérés contiennent **30 erreurs attribuées à une extension Chrome**. Aucun message d’erreur attribué à l’application n’a été identifié dans cet ensemble. Cette observation ne vaut pas collecte exhaustive de tous les journaux possibles ni garantie d’absence de tout défaut.
 
-## Accessibilité et amélioration progressive
+## Poids des images et chargement
 
-Les contrôles effectués couvrent les landmarks, l'unicité des ID, les références ARIA, les noms accessibles des commandes, les alt des images, le lien d'évitement, les états `aria-pressed`, les commandes du dialogue et le retour de focus observé après Échap. Les animations respectent la préférence de réduction du mouvement.
+| Ensemble mesuré | Taille cumulée |
+| --- | ---: |
+| 21 fichiers de pleine définition | **18,716486 Mo** |
+| 21 variantes utilisées pour les cartes | **1,270194 Mo** |
+| Réduction du poids des images de cartes correspondantes | **93,2 %** |
 
-Le focus des liens sur le bandeau bordeaux a été renforcé par un contour blanc. Les dimensions d'image sont explicites pour réduire les changements de mise en page au chargement.
+Ces valeurs sont les tailles cumulées des fichiers, en mégaoctets décimaux. Elles comparent les 21 variantes aux 21 fichiers de pleine définition ; elles n’incluent pas les deux miniatures L’Atelier, la capture du site, les polices ou le code. Elles ne sont ni une mesure Lighthouse, ni un temps de chargement réseau, ni un résultat Core Web Vitals. Le fichier de pleine définition est chargé à l’ouverture de la visionneuse ou lors du téléchargement.
 
-Les cartes conservent leurs URL sources. Le code n'intercepte que l'activation simple lorsque le dialogue natif est disponible ; sinon les documents restent accessibles par leurs liens, sous réserve de connexion et d'autorisation Canva. Cela a été vérifié dans les tests de logique, sans prétendre à un test manuel de tous les environnements sans JavaScript.
-
-Une revue complète avec lecteur d'écran, zoom élevé, navigation exclusivement au clavier et plusieurs navigateurs reste à effectuer si elle est requise pour la publication.
-
-## Suite navigateur disponible mais non exécutée
-
-`tests/browser.mjs` contient une campagne Playwright pour le chargement des polices et des médias, les filtres, le dialogue, les langues, les dimensions responsive, le stockage refusé et le repli sans JavaScript.
-
-La tentative de lancement dans l'environnement de tests a rencontré l'absence du navigateur Chromium attendu. La suite a explicitement indiqué qu'aucun test navigateur n'avait été exécuté et a renvoyé le code 2. Aucun navigateur n'a été installé pour contourner cette contrainte. Les vérifications CUA décrites plus haut sont la preuve de navigateur réellement obtenue dans cette passe ; elles ne sont pas un résultat Playwright.
-
-N'ont pas été exécutés :
-
-- Lighthouse, mesure des Core Web Vitals ou test de charge ;
-- campagne automatisée Playwright complète ;
-- campagne Safari/Firefox ou appareils physiques ;
-- audit exhaustif au lecteur d'écran ;
-- vérification anonyme de chaque document Canva et de toutes ses pages.
-
-## Qualité éditoriale et validations avant publication
-
-| Sujet | État et prochaine validation |
-| --- | --- |
-| Exports HD | Les 23 designs ont été identifiés et leurs 296 pages inventoriées. Le connecteur n'expose pas d'export ; la connexion du navigateur a échoué à la validation Google par clé d'accès. Aucun export HD/PDF obtenu. Voir `EXPORT_PLAN.md`. |
-| Accès public aux documents | Le calendrier mural testé anonymement demande une connexion. Valider les liens de consultation ou PDF autorisés, sans promettre l'accès public sur la seule présence d'une URL. |
-| Documents et confidentialité | Les liens ne prouvent pas l'autorisation client. Vérifier les pages réellement publiables sans changer les permissions de partage de manière implicite. |
-| Police exacte de la référence | Wremena est attestée sur l'ancien site officiel Nice People, mais le logotype séparé reste un dessin non identifié avec certitude. Aucune substitution de famille ou taille de police dans cette passe. |
-| Licence des WOFF | Conditions historiques, licence web actuelle et comparaison des binaires documentées. La voie de distribution reste à choisir ; fichiers locaux inchangés et aucun accord accepté. Voir `AUDIT_ASSETS.md`. |
-| Domaine Breathe Without Fear | `https://breathewithoutfear.org/` confirmé explicitement par Gloria, observé actif en HTTP 200 et dans le navigateur, intégré dans le contenu public. |
-| Représentation des sites | Vraie capture pour Breathe & Rise Without Fear ; compositions éditoriales identifiées pour Carrigrès et MASDIA. |
-| Données du portfolio | Faire confirmer les rôles, chiffres, périodes et le contact professionnel par Gloria. |
-| Mise en production | Non attestée par cette passe. Suivre séparément le workflow de revue et de publication du dépôt externe. |
-
-Les observations et sources détaillées relatives aux œuvres, aux polices et aux domaines sont centralisées dans [AUDIT_ASSETS.md](AUDIT_ASSETS.md).
-
-## Captures et traçabilité
-
-Les captures suivantes proviennent de la prévisualisation contrôlée et doivent accompagner le rapport dans le dépôt :
+## Preuves conservées
 
 | Preuve | Fichier |
 | --- | --- |
-| Vue desktop | [desktop.jpg](docs/qa/desktop.jpg) |
-| Vue mobile 360 px | [mobile-360.jpg](docs/qa/mobile-360.jpg) |
-| Galerie des quatre calendriers | [calendar-gallery.jpg](docs/qa/calendar-gallery.jpg) |
-| Dialogue d'aperçu | [lightbox.jpg](docs/qa/lightbox.jpg) |
-| Nouvelle fiche du site confirmé, desktop | [breathe-desktop.jpg](docs/qa/breathe-desktop.jpg) |
-| Nouvelle fiche du site confirmé, iframe 360 px | [breathe-mobile-360.jpg](docs/qa/breathe-mobile-360.jpg) |
+| Vue ordinateur | [desktop.jpg](docs/qa/2026-11-19/desktop.jpg) |
+| Vue mobile 360 px | [mobile-360.jpg](docs/qa/2026-11-19/mobile-360.jpg) |
+| Quatre calendriers | [calendar-gallery.jpg](docs/qa/2026-11-19/calendar-gallery.jpg) |
+| Visionneuse avec export de pleine définition | [lightbox-hd.jpg](docs/qa/2026-11-19/lightbox-hd.jpg) |
+| Visionneuse mobile en français | [mobile-lightbox-fr.jpg](docs/qa/2026-11-19/mobile-lightbox-fr.jpg) |
+| Décodage des 18 créations de galerie | [gallery-results.json](docs/qa/2026-11-19/gallery-results.json) |
+| Décodage des 3 projets et 2 archives | [project-results.json](docs/qa/2026-11-19/project-results.json) |
+| Matrice responsive | [responsive-results.json](docs/qa/2026-11-19/responsive-results.json) |
+| Actions de la visionneuse mobile | [mobile-dialog-results.json](docs/qa/2026-11-19/mobile-dialog-results.json) |
 
-Les dimensions des captures correspondent à la fenêtre de prévisualisation. La largeur mobile testée est celle de l'iframe ; elle ne doit pas être déduite de la largeur du fichier JPEG.
+Les anciennes captures directement présentes dans `docs/qa/` documentent la passe du 18 novembre. Elles ne remplacent pas les preuves datées du 19 novembre pour l’intégration des exports.
 
-<!-- QA_EVIDENCE_APPENDIX: compléter si un commit ou de nouvelles preuves sont ajoutés après cette passe. -->
+## Limites et état du chantier
 
-### Passe complémentaire après confirmation du domaine
+Les deux designs **L’Atelier** restent les seuls exports manquants : leurs médias source indisponibles empêchent un export normal. Les miniatures sont conservées et signalées. Leurs documents Canva n’ont pas été modifiés.
 
-La capture source a été prise sur `https://breathewithoutfear.org/en`, sans retouche, puis intégrée avec ses dimensions intrinsèques et un texte alternatif dans les trois langues. L'ancien domaine et les statuts « en préparation / coming soon » ont été retirés de la carte et des traductions dynamiques. Le rôle de conception, déjà présent, n'est pas présenté comme une déduction des métadonnées publiques.
+La suite Playwright headless n’a pas été exécutée : le binaire Chromium attendu n’est pas disponible, ce que son code de sortie 2 signale. Les contrôles de navigateur décrits dans ce rapport sont ceux effectués via CUA. Aucune campagne Safari/Firefox, aucun test sur appareil physique, aucun audit exhaustif avec lecteur d’écran ni mesure Lighthouse n’est revendiqué.
 
-Contrôles réels supplémentaires : FR/EN/ES × largeurs d'iframe **360, 390, 650, 700, 768 et 1440 px**. Les largeurs internes relevées sont respectivement 345, 375, 635, 685, 753 et 1425 px, après occupation de la barre de défilement. Les mesures incluent les limites de grille et les éléments susceptibles d'être masqués par un parent, pas seulement `scrollWidth` de chaque paragraphe.
-
-Défauts détectés et corrigés :
-
-1. La règle mobile générique imposait une hauteur fixe à la capture : spécificité corrigée pour maintenir `height:auto`.
-2. Le minimum intrinsèque d'une colonne élargissait les cartes au-delà de leur grille : `minmax(0,1fr)` et `min-width:0` rétablissent la largeur disponible.
-3. Le mot français « infrastructure » dépassait encore dans le visuel Carrigrès à 360 px : césure discrétionnaire ajoutée, sans modifier la famille ou la taille de police.
-
-La dernière passe des 18 combinaisons ne retrouve aucun débordement dans les cartes, titres, descriptions, barres de navigateur et textes des compositions web contrôlés. La capture est décodée en 1348 × 926 px ; l'écart entre la hauteur du cadre et la somme barre + image est nul, et l'écart de proportion reste inférieur à 0,03 px. Ce contrôle ne vaut pas campagne sur appareils physiques.
-
-La suite Playwright future a été étendue aux deux largeurs limites, aux limites des cartes et aux proportions de la capture, avec types MIME JPEG/SVG. Elle n'a pas été exécutée dans cette passe : les résultats de navigateur ci-dessus proviennent de CUA avec la prévisualisation gérée. La prévisualisation a été arrêtée après conservation des preuves.
-
-La tentative d'accès Canva a été arrêtée au premier message d'erreur Google lors de la validation par clé d'accès. Aucun export HD/PDF, changement de partage, accord de licence ou nouvelle publication du site n'a été effectué.
-
-- [x] Dimensions et provenance déclarée des 23 fichiers documentées dans le manifeste.
-- [x] Chargement et dimensions naturelles des 23 fichiers uniques contrôlés dans le navigateur réel.
-- [x] Quatre colonnes de calendriers observées et capture enregistrée.
-- [x] Captures desktop, mobile, galerie et dialogue enregistrées.
-- [ ] Associer le commit final contrôlé lorsque les changements sont enregistrés dans Git.
-
-Le rapport porte sur l'état de travail testé. Toute modification ultérieure de contenu, de CSS, de traduction ou de média nécessite les contrôles correspondants ; la présence des captures ne valide pas automatiquement un état plus récent.
+Le rapport porte sur la version effectivement contrôlée. La sauvegarde dans la PR, la fusion et le déploiement sont des états distincts ; **aucune fusion ni mise en production n’est attestée ici**. Le chantier reste suivi dans [l’objectif #2](https://github.com/Zeph-ria/Portfolio/issues/2).

@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { test } from 'node:test';
 import { readHtml, textContent, normalizeForExclusions } from './helpers/html.mjs';
-import { webpDimensions } from './helpers/webp.mjs';
+import { imageDimensions } from './helpers/image.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
@@ -67,6 +68,7 @@ test('Local scripts, styles, media and fonts exist and are non-empty', () => {
   const references = [];
   for (const node of elements) {
     if (node.attrs.src) references.push(node.attrs.src);
+    if (node.attrs['data-full-src']) references.push(node.attrs['data-full-src']);
     if (node.tag === 'link' && node.attrs.href) references.push(node.attrs.href);
   }
   for (const [, reference] of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) references.push(reference);
@@ -98,18 +100,39 @@ test('Portfolio exclusions and private contact guardrails are enforced', () => {
   }
 });
 
-test('Declared image dimensions match the actual local WebP files', () => {
-  for (const node of byTag('img').filter(node => node.attrs.src?.endsWith('.webp'))) {
-    const actual = webpDimensions(readFileSync(resolve(root, node.attrs.src)));
-    assert.deepEqual({ width: Number(node.attrs.width), height: Number(node.attrs.height) }, actual, `Incorrect intrinsic dimensions: ${node.attrs.src}`);
+test('Thumbnails and full-size originals match their files and asset manifest', () => {
+  const manifest = JSON.parse(readFileSync(join(root, 'assets-manifest.json'), 'utf8'));
+  const records = new Map();
+  for (const image of manifest.images) {
+    records.set(image.path, image);
+    for (const variant of image.variants || []) {
+      assert(!records.has(variant.path), `Duplicate asset manifest path: ${variant.path}`);
+      assert(Number(variant.bytes) > 0 && /^[a-f0-9]{64}$/.test(variant.sha256 || ''), `Missing variant integrity metadata: ${variant.path}`);
+      records.set(variant.path, variant);
+    }
   }
-  const manifestPath = join(root, 'assets-manifest.json');
-  if (existsSync(manifestPath)) {
-    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
-    for (const image of manifest.images.filter(image => image.path.endsWith('.webp'))) {
-      const actual = webpDimensions(readFileSync(resolve(root, image.path)));
+  for (const node of byTag('img').filter(node => /\.(?:webp|png)$/.test(node.attrs.src || ''))) {
+    const actual = imageDimensions(readFileSync(resolve(root, node.attrs.src)));
+    assert.deepEqual({ width: Number(node.attrs.width), height: Number(node.attrs.height) }, actual, `Incorrect intrinsic dimensions: ${node.attrs.src}`);
+    assert(records.has(node.attrs.src), `Displayed image is absent from asset manifest: ${node.attrs.src}`);
+    const fullPath = node.attrs['data-full-src'];
+    if (fullPath) {
+      const original = manifest.images.find(image => image.path === fullPath);
+      assert(original, `Full-size original is absent from asset manifest: ${fullPath}`);
+      assert(original.variants?.some(variant => variant.path === node.attrs.src), `Thumbnail belongs to a different original: ${node.attrs.src}`);
+      const fullSize = imageDimensions(readFileSync(resolve(root, fullPath)));
+      assert.deepEqual({ width: Number(node.attrs['data-full-width']), height: Number(node.attrs['data-full-height']) }, fullSize, `Incorrect full-size dimensions: ${fullPath}`);
+      assert.equal(node.attrs['data-asset-quality'], original.quality, `Incorrect original quality: ${fullPath}`);
+    }
+  }
+  for (const image of records.values()) {
+    const buffer = readFileSync(resolve(root, image.path));
+    if (/\.(?:webp|png)$/.test(image.path)) {
+      const actual = imageDimensions(buffer);
       assert.deepEqual({ width: image.width, height: image.height }, actual, `Stale asset manifest dimensions: ${image.path}`);
     }
+    if (image.bytes !== undefined) assert.equal(image.bytes, buffer.length, `Stale asset byte count: ${image.path}`);
+    if (image.sha256 !== undefined) assert.equal(image.sha256, createHash('sha256').update(buffer).digest('hex'), `Asset hash differs from manifest: ${image.path}`);
   }
 });
 
@@ -127,7 +150,7 @@ test('Every filter corresponds to content and every category is reachable', () =
 });
 
 test('The four calendar formats and requested website section remain present', () => {
-  const sources = new Set(byTag('img').map(node => node.attrs.src));
+  const sources = new Set(byTag('img').map(node => node.attrs['data-full-src'] || node.attrs.src));
   for (const format of ['mural', 'table', 'triptyque', 'sous-main']) {
     assert(sources.has(`assets/carrigres-calendrier-${format}.webp`), `Missing calendar format ${format}`);
   }

@@ -1,32 +1,32 @@
 # Audit des visuels, de la référence et des domaines
 
-Vérifications en lecture seule effectuées le 18 novembre 2026. Ce document distingue les observations vérifiées des validations encore nécessaires. Aucun design Canva, droit de partage ou domaine n'a été modifié par cet audit.
+État des visuels actualisé le **19 novembre 2026**. L’enquête typographique et la vérification du domaine ci-dessous datent du 18 novembre. Cette mise à jour distingue les exports obtenus, les deux miniatures encore utilisées et la provenance des polices existantes.
 
-## Visuels réels présents
+## Visuels intégrés
 
-Les 23 fichiers WebP sont des aperçus de documents Canva, pas des exports haute définition. Le manifeste `assets-manifest.json` associe chaque fichier à ses dimensions natives et au document déjà lié dans le portfolio.
+Le portfolio présente **23 créations : 21 vrais exports Canva et 2 miniatures L’Atelier**. Les images de pleine définition sont conservées dans `assets/` ; les variantes de cartes sont séparées dans `assets/thumbs/`. Le manifeste associe les fichiers à leur ID Canva, à la page sélectionnée, à leurs dimensions réelles et à leurs empreintes.
 
-- Les grandes présentations horizontales sont généralement limitées à 596 × 336 pixels.
-- Les publications portrait sont généralement limitées à 400 × 500 pixels.
-- Les quatre calendriers Carrigrès sont bien distincts : mural (375 × 532), table (538 × 372), triptyque (284 × 700) et sous-main (547 × 365).
-- Le roll-up L'Atelier ne mesure que 264 pixels de large ; une vue plein écran ne peut pas y rendre les petits textes lisibles.
+| Ensemble | État au 19 novembre 2026 |
+| --- | --- |
+| Quatre calendriers Carrigrès | Exports obtenus : mural 1815 × 2571, table 2000 × 1382, triptyque 1228 × 3024, sous-main 2268 × 1512 |
+| Agorafrik | Charte, visuels, publication et pitch exportés ; page 17 retenue pour le pitch après exclusion de la couverture portant un filigrane |
+| Ardhi Organic et Kadea | Exports obtenus ; page 3 retenue pour l’affiche Kadea |
+| Carrigrès, Bloom, Annieck, Re-vendre, UTEX | Pages sélectionnées exportées ; Annieck conserve la page 3 |
+| Halloween UTEX | PNG original 1414 × 2000 intact, présenté comme création historique de 2025 |
+| L’Atelier | Prospectus 375 × 533 et roll-up 264 × 755 conservés comme miniatures ; export bloqué par des médias source manquants |
+| Breathe & Rise Without Fear | Capture réelle du site confirmé, 1348 × 926 |
 
-Le fait d'avoir un lien Canva ne confirme pas l'accès anonyme, ni les droits de publication des éventuels éléments clients. Les liens ne doivent pas être rendus publics par modification des autorisations sans validation.
+Les cartes utilisent des variantes WebP limitées à 900 px sur le côté long pour réduire les données chargées. La visionneuse et le téléchargement utilisent le fichier de pleine définition. La limitation de qualité des deux miniatures L’Atelier reste signalée.
 
-### Présentation honnête en attendant les originaux
+## Provenance et choix de sélection
 
-Conserver les proportions, afficher les créations entières et éviter de présenter un agrandissement comme un export HD. Un agrandissement peut aider à voir la composition, mais ne restitue aucun détail perdu. Garder un accès au document source, avec une mention d'aperçu si nécessaire. Les textes légaux, la stratégie interne ou les données client éventuellement contenus dans des pages supplémentaires doivent être revus avant publication.
+L’accès Canva a été rétabli après l’échec de connexion décrit dans la première version de cet audit. Les exports proviennent du téléchargement officiel des pages sélectionnées, sans modification des paramètres d’URL de miniatures. Les dimensions retenues sont celles des fichiers téléchargés, et non des anciennes métadonnées de page.
 
-### Route pour obtenir la vraie qualité
+Les 20 WebP de pleine définition sont des conversions des exports PNG sans changement de dimensions ni recadrage. Le PNG Halloween est conservé intact avec ses données de provenance. Cette conservation ne vaut pas vérification indépendante de sa signature C2PA. Les variantes légères sont identifiées séparément dans le manifeste.
 
-Le connecteur Canva exposé pendant cet audit propose la recherche, la lecture et les miniatures de pages ; aucun outil d'export ou de téléchargement de design n'y est disponible. La documentation officielle Canva décrit bien un export PNG/JPG/PDF ainsi qu'un outil MCP `export-design`, mais sa présence dans la documentation ne le rend pas disponible dans cette session.
+Pour le pitch Agorafrik, la page 1 portant un filigrane a été écartée ; la page 17 de conclusion est utilisée sans modification du portrait. Pour Kadea, l’affiche finalisée de la page 3 remplace la sélection provisoire. Les autres pages retenues et les exceptions sont détaillées dans [EXPORT_PLAN.md](EXPORT_PLAN.md) et [docs/ASSET_EXPORTS.md](docs/ASSET_EXPORTS.md).
 
-La prochaine étape sûre est de recevoir les exports autorisés depuis Canva, ou d'utiliser un export connecté lorsqu'il est réellement disponible. Pour le portfolio : fichiers PNG/JPG originaux des meilleures pages, et PDF autorisés pour les documents complets. Les URL d'export signées sont temporaires ; elles ne doivent pas devenir des liens permanents dans le code. Ne pas modifier les paramètres des URL de miniatures signées pour tenter d'obtenir une autre résolution.
-
-Sources primaires :
-
-- [Canva — export-design](https://www.canva.dev/docs/apps/mcp/tools/export-design/)
-- [Canva — API d'export](https://www.canva.dev/docs/apps/rest-apis/reference/exports/create-design-export-job/)
+L’affichage et le téléchargement du visuel local ne demandent pas de connexion Canva. Les liens des documents sources restent distincts et peuvent demander une session Canva. Leurs permissions de partage n’ont pas changé.
 
 ## Typographie : enquête de provenance approfondie
 
@@ -110,12 +110,8 @@ Le contrôle HTTP du 18 novembre 2026 a obtenu une réponse 200. La page rendue 
 
 La carte du portfolio a été corrigée dans les trois langues, avec la vraie capture, l'URL confirmée et sans statut « en préparation ». L'attribution préexistante « Conception du site » est conservée à partir du contexte utilisateur ; les métadonnées publiques ne sont pas présentées comme une preuve de ce rôle. Les autres compositions web restent identifiées comme éditoriales.
 
-## Avancement concret des exports
+## Périmètre de cette mise à jour
 
-Les 23 designs du portfolio ont été relus par leurs IDs Canva. Les 296 pages et les formats mixtes sont inventoriés dans [EXPORT_PLAN.md](EXPORT_PLAN.md), sans recopier les contenus stratégiques ou coordonnées privées. La sélection initiale vise les pages déjà représentées, pas une publication automatique de tous les documents.
+Les constats ci-dessus décrivent les fichiers réellement intégrés et les pages sélectionnées pour le portfolio. Ils ne transforment pas l’inventaire de 296 pages en publication intégrale des documents Canva. Les nouveaux exports, les variantes et les dimensions sont vérifiables dans `assets-manifest.json` ; les contrôles de code et de navigateur sont consignés dans `QA_REPORT.md`.
 
-Aucun outil d'export n'étant exposé, une connexion normale au navigateur a été tentée avec la méthode choisie par l'utilisatrice, via le mécanisme sécurisé. Google a affiché une erreur générique à l'étape de validation par clé d'accès ; les tentatives automatiques ont été arrêtées à ce premier échec. Aucun secret n'a été recopié dans le projet, aucune permission de partage n'a changé et aucun export HD/PDF n'a été obtenu. La suite exige un accès Canva fonctionnel ou des fichiers exportés fournis par la titulaire.
-
-## Limites de l'audit
-
-Cet audit couvre les fichiers d'images et de polices locaux, la provenance déclarée, la disponibilité technique de l'export et les sources publiques consultées. Il ne vaut pas autorisation des clients, validation de la confidentialité de chaque page, licence typographique, ni preuve de l'accessibilité publique de tous les documents Canva.
+La palette bordeaux, la typographie et les tailles validées sont conservées pendant cette intégration. L’enquête Wremena reste un constat daté de provenance : aucun fichier de police n’a été remplacé, aucune licence n’a été acceptée et aucune mise en production n’est attestée par cet audit.

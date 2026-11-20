@@ -13,6 +13,7 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -133,11 +134,21 @@ if (browser) {
   await run('gallery opens an accessible native dialog and preserves document link', async () => {
     const trigger = page.locator('.design-tile').first();
     const originalHref = await trigger.getAttribute('href');
+    const originalImage = await trigger.locator('img').evaluate(image => ({
+      thumbnail: image.currentSrc || image.src,
+      source: new URL(image.dataset.fullSrc, document.baseURI).href,
+      width: Number(image.dataset.fullWidth),
+      height: Number(image.dataset.fullHeight)
+    }));
     await trigger.click();
     assert.equal(await page.locator('#design-dialog').evaluate(element => element.open), true);
     assert((await page.locator('#preview-title').textContent()).trim(), 'Preview title empty');
     assert.equal(await page.locator('#preview-document').getAttribute('href'), originalHref);
     await page.locator('#preview-image').evaluate(image => image.decode());
+    const preview = await page.locator('#preview-image').evaluate(image => ({ src: image.src, width: image.naturalWidth, height: image.naturalHeight }));
+    assert.equal(preview.src, originalImage.source, 'The lightbox must load the full-size original');
+    assert.notEqual(preview.src, originalImage.thumbnail, 'The lightbox must not reuse the optimized thumbnail');
+    assert.deepEqual({ width: preview.width, height: preview.height }, { width: originalImage.width, height: originalImage.height });
     const counter = await page.locator('#preview-counter').textContent();
     await page.locator('#preview-next').click();
     assert.notEqual(await page.locator('#preview-counter').textContent(), counter);
@@ -148,19 +159,97 @@ if (browser) {
     assert.equal(await trigger.evaluate(element => element === document.activeElement), true, 'Focus not restored after closing preview');
   });
 
-  await run('preview remains keyboard-contained and follows the interface language', async () => {
+  await run('local artwork download follows the displayed image and preserves the source document', async () => {
+    const trigger = page.locator('.design-tile').first();
+    const sourceHref = await trigger.getAttribute('href');
+    await trigger.click();
+    const artwork = await page.locator('#preview-image').evaluate(element => element.src);
+    const link = page.locator('#preview-download');
+    const filename = new URL(artwork).pathname.split('/').pop();
+    assert.equal(await link.getAttribute('href'), artwork);
+    assert.equal(await link.getAttribute('download'), filename);
+    assert.equal(await link.textContent(), 'Télécharger le visuel');
+    const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
+    assert.equal(download.suggestedFilename(), filename);
+    assert.equal(download.url(), artwork);
+    assert.equal(await download.failure(), null);
+    assert.equal(await page.locator('#design-dialog').evaluate(element => element.open), true);
+    assert.equal(await page.locator('#preview-document').getAttribute('href'), sourceHref);
+    await page.locator('#preview-next').click();
+    const nextArtwork = await page.locator('#preview-image').evaluate(element => element.src);
+    assert.notEqual(nextArtwork, artwork);
+    assert.equal(await link.getAttribute('href'), nextArtwork);
+    assert.equal(await link.getAttribute('download'), new URL(nextArtwork).pathname.split('/').pop());
+    await page.locator('#preview-prev').click();
+    assert.equal(await link.getAttribute('href'), artwork);
+    assert.equal(await link.getAttribute('download'), filename);
+    await page.keyboard.press('Escape');
+    assert.equal(await trigger.evaluate(element => element === document.activeElement), true);
+  });
+
+  await run('PNG download preserves the exact original file bytes', async () => {
+    const trigger = page.locator('.design-tile:has(img[data-full-src$="utex-halloween.png"])');
+    await trigger.click();
+    try {
+      const link = page.locator('#preview-download');
+      const artwork = await page.locator('#preview-image').evaluate(element => element.src);
+      assert.equal(await link.getAttribute('href'), artwork);
+      assert.equal(await link.getAttribute('download'), 'utex-halloween.png');
+      const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
+      assert.equal(download.url(), artwork, 'The original PNG must not become a transcoded blob');
+      assert.equal(download.suggestedFilename(), 'utex-halloween.png');
+      assert.equal(await download.failure(), null);
+      const downloadedPath = await download.path();
+      assert(downloadedPath, 'The browser did not save the PNG download');
+      const downloaded = await readFile(downloadedPath);
+      const original = await readFile(resolve(root, 'assets/utex-halloween.png'));
+      const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+      assert.equal(hash(downloaded), hash(original), 'PNG bytes, including embedded provenance, must be unchanged');
+    } finally {
+      if (await page.locator('#design-dialog').evaluate(element => element.open)) await page.locator('#preview-close').click();
+    }
+  });
+
+  await run('preview remains keyboard-contained and its open mobile footer fits in FR/EN/ES', async () => {
     const trigger = page.locator('.design-tile').first();
     await trigger.click();
+    try {
     const frenchTitle = await page.locator('#preview-title').textContent();
     for (let i = 0; i < 8; i++) {
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => document.querySelector('#design-dialog').contains(document.activeElement)), true, 'Keyboard focus escaped the modal');
     }
-    await page.evaluate(() => window.PortfolioI18n.setLanguage('en'));
-    assert.notEqual(await page.locator('#preview-title').textContent(), frenchTitle, 'Open preview did not translate with the interface');
-    assert.equal(await page.locator('#preview-image').getAttribute('alt'), await trigger.locator('img').getAttribute('alt'));
-    assert.match(await page.locator('#preview-close').getAttribute('aria-label') ?? await page.locator('#preview-close').textContent(), /close/i);
-    await page.locator('#preview-close').click();
+    await page.setViewportSize({ width: 360, height: 900 });
+    for (const [language, label] of [['en', 'Download artwork'], ['es', 'Descargar diseño'], ['fr', 'Télécharger le visuel']]) {
+      await page.evaluate(language => window.PortfolioI18n.setLanguage(language), language);
+      await settleFonts(page);
+      if (language !== 'fr') assert.notEqual(await page.locator('#preview-title').textContent(), frenchTitle, 'Open preview did not translate with the interface');
+      assert.equal(await page.locator('#preview-image').getAttribute('alt'), await trigger.locator('img').getAttribute('alt'));
+      assert.equal(await page.locator('#preview-download').textContent(), label);
+      assert.equal(await page.locator('#preview-download').getAttribute('href'), await page.locator('#preview-image').evaluate(element => element.src));
+      const footer = await page.locator('#design-dialog').evaluate(dialog => {
+        const bounds = dialog.getBoundingClientRect();
+        const items = [...dialog.querySelectorAll('.preview-actions, #preview-download, #preview-document')];
+        return {
+          open: dialog.open,
+          overflow: dialog.scrollWidth > dialog.clientWidth + 1,
+          clipped: items.filter(item => {
+            const rect = item.getBoundingClientRect();
+            return !rect.width || rect.left < bounds.left - 1 || rect.right > bounds.right + 1 || item.scrollWidth > item.clientWidth + 1;
+          }).map(item => item.id || item.className),
+          targetHeights: [...dialog.querySelectorAll('.preview-actions a')].map(item => item.getBoundingClientRect().height)
+        };
+      });
+      assert.equal(footer.open, true, 'Mobile footer must be checked with the dialog open');
+      assert.equal(footer.overflow, false, `Dialog overflows at 360px / ${language}`);
+      assert.deepEqual(footer.clipped, [], `Footer actions are clipped at 360px / ${language}`);
+      assert.equal(footer.targetHeights.length, 2);
+      assert(footer.targetHeights.every(height => height >= 44), 'Download and document links need usable touch targets');
+    }
+    } finally {
+      if (await page.locator('#design-dialog').evaluate(element => element.open)) await page.locator('#preview-close').click();
+      await page.setViewportSize({ width: 1440, height: 1000 });
+    }
     assert.equal(await trigger.evaluate(element => element === document.activeElement), true);
     await page.locator('#language-select').selectOption('fr');
   });
@@ -197,7 +286,7 @@ if (browser) {
         await page.evaluate(() => window.scrollTo(0, 0));
         const overflow = await page.evaluate(() => {
           const viewport = document.documentElement.clientWidth;
-          const offenders = [...document.querySelectorAll('h1, h2, h3, .hero h1 > span, .main-nav a, .header-actions, .browser-content strong, .visual-caption, .design-tile b, .design-tile small, #sites .website-card, #sites .website-details p')].filter(element => {
+          const offenders = [...document.querySelectorAll('h1, h2, h3, .hero h1 > span, .main-nav a, .header-actions, .browser-content strong, .visual-caption, .design-tile b, .design-tile small, #sites .website-card, #sites .website-details p, .preview-actions, #preview-download, #preview-document')].filter(element => {
             if (!element.getClientRects().length) return false;
             const bounds = element.getBoundingClientRect();
             if (bounds.left < -1 || bounds.right > viewport + 1 || element.scrollWidth > element.clientWidth + 2) return true;
@@ -259,7 +348,7 @@ if (browser) {
       assert.equal(await links.count(), await page.locator('.design-tile').count());
       for (let i = 0; i < await links.count(); i++) {
         assert.equal(await links.nth(i).isVisible(), true);
-        assert.match(await links.nth(i).getAttribute('href'), /^https:\/\/www\.canva\.com\/d\//);
+        assert.match(await links.nth(i).getAttribute('href'), /^https:\/\/www\.canva\.com\/(?:d\/[^/?#]+|design\/[^/?#]+\/view)(?:[?#].*)?$/);
       }
       assert.equal(await fallbackPage.locator('#design-dialog').isVisible(), false);
     } finally { await fallbackContext.close(); }

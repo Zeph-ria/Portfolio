@@ -6,7 +6,11 @@
     const all = selector => Array.from(document.querySelectorAll(selector));
     const text = (key, values = {}) => window.PortfolioI18n
       ? window.PortfolioI18n.t(key, values)
-      : ({ preview: 'Agrandir la création', count: '{current} sur {total}', itemCount: '{count} créations' }[key] || key)
+      : ({
+          preview: 'Agrandir la création', count: '{current} sur {total}', itemCount: '{count} créations',
+          assetCaption: 'Aperçu de la création. Le document source peut nécessiter une connexion à Canva.',
+          thumbnailCaption: 'Miniature disponible. Le document source peut nécessiter une connexion à Canva.'
+        }[key] || key)
         .replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));
     const projectButtons = all('[data-filter]');
     const projects = all('[data-category]');
@@ -56,7 +60,9 @@
     const image = document.getElementById('preview-image');
     const title = document.getElementById('preview-title');
     const counter = document.getElementById('preview-counter');
+    const caption = document.getElementById('preview-caption');
     const source = document.getElementById('preview-document');
+    const download = document.getElementById('preview-download');
     const previous = document.getElementById('preview-prev');
     const next = document.getElementById('preview-next');
     const close = document.getElementById('preview-close');
@@ -77,17 +83,49 @@
       if (dialog && dialog.open) renderPreview(false);
     }
 
+    function updateDownload(artworkUrl) {
+      if (!download) return;
+      try {
+        const artwork = new URL(artworkUrl, document.baseURI);
+        const assets = new URL('assets/', document.baseURI);
+        const filename = decodeURIComponent(artwork.pathname.split('/').pop());
+        // Download only the displayed file served by this portfolio. A remote
+        // image or source document must never silently become a download link.
+        if (/^https?:$/.test(artwork.protocol) && artwork.origin === assets.origin &&
+            artwork.pathname.startsWith(assets.pathname) && /^[a-z0-9][a-z0-9._-]*\.(?:webp|png)$/i.test(filename)) {
+          download.href = artwork.href;
+          download.setAttribute('download', filename);
+          download.hidden = false;
+          return;
+        }
+      } catch (_) {
+        // A malformed or unsupported source keeps the optional link unavailable.
+      }
+      download.hidden = true;
+      download.removeAttribute('href');
+      download.removeAttribute('download');
+    }
+
     function renderPreview(changeImage = true) {
       const entry = active[current];
       if (!entry) return;
       title.textContent = entryTitle(entry);
       counter.textContent = text('count', { current: current + 1, total: active.length });
+      if (caption) {
+        const captionKey = entry.image.dataset.assetQuality === 'canva-preview' ? 'thumbnailCaption' : 'assetCaption';
+        caption.setAttribute('data-i18n', captionKey);
+        caption.textContent = text(captionKey);
+      }
       source.href = entry.href;
+      // Grid images may be lightweight derivatives. Always preview and download
+      // the explicit original when one exists; retain the normal image fallback.
+      const artworkUrl = entry.image.dataset.fullSrc || entry.image.currentSrc || entry.image.src;
+      updateDownload(artworkUrl);
       image.alt = entry.image.alt;
       previous.disabled = next.disabled = active.length < 2;
       if (!changeImage) return;
-      const width = Number(entry.image.getAttribute('width')) || entry.image.naturalWidth;
-      const height = Number(entry.image.getAttribute('height')) || entry.image.naturalHeight;
+      const width = Number(entry.image.dataset.fullWidth) || Number(entry.image.getAttribute('width')) || entry.image.naturalWidth;
+      const height = Number(entry.image.dataset.fullHeight) || Number(entry.image.getAttribute('height')) || entry.image.naturalHeight;
       if (width && height) {
         image.width = width;
         image.height = height;
@@ -95,7 +133,7 @@
       }
       error.hidden = true;
       image.hidden = true;
-      image.src = entry.image.currentSrc || entry.image.src;
+      image.src = artworkUrl;
       if (image.complete) {
         image.hidden = image.naturalWidth === 0;
         error.hidden = image.naturalWidth !== 0;

@@ -1,0 +1,86 @@
+[
+  {
+    "actions": [
+      {
+        "bottom": 646.046875,
+        "clientWidth": 130,
+        "left": 33,
+        "right": 163.359375,
+        "scrollWidth": 130,
+        "text": "Télécharger le visuel",
+        "top": 602.046875,
+        "width": 130.359375
+      },
+      {
+        "bottom": 698.046875,
+        "clientWidth": 149,
+        "left": 33,
+        "right": 181.5625,
+        "scrollWidth": 149,
+        "text": "Consulter le document",
+        "top": 654.046875,
+        "width": 148.5625
+      }
+    ],
+    "dialogWidth": 322,
+    "lang": "fr",
+    "src": "assets/carrigres-calendrier-mural.webp",
+    "width": 360
+  },
+  {
+    "actions": [
+      {
+        "bottom": 672.046875,
+        "clientWidth": 117,
+        "left": 33,
+        "right": 150.171875,
+        "scrollWidth": 117,
+        "text": "Download artwork",
+        "top": 628.046875,
+        "width": 117.171875
+      },
+      {
+        "bottom": 672.046875,
+        "clientWidth": 102,
+        "left": 172.171875,
+        "right": 274.046875,
+        "scrollWidth": 102,
+        "text": "View document",
+        "top": 628.046875,
+        "width": 101.875
+      }
+    ],
+    "dialogWidth": 322,
+    "lang": "en",
+    "src": "assets/carrigres-calendrier-mural.webp",
+    "width": 360
+  },
+  {
+    "actions": [
+      {
+        "bottom": 686.21875,
+        "clientWidth": 113,
+        "left": 33,
+        "right": 146.046875,
+        "scrollWidth": 113,
+        "text": "Descargar diseño",
+        "top": 642.21875,
+        "width": 113.046875
+      },
+      {
+        "bottom": 686.21875,
+        "clientWidth": 142,
+        "left": 168.046875,
+        "right": 309.78125,
+        "scrollWidth": 142,
+        "text": "Consultar documento",
+        "top": 642.21875,
+        "width": 141.734375
+      }
+    ],
+    "dialogWidth": 322,
+    "lang": "es",
+    "src": "assets/carrigres-calendrier-mural.webp",
+    "width": 360
+  }
+]
