@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+# Local import receipts can refer to complete source decks with private pages.
+docs/qa/2026-11-20-curation/imported-assets.json
+# Preview-only device harness.
+docs/qa/2026-11-20-curation/responsive-preview.html

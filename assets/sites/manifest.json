@@ -1,0 +1,168 @@
+{
+  "captured_on": "2026-11-20",
+  "method": "Public websites rendered in the browser; unaltered native viewport screenshots saved as JPEG. No form was filled or submitted.",
+  "original_directory": "/workspace/shared/portfolio-sites/",
+  "images": [
+    {
+      "file": "carrigres-accueil.jpg",
+      "project": "Carrigrès",
+      "source_url": "https://www.carrigres.com/",
+      "source_title": "Accueil - Carrigres",
+      "title": {
+        "fr": "Carrigrès — une entrée ancrée dans le terrain",
+        "en": "Carrigrès — an introduction grounded in the field",
+        "es": "Carrigrès — una entrada vinculada al terreno"
+      },
+      "caption": {
+        "fr": "Une photographie de la carrière installe le contexte industriel. La promesse et l’accès à la demande de devis structurent le premier écran.",
+        "en": "A quarry photograph establishes the industrial context. The value proposition and quotation request guide the first screen.",
+        "es": "Una fotografía de la cantera sitúa el contexto industrial. La propuesta de valor y el acceso a la solicitud de presupuesto estructuran la primera pantalla."
+      },
+      "alt": {
+        "fr": "Accueil du site Carrigrès : photographie de la carrière, titre « Pour vos grands projets d’infrastructure » et bouton Demander un devis.",
+        "en": "Carrigrès homepage: quarry photograph, infrastructure project headline and quotation request button.",
+        "es": "Página de inicio de Carrigrès: fotografía de la cantera, mensaje sobre proyectos de infraestructura y botón de solicitud de presupuesto."
+      },
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "path": "assets/sites/carrigres-accueil.jpg",
+      "sha256": "933d23f07fa82329eef4b021186268e68eb6777b1a7fcc1886fc502612500753"
+    },
+    {
+      "file": "carrigres-produits.jpg",
+      "project": "Carrigrès",
+      "source_url": "https://www.carrigres.com/produits/",
+      "source_title": "Produits - Carrigres",
+      "title": {
+        "fr": "Une offre rendue concrète",
+        "en": "A clearly presented product range",
+        "es": "Una oferta presentada con claridad"
+      },
+      "caption": {
+        "fr": "Les granulats sont présentés par catégorie, avec photographie, granulométrie et usages. Le visiteur dispose de repères pour formuler son besoin.",
+        "en": "Aggregates are organised by category, with photographs, grading and uses. Visitors can identify what they need before making an enquiry.",
+        "es": "Los áridos se organizan por categoría, con fotografías, granulometría y usos. El visitante dispone de referencias para expresar lo que necesita."
+      },
+      "alt": {
+        "fr": "Page Produits de Carrigrès avec trois fiches : sable 0/4 concassé, gravillon 2/8 concassé et gravillon 8/15 concassé.",
+        "en": "Carrigrès product page showing crushed sand 0/4, crushed gravel 2/8 and crushed gravel 8/15.",
+        "es": "Página de productos de Carrigrès con arena triturada 0/4, gravilla triturada 2/8 y gravilla triturada 8/15."
+      },
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "path": "assets/sites/carrigres-produits.jpg",
+      "sha256": "677f3cba4bf49aa7c9c8bdfa46100f909cdfb933a08547371fbc88689c34bd84"
+    },
+    {
+      "file": "carrigres-demande-devis.jpg",
+      "project": "Carrigrès",
+      "source_url": "https://www.carrigres.com/contact/",
+      "source_title": "Contact - Carrigres",
+      "title": {
+        "fr": "La demande de devis, dans le site",
+        "en": "Quotation requests within the website",
+        "es": "Solicitudes de presupuesto dentro del sitio"
+      },
+      "caption": {
+        "fr": "Le formulaire Tally intégré à la page Contact distingue demande de devis et prise de contact. La capture montre le formulaire vide, accessible sans quitter le site.",
+        "en": "The Tally form embedded in the Contact page separates quotation requests from general enquiries. The screenshot shows the empty form, available without leaving the website.",
+        "es": "El formulario Tally integrado en la página de contacto distingue las solicitudes de presupuesto de las consultas generales. La captura muestra el formulario vacío, disponible sin salir del sitio."
+      },
+      "alt": {
+        "fr": "Formulaire Tally vide intégré au site Carrigrès, avec champs de contact et choix Demander un devis ou Prendre contact.",
+        "en": "Empty Tally form embedded in the Carrigrès website, with contact fields and quotation or general enquiry options.",
+        "es": "Formulario Tally vacío integrado en el sitio de Carrigrès, con campos de contacto y opciones de presupuesto o consulta general."
+      },
+      "observed_embedded_provider": "Tally",
+      "observed_homepage_quotation_link": "https://tally.so/r/n9ayL1",
+      "verification_scope": "Rendered empty form only. No form submission. The screenshot does not independently establish Google Sheets routing or downstream automation.",
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "path": "assets/sites/carrigres-demande-devis.jpg",
+      "sha256": "085c930ced44dc4b25ae5fa4d50031f2757d89738b2bd42fcb9f360ee5bf428f"
+    },
+    {
+      "file": "breathe-accueil.jpg",
+      "project": "Breathe & Rise Without Fear",
+      "source_url": "https://breathewithoutfear.org/en",
+      "source_title": "Breathe & Rise Without Fear | Women's Advocacy Ireland",
+      "title": {
+        "fr": "Breathe — une mission incarnée",
+        "en": "Breathe — a mission with a human presence",
+        "es": "Breathe — una misión con presencia humana"
+      },
+      "caption": {
+        "fr": "Portrait, palette chaude et hiérarchie éditoriale introduisent l’initiative. Deux parcours sont visibles dès l’accueil : découvrir le projet ou trouver du soutien.",
+        "en": "Portraiture, a warm palette and editorial hierarchy introduce the initiative. Two pathways are visible from the homepage: discovering the project or finding support.",
+        "es": "El retrato, la paleta cálida y la jerarquía editorial presentan la iniciativa. Desde el inicio se ofrecen dos recorridos: descubrir el proyecto o encontrar apoyo."
+      },
+      "alt": {
+        "fr": "Accueil de Breathe & Rise Without Fear avec portrait de Marie Desy, présentation de l’initiative et accès au projet et aux ressources de soutien.",
+        "en": "Breathe & Rise Without Fear homepage with Marie Desy’s portrait, an introduction to the initiative and links to the project and support resources.",
+        "es": "Inicio de Breathe & Rise Without Fear con retrato de Marie Desy, presentación de la iniciativa y accesos al proyecto y a recursos de apoyo."
+      },
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "path": "assets/sites/breathe-accueil.jpg",
+      "sha256": "2d8fd7caaf99162d530a266477f18e1855cdc7b7b764e65e505ccfcc6dd5ec0d"
+    },
+    {
+      "file": "breathe-mission.jpg",
+      "project": "Breathe & Rise Without Fear",
+      "source_url": "https://breathewithoutfear.org/en#breathe",
+      "source_title": "Breathe & Rise Without Fear | Women's Advocacy Ireland",
+      "title": {
+        "fr": "Rendre la mission lisible",
+        "en": "Making the mission clear",
+        "es": "Hacer comprensible la misión"
+      },
+      "caption": {
+        "fr": "Le premier pilier, Breathe, associe une signature visuelle à une présentation structurée : sécurité, sensibilisation, accompagnement et accès aux ressources.",
+        "en": "The first pillar, Breathe, pairs a visual identity with a structured presentation of safety, awareness, support and access to resources.",
+        "es": "El primer pilar, Breathe, combina una identidad visual con una presentación estructurada de seguridad, sensibilización, acompañamiento y acceso a recursos."
+      },
+      "alt": {
+        "fr": "Section Breathe du site : carte du premier pilier à gauche, mission et quatre objectifs à droite.",
+        "en": "Breathe website section: first-pillar visual card on the left, mission and four objectives on the right.",
+        "es": "Sección Breathe del sitio: tarjeta visual del primer pilar a la izquierda, misión y cuatro objetivos a la derecha."
+      },
+      "capture_type": "Homepage interior anchor section",
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "path": "assets/sites/breathe-mission.jpg",
+      "sha256": "67bf2abc7b0a87c41bc721492a9126b21bb93c10638f51c144603ee415966a7e"
+    },
+    {
+      "file": "breathe-action-anew.jpg",
+      "project": "Breathe & Rise Without Fear",
+      "source_url": "https://breathewithoutfear.org/en/anew",
+      "source_title": "Community Action at Anew, 1 October 2026 | Breathe Without Fear",
+      "title": {
+        "fr": "Une page intérieure qui raconte l’action",
+        "en": "An interior page that tells the story",
+        "es": "Una página interior que cuenta la acción"
+      },
+      "caption": {
+        "fr": "La page Anew développe l’action communautaire du 1er octobre 2026 à travers un récit en sept slides. Photographie, légende et navigation prolongent l’histoire au-delà de l’accueil.",
+        "en": "The Anew page develops the 1 October 2026 community action through a seven-slide story. Photography, captions and navigation extend the narrative beyond the homepage.",
+        "es": "La página Anew desarrolla la acción comunitaria del 1 de octubre de 2026 mediante una historia de siete diapositivas. Fotografías, textos y navegación amplían el relato más allá del inicio."
+      },
+      "alt": {
+        "fr": "Page Anew de Breathe : première slide du récit en sept parties, photographie de Marie Desy et présentation de l’action communautaire.",
+        "en": "Breathe Anew page: first slide of a seven-part story, with a photograph of Marie Desy and an introduction to the community action.",
+        "es": "Página Anew de Breathe: primera diapositiva de una historia de siete partes, con fotografía de Marie Desy y presentación de la acción comunitaria."
+      },
+      "capture_type": "Interior page, narrative carousel, slide 1 of 7",
+      "width": 1348,
+      "height": 926,
+      "format": "JPEG",
+      "path": "assets/sites/breathe-action-anew.jpg",
+      "sha256": "89b8053cb332a13e9998fdf6e444de8c42ab17d6212c7648b952865b21d964d1"
+    }
+  ]
+}

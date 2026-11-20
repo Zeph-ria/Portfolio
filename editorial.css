@@ -1,0 +1,101 @@
+/* Content presentation only. The established Wremena hero, burgundy palette,
+   feature composition and contact typography are inherited from styles.css. */
+.main-nav{width:min(48%,560px)}
+.work-guidance,.calendar-guidance{font-size:13px;color:var(--muted);margin:0 0 34px;max-width:780px}
+.project-grid{align-items:start;row-gap:82px}
+.project-topline{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:13px;font-size:10px;letter-spacing:.075em;text-transform:uppercase}
+.project-topline>span:last-child{text-align:right;color:var(--muted)}
+.project-slideshow{min-width:0}
+.project-landscape .slide-track [data-preview]{aspect-ratio:16/10}
+.project-portrait .slide-track [data-preview]{aspect-ratio:4/5}
+.slide-track [data-preview]{position:relative}
+.preview-affordance{position:absolute;right:14px;top:14px;display:inline-flex;align-items:center;gap:7px;padding:8px 11px;background:#ffffffed;color:var(--ink);border:1px solid #0e0e0e18;border-radius:24px;font-size:11px;line-height:1;opacity:0;transition:opacity .18s}
+.preview-affordance::before{content:"+";font-size:17px;line-height:1}
+[data-preview]:hover .preview-affordance,[data-preview]:focus-visible .preview-affordance{opacity:1}
+.project-slideshow figcaption{min-height:112px;padding-top:15px}
+.project-slideshow [data-slide-title]{font:500 13px/1.4 var(--sans)}
+.project-slideshow [data-slide-caption]{font-size:13px;line-height:1.6;margin-top:6px;max-width:60ch}
+.project-slideshow .slide-controls{margin-top:8px;border-bottom:1px solid var(--line);padding-bottom:17px}
+.project-details{padding-top:20px}
+.project-details>div{min-width:0}
+.project-details p{max-width:58ch;line-height:1.65}
+.project-role{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;margin:17px 0 0;font-size:12px;line-height:1.6;color:var(--muted)}
+.role-label{font-size:10px;line-height:1.8;text-transform:uppercase;letter-spacing:.06em;color:var(--wine)}
+.project-context{margin:13px 0 0;font-size:11px;color:var(--muted);font-style:italic}
+.case-study{margin-top:20px}
+.case-study summary{display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none}
+.case-study summary::-webkit-details-marker{display:none}
+.case-study summary::after{content:"+";font:400 23px/1 var(--serif);color:var(--wine)}
+.case-study[open] summary::after{content:"−"}
+.case-study dl>div{padding:13px 0}
+.enquiry-journey{list-style:none;margin:12px 0 0;padding:0}
+.enquiry-journey li{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;padding:13px 0;border-top:1px solid var(--line)}
+.enquiry-journey .journey-step{font:400 29px/1.1 var(--serif);color:var(--wine)}
+.enquiry-journey strong{font-weight:500;color:var(--ink)}
+.enquiry-journey p{margin:5px 0 0;font-size:13px}
+.calendar-section{background:#f7f5f2}
+.calendar-title{font-size:clamp(64px,9.5vw,160px)}
+.calendar-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:50px 25px}
+.calendar-card{min-width:0}
+.calendar-card .slide-track [data-preview]{aspect-ratio:4/5;background:#e7e3df}
+.calendar-card .slide-track [data-preview] img{object-fit:cover;object-position:center;width:100%;height:100%;max-width:none;max-height:none}
+.calendar-card figcaption{min-height:0;padding-top:20px}
+.calendar-card [data-slide-title]{font:400 clamp(25px,2.4vw,37px)/1.1 var(--serif)}
+.calendar-card [data-slide-caption]{font-size:13px;max-width:62ch;line-height:1.6;margin-top:10px}
+.website-grid{align-items:start;row-gap:55px}
+.website-slideshow .slide-track [data-preview]{aspect-ratio:1348/926;background:#f1eeea}
+.website-slideshow figcaption{min-height:146px}
+.website-details{display:block;padding-top:20px}
+.website-details h3{font-size:clamp(35px,3.6vw,58px);line-height:1.04}
+.website-details p{max-width:60ch;line-height:1.65}
+.website-details .website-visit{display:inline-flex;align-items:center;min-height:44px;margin-top:4px}
+.competencies{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:65px}
+.competency{border-top:1px solid #bfb9b3;padding-top:19px;min-width:0}
+.competency-number{font-size:11px;letter-spacing:.08em;color:var(--wine)}
+.competency h3{font:400 clamp(26px,2.8vw,42px)/1.08 var(--serif);letter-spacing:-.025em;margin:18px 0 15px}
+.competency p{font-size:14px;line-height:1.7;margin:0 0 18px;color:var(--muted)}
+.competency-links{display:flex;flex-wrap:wrap;gap:10px 16px}
+.competency-links a{font-size:12px;text-decoration:none;border-bottom:1px solid currentColor;padding:3px 0;min-height:30px}
+.competency-links a:hover{color:var(--wine)}
+.number-grid small{display:block;font-size:11px;line-height:1.6;max-width:235px;opacity:.8}
+.metrics-source{font-size:12px;line-height:1.65;max-width:740px;margin:42px 0 0;opacity:.85}
+
+@media(hover:none){.preview-affordance{opacity:1}}
+@media(max-width:1100px){
+  .project-slideshow figcaption{min-height:132px}
+  .website-slideshow figcaption{min-height:180px}
+  .competencies{gap:25px}
+}
+@media(max-width:700px){
+  .main-nav{width:100%}
+  .project-grid{row-gap:60px}
+  .project-topline{font-size:9px;gap:12px;line-height:1.5}
+  .project-slideshow figcaption{min-height:0;padding-top:13px}
+  .project-slideshow [data-slide-title]{font-size:13px}
+  .project-slideshow [data-slide-caption]{font-size:12px}
+  .project-slideshow .slide-controls{margin-top:15px;padding-bottom:17px}
+  .project-portrait .slide-track [data-preview]{aspect-ratio:4/5}
+  .project-landscape .slide-track [data-preview]{aspect-ratio:16/10}
+  .preview-affordance{top:10px;right:10px;font-size:10px;padding:7px 9px}
+  .project-role{grid-template-columns:55px minmax(0,1fr);gap:10px}
+  .project-details h3{font-size:clamp(35px,8.5vw,55px)}
+  .calendar-title{font-size:clamp(49px,10.5vw,84px)}
+  .calendar-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .calendar-card .slide-track [data-preview]{aspect-ratio:4/5}
+  .calendar-card [data-slide-title]{font-size:30px}
+  .website-details h3{font-size:clamp(34px,8vw,48px)}
+  .websites-title{font-size:clamp(49px,11vw,90px)}
+  .website-slideshow figcaption{min-height:0}
+  .competencies{grid-template-columns:minmax(0,1fr);gap:30px;margin-top:35px}
+  .competency h3{font-size:34px;max-width:500px;margin:14px 0}
+  .competency p{max-width:60ch}
+  .competency-links a{min-height:36px}
+  .number-grid small{font-size:10px}
+}
+@media(max-width:359px){
+  .about-grid .display-title{font-size:49px}
+  .experience-section .display-title{font-size:clamp(45px,16vw,55px)}
+  html[lang="es"] .experience-section .display-title{font-size:clamp(36px,12.5vw,43px)}
+  html[lang="en"] .contact-section h2{font-size:clamp(38px,12.4vw,46px)}
+}
+@media(prefers-reduced-motion:reduce){.preview-affordance{transition:none}}
