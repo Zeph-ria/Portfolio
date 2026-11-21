@@ -183,7 +183,7 @@ def render_metrics(content):
         <div class="section-topline">{element('span',text('Carrigrès · résultats documentés','Carrigrès · documented results','Carrigrès · resultados documentados'))}<span>2025</span></div>
         {element('h2',text('DES IDÉES.<br><em>DES PREUVES.</em>','IDEAS.<br><em>EVIDENCE.</em>','IDEAS.<br><em>EVIDENCIAS.</em>'),'id="numbers-title" class="numbers-title"',True)}
         <div class="number-grid">{' '.join(cards)}</div>
-        {element('p',text('Source : bilan de communication Carrigrès, janvier–septembre 2025. Les données Google couvrent les cinq mois suivant l’indexation du site.','Source: Carrigrès communication report, January–September 2025. Google data covers the five months following website indexing.','Fuente: balance de comunicación Carrigrès, enero–septiembre de 2025. Los datos de Google abarcan los cinco meses posteriores a la indexación del sitio.'),'class="metrics-source"')}
+        {element('p',text('Source : bilan de communication Carrigrès, janvier à septembre 2025. Les données Google couvrent les cinq mois suivant l’indexation du site.','Source: Carrigrès communication report, January à September 2025. Google data covers the five months following website indexing.','Fuente: balance de comunicación Carrigrès, enero à septiembre de 2025. Los datos de Google abarcan los cinco meses posteriores a la indexación del sitio.'),'class="metrics-source"')}
       </section>'''
 
 def replace_section(document, section_id, new_section, original_class=None):
