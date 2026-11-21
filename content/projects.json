@@ -138,9 +138,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Un concept de marque culturelle décliné en affiches et objets.",
-        "en": "A cultural brand concept expressed through posters and branded objects.",
-        "es": "Un concepto de marca cultural expresado en carteles y objetos de marca."
+        "fr": "Identité, mockups et direction iconographique au service des cultures et des talents africains.",
+        "en": "Identity, mockups and photographic art direction celebrating African cultures and talent.",
+        "es": "Identidad, mockups y dirección fotográfica que celebran las culturas y el talento africanos."
       },
       "slides": [
         {
@@ -285,6 +285,57 @@
             "fr": "Agorafrik : Campagne digitale Art Shop",
             "en": "Agorafrik : Art Shop digital campaign",
             "es": "Agorafrik : Campaña digital Art Shop"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-photo-p25.webp",
+          "thumb": "assets/projects/agorafrik-photo-p25.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Direction photographique : art et artisanat",
+            "en": "Photographic art direction: arts and crafts",
+            "es": "Dirección fotográfica: arte y artesanía"
+          },
+          "alt": {
+            "fr": "Agorafrik : Direction photographique : art et artisanat",
+            "en": "Agorafrik : Photographic art direction: arts and crafts",
+            "es": "Agorafrik : Dirección fotográfica: arte y artesanía"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-photo-p26.webp",
+          "thumb": "assets/projects/agorafrik-photo-p26.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Direction photographique : jeunesse et avenir",
+            "en": "Photographic art direction: youth and future",
+            "es": "Dirección fotográfica: juventud y futuro"
+          },
+          "alt": {
+            "fr": "Agorafrik : Direction photographique : jeunesse et avenir",
+            "en": "Agorafrik : Photographic art direction: youth and future",
+            "es": "Agorafrik : Dirección fotográfica: juventud y futuro"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-photo-p27.webp",
+          "thumb": "assets/projects/agorafrik-photo-p27.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Direction photographique : mode et identité culturelle",
+            "en": "Photographic art direction: fashion and cultural identity",
+            "es": "Dirección fotográfica: moda e identidad cultural"
+          },
+          "alt": {
+            "fr": "Agorafrik : Direction photographique : mode et identité culturelle",
+            "en": "Agorafrik : Photographic art direction: fashion and cultural identity",
+            "es": "Agorafrik : Dirección fotográfica: moda e identidad cultural"
           }
         }
       ]
@@ -971,6 +1022,23 @@
       },
       "slides": [
         {
+          "path": "assets/projects/utex-empreinte-p01.webp",
+          "thumb": "assets/projects/utex-empreinte-p01.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Couverture du concept ESG",
+            "en": "ESG concept cover",
+            "es": "Portada del concepto ESG"
+          },
+          "alt": {
+            "fr": "UTEX Empreinte : Couverture du concept ESG",
+            "en": "UTEX Empreinte : ESG concept cover",
+            "es": "UTEX Empreinte : Portada del concepto ESG"
+          }
+        },
+        {
           "path": "assets/projects/utex-empreinte-p02.webp",
           "thumb": "assets/projects/thumbs/utex-empreinte-p02.webp",
           "width": 1920,
@@ -984,6 +1052,23 @@
             "fr": "UTEX Empreinte : Signature UTEX Empreinte",
             "en": "UTEX Empreinte : UTEX Empreinte signature",
             "es": "UTEX Empreinte : Firma UTEX Empreinte"
+          }
+        },
+        {
+          "path": "assets/projects/utex-empreinte-p19.webp",
+          "thumb": "assets/projects/utex-empreinte-p19.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Signature de clôture du programme",
+            "en": "Programme closing signature",
+            "es": "Firma de cierre del programa"
+          },
+          "alt": {
+            "fr": "UTEX Empreinte : Signature de clôture du programme",
+            "en": "UTEX Empreinte : Programme closing signature",
+            "es": "UTEX Empreinte : Firma de cierre del programa"
           }
         }
       ]
@@ -2584,6 +2669,96 @@
         "en": "Re-vendre : Lookbook cover",
         "es": "Re-vendre : Portada del lookbook"
       }
+    },
+    {
+      "path": "assets/projects/agorafrik-photo-p25.webp",
+      "thumb": "assets/projects/agorafrik-photo-p25.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "title": {
+        "fr": "Direction photographique : art et artisanat",
+        "en": "Photographic art direction: arts and crafts",
+        "es": "Dirección fotográfica: arte y artesanía"
+      },
+      "alt": {
+        "fr": "Agorafrik : Direction photographique : art et artisanat",
+        "en": "Agorafrik : Photographic art direction: arts and crafts",
+        "es": "Agorafrik : Dirección fotográfica: arte y artesanía"
+      },
+      "project": "Agorafrik"
+    },
+    {
+      "path": "assets/projects/agorafrik-photo-p26.webp",
+      "thumb": "assets/projects/agorafrik-photo-p26.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "title": {
+        "fr": "Direction photographique : jeunesse et avenir",
+        "en": "Photographic art direction: youth and future",
+        "es": "Dirección fotográfica: juventud y futuro"
+      },
+      "alt": {
+        "fr": "Agorafrik : Direction photographique : jeunesse et avenir",
+        "en": "Agorafrik : Photographic art direction: youth and future",
+        "es": "Agorafrik : Dirección fotográfica: juventud y futuro"
+      },
+      "project": "Agorafrik"
+    },
+    {
+      "path": "assets/projects/agorafrik-photo-p27.webp",
+      "thumb": "assets/projects/agorafrik-photo-p27.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "title": {
+        "fr": "Direction photographique : mode et identité culturelle",
+        "en": "Photographic art direction: fashion and cultural identity",
+        "es": "Dirección fotográfica: moda e identidad cultural"
+      },
+      "alt": {
+        "fr": "Agorafrik : Direction photographique : mode et identité culturelle",
+        "en": "Agorafrik : Photographic art direction: fashion and cultural identity",
+        "es": "Agorafrik : Dirección fotográfica: moda e identidad cultural"
+      },
+      "project": "Agorafrik"
+    },
+    {
+      "path": "assets/projects/utex-empreinte-p01.webp",
+      "thumb": "assets/projects/utex-empreinte-p01.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "title": {
+        "fr": "Couverture du concept ESG",
+        "en": "ESG concept cover",
+        "es": "Portada del concepto ESG"
+      },
+      "alt": {
+        "fr": "UTEX Empreinte : Couverture du concept ESG",
+        "en": "UTEX Empreinte : ESG concept cover",
+        "es": "UTEX Empreinte : Portada del concepto ESG"
+      },
+      "project": "UTEX Empreinte"
+    },
+    {
+      "path": "assets/projects/utex-empreinte-p19.webp",
+      "thumb": "assets/projects/utex-empreinte-p19.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "title": {
+        "fr": "Signature de clôture du programme",
+        "en": "Programme closing signature",
+        "es": "Firma de cierre del programa"
+      },
+      "alt": {
+        "fr": "UTEX Empreinte : Signature de clôture du programme",
+        "en": "UTEX Empreinte : Programme closing signature",
+        "es": "UTEX Empreinte : Firma de cierre del programa"
+      },
+      "project": "UTEX Empreinte"
     }
   ],
   "calendars": [
