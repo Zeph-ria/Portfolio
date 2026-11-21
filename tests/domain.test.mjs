@@ -97,11 +97,11 @@ test('dynamic Breathe Without Fear labels do not restore the obsolete preparatio
 
 test('Breathe Without Fear presents real homepage and interior captures with matching dimensions', () => {
   assert.equal(siteCaptures.length, 3, 'The selection must include homepage and two interior views');
-  const images = descendants(websiteCard()).filter(node => node.tag === 'img');
+  const images = descendants(websiteCard()).filter(node => node.tag === 'img' && node.attrs['data-full-src']);
   assert.equal(images.length, siteCaptures.length, 'Each selected capture must be presented');
   const manifest = JSON.parse(readFileSync(resolve(root, 'assets-manifest.json'), 'utf8'));
   for (const capture of siteCaptures) {
-    const image = images.find(node => node.attrs.src === capture.path);
+    const image = images.find(node => (node.attrs.src || node.attrs['data-deferred-src']) === capture.path);
     assert(image, 'Missing selected real capture: ' + capture.path);
     const actual = jpegDimensions(readFileSync(resolve(root, capture.path)));
     assert(actual.width > 0 && actual.height > 0);
