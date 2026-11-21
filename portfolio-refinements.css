@@ -82,3 +82,7 @@
 .utex-step p{font:400 12px/1.5 'DM Sans',sans-serif;color:#555;margin:0}
 @media(min-width:950px){#projet-utex-empreinte{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-items:start;padding:25px;background:#f8f6f3;border-radius:8px}#projet-utex-empreinte .project-slideshow{grid-row:span 2}#projet-utex-empreinte .project-details{padding-top:12px}#projet-utex-empreinte .utex-process{grid-column:2}}
 @media(max-width:700px){.explorations-grid{grid-template-columns:1fr;gap:14px}.exploration-card h3{margin-top:25px}.canva-frame-shell{height:290px}.utex-steps{grid-template-columns:1fr}}
+
+/* Deferred previews: keep their geometries stable; preserve a true no-script fallback. */
+.artwork-deferred:not([src]){visibility:hidden}
+.no-js .artwork-deferred:not([src]){display:none!important}
