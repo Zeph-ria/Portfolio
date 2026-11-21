@@ -225,8 +225,9 @@ function fixture({ nativeDialog = true, baseURI = baseURL, viewportWidth = 390 }
     const element = new Element(document, node.tag, node.attrs);
     element.ownText = node.ownText;
     for (const child of node.children) element.appendChild(build(child));
-    if (element.tagName === 'IMG' && element.getAttribute('src')) {
-      document.imageSources.set(new URL(element.src).pathname, { width: element.naturalWidth, height: element.naturalHeight });
+    if (element.tagName === 'IMG' && (element.getAttribute('src') || element.getAttribute('data-deferred-src'))) {
+      const previewPath = element.getAttribute('src') || element.getAttribute('data-deferred-src');
+      document.imageSources.set(new URL(previewPath, baseURI).pathname, { width: element.naturalWidth, height: element.naturalHeight });
       if (element.dataset.fullSrc) document.imageSources.set(new URL(element.dataset.fullSrc, baseURI).pathname, {
         width: Number(element.dataset.fullWidth), height: Number(element.dataset.fullHeight)
       });
