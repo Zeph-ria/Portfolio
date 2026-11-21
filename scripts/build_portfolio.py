@@ -64,7 +64,7 @@ def render_slide(slide, name, manifest, calendar=False, number=0, gallery=False)
     path, thumb = slide['path'], slide.get('thumb', slide['path'])
     alt = slide.get('alt') or {language: f'{name} : {slide["title"][language]}' for language in LANGUAGES}
     fit = ' data-preview-fit="cover"' if calendar else ''
-    quality = 'live-website-screenshot' if path.startswith('assets/sites/') else 'canva-export'
+    quality = slide.get('quality', 'live-website-screenshot' if path.startswith('assets/sites/') else 'canva-export')
     label = element('span', text('Agrandir', 'Enlarge', 'Ampliar'), 'class="preview-affordance" aria-hidden="true"')
     caption_class = 'gallery-caption' if gallery else '' if calendar else 'sr-only'
     brand = f'<span class="gallery-brand">{html.escape(name)}</span>' if gallery else ''
