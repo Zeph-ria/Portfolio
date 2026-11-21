@@ -158,6 +158,86 @@
             "en": "Agorafrik — Cards and tag",
             "es": "Agorafrik — Tarjetas y etiqueta"
           }
+        },
+        {
+          "path": "assets/projects/agorafrik-identite-p35.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p35.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Tote bags de marque",
+            "en": "Branded tote bags",
+            "es": "Bolsas de marca"
+          },
+          "alt": {
+            "fr": "Agorafrik — Tote bags de marque",
+            "en": "Agorafrik — Branded tote bags",
+            "es": "Agorafrik — Bolsas de marca"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-identite-p31.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p31.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Badge et tour de cou",
+            "en": "Badge and lanyard",
+            "es": "Credencial y cinta"
+          },
+          "alt": {
+            "fr": "Agorafrik — Badge et tour de cou",
+            "en": "Agorafrik — Badge and lanyard",
+            "es": "Agorafrik — Credencial y cinta"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-identite-p39.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p39.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Panneau Art Shop",
+            "en": "Art Shop billboard",
+            "es": "Valla Art Shop"
+          },
+          "alt": {
+            "fr": "Agorafrik — Panneau Art Shop",
+            "en": "Agorafrik — Art Shop billboard",
+            "es": "Agorafrik — Valla Art Shop"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-identite-p40.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-identite-p40.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Affiches Art Shop",
+            "en": "Art Shop posters",
+            "es": "Carteles Art Shop"
+          },
+          "alt": {
+            "fr": "Agorafrik — Affiches Art Shop",
+            "en": "Agorafrik — Art Shop posters",
+            "es": "Agorafrik — Carteles Art Shop"
+          }
+        },
+        {
+          "path": "assets/projects/agorafrik-campagne-p07.webp",
+          "thumb": "assets/projects/thumbs/agorafrik-campagne-p07.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Campagne digitale Art Shop",
+            "en": "Art Shop digital campaign",
+            "es": "Campaña digital Art Shop"
+          },
+          "alt": {
+            "fr": "Agorafrik — Campagne digitale Art Shop",
+            "en": "Agorafrik — Art Shop digital campaign",
+            "es": "Agorafrik — Campaña digital Art Shop"
+          }
         }
       ]
     },
@@ -238,6 +318,118 @@
             "en": "Re-vendre — Stripes and satin",
             "es": "Re-vendre — Rayas y satén"
           }
+        },
+        {
+          "path": "assets/projects/revendre-cadeau-p03.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p03.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Campagne du 8 mars",
+            "en": "8 March campaign",
+            "es": "Campaña del 8 de marzo"
+          },
+          "alt": {
+            "fr": "Re-vendre — Campagne du 8 mars",
+            "en": "Re-vendre — 8 March campaign",
+            "es": "Re-vendre — Campaña del 8 de marzo"
+          }
+        },
+        {
+          "path": "assets/projects/revendre-cadeau-p04.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p04.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Offre carte cadeau",
+            "en": "Gift card offer",
+            "es": "Oferta de tarjeta regalo"
+          },
+          "alt": {
+            "fr": "Re-vendre — Offre carte cadeau",
+            "en": "Re-vendre — Gift card offer",
+            "es": "Re-vendre — Oferta de tarjeta regalo"
+          }
+        },
+        {
+          "path": "assets/projects/revendre-cadeau-p05.webp",
+          "thumb": "assets/projects/thumbs/revendre-cadeau-p05.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Déclinaisons de cartes cadeaux",
+            "en": "Gift card variations",
+            "es": "Variantes de tarjetas regalo"
+          },
+          "alt": {
+            "fr": "Re-vendre — Déclinaisons de cartes cadeaux",
+            "en": "Re-vendre — Gift card variations",
+            "es": "Re-vendre — Variantes de tarjetas regalo"
+          }
+        },
+        {
+          "path": "assets/projects/revendre-styles-p40.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p40.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Style All Black",
+            "en": "All Black style",
+            "es": "Estilo All Black"
+          },
+          "alt": {
+            "fr": "Re-vendre — Style All Black",
+            "en": "Re-vendre — All Black style",
+            "es": "Re-vendre — Estilo All Black"
+          }
+        },
+        {
+          "path": "assets/projects/revendre-styles-p41.webp",
+          "thumb": "assets/projects/thumbs/revendre-styles-p41.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Silhouette en noir",
+            "en": "Black outfit",
+            "es": "Conjunto negro"
+          },
+          "alt": {
+            "fr": "Re-vendre — Silhouette en noir",
+            "en": "Re-vendre — Black outfit",
+            "es": "Re-vendre — Conjunto negro"
+          }
+        },
+        {
+          "path": "assets/projects/revendre-looks-p96.webp",
+          "thumb": "assets/projects/thumbs/revendre-looks-p96.webp",
+          "width": 1080,
+          "height": 1920,
+          "title": {
+            "fr": "Beige et noir",
+            "en": "Beige and black",
+            "es": "Beige y negro"
+          },
+          "alt": {
+            "fr": "Re-vendre — Beige et noir",
+            "en": "Re-vendre — Beige and black",
+            "es": "Re-vendre — Beige y negro"
+          }
+        },
+        {
+          "path": "assets/revendre-lookbook.webp",
+          "thumb": "assets/thumbs/revendre-lookbook.webp",
+          "width": 1414,
+          "height": 2000,
+          "title": {
+            "fr": "Couverture du lookbook",
+            "en": "Lookbook cover",
+            "es": "Portada del lookbook"
+          },
+          "alt": {
+            "fr": "Re-vendre — Couverture du lookbook",
+            "en": "Re-vendre — Lookbook cover",
+            "es": "Re-vendre — Portada del lookbook"
+          }
         }
       ]
     },
@@ -317,6 +509,70 @@
             "fr": "L’Atelier — Affiche de réouverture",
             "en": "L’Atelier — Reopening poster",
             "es": "L’Atelier — Cartel de reapertura"
+          }
+        },
+        {
+          "path": "assets/projects/atelier-identite-p08.webp",
+          "thumb": "assets/projects/thumbs/atelier-identite-p08.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Annonce de nouvelle identité",
+            "en": "New identity announcement",
+            "es": "Anuncio de nueva identidad"
+          },
+          "alt": {
+            "fr": "L’Atelier — Annonce de nouvelle identité",
+            "en": "L’Atelier — New identity announcement",
+            "es": "L’Atelier — Anuncio de nueva identidad"
+          }
+        },
+        {
+          "path": "assets/projects/atelier-identite-p10.webp",
+          "thumb": "assets/projects/thumbs/atelier-identite-p10.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Manucure et pédicure",
+            "en": "Manicure and pedicure",
+            "es": "Manicura y pedicura"
+          },
+          "alt": {
+            "fr": "L’Atelier — Manucure et pédicure",
+            "en": "L’Atelier — Manicure and pedicure",
+            "es": "L’Atelier — Manicura y pedicura"
+          }
+        },
+        {
+          "path": "assets/projects/atelier-conseils-p03.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p03.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Base et top coat",
+            "en": "Base and top coat",
+            "es": "Base y top coat"
+          },
+          "alt": {
+            "fr": "L’Atelier — Base et top coat",
+            "en": "L’Atelier — Base and top coat",
+            "es": "L’Atelier — Base y top coat"
+          }
+        },
+        {
+          "path": "assets/projects/atelier-conseils-p04.webp",
+          "thumb": "assets/projects/thumbs/atelier-conseils-p04.webp",
+          "width": 1080,
+          "height": 1350,
+          "title": {
+            "fr": "Entretenir la manucure",
+            "en": "Manicure care",
+            "es": "Cuidado de la manicura"
+          },
+          "alt": {
+            "fr": "L’Atelier — Entretenir la manucure",
+            "en": "L’Atelier — Manicure care",
+            "es": "L’Atelier — Cuidado de la manicura"
           }
         }
       ]
