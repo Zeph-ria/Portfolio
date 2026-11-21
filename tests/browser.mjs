@@ -42,11 +42,13 @@ async function main() {
   const captures = JSON.parse(await readFile(resolve(root, 'assets/sites/manifest.json'), 'utf8')).images;
   const groups = [
     ...content.projects.map(project => ({ type: 'project', id: project.id, name: project.name, slides: project.slides })),
+    { type: 'gallery', name: 'Galerie', slides: content.gallery },
     ...content.calendars.map(calendar => ({ type: 'calendar', id: calendar.id, name: calendar.name.fr, slides: [calendar.slide] })),
     ...[...new Set(captures.map(capture => capture.project))].map(name => ({ type: 'website', name, slides: captures.filter(capture => capture.project === name) }))
   ];
   const expectedSlides = groups.flatMap(group => group.slides);
   assert(groups.length > 0 && expectedSlides.length > 0, 'No reviewed portfolio selection found');
+  assert(content.gallery.length >= 50, 'The visual gallery must contain at least 50 selected images');
   const originals = new Map();
   for (const slide of expectedSlides) {
     assert.match(slide.path, /^assets\//, 'Selected artwork must be served by the portfolio');
@@ -82,7 +84,7 @@ async function main() {
   const pageErrors = new Set();
   const resourceFailures = new Set();
   const origin = new URL(baseURL).origin;
-  const groupElement = (page, group) => group.type === 'website'
+  const groupElement = (page, group) => group.type === 'gallery' ? page.locator('[data-gallery]') : group.type === 'website'
     ? page.locator('.website-card').filter({ has: page.getByRole('heading', { name: group.name, exact: true }) }).locator('[data-slideshow]')
     : page.locator(group.type === 'project' ? `[data-project="${group.id}"] [data-slideshow]` : `#calendrier-${group.id} [data-slideshow]`);
   const urlFor = path => new URL(path, baseURL).href;
@@ -154,17 +156,13 @@ async function main() {
       assert(Math.abs(style.headingSize - 148.32) < 0.1, 'Approved hero sizing changed at 1440px');
       assert.equal(style.burgundy, 'rgb(101, 41, 54)');
       assert.deepEqual(await page.locator('article.project-card[data-project]').evaluateAll(cards => cards.map(card => card.dataset.project)), content.projects.map(project => project.id));
-      assert.equal(await page.locator('[data-slideshow]').count(), groups.length);
+      assert.equal(await page.locator('[data-slideshow]').count(), groups.filter(group => group.type !== 'gallery').length);
+      assert.equal(await page.locator('[data-gallery]').count(), 1);
       assert.equal(await page.locator('a[data-preview]').count(), expectedSlides.length);
-      for (const project of content.projects) {
-        const study = page.locator(`[data-project="${project.id}"] details.case-study`);
-        await study.locator('summary').click();
-        assert.equal(await study.getAttribute('open'), '');
-        assert((await study.locator('dl').innerText()).includes(project.objective.fr));
-      }
+      assert.equal(await page.locator('.featured-project, .project-insight, .case-study').count(), 0, 'The public presentation must remain visual and concise');
     });
 
-    await run('every selected page opens locally at full definition and stays within its project', async (page, context) => {
+    await run('every selected artwork opens locally at full definition and stays within its collection', async (page, context) => {
       const portfolioURL = page.url();
       for (const group of groups) {
         const element = groupElement(page, group);
@@ -180,15 +178,12 @@ async function main() {
             const expected = originals.get(slide.path);
             assert.deepEqual({ width: image.width, height: image.height }, { width: expected.width, height: expected.height });
             assert.equal(await page.locator('#preview-counter').textContent(), `${index + 1} sur ${group.slides.length}`);
-            assert((await page.locator('#preview-caption').textContent()).trim(), 'A page explanation is missing');
+            const caption = element.locator('[data-slide]').nth(index).locator('[data-slide-caption]');
+            const expectedCaption = await caption.count() ? (await caption.textContent()).trim() : '';
+            assert.equal(await page.locator('#preview-caption').textContent(), expectedCaption, 'Optional captions must not acquire replacement text');
             assert.equal(await page.locator('#preview-download').getAttribute('href'), image.src);
-            if (slide.source) {
-              assert.equal(await page.locator('#preview-document').isVisible(), true);
-              assert.equal(await page.locator('#preview-document').getAttribute('href'), slide.source);
-            } else {
-              assert.equal(await page.locator('#preview-document').isVisible(), false, 'A previous Canva reference leaked into a website screenshot');
-              assert.equal(await page.locator('#preview-document').getAttribute('href'), null);
-            }
+            assert.equal(await page.locator('#preview-document').isVisible(), false, 'Public artwork must not expose a complete source document');
+            assert.equal(await page.locator('#preview-document').getAttribute('href'), null);
             decoded++;
           }
           if (group.slides.length > 1) {
@@ -205,7 +200,7 @@ async function main() {
     });
 
     await run('mobile navigation fits, reaches its links and closes without losing keyboard focus', async page => {
-      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#apropos', '#contact']);
+      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#galerie', '#apropos', '#contact']);
       assert.equal(await page.locator('#menu-toggle').isVisible(), false);
       for (const width of [320, 390, 700]) {
         await page.setViewportSize({ width, height: 844 });
@@ -219,9 +214,9 @@ async function main() {
         assert(await page.locator('#menu-toggle').evaluate(button => document.activeElement === button));
       }
       await page.locator('#menu-toggle').click();
-      await page.locator('#main-menu a[href="#apropos"]').click();
+      await page.locator('#main-menu a[href="#galerie"]').click();
       assert.equal(await page.locator('#main-menu').isVisible(), false);
-      assert(await page.locator('#apropos').evaluate(section => document.activeElement === section));
+      assert(await page.locator('#galerie').evaluate(section => document.activeElement === section));
       await page.setViewportSize({ width: 1440, height: 1000 });
       await page.locator('#main-menu a').first().focus();
       await page.setViewportSize({ width: 390, height: 844 });
@@ -231,8 +226,9 @@ async function main() {
       assert.equal(await page.locator('#main-menu').isVisible(), false, 'Menu remains open after keyboard focus leaves the header');
     });
 
-    await run('filters show the right work and competency or history links reveal a hidden project', async page => {
+    await run('filters show the right work and direct project URLs reveal a hidden project', async page => {
       const categories = await page.locator('[data-filter]').evaluateAll(buttons => buttons.map(button => button.dataset.filter));
+      assert.deepEqual(categories, ['all', 'branding', 'communication', 'research']);
       for (const category of categories) {
         await page.locator(`[data-filter="${category}"]`).click();
         const expected = content.projects.filter(project => category === 'all' || project.categories.includes(category)).map(project => project.id);
@@ -243,17 +239,12 @@ async function main() {
       let pair;
       for (const project of content.projects) {
         const category = categories.find(category => category !== 'all' && !project.categories.includes(category));
-        if (category && await page.locator(`.competency-links a[href="#projet-${project.id}"]`).count()) { pair = { project, category }; break; }
+        if (category) { pair = { project, category }; break; }
       }
-      assert(pair, 'The selection needs an independently reachable project outside a category');
+      assert(pair, 'The selection needs a project outside a category');
       const target = page.locator(`#projet-${pair.project.id}`);
       await page.locator(`[data-filter="${pair.category}"]`).click();
       assert.equal(await target.isVisible(), false);
-      await page.locator(`.competency-links a[href="#projet-${pair.project.id}"]`).first().click();
-      assert.equal(await target.isVisible(), true);
-      assert.equal(await page.locator('[data-filter="all"]').getAttribute('aria-pressed'), 'true');
-      assert(await target.evaluate(card => document.activeElement === card));
-      await page.locator(`[data-filter="${pair.category}"]`).click();
       await page.evaluate(() => { location.hash = '#apropos'; });
       await page.evaluate(id => { location.hash = '#projet-' + id; }, pair.project.id);
       await target.waitFor({ state: 'visible' });
@@ -283,7 +274,9 @@ async function main() {
           // modal makes the underlying select intentionally inert.
           await page.evaluate(language => window.PortfolioI18n.setLanguage(language), language);
           assert((await page.locator('#preview-title').textContent()).includes(first.title[language]));
-          assert.equal(await page.locator('#preview-caption').textContent(), first.caption[language]);
+          const caption = groupElement(page, group).locator('[data-slide]').first().locator('[data-slide-caption]');
+          const expectedCaption = await caption.count() ? (await caption.getAttribute('data-' + language)).trim() : '';
+          assert.equal(await page.locator('#preview-caption').textContent(), expectedCaption);
           assert.equal(await page.locator('#preview-image').getAttribute('alt'), await trigger.locator('img').getAttribute('alt'));
           assert.equal(await page.locator('#preview-download').textContent(), actions[language]);
           assert.deepEqual(await page.evaluate(() => window.PortfolioI18n.diagnostics), []);
@@ -377,7 +370,7 @@ async function main() {
           await settleFonts(page);
           const result = await page.evaluate(() => {
             const width = document.documentElement.clientWidth;
-            const items = [...document.querySelectorAll('h1,h2,h3,.hero h1>span,.main-nav a,.header-actions,.filters,.slide-controls,.is-current [data-slide-title],.competency-links')];
+            const items = [...document.querySelectorAll('h1,h2,h3,.hero h1>span,.main-nav a,.header-actions,.filters,.slide-controls,.is-current [data-slide-title]')];
             const clipped = items.filter(element => {
               if (!element.getClientRects().length || element.closest('[aria-hidden="true"]')) return false;
               const rect = element.getBoundingClientRect();
@@ -398,6 +391,7 @@ async function main() {
       assert.equal(await page.locator('#design-dialog').isVisible(), false);
       const references = await page.locator('a[data-preview]').evaluateAll(links => links.map(link => link.getAttribute('href')));
       assert.deepEqual(references, expectedSlides.map(slide => slide.path));
+      assert(await page.locator('[data-gallery] .gallery-grid a[data-preview]').evaluateAll(links => links.length >= 50 && links.every(link => link.getClientRects().length > 0 && link.tabIndex >= 0 && !link.closest('[hidden], [inert], [aria-hidden="true"]'))), 'Gallery originals must remain accessible without JavaScript');
       const first = page.locator('a[data-preview]').first();
       await first.click();
       assert.equal(page.url(), urlFor(expectedSlides[0].path), 'No-script reading requires an external application');

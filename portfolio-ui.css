@@ -6,7 +6,7 @@
 .slide-track{display:flex;align-items:flex-start;gap:0;list-style:none;padding:0;margin:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none}
 .slide-track::-webkit-scrollbar{display:none}
 .slide-track>[data-slide]{flex:0 0 100%;width:100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
-.slide-track figure{margin:0}
+.slide-track figure{position:relative;margin:0}
 .slide-track [data-preview]{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;width:100%;overflow:hidden;background:#eee8e4;cursor:zoom-in}
 .slide-track [data-preview]:focus-visible{outline-offset:-5px}
 .slide-track [data-preview] img{display:block;width:100%;height:100%;max-width:100%;max-height:none;object-fit:contain;box-shadow:none}

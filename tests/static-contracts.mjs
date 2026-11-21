@@ -34,6 +34,16 @@ function assertLocalFile(reference, label = 'Resource') {
   return filename;
 }
 
+function assertSlideLabels(slide) {
+  const title = descendants(slide).find(node => Object.hasOwn(node.attrs, 'data-slide-title'));
+  assert(title && textContent(title).trim(), 'Each artwork needs a short localized title');
+  const caption = descendants(slide).find(node => Object.hasOwn(node.attrs, 'data-slide-caption'));
+  for (const language of ['fr', 'en', 'es']) {
+    assert(title.attrs[`data-${language}`]?.trim(), `Missing ${language} artwork title`);
+    if (caption) assert(caption.attrs[`data-${language}`]?.trim(), `Missing ${language} translation for the optional caption`);
+  }
+}
+
 test('HTML nesting, landmarks and ID references are valid', () => {
   assert.deepEqual(errors, []);
   assert.equal(byTag('h1').length, 1, 'Exactly one primary heading is required');
@@ -61,8 +71,7 @@ test('Navigation, buttons and external links have safe, real targets', () => {
   const menu = ids.get('main-menu');
   assert(menu?.tag === 'nav', 'The primary menu must be a native navigation landmark');
   const destinations = descendants(menu).filter(node => node.tag === 'a').map(node => node.attrs.href);
-  assert.equal(destinations.length, 3, 'The agreed navigation has three destinations');
-  assert.deepEqual(new Set(destinations), new Set(['#realisations', '#apropos', '#contact']));
+  assert.deepEqual(destinations, ['#realisations', '#galerie', '#apropos', '#contact'], 'The navigation must reach Work, Gallery, About and Contact');
   const menuToggle = ids.get('menu-toggle');
   assert.equal(menuToggle?.tag, 'button');
   assert.equal(menuToggle?.attrs['aria-controls'], 'main-menu');
@@ -144,7 +153,7 @@ test('Portfolio exclusions and private contact guardrails are enforced', () => {
   assert(!publicCopy.toLowerCase().includes('gzephrine@gmail.com'), 'Unapproved personal email exposed');
   for (const node of elements) {
     for (const reference of [node.attrs.href, node.attrs['data-source']]) {
-      assert(!/canva\.com\/(?:design\/[^/]+\/edit|d\/.*[?&](?:edit|mode=edit))/i.test(reference ?? ''), 'Do not publish a Canva editing URL');
+      assert(!/https?:\/\/(?:www\.)?canva\.com(?:[/?#]|$)/i.test(reference ?? ''), 'The public portfolio must not link to complete Canva documents');
     }
   }
 });
@@ -190,10 +199,10 @@ test('Thumbnails and full-size originals match their files and asset manifest', 
 test('Project filters represent actual work without empty or unreachable categories', () => {
   const controls = withAttr('data-filter');
   const cards = byTag('article').filter(node => hasClass(node, 'project-card'));
-  assert(cards.length > 0, 'At least one professional case study is required');
+  assert(cards.length > 0, 'Selected projects are required');
   const controlValues = new Set(controls.map(node => node.attrs['data-filter']));
   const categories = new Set(cards.flatMap(node => (node.attrs['data-category'] || '').trim().split(/\s+/).filter(Boolean)));
-  assert(controlValues.has('all'), 'Project filters need an all option');
+  assert.deepEqual(controlValues, new Set(['all', 'branding', 'communication', 'research']), 'The filters must match the visual selection');
   assert.equal(controlValues.size, controls.length, 'Filter choices must be unique');
   assert.equal(controls.filter(node => node.attrs['aria-pressed'] === 'true').length, 1, 'Exactly one selected filter on load');
   for (const category of categories) assert(controlValues.has(category), `Unreachable category: ${category}`);
@@ -201,13 +210,18 @@ test('Project filters represent actual work without empty or unreachable categor
   const names = cards.map(card => card.attrs['data-project']);
   assert(names.every(Boolean), 'Every project needs a stable identity');
   assert.equal(new Set(names).size, names.length, 'Project identities must be unique');
+  assert(names.includes('recherche-graphique'), 'Graphic exploration must have its own project');
+  assert(!names.includes('ardhi') && !names.includes('luminary'), 'Documentary case studies must not return as project cards');
+  for (const className of ['featured-project', 'project-insight', 'case-study']) {
+    assert(!elements.some(node => hasClass(node, className)), `The simplified presentation must not contain .${className}`);
+  }
   for (const card of cards) {
     assert(descendants(card).some(node => node.tag === 'h3' && textContent(node)), `Project ${card.attrs['data-project']} lacks its title`);
     assert(descendants(card).some(node => Object.hasOwn(node.attrs, 'data-slideshow')), `Project ${card.attrs['data-project']} lacks local artwork`);
   }
 });
 
-test('Project slides have local originals, explanations and optional source documents', () => {
+test('Project slides have local originals, accessible labels and viewer controls', () => {
   const carousels = withAttr('data-slideshow');
   assert(carousels.length > 0, 'Selected work must be presented within the portfolio');
   let hasMultiplePages = false;
@@ -233,18 +247,8 @@ test('Project slides have local originals, explanations and optional source docu
       for (const language of ['fr', 'en', 'es']) {
         assert(image.attrs[`data-alt-${language}`]?.trim(), `Missing ${language} alternative text on ${image.attrs.src}`);
       }
-      for (const field of ['data-slide-title', 'data-slide-caption']) {
-        const label = descendants(slide).find(node => Object.hasOwn(node.attrs, field));
-        assert(label && textContent(label), `Each page needs an explanatory ${field}`);
-        for (const language of ['fr', 'en', 'es']) assert(label.attrs[`data-${language}`]?.trim(), `Missing ${language} ${field}`);
-      }
-      const reference = preview.attrs['data-source'];
-      if (reference) {
-        const source = new URL(reference);
-        assert.equal(source.protocol, 'https:');
-        assert(['www.canva.com', 'canva.com'].includes(source.hostname), 'Source link must identify the actual Canva document');
-        assert(/^\/design\/[A-Za-z0-9_-]+\/view\/?$/.test(source.pathname), 'The optional source must be a viewing URL');
-      }
+      assertSlideLabels(slide);
+      assert(!preview.attrs['data-source'], 'Artwork must not expose the complete source document');
     }
     if (slides.length > 1) {
       for (const attribute of ['data-slide-prev', 'data-slide-next']) {
@@ -256,6 +260,37 @@ test('Project slides have local originals, explanations and optional source docu
   assert(hasMultiplePages, 'The portfolio must show more than document covers');
   assert.equal(ids.get('design-dialog')?.tag, 'dialog', 'Local artwork needs an accessible native viewer');
   for (const id of ['preview-close', 'preview-prev', 'preview-next', 'preview-zoom']) assert.equal(ids.get(id)?.tag, 'button', `Viewer control ${id} is missing`);
+});
+
+test('The gallery keeps a generous set of local artwork links accessible in document order', () => {
+  const galleries = withAttr('data-gallery');
+  assert.equal(galleries.length, 1, 'A dedicated visual gallery is required');
+  const gallery = galleries[0];
+  assert.equal(ancestor(gallery, node => node.attrs.id === 'galerie'), ids.get('galerie'));
+  assert(!Object.hasOwn(gallery.attrs, 'data-slideshow'), 'The gallery must not become a single-slide carousel');
+  const grid = descendants(gallery).find(node => hasClass(node, 'gallery-grid'));
+  assert.equal(grid?.tag, 'ul', 'Gallery artwork must be a list');
+  const tiles = grid.children.filter(node => Object.hasOwn(node.attrs, 'data-slide'));
+  assert(tiles.length >= 50, 'The visual gallery must contain at least 50 selected images');
+  for (const tile of tiles) {
+    const preview = descendants(tile).filter(node => Object.hasOwn(node.attrs, 'data-preview'));
+    assert.equal(preview.length, 1, 'Each gallery tile needs one original artwork link');
+    const link = preview[0];
+    assert.equal(link.tag, 'a');
+    assert.match(link.attrs.href || '', /^assets\/.+\.(?:webp|png|jpe?g)$/i);
+    assertLocalFile(link.attrs.href, 'Gallery original');
+    assert(!link.attrs['data-source'], 'The gallery must not link to a complete source document');
+    const image = descendants(link).find(node => node.tag === 'img');
+    assert(image, 'Each gallery tile needs an image');
+    assert.match(image.attrs.src || '', /^assets\//);
+    assert.equal(image.attrs['data-full-src'] || image.attrs.src, link.attrs.href);
+    for (const language of ['fr', 'en', 'es']) assert(image.attrs[`data-alt-${language}`]?.trim(), `Missing ${language} gallery alt text`);
+    assertSlideLabels(tile);
+    for (let node = link; node; node = node.parent) {
+      assert(!Object.hasOwn(node.attrs, 'hidden') && !Object.hasOwn(node.attrs, 'inert') && node.attrs['aria-hidden'] !== 'true', 'Gallery links must remain accessible before enhancement');
+    }
+    assert.notEqual(link.attrs.tabindex, '-1', 'Each gallery original must be keyboard reachable');
+  }
 });
 
 test('Approved Wremena files and the original palette are retained', () => {

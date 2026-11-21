@@ -1,5 +1,5 @@
-/* The work remains readable without JavaScript. Enhancements keep each project
- * on this site; original Canva documents are optional, explicitly named links. */
+/* The work remains readable without JavaScript. Project sequences and the
+ * visible gallery share an accessible viewer for the selected artwork only. */
 (function () {
   'use strict';
 
@@ -9,6 +9,7 @@
     openMenuLabel: ['Ouvrir le menu', 'Open navigation', 'Abrir navegación'],
     closeMenuLabel: ['Fermer le menu', 'Close navigation', 'Cerrar navegación'],
     carousel: ['diaporama', 'slideshow', 'presentación'],
+    gallery: ['Galerie', 'Gallery', 'Galería'],
     slide: ['diapositive', 'slide', 'diapositiva'],
     previous: ['Page précédente', 'Previous page', 'Página anterior'],
     next: ['Page suivante', 'Next page', 'Página siguiente'],
@@ -39,7 +40,7 @@
     const reducedMotion = () => typeof window.matchMedia === 'function'
       && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* Three ordinary navigation links, progressively collapsed on small screens. */
+    /* Ordinary navigation links, progressively collapsed on small screens. */
     const header = document.querySelector('.site-header');
     const menu = document.getElementById('main-menu');
     const menuToggle = document.getElementById('menu-toggle');
@@ -247,13 +248,14 @@
     function renderPreview(changeImage = true) {
       const entry = active?.entries[current];
       if (!entry || !canPreview) return;
-      const name = active.name();
+      const name = active.root.hasAttribute('data-gallery') ? '' : active.name();
       const detail = slideTitle(entry);
       const includesProject = detail === name || detail.startsWith(name + ' — ');
       title.textContent = name && !includesProject ? name + ' — ' + detail : detail;
       counter.textContent = text('count', { current: current + 1, total: active.entries.length });
       caption.textContent = slideCaption(entry);
-      // The selected page's explanation replaces the old generic Canva warning.
+      caption.hidden = !caption.textContent;
+      // Only optional, concise artwork captions appear in the viewer.
       caption.removeAttribute('data-i18n');
       previous.disabled = next.disabled = active.entries.length < 2;
       previous.hidden = next.hidden = active.entries.length < 2;
@@ -302,8 +304,9 @@
 
     /* Native horizontal scrolling and scroll snap provide touch interaction.
      * Buttons and keyboard controls select pages only within their own project. */
-    all('[data-slideshow]').forEach(root => {
-      const track = root.querySelector('.slide-track');
+    all('[data-slideshow], [data-gallery]').forEach(root => {
+      const isGallery = root.hasAttribute('data-gallery');
+      const track = root.querySelector(isGallery ? '.gallery-grid' : '.slide-track');
       const slides = track ? all('[data-slide]', track) : [];
       if (!track || !slides.length) return;
       const previousSlide = root.querySelector('[data-slide-prev]');
@@ -311,23 +314,24 @@
       const count = root.querySelector('[data-slide-count]');
       const carousel = {
         root, track, slides, index: 0, entries: [],
-        name: () => root.closest('.project-card')?.querySelector('h3')?.textContent.trim()
+        name: () => isGallery ? text('gallery') : root.closest('.project-card')?.querySelector('h3')?.textContent.trim()
           || root.getAttribute('data-slideshow-title') || ''
       };
-      root.classList.add('slideshow-enhanced');
+      root.classList.add(isGallery ? 'gallery-enhanced' : 'slideshow-enhanced');
       root.classList.toggle('single-slide', slides.length === 1);
       root.setAttribute('role', 'group');
-      track.setAttribute('tabindex', slides.length > 1 ? '0' : '-1');
+      if (!isGallery) track.setAttribute('tabindex', slides.length > 1 ? '0' : '-1');
       if (count) { count.setAttribute('aria-live', 'polite'); count.setAttribute('aria-atomic', 'true'); }
 
       function refresh() {
-        root.setAttribute('aria-roledescription', text('carousel'));
+        if (!isGallery) root.setAttribute('aria-roledescription', text('carousel'));
         if (carousel.name()) root.setAttribute('aria-label', carousel.name());
         if (previousSlide) { previousSlide.disabled = carousel.index === 0; previousSlide.setAttribute('aria-label', text('previous')); }
         if (nextSlide) { nextSlide.disabled = carousel.index === slides.length - 1; nextSlide.setAttribute('aria-label', text('next')); }
         const description = text('count', { current: carousel.index + 1, total: slides.length });
         if (count && count.textContent !== description) count.textContent = description;
         slides.forEach((slide, index) => {
+          if (isGallery) return;
           const selected = index === carousel.index;
           slide.setAttribute('role', 'group');
           slide.setAttribute('aria-roledescription', text('slide'));
@@ -357,6 +361,7 @@
       carousel.go = (index, smooth = true) => {
         carousel.index = Math.max(0, Math.min(slides.length - 1, index));
         refresh();
+        if (isGallery) return;
         if (root.closest('[hidden]')) return;
         const animate = smooth && !reducedMotion();
         navigationTarget = animate ? carousel.index : null;
@@ -384,26 +389,28 @@
       });
       previousSlide?.addEventListener('click', () => carousel.go(carousel.index - 1));
       nextSlide?.addEventListener('click', () => carousel.go(carousel.index + 1));
-      track.addEventListener('keydown', event => {
-        if (slides.length < 2 || event.altKey || event.ctrlKey || event.metaKey) return;
-        let index;
-        if (event.key === 'ArrowLeft') index = carousel.index - 1;
-        if (event.key === 'ArrowRight') index = carousel.index + 1;
-        if (event.key === 'Home') index = 0;
-        if (event.key === 'End') index = slides.length - 1;
-        if (index === undefined) return;
-        event.preventDefault();
-        track.focus({ preventScroll: true });
-        carousel.go(index);
-      });
-      let scrollQueued = false;
-      track.addEventListener('scroll', () => {
-        if (scrollQueued) return;
-        scrollQueued = true;
-        frame(() => { scrollQueued = false; syncScroll(); });
-      }, { passive: true });
-      track.addEventListener('scrollend', () => { navigationTarget = null; syncScroll(); });
-      track.addEventListener('pointerdown', () => { navigationTarget = null; }, { passive: true });
+      if (!isGallery) {
+        track.addEventListener('keydown', event => {
+          if (slides.length < 2 || event.altKey || event.ctrlKey || event.metaKey) return;
+          let index;
+          if (event.key === 'ArrowLeft') index = carousel.index - 1;
+          if (event.key === 'ArrowRight') index = carousel.index + 1;
+          if (event.key === 'Home') index = 0;
+          if (event.key === 'End') index = slides.length - 1;
+          if (index === undefined) return;
+          event.preventDefault();
+          track.focus({ preventScroll: true });
+          carousel.go(index);
+        });
+        let scrollQueued = false;
+        track.addEventListener('scroll', () => {
+          if (scrollQueued) return;
+          scrollQueued = true;
+          frame(() => { scrollQueued = false; syncScroll(); });
+        }, { passive: true });
+        track.addEventListener('scrollend', () => { navigationTarget = null; syncScroll(); });
+        track.addEventListener('pointerdown', () => { navigationTarget = null; }, { passive: true });
+      }
       carousels.push(carousel);
       refresh();
     });
