@@ -132,7 +132,7 @@ test('Published scripts and styles use versions matching their current contents'
     ...byTag('script').map(node => node.attrs.src),
     ...byTag('link').filter(node => node.attrs.rel === 'stylesheet').map(node => node.attrs.href)
   ].filter(reference => reference && !/^https?:/i.test(reference));
-  assert.equal(resources.length, 5, 'All local runtime resources must be checked');
+  assert.equal(resources.length, 7, 'All local runtime resources must be checked');
   for (const reference of resources) {
     const filename = assertLocalFile(reference, 'Runtime resource');
     const expected = createHash('sha256').update(readFileSync(filename)).digest('hex').slice(0, 12);
