@@ -6,15 +6,15 @@ Portfolio statique en français, anglais et espagnol. Site public : https://zeph
 
 La version du 21 novembre 2026 présente une sélection éditoriale dans la direction artistique d'origine, avec les titres Wremena et la palette bordeaux conservés.
 
-- **10 projets** et **88 visuels dans la galerie**, en fichiers locaux de bonne qualité. La galerie présente d'abord quatre créations originales, puis le bouton « Voir plus de créations » déploie toutes les autres et les filtres **Logos / Mockups / Visuels**.
+- **10 projets** et **93 visuels dans la galerie**, en fichiers locaux de bonne qualité. La galerie présente d'abord quatre créations originales, puis le bouton « Voir plus de créations » déploie toutes les autres et les filtres **Logos / Mockups / Visuels**.
 - **Carrigrès** : quatre formats imprimés. Les originaux complets (calendrier mural, calendrier de table avec 15 pages, calendrier triptyque et sous-main) s'ouvrent dans une visionneuse PDF accessible, avec lien de secours vers le fichier partagé en lecture publique sur Google Drive.
 - **L’Atelier** : crédits limités aux campagnes et créations de communication, sans prétendre à la création du logo.
-- **UTEX Empreinte** : identité visuelle et trois étapes générales du projet ESG présenté sans documents internes. Aucune diapositive de stratégie confidentielle n'est publiée.
+- **UTEX Empreinte** : trois vues de présentation, couverture, logo et signature de clôture, accompagnées des grandes étapes de la conception du programme ESG. Aucune diapositive de stratégie confidentielle n'est publiée.
 - **Re-vendre** : traitement CSS pour atténuer le blanc derrière le logo, sans modifier l'original source.
 - **Kadea Storytelling** et **Chocolata Pâtisserie / Portfolio affiche Gloria** : deux petites études dépliables avec accès aux créations Canva originales. Les contenus incorporés peuvent nécessiter un partage de lecture public pour les visiteurs.
 - **Agorafrik, Carrigrès, Wali, Bloom et Re-vendre** : élargissement des diaporamas avec davantage de travaux déjà exportés sur le site.
 
-Les nouvelles images de la charte Agorafrik (pages photographiques 25 à 27) et les pages supplémentaires non confidentielles d'UTEX Empreinte ne sont pas encore exportées dans les assets du site. Ne pas pointer des miniatures Canva temporaires dans la publication.
+Les compositions photographiques Agorafrik (pages 25 à 27) et les vues sélectionnées d’UTEX Empreinte sont installées localement dans le site. Les cinq nouveaux aperçus sont des WebP de 596 px issus des rendus Canva, non des exports haute définition : leur définition est adaptée à une vignette, mais limitée dans une visionneuse fortement agrandie. Les autres originaux préexistants restent inchangés.
 
 ## Direction artistique
 
@@ -29,6 +29,16 @@ Le menu dessert **Travaux, Galerie, À propos et Contact**. Les filtres de proje
 La visionneuse ouvre l’original choisi, permet de parcourir les visuels de la même galerie ou du même projet, affiche la taille réelle et propose le téléchargement du fichier local. La fermeture rend le focus au lien exact ayant ouvert l’image. Les formats d’origine sont préservés dans la galerie et la visionneuse. Les images des cartes utilisent des variantes légères séparées.
 
 Les versions `?lang=fr`, `?lang=en` et `?lang=es` sont prises en charge ; le choix est mémorisé. Les textes de l’interface, les titres descriptifs et les alternatives des images sont traduits. Les créations elles-mêmes restent dans leur langue d’origine.
+
+## Chargement des images
+
+Le HTML ne télécharge plus simultanément les images des slides non visibles. Les visuels affichés directement (couvertures en haut et quatre aperçus de galerie) conservent leur URL et leur priorité. Les autres vignettes ont un `data-deferred-src`, puis sont chargées lorsqu'elles approchent de l'écran via `IntersectionObserver`, ou avant la navigation au clavier et avec les flèches du carrousel.
+
+Chaque visuel différé conserve un `<noscript>` natif pour les navigateurs sans JavaScript. Le lien d’agrandissement et la source originale restent inchangés ; aucune image source n'a été recompressée pour cette optimisation.
+
+**Mesure reproductible locale en Chromium sans cache (viewport 390 / 1440 px)** : les images transférées avant le premier arrêt réseau sont passées de 2 420 à 648 Kio sur mobile (-73 %) et de 2 153 à 648 Kio sur ordinateur (-70 %). Après ouverture de la galerie, 5 252 à 1 519 Kio sur mobile (-71 %) et 5 554 à 1 931 Kio sur ordinateur (-65 %), à position de défilement identique. Ce sont des **octets téléchargés à ces étapes**, pas une promesse de temps de chargement, et le chargement différé se produit normalement quand les autres créations sont consultées. Les captures comparatives de la galerie après chargement des quatre aperçus ont la même taille et ne présentent que 0,003 % de pixels différents, principalement liés au rendu navigateur.
+
+Contrôles : `node --test tests/image-loading.test.mjs` en plus des tests statiques, d'interaction et de navigateur du dépôt.
 
 ## Contenu et provenance
 
