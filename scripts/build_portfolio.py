@@ -200,7 +200,7 @@ def collect_assets(content):
 def version_runtime_assets(document):
     # A returning visitor can receive new HTML while the browser still caches
     # an older script or stylesheet. Bind their URLs to the reviewed contents.
-    resources = ('styles.css', 'portfolio-ui.css', 'editorial.css', 'i18n.js', 'script.js')
+    resources = ('styles.css', 'portfolio-ui.css', 'editorial.css', 'portfolio-refinements.css', 'i18n.js', 'script.js', 'portfolio-refinements.js')
     for resource in resources:
         version = hashlib.sha256((ROOT / resource).read_bytes()).hexdigest()[:12]
         pattern = r'((?:src|href)=["\'])' + re.escape(resource) + r'(?:\?[^"\']*)?(["\'])'
