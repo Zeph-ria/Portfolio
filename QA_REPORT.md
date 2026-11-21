@@ -69,3 +69,11 @@ Preuves complémentaires : `utex-empreinte-observations.json` et `utex-empreinte
 ## Limite de vérification
 
 Le lancement de Chromium depuis le terminal est indisponible dans cet environnement. Les suites `tests/browser.mjs` et `tests/navigation-gallery.test.mjs` n’ont donc pas été annoncées comme réussies : leur syntaxe a été vérifiée, et les observations réelles ci-dessus proviennent du navigateur CUA. Aucune mesure Lighthouse ni garantie sur les navigateurs et appareils non testés n’est revendiquée.
+
+## Publication et cache — 21 novembre 2026
+
+La PR nº 4 a été fusionnée, puis GitHub Pages a déployé avec succès le commit `c5ec304fd730c98e3dc39aace3fdba8f68c9b31a` (exécution `44840294112`). Le contenu HTML et les fichiers téléchargés depuis le site correspondaient à leurs empreintes locales.
+
+Un navigateur ayant ouvert le site avant cette publication conservait néanmoins l’ancien script : absence des contrôles de diaporama et du menu mobile, ouverture directe des images. Les réponses publiques ont un cache de dix minutes. Les cinq URL CSS/JavaScript portent désormais une version calculée à partir de leur contenu, actualisée par le générateur. Les créations et la direction artistique restent identiques. Un contrôle de cohérence empêche de publier une URL de ressource dont la version ne correspond plus au fichier.
+
+Après cette correction : **45/45 tests Node réussis**, smoke test réussi et diff propre.

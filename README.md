@@ -61,6 +61,8 @@ python scripts/update_asset_manifest.py
 
 Pillow est utilisé pour l’import et la mesure des images. Les imports conservent la composition entière dans les originaux et créent séparément les variantes légères.
 
+La régénération ajoute aussi une version issue du contenu aux URL des scripts et feuilles de style. Une nouvelle publication charge ainsi les fichiers correspondants même pour les visiteurs dont le navigateur conserve une version précédente en cache. Relancer la régénération après une modification CSS ou JavaScript.
+
 ## Vérification
 
 ```bash
@@ -69,6 +71,6 @@ node tests/smoke.mjs
 git diff --check
 ```
 
-**44/44 tests réussis**, smoke test et contrôle du diff réussis. La première passe réelle dans le navigateur a parcouru 82 pages, contrôlé les quatre calendriers sur petit écran, le menu, le zoom, les filtres, les trois langues et un téléchargement identique au fichier original. Une passe complémentaire a contrôlé les cinq pages UTEX Empreinte, le zoom, le lien depuis les compétences et les textes FR/EN/ES à 320 px. Les observations et captures figurent dans `QA_REPORT.md` et `docs/qa/2026-11-20-curation/`.
+**45/45 tests réussis**, smoke test et contrôle du diff réussis. Le contrôle supplémentaire vérifie que les versions de chargement correspondent aux scripts et styles actuels. La première passe réelle dans le navigateur a parcouru 82 pages, contrôlé les quatre calendriers sur petit écran, le menu, le zoom, les filtres, les trois langues et un téléchargement identique au fichier original. Une passe complémentaire a contrôlé les cinq pages UTEX Empreinte, le zoom, le lien depuis les compétences et les textes FR/EN/ES à 320 px. Les observations et captures figurent dans `QA_REPORT.md` et `docs/qa/2026-11-20-curation/`.
 
 `node tests/browser.mjs` est une suite d’acceptation autonome pour un environnement disposant de Playwright et Chromium. Elle n’installe rien et retourne le code 2 si l’infrastructure est indisponible. Elle n’a pas été exécutée dans cet environnement ; les contrôles réels rapportés proviennent de CUA et sont distingués des tests Node.

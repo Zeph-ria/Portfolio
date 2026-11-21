@@ -15,7 +15,7 @@ for (const [, anchor] of html.matchAll(/href="#([^"]+)"/g)) {
   assert(ids.includes(anchor), `Missing anchor target: #${anchor}`);
 }
 for (const [, path] of html.matchAll(/(?:href|src)="([^"#][^"]+)"/g)) {
-  if (!/^https?:/.test(path)) assert(existsSync(join(root, path)), `Missing asset: ${path}`);
+  if (!/^https?:/.test(path)) assert(existsSync(join(root, decodeURIComponent(path.split(/[?#]/)[0]))), `Missing asset: ${path}`);
 }
 for (const [, path] of css.matchAll(/url\(["']?([^"')]+\.woff)["']?\)/g)) {
   assert(existsSync(join(root, path)), `Missing font: ${path}`);
@@ -24,7 +24,7 @@ assert(html.includes('lang="fr"'));
 assert(html.includes('name="viewport"'));
 assert(html.includes('id="project-grid"'));
 assert(html.includes('id="language-select"'));
-assert(html.includes('src="i18n.js"'));
+assert(/src="i18n\.js\?v=[a-f0-9]{12}"/.test(html));
 assert(html.includes('id="design-dialog"'));
 assert(html.includes('id="main-menu"'));
 assert(html.includes('id="menu-toggle"'));
