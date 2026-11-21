@@ -165,10 +165,11 @@ if (browser) {
         'assets/projects/utex-empreinte-p19.webp'
       ];
       for (const path of paths) {
-        const img = page.locator('img[src="' + path + '"]').first();
+        const img = page.locator('img[data-full-src="' + path + '"]').first();
         assert(await img.count(), 'Portfolio is missing artwork: ' + path);
         const ok = await img.evaluate(async image => {
           image.loading = 'eager';
+          if (image.dataset.deferredSrc) { image.src = image.dataset.deferredSrc; delete image.dataset.deferredSrc; }
           try { await image.decode(); return image.naturalWidth > 0 && image.naturalHeight > 0; }
           catch { return false; }
         });
