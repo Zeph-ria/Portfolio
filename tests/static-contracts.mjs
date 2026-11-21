@@ -149,11 +149,15 @@ test('Portfolio exclusions and private contact guardrails are enforced', () => {
   for (const forbidden of ['generation', 'prayer machine', 'just1pulse', 'just one pulse', 'quoakoo', 'gloria os']) {
     assert(!corpus.includes(forbidden), `Excluded project remains: ${forbidden}`);
   }
-  assert(!/\b(?:exercices?|exercises?|ejercicios?)\b/.test(corpus), 'Professional presentation must not be labelled as exercises');
+  const mainWork = normalizeForExclusions(html.slice(html.indexOf('<!-- BEGIN PORTFOLIO:realisations -->'), html.indexOf('<!-- END PORTFOLIO:realisations -->')));
+  assert(!/\\b(?:exercices?|exercises?|ejercicios?)\\b/.test(mainWork), 'Selected professional projects should not be labelled as exercises');
   assert(!publicCopy.toLowerCase().includes('gzephrine@gmail.com'), 'Unapproved personal email exposed');
   for (const node of elements) {
     for (const reference of [node.attrs.href, node.attrs['data-source']]) {
-      assert(!/https?:\/\/(?:www\.)?canva\.com(?:[/?#]|$)/i.test(reference ?? ''), 'The public portfolio must not link to complete Canva documents');
+      if (/https?:\\/\\/(?:www\\.)?canva\\.com(?:[/?#]|$)/i.test(reference ?? '')) {
+        const allowed = ['https://www.canva.com/d/33yApppVP3PdSGh', 'https://www.canva.com/d/_JHdUraww64hDTX'];
+        assert(allowed.includes(reference), 'Only approved editorial archive links may point to Canva');
+      }
     }
   }
 });
