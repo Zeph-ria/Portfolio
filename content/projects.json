@@ -596,14 +596,14 @@
           "width": 1080,
           "height": 1350,
           "title": {
-            "fr": "Annonce de nouvelle identité",
-            "en": "New identity announcement",
-            "es": "Anuncio de nueva identidad"
+            "fr": "Annonce du salon",
+            "en": "Salon announcement",
+            "es": "Anuncio del salón"
           },
           "alt": {
-            "fr": "L’Atelier : Annonce de nouvelle identité",
-            "en": "L’Atelier : New identity announcement",
-            "es": "L’Atelier : Anuncio de nueva identidad"
+            "fr": "L’Atelier : annonce visuelle du salon",
+            "en": "L’Atelier: salon announcement graphic",
+            "es": "L’Atelier: anuncio visual del salón"
           }
         },
         {
@@ -1300,14 +1300,14 @@
       "height": 1350,
       "project": "L’Atelier",
       "title": {
-        "fr": "Annonce de nouvelle identité",
-        "en": "New identity announcement",
-        "es": "Anuncio de nueva identidad"
+        "fr": "Annonce du salon",
+        "en": "Salon announcement",
+        "es": "Anuncio del salón"
       },
       "alt": {
-        "fr": "L’Atelier : Annonce de nouvelle identité",
-        "en": "L’Atelier : New identity announcement",
-        "es": "L’Atelier : Anuncio de nueva identidad"
+        "fr": "L’Atelier : annonce visuelle du salon",
+        "en": "L’Atelier: salon announcement graphic",
+        "es": "L’Atelier: anuncio visual del salón"
       }
     },
     {
