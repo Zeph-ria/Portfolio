@@ -59,7 +59,7 @@ def image_dimensions(slide, manifest):
         thumb = {'width': round(full['width'] * scale), 'height': round(full['height'] * scale)}
     return full['width'], full['height'], thumb['width'], thumb['height']
 
-def render_slide(slide, name, manifest, calendar=False, number=0, gallery=False):
+def render_slide(slide, name, manifest, calendar=False, number=0, gallery=False, defer=False):
     width, height, thumb_width, thumb_height = image_dimensions(slide, manifest)
     path, thumb = slide['path'], slide.get('thumb', slide['path'])
     alt = slide.get('alt') or {language: f'{name} : {slide["title"][language]}' for language in LANGUAGES}
@@ -71,18 +71,24 @@ def render_slide(slide, name, manifest, calendar=False, number=0, gallery=False)
     title_attrs = 'data-slide-title class="sr-only"' if gallery else 'data-slide-title'
     title = {language: f'{name} : {slide["title"][language]}' for language in LANGUAGES} if gallery else slide['title']
     caption = element('span',slide['caption'],'data-slide-caption class="sr-only"') if slide.get('caption') else ''
+    # Never alter the full-size art. Unseen card images are hydrated when they enter view.
+    # A native <noscript> copy keeps every image available if JavaScript is disabled.
+    image_attributes = f'data-deferred-src="{attr(thumb)}" class="artwork-deferred"' if defer else f'src="{attr(thumb)}"'
+    fallback = (f'<noscript><img src="{attr(thumb)}" width="{thumb_width}" height="{thumb_height}" '
+                f'loading="lazy" decoding="async" alt="{attr(alt["fr"])}" {i18n(alt, "alt")}></noscript>') if defer else ''
     return f'''<li data-slide{(' class="gallery-item"' if gallery else '')}>
                   <figure>
                     <a data-preview href="{attr(path)}"{fit}>
-                      <img src="{attr(thumb)}" width="{thumb_width}" height="{thumb_height}" loading="lazy" decoding="async" alt="{attr(alt['fr'])}" {i18n(alt, 'alt')} data-full-src="{attr(path)}" data-full-width="{width}" data-full-height="{height}" data-asset-quality="{quality}">
+                      <img {image_attributes} width="{thumb_width}" height="{thumb_height}" loading="lazy" decoding="async" alt="{attr(alt['fr'])}" {i18n(alt, 'alt')} data-full-src="{attr(path)}" data-full-width="{width}" data-full-height="{height}" data-asset-quality="{quality}">
+                      {fallback}
                       {label}
                     </a>
                     <figcaption class="{caption_class}">{brand}{element('span',title,title_attrs)}{caption}</figcaption>
                   </figure>
                 </li>'''
 
-def render_carousel(slides, name, manifest, extra_class='', calendar=False):
-    frames = '\n                '.join(render_slide(slide,name,manifest,calendar,index) for index,slide in enumerate(slides))
+def render_carousel(slides, name, manifest, extra_class='', calendar=False, defer_first=False):
+    frames = '\n                '.join(render_slide(slide,name,manifest,calendar,index,defer=(index>0 or defer_first)) for index,slide in enumerate(slides))
     return f'''<div class="project-slideshow {extra_class}" data-slideshow data-slideshow-title="{attr(name)}">
               <ol class="slide-track">
                 {frames}
@@ -105,7 +111,7 @@ def render_project(project, index, manifest):
               </div>
             </details>''' if project['id'] == 'utex-empreinte' else ''
     return f'''<article class="project-card project-{project['format']}" id="projet-{attr(project['id'])}" data-project="{attr(project['id'])}" data-category="{attr(' '.join(project['categories']))}">
-            {render_carousel(project['slides'],project['name'],manifest)}
+            {render_carousel(project['slides'],project['name'],manifest,defer_first=index>2)}
             <div class="project-details"><div>{heading}{element('p',project['summary'])}</div></div>
             {process}
           </article>'''
@@ -130,7 +136,11 @@ def render_work(content, manifest):
       </section>'''
 
 def render_gallery(content, manifest):
-    images='\n'.join(render_slide(slide,slide['project'],manifest,gallery=True) for slide in content['gallery'])
+    teaser_names = {'agorafrik-identite-p35.webp', 'wali-visuels-p13.webp',
+                    'atelier-campagnes-p22.webp', 'revendre-styles-p39.webp'}
+    images='\n'.join(render_slide(slide,slide['project'],manifest,gallery=True,
+                                      defer=slide['path'].split('/')[-1] not in teaser_names)
+                     for slide in content['gallery'])
     return f'''<section class="design-library section-pad" id="galerie" aria-labelledby="gallery-title">
         <div class="section-topline">{element('span',text('Galerie','Gallery','Galería'))}{element('span',text('Créations visuelles','Visual work','Creaciones visuales'))}</div>
         {element('h2',text('GALERIE.','GALLERY.','GALERÍA.'),'class="display-title gallery-display" id="gallery-title"')}
