@@ -88,8 +88,7 @@
           const next=root.querySelector('[data-slide-next]');
           const prev=root.querySelector('[data-slide-prev]');
           if(!next||!prev)return;
-          if(next.disabled)prev.closest('[data-slideshow]')?.querySelector('[data-slide]')?.scrollIntoView?.({block:'nearest',inline:'start',behavior:'smooth'});
-          else next.click();
+          if(next.disabled){const first=root.querySelector('[data-slide]'); if(first){const track=root.querySelector('.slide-track'); if(track)track.scrollTo({left:0,behavior:'smooth'}); prev.click();}}else next.click();
         },6500);
       });
     }
