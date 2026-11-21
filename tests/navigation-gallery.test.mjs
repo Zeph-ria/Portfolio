@@ -123,7 +123,7 @@ if (browser) {
       const total = await tiles.count();
       assert(total >= 50, 'The expanded gallery retains the original large selection');
       const originals = await tiles.evaluateAll(items => items.map(item => item.querySelector('a[data-preview]').getAttribute('href')));
-      assert(originals.every(url => /^assets\\/.+\\.(?:webp|png|jpe?g)$/i.test(url)), 'Original locally hosted artworks are preserved');
+      assert(originals.every(url => url.startsWith('assets/') && url.match(/\\.(webp|png|jpg|jpeg)$/i)), 'Original locally hosted artworks are preserved');
       const remainingVisible = () => tiles.evaluateAll(items => items.filter(item => !item.hidden && item.getClientRects().length > 0).length);
       await gallery.locator('[data-gallery-category="mockups"]').click();
       assert((await remainingVisible()) > 0 && (await remainingVisible()) < total);
