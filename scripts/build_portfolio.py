@@ -62,14 +62,14 @@ def image_dimensions(slide, manifest):
 def render_slide(slide, name, manifest, calendar=False, number=0, gallery=False):
     width, height, thumb_width, thumb_height = image_dimensions(slide, manifest)
     path, thumb = slide['path'], slide.get('thumb', slide['path'])
-    alt = slide.get('alt') or {language: f'{name} — {slide["title"][language]}' for language in LANGUAGES}
+    alt = slide.get('alt') or {language: f'{name} : {slide["title"][language]}' for language in LANGUAGES}
     fit = ' data-preview-fit="cover"' if calendar else ''
     quality = 'live-website-screenshot' if path.startswith('assets/sites/') else 'canva-export'
     label = element('span', text('Agrandir', 'Enlarge', 'Ampliar'), 'class="preview-affordance" aria-hidden="true"')
     caption_class = 'gallery-caption' if gallery else '' if calendar else 'sr-only'
     brand = f'<span class="gallery-brand">{html.escape(name)}</span>' if gallery else ''
     title_attrs = 'data-slide-title class="sr-only"' if gallery else 'data-slide-title'
-    title = {language: f'{name} — {slide["title"][language]}' for language in LANGUAGES} if gallery else slide['title']
+    title = {language: f'{name} : {slide["title"][language]}' for language in LANGUAGES} if gallery else slide['title']
     caption = element('span',slide['caption'],'data-slide-caption class="sr-only"') if slide.get('caption') else ''
     return f'''<li data-slide{(' class="gallery-item"' if gallery else '')}>
                   <figure>
@@ -117,7 +117,7 @@ def render_work(content, manifest):
     heading=element('h2',text('LE TRAVAIL<br><em>PARLE.</em>','THE WORK<br><em>SPEAKS.</em>','EL TRABAJO<br><em>HABLA.</em>'),'class="display-title" id="work-title"',True)
     intro=element('p',text('Identités, campagnes et créations visuelles.','Identities, campaigns and visual work.','Identidades, campañas y creaciones visuales.'),'class="section-lede"')
     return f'''<section class="work-section section-pad" id="realisations" aria-labelledby="work-title">
-        <div class="section-topline">{element('span',text('Travaux sélectionnés','Selected work','Trabajos seleccionados'))}<span>2024 — 2026</span></div>
+        <div class="section-topline">{element('span',text('Travaux sélectionnés','Selected work','Trabajos seleccionados'))}<span>2024 à 2026</span></div>
         {heading}
         {intro}
         <div class="filters" role="group" data-i18n-aria="projectFilters" aria-label="Filtrer les projets">
@@ -143,7 +143,7 @@ def render_calendars(content, manifest):
     for calendar in content['calendars']:
         slides=render_carousel([calendar['slide']],'Carrigrès',manifest,'calendar-slideshow',True)
         cards.append(f'<article class="calendar-card" id="calendrier-{calendar["id"]}">{slides}</article>')
-    heading=element('h2',text('Carrigrès — les quatre calendriers','Carrigrès — four calendar formats','Carrigrès — cuatro formatos de calendario'),'class="gallery-series" id="calendars-title"')
+    heading=element('h2',text('Carrigrès : les quatre calendriers','Carrigrès : four calendar formats','Carrigrès : cuatro formatos de calendario'),'class="gallery-series" id="calendars-title"')
     return f'''<section class="calendar-section section-pad" id="calendriers" aria-labelledby="calendars-title">
         <div class="section-topline">{element('span',text('Édition · Carrigrès','Print · Carrigrès','Edición · Carrigrès'))}{element('span',text('Un système, plusieurs usages','One system, several uses','Un sistema, varios usos'))}</div>
         {heading}
