@@ -3,9 +3,10 @@
   "measurement": "Native image dimensions and SHA-256 measured from the installed artwork files.",
   "notes": [
     "Only artwork displayed in the portfolio is included in this inventory.",
-    "No complete Canva source document is linked. Only selected finished artwork is published; website captures link to the public website.",
-    "Full-resolution Canva exports retain the original composition. Card thumbnails are separate derivatives.",
-    "Website images are actual browser captures of the public pages, with no submitted form data."
+    "UTEX Empreinte: only cover, logo and closing signature, never internal ESG programme pages.",
+    "Canva photographic boards and UTEX page previews are included as curated 596px source previews; original layouts preserved.",
+    "Other full-resolution Canva exports retain their original composition. Card thumbnails are derivatives.",
+    "Website images are actual browser captures of public pages, without submitted form data."
   ],
   "images": [
     {
@@ -601,6 +602,39 @@
           }
         }
       ]
+    },
+    {
+      "path": "assets/projects/agorafrik-photo-p25.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "bytes": 49340,
+      "sha256": "f994475978b38c8bdde02437ab59008835db25bddcb3040676f4fd5b36d26e4b",
+      "page": 25,
+      "source": "Selected Canva page preview. Full source presentation is not linked.",
+      "format": "WebP"
+    },
+    {
+      "path": "assets/projects/agorafrik-photo-p26.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "bytes": 60236,
+      "sha256": "4c2934bb5d96745b6297f2c80ccafe3e1bce34fffd056cbcf552064c9a88c545",
+      "page": 26,
+      "source": "Selected Canva page preview. Full source presentation is not linked.",
+      "format": "WebP"
+    },
+    {
+      "path": "assets/projects/agorafrik-photo-p27.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "bytes": 73070,
+      "sha256": "851d06b0d3e5834d2e05f5162c6ee58e8ae1b8d778d89adaf113e78b981b4658",
+      "page": 27,
+      "source": "Selected Canva page preview. Full source presentation is not linked.",
+      "format": "WebP"
     },
     {
       "path": "assets/projects/agorafrik-recherche-p06.webp",
@@ -2527,6 +2561,17 @@
       ]
     },
     {
+      "path": "assets/projects/utex-empreinte-p01.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "bytes": 37662,
+      "sha256": "13b7842f6e372228e4372211247694eeb86b54c4a3a935130ce6fea39a92e772",
+      "page": 1,
+      "source": "Selected Canva page preview. Full source presentation is not linked.",
+      "format": "WebP"
+    },
+    {
       "path": "assets/projects/utex-empreinte-p02.webp",
       "width": 1920,
       "height": 1080,
@@ -2562,6 +2607,17 @@
           }
         }
       ]
+    },
+    {
+      "path": "assets/projects/utex-empreinte-p19.webp",
+      "width": 596,
+      "height": 335,
+      "quality": "canva-preview",
+      "bytes": 60514,
+      "sha256": "da182d7bd15d6c32a65eb1c1e36d5fc9165a84802226d0f79f6ef4363f902d2a",
+      "page": 19,
+      "source": "Selected Canva page preview. Full source presentation is not linked.",
+      "format": "WebP"
     },
     {
       "path": "assets/projects/wali-matieres-p07.webp",
