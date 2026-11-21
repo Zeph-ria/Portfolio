@@ -1,22 +1,29 @@
 # Exports et images du portfolio
 
-## État courant — 20 novembre 2026
+## Sélection du 21 novembre 2026
 
-La sélection affichée est documentée dans `assets-manifest.json` : **82 originaux Canva et 6 captures de sites**, accompagnés de **82 variantes de cartes**. Les 87 pages de la visionneuse sont servies localement ; un visuel de composition d’accueil distinct complète cet inventaire.
+Le catalogue courant associe dix projets courts, 33 vues dans leurs présentations et une galerie de 89 visuels finis. Les quatre calendriers Carrigrès sont aussi réunis dans une section dédiée. Six captures réelles illustrent les deux sites web.
 
-Les nouveaux exports Canva ont été importés sans recadrage et enregistrés en WebP sans perte. Les variantes des cartes sont séparées, à 900 ou 1100 px au maximum sur le côté long. Le PNG Halloween original est conservé intact, y compris ses métadonnées.
+Seules deux compositions L’Atelier, pages 6 et 12 du document de campagnes, sont omises en raison de médias non importés dans leur source Canva. Les pages 22 et 26 sont exportables et intégrées ; la galerie conserve douze autres visuels L’Atelier.
 
-Les fichiers de pleine définition totalisent **64 919 942 octets** ; les variantes totalisent **7 643 204 octets**. Ces sommes couvrent l’inventaire complet, pas le poids initial de la page. Les images de pleine définition se chargent à l’ouverture de la visionneuse ; les miniatures sont chargées paresseusement.
+Les nouveaux visuels proviennent d’exports PNG officiels des pages sélectionnées, en qualité élevée. Les originaux sont importés en WebP sans perte, sans recadrage. Les dimensions mesurées du PNG exporté sont enregistrées ; elles peuvent différer des dimensions arrondies fournies par l’API Canva pour un format d’impression. Les miniatures sont des fichiers séparés de 900 ou 1100 pixels au maximum sur le côté long. Le PNG Halloween fourni reste intact.
 
-Les captures Carrigrès et Breathe & Rise Without Fear proviennent des pages publiques. Le formulaire de devis présenté est vide. Leurs URLs et légendes sont dans `assets/sites/manifest.json`.
+Le manifeste technique inventorie seulement les images affichées, leurs dimensions, octets et SHA-256. Il reste dans le dépôt source et est exclu du site publié. Les reçus d’import complets ne sont pas publiés. Aucun lien vers un document Canva entier n’est exposé dans le site ou dans son catalogue.
+
+Les quatre calendriers sont des pièces d’édition distinctes. Le triptyque montre l’habillage d’impression destiné à recevoir des feuillets mensuels séparés ; il n’est pas présenté comme une photographie du calendrier assemblé.
 
 ## Actualiser une sélection
 
-1. Inspecter les pages à montrer et vérifier leur contribution au projet.
-2. Exporter uniquement les pages retenues depuis Canva.
-3. Importer avec `scripts/import_canva_export.py` ; les reçus locaux d’import sont ignorés par Git.
-4. Mettre à jour `content/projects.json` dans les trois langues.
-5. Exécuter `scripts/build_portfolio.py --strict`, puis `scripts/update_asset_manifest.py`.
-6. Vérifier les fichiers, le rendu et l’intégrité avant publication.
+1. Inspecter les créations finies et vérifier leur attribution.
+2. Choisir des pages représentatives, en excluant les documents internes et les constructions techniques.
+3. Exporter uniquement les pages retenues depuis Canva.
+4. Importer avec `scripts/import_canva_export.py`, en conservant l’original entier.
+5. Mettre à jour `content/projects.json` avec des titres courts et des alternatives FR/EN/ES.
+6. Exécuter `scripts/build_portfolio.py --strict`, puis `scripts/update_asset_manifest.py`.
+7. Vérifier les fichiers, les proportions et le rendu avant publication.
 
-Les URLs de documents complets ne sont publiées que lorsqu’elles sont présentes dans la sélection éditoriale contrôlée. Un export ne doit pas introduire un accès aux autres pages d’un document de travail.
+Les fichiers retirés de cette sélection ne doivent pas rester accessibles comme copies techniques dans le déploiement courant. Cette règle n’implique pas de réécrire l’historique Git.
+
+## Périmètre du site publié
+
+La configuration Jekyll `_config.yml` exclut du site GitHub Pages les dossiers `docs`, `tests`, `scripts` et `content`, les documents de travail à la racine, `assets-manifest.json` et `assets/sites/manifest.json`. Les fichiers nécessaires au navigateur restent servis : HTML, CSS, JavaScript, images et polices. Ces exclusions ne rendent pas privés les fichiers conservés dans le dépôt GitHub public.

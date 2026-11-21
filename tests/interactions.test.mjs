@@ -292,11 +292,28 @@ function activePage(group) { return pages(group).findIndex(page => page.getAttri
 function multiple(f) { return sequences(f).find(group => pages(group).length > 2); }
 function click(group, attribute) { return group.querySelector('[' + attribute + ']').emit('click'); }
 function openPage(f, group, index = 0) {
-  while (activePage(group) < index) click(group, 'data-slide-next');
-  while (activePage(group) > index) click(group, 'data-slide-prev');
+  if (!group.hasAttribute('data-gallery')) {
+    while (activePage(group) < index) click(group, 'data-slide-next');
+    while (activePage(group) > index) click(group, 'data-slide-prev');
+  }
   const opener = trigger(pages(group)[index]);
   opener.emit('click');
   return opener;
+}
+
+function assertGalleryAvailable(group, originalTiles) {
+  const tiles = pages(group);
+  assert.equal(tiles.length, originalTiles.length, 'Viewer navigation must not remove gallery tiles');
+  tiles.forEach((tile, index) => {
+    assert.equal(tile, originalTiles[index], 'Viewer navigation must not reorder or replace gallery tiles');
+    assert.equal(tile.hidden, false);
+    assert.equal(tile.hasAttribute('inert'), false);
+    assert.notEqual(tile.getAttribute('aria-hidden'), 'true');
+    const link = trigger(tile);
+    assert.equal(link.closest('[hidden]'), null);
+    assert.equal(link.closest('[inert]'), null);
+    assert.notEqual(link.getAttribute('tabindex'), '-1');
+  });
 }
 
 test('enhancement preserves every primary local link and identifies the actual project pages', () => {
@@ -319,6 +336,7 @@ test('enhancement preserves every primary local link and identifies the actual p
 
 test('mobile menu opens, changes language, closes with Escape and restores focus', () => {
   const f = fixture();
+  assert.deepEqual(f.all('#main-menu a').map(link => link.getAttribute('href')), ['#realisations', '#galerie', '#apropos', '#contact']);
   const button = f.id('menu-toggle');
   assert.equal(button.hidden, false);
   assert.equal(button.getAttribute('aria-expanded'), 'false');
@@ -358,6 +376,7 @@ test('navigation activation, outside click and desktop resize close the mobile d
 test('filters show the matching projects and announce counts from actual content', () => {
   const f = fixture();
   const cards = f.all('article.project-card[data-category]');
+  assert.deepEqual(f.all('[data-filter]').map(button => button.dataset.filter), ['all', 'branding', 'communication', 'research']);
   for (const button of f.all('[data-filter]')) {
     const category = button.dataset.filter;
     button.emit('click');
@@ -367,6 +386,81 @@ test('filters show the matching projects and announce counts from actual content
   }
   select(f, 'data-filter', 'all');
   assert(cards.every(card => !card.hidden));
+});
+
+test('gallery navigation opens the chosen artwork, wraps inside the gallery and preserves every tile', () => {
+  const f = fixture();
+  const gallery = f.one('[data-gallery]');
+  assert(gallery, 'The visual gallery is required');
+  const originalTiles = pages(gallery);
+  const total = originalTiles.length;
+  assert(total >= 50, 'The gallery needs a generous selection');
+  const originalLinks = originalTiles.map(tile => trigger(tile).getAttribute('href'));
+  const project = multiple(f);
+  const projectIndex = activePage(project);
+  const track = gallery.querySelector('.gallery-grid');
+  const originalScroll = { left: track.scrollLeft, top: track.scrollTop };
+  assertGalleryAvailable(gallery, originalTiles);
+  for (const tile of originalTiles) {
+    trigger(tile).focus();
+    assert.equal(f.document.activeElement, trigger(tile), 'Every gallery link must remain focusable');
+  }
+
+  const index = Math.floor(total / 2);
+  const opener = openPage(f, gallery, index);
+  assert.equal(f.id('design-dialog').open, true);
+  assert.equal(f.id('preview-counter').textContent, `${index + 1} sur ${total}`);
+  assert.equal(f.id('preview-image').src, originalUrl(opener.querySelector('img')));
+  f.id('preview-next').emit('click');
+  assert.equal(f.id('preview-image').src, originalUrl(trigger(originalTiles[index + 1]).querySelector('img')));
+  assert.equal(f.id('preview-download').href, f.id('preview-image').src);
+  assertGalleryAvailable(gallery, originalTiles);
+  assert.equal(activePage(project), projectIndex, 'Gallery navigation must not advance a project carousel');
+  f.id('preview-close').emit('click');
+  assert.equal(f.document.activeElement, opener, 'Closing must return to the exact tile that opened the viewer');
+  assertGalleryAvailable(gallery, originalTiles);
+
+  openPage(f, gallery, total - 1);
+  f.id('preview-next').emit('click');
+  assert.equal(f.id('preview-image').src, originalUrl(trigger(originalTiles[0]).querySelector('img')));
+  assert.equal(f.id('preview-counter').textContent, `1 sur ${total}`);
+  f.id('preview-prev').emit('click');
+  assert.equal(f.id('preview-image').src, originalUrl(trigger(originalTiles[total - 1]).querySelector('img')));
+  f.id('preview-close').emit('click');
+  assert.equal(f.document.activeElement, trigger(originalTiles[total - 1]));
+  assert.deepEqual(pages(gallery).map(tile => trigger(tile).getAttribute('href')), originalLinks);
+  assert.deepEqual({ left: track.scrollLeft, top: track.scrollTop }, originalScroll, 'The gallery must not scroll like a carousel');
+  for (const button of f.all('[data-filter]')) {
+    button.emit('click');
+    assertGalleryAvailable(gallery, originalTiles);
+  }
+});
+
+test('FR, EN and ES translate the open gallery without changing its artwork or accessibility', () => {
+  const f = fixture();
+  const gallery = f.one('[data-gallery]');
+  const originalTiles = pages(gallery);
+  const index = 2;
+  const selected = originalTiles[index];
+  const opener = openPage(f, gallery, index);
+  const original = originalUrl(opener.querySelector('img'));
+  for (const [language, name, count] of [['en', 'Gallery', 'of'], ['es', 'Galería', 'de'], ['fr', 'Galerie', 'sur']]) {
+    f.language(language);
+    assert.equal(gallery.getAttribute('aria-label'), name);
+    assert.equal(f.id('preview-title').textContent, selected.querySelector('[data-slide-title]').getAttribute('data-' + language));
+    const expectedCaption = selected.querySelector('[data-slide-caption]')?.getAttribute('data-' + language)?.trim() || '';
+    assert.equal(f.id('preview-caption').textContent, expectedCaption);
+    assert.equal(f.id('preview-caption').hidden, !expectedCaption, 'The viewer must hide an absent caption');
+    assert.equal(f.id('preview-image').alt, opener.querySelector('img').getAttribute('data-alt-' + language));
+    assert.equal(f.id('preview-counter').textContent, `${index + 1} ${count} ${originalTiles.length}`);
+    assert.equal(f.id('preview-image').src, original);
+    assert.equal(f.id('preview-download').href, original);
+    for (const link of f.all('#main-menu a')) assert.equal(link.textContent.trim(), link.getAttribute('data-' + language));
+    assertGalleryAvailable(gallery, originalTiles);
+  }
+  f.id('preview-close').emit('click');
+  assert.equal(f.document.activeElement, opener);
+  assert.deepEqual(f.i18n.diagnostics, []);
 });
 
 test('inline page navigation stays in its project and stops at both ends', () => {
@@ -453,16 +547,17 @@ test('download always follows the displayed original and supports repository sub
   }
 });
 
-test('Canva is optional and an earlier source does not leak into website screenshots', () => {
+test('local artwork clears any stale complete-document link from the viewer', () => {
   const f = fixture();
-  const sourceGroup = sequences(f).find(group => trigger(pages(group)[0]).dataset.source);
-  const opener = openPage(f, sourceGroup);
-  assert.equal(f.id('preview-document').href, opener.dataset.source);
-  assert.equal(f.id('preview-document').hidden, false);
+  assert(f.all('a[data-preview]').every(link => !link.dataset.source), 'The published selection must not expose source documents');
+  // Seed stale UI state without requiring a real source link in public content.
+  f.id('preview-document').href = 'https://www.canva.com/design/STALE_REFERENCE/view';
+  f.id('preview-document').hidden = false;
+  openPage(f, multiple(f));
+  assert.equal(f.id('preview-document').hidden, true);
+  assert.equal(f.id('preview-document').getAttribute('href'), null);
   f.id('preview-close').emit('click');
-  const website = sequences(f).find(group => !trigger(pages(group)[0]).dataset.source);
-  assert(website, 'The website screenshots do not require Canva');
-  openPage(f, website);
+  openPage(f, f.one('[data-gallery]'), 1);
   assert.equal(f.id('preview-document').hidden, true);
   assert.equal(f.id('preview-document').getAttribute('href'), null);
   assert.equal(f.id('preview-download').hidden, false);
@@ -480,6 +575,7 @@ test('invalid source links and remote or unsafe downloads are not offered', () =
     assert.equal(f.id('preview-download').hidden, true);
     assert.equal(f.id('preview-download').getAttribute('href'), null);
     assert.equal(f.id('preview-document').hidden, true);
+    assert.equal(f.id('preview-document').getAttribute('href'), null);
     f.id('preview-close').emit('click');
   }
 });
@@ -515,7 +611,9 @@ test('an open viewer keeps its page and zoom while titles, captions, alt text an
   for (const [language, count, label] of [['en', 'of', 'Fit to screen'], ['es', 'de', 'Ajustar a la pantalla'], ['fr', 'sur', 'Ajuster à l’écran']]) {
     f.language(language);
     assert(f.id('preview-title').textContent.endsWith(page.querySelector('[data-slide-title]').getAttribute('data-' + language)));
-    assert.equal(f.id('preview-caption').textContent, page.querySelector('[data-slide-caption]').getAttribute('data-' + language));
+    const expectedCaption = page.querySelector('[data-slide-caption]')?.getAttribute('data-' + language)?.trim() || '';
+    assert.equal(f.id('preview-caption').textContent, expectedCaption);
+    assert.equal(f.id('preview-caption').hidden, !expectedCaption);
     assert.equal(f.id('preview-image').alt, opener.querySelector('img').getAttribute('data-alt-' + language));
     assert.equal(f.id('preview-counter').textContent, `2 ${count} ${pages(group).length}`);
     assert.equal(f.id('preview-zoom').textContent, label);
@@ -553,15 +651,19 @@ test('a backdrop click closes the viewer but its own content does not', () => {
 
 test('modified clicks and browsers without native dialog retain local-link navigation', () => {
   const f = fixture();
-  const opener = trigger(pages(multiple(f))[0]);
-  for (const modifiers of [{ ctrlKey: true }, { metaKey: true }, { shiftKey: true }, { altKey: true }, { button: 1 }]) {
-    assert.equal(opener.emit('click', modifiers).defaultPrevented, false);
-    assert.equal(f.id('design-dialog').open, false);
+  for (const group of [multiple(f), f.one('[data-gallery]')]) {
+    const opener = trigger(pages(group)[0]);
+    for (const modifiers of [{ ctrlKey: true }, { metaKey: true }, { shiftKey: true }, { altKey: true }, { button: 1 }]) {
+      assert.equal(opener.emit('click', modifiers).defaultPrevented, false);
+      assert.equal(f.id('design-dialog').open, false);
+    }
   }
   const fallback = fixture({ nativeDialog: false });
-  const link = trigger(pages(multiple(fallback))[0]);
-  assert.equal(link.emit('click').defaultPrevented, false);
-  assert.equal(link.getAttribute('aria-haspopup'), null);
-  assert.match(link.getAttribute('href'), /^assets\//);
+  for (const group of [multiple(fallback), fallback.one('[data-gallery]')]) {
+    const link = trigger(pages(group)[0]);
+    assert.equal(link.emit('click').defaultPrevented, false);
+    assert.equal(link.getAttribute('aria-haspopup'), null);
+    assert.match(link.getAttribute('href'), /^assets\//);
+  }
   assert.equal(fallback.id('design-dialog').open, false);
 });

@@ -31,6 +31,7 @@ def main():
     content = json.loads((ROOT / 'content/projects.json').read_text())
     slides = [slide for project in content['projects'] for slide in project['slides']]
     slides += [calendar['slide'] for calendar in content['calendars']]
+    slides += content.get('gallery', [])
     allowed_sources = {slide['path']: slide['source'] for slide in slides if slide.get('source')}
     records = {}
     for path in ('assets-manifest.json', 'docs/qa/2026-11-20-curation/imported-assets.json'):
@@ -67,11 +68,11 @@ def main():
             image['sha256'] = sha256(data).hexdigest()
         output.append(record)
     manifest = {
-        'auditedAt': '2026-11-20',
+        'auditedAt': '2026-11-21',
         'measurement': 'Native image dimensions and SHA-256 measured from the installed artwork files.',
         'notes': [
             'Only artwork displayed in the portfolio is included in this inventory.',
-            'Source links are limited to reviewed documents; selected pages remain locally accessible when the complete source contains private material.',
+            'No complete Canva source document is linked. Only selected finished artwork is published; website captures link to the public website.',
             'Full-resolution Canva exports retain the original composition. Card thumbnails are separate derivatives.',
             'Website images are actual browser captures of the public pages, with no submitted form data.'
         ],

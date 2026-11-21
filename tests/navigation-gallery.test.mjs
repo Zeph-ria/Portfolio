@@ -53,8 +53,8 @@ if (browser) {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(baseURL, { waitUntil: 'domcontentloaded' });
 
-    await run('three navigation destinations; mobile menu closes and returns focus', async () => {
-      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#apropos', '#contact']);
+    await run('four navigation destinations; mobile menu closes and returns focus', async () => {
+      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#galerie', '#apropos', '#contact']);
       assert.equal(await page.locator('#menu-toggle').isVisible(), false);
       for (const width of [320, 390]) {
         await page.setViewportSize({ width, height: 844 });
@@ -71,9 +71,9 @@ if (browser) {
         assert(await page.locator('#menu-toggle').evaluate(button => document.activeElement === button));
       }
       await page.locator('#menu-toggle').click();
-      await page.locator('#main-menu a[href="#apropos"]').click();
+      await page.locator('#main-menu a[href="#galerie"]').click();
       assert.equal(await page.locator('#main-menu').isVisible(), false);
-      assert(await page.locator('#apropos').evaluate(section => document.activeElement === section));
+      assert(await page.locator('#galerie').evaluate(section => document.activeElement === section));
       await page.setViewportSize({ width: 1440, height: 1000 });
       assert.equal(await page.locator('#main-menu').isVisible(), true);
       assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'), 'false');
@@ -89,6 +89,7 @@ if (browser) {
 
     await run('project filters match actual categories and preserve one selected control', async () => {
       const categories = await page.locator('[data-filter]').evaluateAll(buttons => buttons.map(button => button.dataset.filter));
+      assert.deepEqual(categories, ['all', 'branding', 'communication', 'research']);
       for (const category of categories) {
         await page.locator(`[data-filter="${category}"]`).click();
         const mismatches = await page.locator('article.project-card[data-category]').evaluateAll((cards, category) => cards.filter(card => card.hidden === (category === 'all' || card.dataset.category.split(/\s+/).includes(category))).length, category);
@@ -98,23 +99,75 @@ if (browser) {
       await page.locator('[data-filter="all"]').click();
     });
 
-    await run('competency links reveal projects hidden by a filter', async () => {
-      await page.locator('[data-filter="digital"]').click();
-      assert.equal(await page.locator('#projet-wali').isVisible(), false);
-      await page.locator('.competency-links a[href="#projet-wali"]').click();
-      assert.equal(await page.locator('#projet-wali').isVisible(), true);
+    await run('a project fragment reveals work hidden by the research filter', async () => {
+      const targetId = await page.locator('article.project-card[data-category]').evaluateAll(cards => cards.find(card => !card.dataset.category.split(/\s+/).includes('research'))?.id);
+      assert(targetId, 'The selection needs a project outside graphic exploration');
+      await page.locator('[data-filter="research"]').click();
+      assert.equal(await page.locator('#' + targetId).isVisible(), false);
+      await page.evaluate(id => { location.hash = '#' + id; }, targetId);
+      await page.locator('#' + targetId).waitFor({ state: 'visible' });
       assert.equal(await page.locator('[data-filter="all"]').getAttribute('aria-pressed'), 'true');
-      assert(await page.locator('#projet-wali').evaluate(card => document.activeElement === card));
-      await page.locator('[data-filter="digital"]').click();
-      await page.evaluate(() => { location.hash = '#projet-agorafrik'; });
-      await page.locator('#projet-agorafrik').waitFor({ state: 'visible' });
-      assert.equal(await page.locator('[data-filter="all"]').getAttribute('aria-pressed'), 'true');
+    });
+
+    await run('the gallery stays visible and ordered while its viewer navigates and returns focus', async () => {
+      const gallery = page.locator('[data-gallery]');
+      assert.equal(await gallery.count(), 1);
+      const tiles = gallery.locator('.gallery-grid > [data-slide]');
+      const total = await tiles.count();
+      assert(total >= 50, 'At least 50 local images must be visible in the gallery');
+      const originals = await tiles.evaluateAll(items => items.map(tile => tile.querySelector('a[data-preview]').getAttribute('href')));
+      assert(originals.every(path => /^assets\/.+\.(?:webp|png|jpe?g)$/i.test(path)));
+      const unchanged = async () => {
+        const state = await tiles.evaluateAll(items => items.map(tile => {
+          const link = tile.querySelector('a[data-preview]');
+          return {
+            href: link.getAttribute('href'),
+            available: tile.getClientRects().length > 0 && link.getClientRects().length > 0
+              && !link.closest('[hidden], [inert], [aria-hidden="true"]')
+              && link.tabIndex >= 0 && getComputedStyle(link).visibility !== 'hidden'
+          };
+        }));
+        assert.deepEqual(state.map(item => item.href), originals, 'The viewer must not reorder, remove or replace gallery artwork');
+        assert(state.every(item => item.available), 'Every tile must remain visible and keyboard reachable');
+      };
+      await unchanged();
+      await page.locator('[data-filter="research"]').click();
+      await unchanged();
+      await page.locator('[data-filter="all"]').click();
+
+      for (const width of [390, 1440]) {
+        await page.setViewportSize({ width, height: 1000 });
+        const selected = Math.floor(total / 2);
+        const trigger = tiles.nth(selected).locator('a[data-preview]');
+        await trigger.focus();
+        await page.keyboard.press('Enter');
+        assert.equal(await page.locator('#preview-image').getAttribute('src'), originals[selected]);
+        assert.equal(await page.locator('#preview-counter').textContent(), `${selected + 1} sur ${total}`);
+        await page.locator('#preview-next').click();
+        assert.equal(await page.locator('#preview-image').getAttribute('src'), originals[selected + 1]);
+        assert.equal(await page.locator('#preview-document').isVisible(), false);
+        assert.equal(await page.locator('#preview-document').getAttribute('href'), null);
+        await unchanged();
+        await page.keyboard.press('Escape');
+        assert(await trigger.evaluate(link => document.activeElement === link), 'Closing must restore the exact gallery opener');
+        await unchanged();
+      }
+
+      const last = tiles.last().locator('a[data-preview]');
+      await last.click();
+      await page.locator('#preview-next').click();
+      assert.equal(await page.locator('#preview-image').getAttribute('src'), originals[0], 'Next must wrap within the gallery');
+      await page.locator('#preview-prev').click();
+      assert.equal(await page.locator('#preview-image').getAttribute('src'), originals.at(-1), 'Previous must wrap within the gallery');
+      await page.locator('#preview-close').click();
+      assert(await last.evaluate(link => document.activeElement === link));
+      await unchanged();
     });
 
     await run('project pages remain local, navigate within the project and restore focus', async () => {
       const carousel = page.locator('[data-slideshow]').filter({ has: page.locator('[data-slide]:nth-child(2)') }).first();
       const total = await carousel.locator('[data-slide]').count();
-      assert(total > 1, 'A multipage case study is required');
+      assert(total > 1, 'A multipage project is required');
       await carousel.locator('[data-slide-next]').click();
       assert.match(await carousel.locator('[data-slide-count]').textContent(), new RegExp(`^2 sur ${total}$`));
       const trigger = carousel.locator('[data-slide]').nth(1).locator('a[data-preview]');
@@ -160,15 +213,26 @@ if (browser) {
       await page.locator('#preview-close').click();
     });
 
-    await run('three languages refresh menu and open viewer labels', async () => {
-      const trigger = page.locator('[data-slideshow] [data-slide].is-current a[data-preview]').first();
+    await run('FR, EN and ES refresh the menu and open gallery without changing the selected image', async () => {
+      const gallery = page.locator('[data-gallery]');
+      const tile = gallery.locator('[data-slide]').nth(2);
+      const trigger = tile.locator('a[data-preview]');
+      const original = await trigger.getAttribute('href');
+      const total = await gallery.locator('[data-slide]').count();
       await trigger.click();
-      for (const [language, zoomText] of [['en', 'View actual size'], ['es', 'Ver tamaño real'], ['fr', 'Afficher à taille réelle']]) {
+      for (const [language, name, count, zoomText] of [['en', 'Gallery', 'of', 'View actual size'], ['es', 'Galería', 'de', 'Ver tamaño real'], ['fr', 'Galerie', 'sur', 'Afficher à taille réelle']]) {
         await page.evaluate(language => window.PortfolioI18n.setLanguage(language), language);
         assert.equal(await page.locator('html').getAttribute('lang'), language);
+        assert.equal(await gallery.getAttribute('aria-label'), name);
+        assert.equal(await page.locator('#preview-image').getAttribute('src'), original);
+        assert.equal(await page.locator('#preview-image').getAttribute('alt'), await trigger.locator('img').getAttribute('data-alt-' + language));
+        assert((await page.locator('#preview-title').textContent()).includes(await tile.locator('[data-slide-title]').getAttribute('data-' + language)));
+        assert.equal(await page.locator('#preview-counter').textContent(), `3 ${count} ${total}`);
         assert.equal(await page.locator('#preview-zoom').textContent(), zoomText);
+        assert(await page.locator('#main-menu a').evaluateAll((links, language) => links.length === 4 && links.every(link => link.textContent.trim() === link.getAttribute('data-' + language)), language));
       }
       await page.locator('#preview-close').click();
+      assert(await trigger.evaluate(link => document.activeElement === link));
     });
 
     await run('without JavaScript, navigation and original image links remain available', async () => {
@@ -180,6 +244,9 @@ if (browser) {
         const references = await plain.locator('a[data-preview]').evaluateAll(links => links.map(link => link.getAttribute('href')));
         assert(references.length > 4);
         assert(references.every(reference => reference.startsWith('assets/')), 'No preview should require Canva');
+        const gallery = plain.locator('[data-gallery] .gallery-grid a[data-preview]');
+        assert(await gallery.count() >= 50);
+        assert(await gallery.evaluateAll(links => links.every(link => link.getClientRects().length > 0 && link.tabIndex >= 0 && !link.closest('[hidden], [inert], [aria-hidden="true"]'))), 'Every gallery original must remain reachable without JavaScript');
       } finally { await fallback.close(); }
     });
     await run('no uncaught browser errors', async () => assert.deepEqual(errors, []));

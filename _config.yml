@@ -1,0 +1,20 @@
+# Publish the portfolio, not its source catalogue or working documentation.
+exclude:
+  - docs
+  - tests
+  - scripts
+  - content
+  - README.md
+  - AUDIT_ASSETS.md
+  - EXPORT_PLAN.md
+  - QA_REPORT.md
+  - assets-manifest.json
+  - assets/sites/manifest.json
+  # Preserve dependency exclusions when GitHub Pages uses Jekyll 3.
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

@@ -1,101 +1,64 @@
-# Vérification du portfolio — 20 novembre 2026
+# Vérification du portfolio — 21 novembre 2026
 
-Branche : `feat/portfolio-curation-2026`.
+## Version corrigée
 
-## Résultat
+Cette vérification remplace le rapport de la sélection précédente. La correction répond à la demande de Gloria : retrouver les titres approuvés, raccourcir les descriptions, montrer les créations finies et ouvrir une galerie transversale.
 
-**44 tests Node sur 44 réussis, smoke test réussi et diff sans anomalie.** La première vérification du navigateur réel a parcouru **82 pages dans 16 présentations** ; chaque image chargée correspond au fichier et aux dimensions attendus. Le document `browser-observations.json` et les captures dans `docs/qa/2026-11-20-curation/` conservent ces observations.
+- 10 projets, chacun présenté par un titre et une phrase ; 33 vues sélectionnées.
+- 89 visuels dans la galerie, dont dix compositions Annieck’s et douze L’Atelier.
+- Quatre calendriers Carrigrès et deux sites, avec trois captures par site.
+- UTEX Empreinte limité à sa signature visuelle ; Recherche graphique remplace les présentations stratégiques.
+- Pages techniques de construction, documents stratégiques et liens vers les documents Canva complets retirés de la publication courante.
 
-## Périmètre contrôlé
+## Contrôles automatiques
 
-| Contrôle | Résultat observé |
-| --- | --- |
-| Direction artistique | Wremena et bordeaux `#652936` observés ; `styles.css` et les polices conservés |
-| Projets | 11 études, 77 pages consultables localement |
-| Calendriers | 4 formats, aperçus plein cadre et originaux entiers dans le dialogue |
-| Sites | 6 captures réelles pour Carrigrès et Breathe & Rise Without Fear |
-| Fichiers | 88 originaux affichés et 82 variantes mesurés, tailles et SHA-256 vérifiés |
-| Menu à 390 px | Trois destinations ; ouverture sur le premier lien ; Échap et retour au bouton |
-| Filtres et compétences | Wali masqué par le filtre digital puis réaffiché par son lien de compétence, filtre Tout voir rétabli |
-| Langues | FR/EN/ES, y compris titres, légendes, alternatives et contrôles |
-| Zoom | Le calendrier mural revient à 1815 × 2571 px, puis au cadrage entier |
-| Téléchargement | Le PNG Halloween téléchargé est identique octet pour octet à la source |
-
-## Rendu responsive
-
-Quatre largeurs d’iframe ont été vérifiées dans les trois langues : **320, 390, 700 et 768 px**. Les largeurs intérieures mesurées avec la barre de défilement étaient respectivement 305, 375, 685 et 753 px. Aucun débordement de page ni découpe des titres et blocs contrôlés n’a été retrouvé après les corrections ciblées sous 360 px.
-
-La page de bureau a aussi été contrôlée en FR/EN/ES à **1363 px**. Le bordeaux observé est `rgb(101, 41, 54)` et la famille principale est Wremena.
-
-À **320 px**, les quatre calendriers ont été ouverts en français. Le format sous-main a aussi été vérifié en anglais et en espagnol. Toutes les images tiennent entièrement dans leur zone, sans déformation ; les actions restent dans le cadre. Ces observations portent sur un navigateur avec des largeurs contrôlées, pas sur des téléphones physiques.
-
-La première passe avait révélé un dépassement du titre Parcours à 320 px en FR/ES et du titre Contact en EN. Des adaptations limitées à moins de 360 px ont corrigé ces cas. Un titre de visionneuse répétant Carrigrès a également été corrigé.
-
-## Contrôles exécutés
+**48 tests Node sur 48 réussis**, smoke test réussi et diff sans anomalie.
 
 ```bash
 node --test tests/static-contracts.mjs tests/interactions.test.mjs tests/i18n.test.cjs tests/domain.test.mjs
 node tests/smoke.mjs
-node --check tests/browser.mjs
-node --check tests/navigation-gallery.test.mjs
 git diff --check
 ```
 
-Les tests statiques contrôlent notamment les destinations, les traductions, les fichiers locaux, leur définition et leurs empreintes. Les tests d’interaction exécutent le vrai script avec une fixture DOM. La passe CUA valide séparément le rendu et les interactions dans un vrai navigateur.
+Ces tests couvrent les traductions, les destinations, la navigation, les filtres, les séquences d’images, le téléchargement de l’original choisi, le retour du focus, les chemins locaux, les dimensions et les empreintes des ressources. Le manifeste mesure 95 originaux affichés et 89 variantes de cartes. Les URL CSS et JavaScript portent les versions calculées de leur contenu.
 
-## Sources et présentation
+## Typographie et mise en page
 
-Les pages retenues ont été inspectées visuellement. Les séquences Re-vendre, L’Atelier et Wali sont présentées avec des légendes distinctes. Agorafrik utilise sa couverture actualisée et présente logo, variantes, photographie et applications. Luminary montre le storyboard, la structure et le script, au-delà de la couverture.
+`styles.css`, `Wremena-Regular.woff` et `Wremena-Bold.woff` sont identiques à la référence approuvée `7154a95`. Les surcharges éditoriales agrandissant les titres sur téléphone ont été supprimées. Les titres de projets retrouvent leur place sous les images et la règle originale `400 clamp(31px, 3.5vw, 55px) / 1.1`.
 
-Les liens vers des documents complets mêlant réalisations et informations privées ou non finalisées sont retirés ; les liens de documents sûrs restent facultatifs. Les exports sélectionnés restent accessibles localement. Les pages d’une charte Ardhi dont l’attribution personnelle n’était pas établie ont été écartées de la sélection ; les six pages de stratégie signées Gloria sont conservées.
+La famille Wremena est chargée dans le navigateur. La composition d’accueil et le bordeaux `#652936` sont conservés. Les ajustements déjà présents sous 360 px pour les autres sections sont maintenus.
 
-## Preuves
+La passe visuelle a révélé un débordement horizontal provoqué par les légendes masquées d’un diaporama. Le positionnement relatif de leur figure le corrige sans modifier la typographie. À 1363 px de fenêtre, le document mesure désormais 1348 px utiles et 1348 px de contenu.
 
-- `docs/qa/2026-11-20-curation/browser-observations.json`
-- `docs/qa/2026-11-20-curation/mobile-menu.jpg`
-- `docs/qa/2026-11-20-curation/mobile-calendar.jpg`
-- `assets-manifest.json`
+## Vérification dans un navigateur réel
 
-Le fichier téléchargé contrôlé mesure **3 846 104 octets** ; SHA-256 : `88e3b28a388e71002b7dc80d3d9dfd2cbffc726267ebc0885067f4e78835eb09`.
+L’aperçu local a été contrôlé en français, anglais et espagnol à quatre largeurs d’iframe, soit douze configurations :
 
-## Ajout UTEX Empreinte
+| Largeur demandée | Largeur utile et contenu | Titre de projet | Colonnes de galerie |
+| --- | --- | --- | --- |
+| 320 px | 305 px | 31 px | 2 |
+| 390 px | 375 px | 31 px | 2 |
+| 768 px | 753 px | 31 px | 3 |
+| 1280 px | 1265 px | 44,8 px | 4 |
 
-UTEX Empreinte figure en deuxième position, avec son contexte de conception de programme, son rôle, ses objectifs, son approche et ses livrables en FR/EN/ES. Les affiches UTEX/TEXAF restent une réalisation distincte. Les cinq pages sélectionnées couvrent l’identité, la vision, les axes ESG, le concept de campagne et Green Kids. Elles ne donnent pas accès au document de travail complet.
+Dans chaque configuration, les 10 projets et les 89 visuels sont présents ; aucun débordement horizontal de page n’a été mesuré. Les observations de bureau et les captures visuelles confirment les titres sous les images, les descriptions courtes et les images entières dans la galerie.
 
-La passe complémentaire dans le navigateur a chargé les **5/5 images à 1920 × 1080 px**, avec les fichiers attendus. L’inventaire atteint donc **87 pages dans 17 présentations**. À 320 px (305 px utiles), les textes du nouveau projet et la compétence modifiée ne débordent dans aucune des trois langues. La page des axes ESG s’affiche entière à 258 × 145,125 px, puis le zoom utilise ses 1920 × 1080 px. Après masquage par le filtre Identités, le lien UTEX Empreinte depuis les compétences réaffiche le projet et rétablit Tout voir. Les 44 tests Node et le smoke test ont été relancés avec succès après l’ajout.
+À 390 px, le menu ouvre ses quatre destinations et se ferme à l’activation de Galerie. Le lien Annieck’s « Une allure pour chacun » ouvre le bon original 1080 × 1350, en position 3 sur 89. Le contrôle suivant passe à l’image Bloom en position 4 ; le bouton de fermeture ferme effectivement le dialogue.
 
-Preuves complémentaires : `utex-empreinte-observations.json` et `utex-empreinte-desktop.jpg` dans le même dossier de QA.
+À 320 px, le calendrier de table s’ouvre dans son format entier : original 2000 × 1382, affiché à 258 × 178,27 px avec `object-fit: contain`. Le titre et les actions restent dans le cadre. Les aperçus de la section Calendriers restent recadrés ; la galerie et la visionneuse conservent les formats complets.
 
-## Limite de vérification
+## Sélection et provenance
 
-Le lancement de Chromium depuis le terminal est indisponible dans cet environnement. Les suites `tests/browser.mjs` et `tests/navigation-gallery.test.mjs` n’ont donc pas été annoncées comme réussies : leur syntaxe a été vérifiée, et les observations réelles ci-dessus proviennent du navigateur CUA. Aucune mesure Lighthouse ni garantie sur les navigateurs et appareils non testés n’est revendiquée.
+Les compositions de la galerie ont été inspectées visuellement. Les pages Annieck’s retenues proviennent du document courant : 1, 2, 3, 5, 7, 8, 9, 10, 13 et 14. La présentation du projet utilise les pages 1, 3, 5 et 10.
 
-## Publication et cache — 21 novembre 2026
+Les nouveaux originaux sont des exports PNG officiels, convertis en WebP sans perte ; les miniatures sont séparées. Aucun original n’est reconstruit. Quatre des six images auparavant manquantes ont été récupérées : Wali matières 7 et 30, L’Atelier campagnes 22 et 26. Les deux compositions L’Atelier 6 et 12 sont exclues, Canva signalant des médias non importés qui empêchent leur export. Les documents source n’ont pas été modifiés pour contourner cette erreur.
 
-La PR nº 4 a été fusionnée, puis GitHub Pages a déployé avec succès le commit `c5ec304fd730c98e3dc39aace3fdba8f68c9b31a` (exécution `44840294112`). Le contenu HTML et les fichiers téléchargés depuis le site correspondaient à leurs empreintes locales.
+La composition L’Atelier « Évolution du logo » a été vérifiée : il s’agit d’une annonce visuelle avant/après du changement de marque, avec les logos finis, et non d’une planche expliquant leur construction.
 
-Un navigateur ayant ouvert le site avant cette publication conservait néanmoins l’ancien script : absence des contrôles de diaporama et du menu mobile, ouverture directe des images. Les réponses publiques ont un cache de dix minutes. Les cinq URL CSS/JavaScript portent désormais une version calculée à partir de leur contenu, actualisée par le générateur. Les créations et la direction artistique restent identiques. Un contrôle de cohérence empêche de publier une URL de ressource dont la version ne correspond plus au fichier.
+## Périmètre publié
 
-Après cette correction : **45/45 tests Node réussis**, smoke test réussi et diff propre.
+`_config.yml` exclut les dossiers de documentation, de tests, de scripts et de catalogue, les rapports de travail et les manifestes techniques du site GitHub Pages. Les ressources nécessaires au navigateur ne sont pas exclues. Le dépôt GitHub public et son historique restent inchangés dans leur niveau d’accès ; cette mesure ne prétend pas les rendre privés.
 
-## Finition éditoriale — 21 novembre 2026
+## Limites
 
-Les 11 projets et leurs 77 visuels ont fait l’objet d’une relecture visuelle et éditoriale. Les titres, légendes et angles sont révisés en FR/EN/ES. Carrigrès, UTEX Empreinte et Agorafrik disposent désormais d’un choix de conception et d’une synthèse des livrables lisibles avant l’ouverture de l’étude. Leurs images d’ouverture sont respectivement les maquettes de casques, la vision du programme ESG et la série d’affiches Agorafrik. Aucune page de la sélection n’a été supprimée.
-
-Les formulations distinguent les maquettes, propositions et concepts des résultats observés. Le script de voix off Luminary est nommé comme tel. Les périodes et chiffres Carrigrès restent identiques ; l’automatisation concerne la collecte des demandes, sans génération de devis ni attribution de ventes.
-
-### Présentation contrôlée dans le navigateur
-
-L’aperçu géré par Sites a permis de contrôler les nouveaux fichiers avant publication. La page de bureau affiche les trois études sur deux colonnes, avec les images à gauche et le récit à droite. Sous 1001 px, la lecture est empilée ; les titres précèdent les images dans l’ordre du document. Les huit autres projets conservent leur grille compacte.
-
-La matrice FR/EN/ES a été parcourue à **320, 390, 700, 768, 1000 et 1280 px** de largeur d’iframe, soit **18 configurations**. Les largeurs utiles mesurées étaient 305, 375, 685, 753, 985 et 1265 px, après la barre de défilement. Pour chaque configuration, la largeur du contenu égale la largeur utile : aucun débordement horizontal de page. Les 3 projets mis en avant et les 17 diaporamas initialisés restent présents dans les trois langues.
-
-Contrôles visuels ciblés : Carrigrès sur bureau et à 390 px ; UTEX Empreinte en espagnol à 320 px, sans dépassement de ses titres, résumés, rôle et choix ; ouverture de l’étude détaillée ; ouverture de la première image Carrigrès dans la visionneuse à 320 px, avec son original 1920 × 1080 chargé et affiché à 258 px de large. Ces observations concernent un navigateur à largeurs contrôlées, sans prétendre remplacer des essais sur téléphones physiques.
-
-Les 45 tests Node, le smoke test et le contrôle du diff restent les vérifications automatiques de cette passe. `styles.css`, les polices et la composition d’accueil approuvée sont conservés.
-
-### Correction d’une œuvre source
-
-Le titre du nuancier vert Wali est corrigé nativement dans Canva en « NUANCIER DES TONS VERTS », sans modification de police, de cadre ou des autres éléments. La seule page 48 a été réexportée officiellement en PNG 1080 × 1350, inspectée en grand format et importée en WebP sans perte. Un nom de fichier révisé évite de réutiliser une ancienne image en cache ; la miniature est régénérée à 880 × 1100. La date de provenance de l’import correspond désormais au jour réel de l’import.
-
-Une coquille distincte reste intégrée à l’image de tablette visible dans les pages 13 et 14 d’Ardhi : « ALIMENTS PRODUIT ». Le texte est aplati dans un média dont la source modifiable n’est pas accessible. Ces créations sont conservées telles quelles ; aucune correction de cette image n’est revendiquée.
+Les observations responsive proviennent d’un navigateur à largeurs contrôlées, pas de téléphones physiques. Chromium n’étant pas installé pour les suites terminal `tests/browser.mjs` et `tests/navigation-gallery.test.mjs`, leur réussite n’est pas revendiquée. La vérification du rendu a utilisé le navigateur CUA. Aucune mesure Lighthouse ni validation de navigateurs non testés n’est annoncée.

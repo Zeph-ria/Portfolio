@@ -1,37 +1,37 @@
 {
-  "auditedAt": "2026-11-20",
+  "auditedAt": "2026-11-21",
   "measurement": "Native image dimensions and SHA-256 measured from the installed artwork files.",
   "notes": [
     "Only artwork displayed in the portfolio is included in this inventory.",
-    "Source links are limited to reviewed documents; selected pages remain locally accessible when the complete source contains private material.",
+    "No complete Canva source document is linked. Only selected finished artwork is published; website captures link to the public website.",
     "Full-resolution Canva exports retain the original composition. Card thumbnails are separate derivatives.",
     "Website images are actual browser captures of the public pages, with no submitted form data."
   ],
   "images": [
     {
-      "path": "assets/bloom-publication.webp",
+      "path": "assets/agorafrik-publication.webp",
       "width": 1080,
       "height": 1350,
       "quality": "canva-export",
-      "bytes": 998294,
-      "sha256": "f36dd2cf7eba67af17b04d692707cd5ddec0435b76b3461a511f7f0ad3bf4be1",
+      "bytes": 81272,
+      "sha256": "67b9bbf841e7e4e5edb9820f40773da6ac8f523bf25edae7369fbe80ef3eef92",
       "page": 1,
       "export": {
         "format": "PNG",
         "width": 1080,
         "height": 1350,
-        "sha256": "42d809091ddb16aacb385d9f8e5bbe272b6462426e12ac70edf60591d33b7b32",
+        "sha256": "efd17d94b1c5c707bd689e5a980ea3771509ce1278301175f024b3a3265fbc91",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/thumbs/bloom-publication.webp",
+          "path": "assets/thumbs/agorafrik-publication.webp",
           "width": 720,
           "height": 900,
-          "bytes": 102806,
-          "sha256": "f62e91445e3187c3ba6c2f17818acbc1ff46a8d777ec29d2b7e642e5ad4bed0a",
+          "bytes": 45872,
+          "sha256": "df3cf3123461ffdd2f21e78c9bbd3de3b429e5d2e597683093b261cc12cafe87",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -80,8 +80,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGeqT9Hvco/view"
+      ]
     },
     {
       "path": "assets/carrigres-calendrier-mural.webp",
@@ -118,8 +117,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAG6SKNUtdc/view"
+      ]
     },
     {
       "path": "assets/carrigres-calendrier-sous-main.webp",
@@ -156,8 +154,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAG6SM-rZg0/view"
+      ]
     },
     {
       "path": "assets/carrigres-calendrier-table.webp",
@@ -195,8 +192,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAG6SNqAtV8/view"
+      ]
     },
     {
       "path": "assets/carrigres-calendrier-triptyque.webp",
@@ -233,8 +229,45 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAG6SAkW8x4/view"
+      ]
+    },
+    {
+      "path": "assets/kadea-affiche.webp",
+      "width": 1414,
+      "height": 2000,
+      "quality": "canva-export",
+      "bytes": 1145638,
+      "sha256": "3f74670ab86f80b340d9289f32c289c31104da04d147097554d00d4e4192a571",
+      "page": 3,
+      "export": {
+        "format": "PNG",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "4410b9ecefb5cc0bf808deef7860c2bd9a44633ad0caad0aa80d03d37bcc749c",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "historicalArtwork": true,
+      "variants": [
+        {
+          "path": "assets/thumbs/kadea-affiche.webp",
+          "width": 636,
+          "height": 900,
+          "bytes": 87160,
+          "sha256": "72ea7a8e272d6c036825586059aeca624e10c5211ae775ba2f58df57e7134c5a",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
     },
     {
       "path": "assets/projects/agorafrik-campagne-p07.webp",
@@ -261,44 +294,6 @@
           "height": 619,
           "bytes": 116210,
           "sha256": "c7d15dc6f462a9bbdfaf4c4e6c7720f8d282b35b7d5caccfc2d1d1163a36b5fb",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGafR69dyw/view"
-    },
-    {
-      "path": "assets/projects/agorafrik-identite-p01.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 39282,
-      "sha256": "c49e1e9c9e7a0ffc7b946933afb9b3dc4ada6fd90fd65a946305e5d540644ec6",
-      "quality": "canva-export",
-      "page": 1,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "f8439709c0e50205b4346b5259e0d42c2cab73f308989228244743dad41a3f6a",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/agorafrik-identite-p01.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 23046,
-          "sha256": "8092353c50937da763b3cdd65bcdfc27dfd67054b239c5737ae10506f24fecf7",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -349,154 +344,6 @@
       ]
     },
     {
-      "path": "assets/projects/agorafrik-identite-p06.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 81984,
-      "sha256": "64223a8da8e78d40d198dd90ad459938e713102c14965f78e59dd5781e861d4b",
-      "quality": "canva-export",
-      "page": 6,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "a57bc4db41728b5b064890523a3c5b6dc36ecab8d310035c23286119e471d1f9",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/agorafrik-identite-p06.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 38792,
-          "sha256": "94f7712fe157e9bf1201595ebd8283e5fee4e9b1130985d053eea8d4dcc3e2e9",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/agorafrik-identite-p07.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 81704,
-      "sha256": "e6279d05f0dff52aac6741e29bc6c448f5485d1fcaf42ad9fc2ab2490474076e",
-      "quality": "canva-export",
-      "page": 7,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "7638c35cbaff3f5b4cd9aaaf78a49d07c71917c25c7b45465ec4288daacd0887",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/agorafrik-identite-p07.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 47700,
-          "sha256": "2e307fde2126c983f0dfc99f0f78d5c5bf34a8c62dffa982af6c6243d739471b",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/agorafrik-identite-p25.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 846238,
-      "sha256": "fd28ab707675a764265fabf19cff773d59df9dcc8419af7c5dcbd27d1cd901a0",
-      "quality": "canva-export",
-      "page": 25,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "bd2723e1c98f6a02be1f454aa1e258c3cc872b73cf78304e463ae8cf018b02bd",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/agorafrik-identite-p25.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 115514,
-          "sha256": "a141ee00af985fe51a84a9de429586f4fd5a0589d448c2a73669b2ee5724e355",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/agorafrik-identite-p27.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 1210962,
-      "sha256": "1d786d38b54fcdf5fc913a9630f7f4c61e86e261bd9a969946de1972414f1d66",
-      "quality": "canva-export",
-      "page": 27,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "8ac4bf9c41b1db00eb88437ea4b75e0b73e5d2c47b635159699749ce5b2f52e2",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/agorafrik-identite-p27.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 159214,
-          "sha256": "81aa068b4864e4b675f3acf6c6fca8b102b831a8a0267314269e38bfec82a537",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
       "path": "assets/projects/agorafrik-identite-p30.webp",
       "width": 1920,
       "height": 1080,
@@ -521,6 +368,80 @@
           "height": 619,
           "bytes": 180520,
           "sha256": "ea4521f363c495967db0abb99bc6cece058c9f1bc5be26551f57e14228557737",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/agorafrik-identite-p31.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 1073618,
+      "sha256": "40365f9ea7efe4126c2ae867be589ceee663e267f75a5388b50dabe3587ca68f",
+      "quality": "canva-export",
+      "page": 31,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "f835afacac8bd348af9de4ac46ce070055d3672cc96bce327dd40e7491ddf64e",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/agorafrik-identite-p31.webp",
+          "width": 1100,
+          "height": 619,
+          "bytes": 48228,
+          "sha256": "71962df7cb4abe9511f65bba4e8df9f61030d7bb49212970bd486a0d08f26000",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/agorafrik-identite-p32.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 1514378,
+      "sha256": "9dbe71c6919593ad81c147e6d93b3090ca806f4b29c0ea393a9be5ee9f2a6d71",
+      "quality": "canva-export",
+      "page": 32,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "add4c8f3f0251cfff8d4cf755e44e31da807c082988b4f1a015878a1322a0474",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/agorafrik-identite-p32.webp",
+          "width": 1100,
+          "height": 619,
+          "bytes": 95784,
+          "sha256": "47459a3fc2f4277c46b65fa68c11f4733ec78d2b57f27bba1c3b4cc03315c2df",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -608,6 +529,43 @@
       ]
     },
     {
+      "path": "assets/projects/agorafrik-identite-p39.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 2221588,
+      "sha256": "7031a79901fd60564c8318ad24f6b1494ef6c1b280185d7bebcc0c30ac70f66a",
+      "quality": "canva-export",
+      "page": 39,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "0b75f526d4c43e846851664a2cf36bfd0f91f098fbd19d632676f220ca7c88ce",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/agorafrik-identite-p39.webp",
+          "width": 1100,
+          "height": 619,
+          "bytes": 139546,
+          "sha256": "20143d35d9cc8b957ba4c2a370ee6a05b846827ab37e717ccd7742ca5e5dac80",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
       "path": "assets/projects/agorafrik-identite-p40.webp",
       "width": 1920,
       "height": 1080,
@@ -645,293 +603,30 @@
       ]
     },
     {
-      "path": "assets/projects/agorafrik-mission-p05.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 841794,
-      "sha256": "71339c9e1454cde739ce8673466db77a6f3e3467fe186bb524f9826032f888db",
-      "quality": "canva-export",
-      "page": 5,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "42a6acf429da267efe12b475aa724eefe4d3c39fff37b1c328408032d3fe21e3",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/agorafrik-mission-p05.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 89950,
-          "sha256": "893f49cf6273a190650c13d210fe81b3cb6fa2f911c5f991bf715f3232313eb9",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/anniecks-collection-p04.webp",
-      "width": 1080,
-      "height": 1350,
-      "bytes": 963748,
-      "sha256": "60bae91a4074466deb849bac33ee5bea0c26698f0adabf4723c6e7aa7690aa7d",
-      "quality": "canva-export",
-      "page": 4,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1080,
-        "height": 1350,
-        "sha256": "dfec9f0e8119d1bd6746c10546b340f556a4745d8a14b6f073b3edd24d4eb833",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/anniecks-collection-p04.webp",
-          "width": 880,
-          "height": 1100,
-          "bytes": 97236,
-          "sha256": "8a6ef14fa79025cc3ea9730520bcb67c3c9a79ce92329127979b1108ccf49c78",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHZEBxh0sA/view"
-    },
-    {
-      "path": "assets/projects/anniecks-collection-p12.webp",
-      "width": 1080,
-      "height": 1350,
-      "bytes": 1093698,
-      "sha256": "45a0bdfbbe7b19d3c15da8710b602d75ea7f4a41f76e024a5e2aedb7122a5979",
-      "quality": "canva-export",
-      "page": 12,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1080,
-        "height": 1350,
-        "sha256": "8b0be025f75544244b2cf720d0f8bd4cb96d2f9ebd02a6feb1037415c4ab9e38",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/anniecks-collection-p12.webp",
-          "width": 880,
-          "height": 1100,
-          "bytes": 130538,
-          "sha256": "605589c6cdd360464d8f53bcdb93d00d298dfa7e291292e4a6fa8faf3f690256",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHZEBxh0sA/view"
-    },
-    {
-      "path": "assets/projects/anniecks-collection-p22.webp",
-      "width": 1080,
-      "height": 1350,
-      "bytes": 1153246,
-      "sha256": "385ff11936abcb7546b517139ef3eb2b394d2518f7d701b72e559accdf4a7600",
-      "quality": "canva-export",
-      "page": 22,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1080,
-        "height": 1350,
-        "sha256": "b4ac1a8c6aca36af5f6fe1971fad40b1ed5418553aef70f3b1b3f0fc43b54b35",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/anniecks-collection-p22.webp",
-          "width": 880,
-          "height": 1100,
-          "bytes": 162580,
-          "sha256": "df529b8c3998ac5c98b99a5802bd12fda7cc25e958831ad1ffc34d974f4ef238",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHZEBxh0sA/view"
-    },
-    {
-      "path": "assets/projects/anniecks-collection-p25.webp",
-      "width": 1080,
-      "height": 1350,
-      "bytes": 1205218,
-      "sha256": "768a513fe7d61f47cfbb6544e83acfb484b9704657ab2eba69a4797fc208b6c3",
-      "quality": "canva-export",
-      "page": 25,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1080,
-        "height": 1350,
-        "sha256": "f7a1fc9a7f092b45f6302bf4c1da81c4b786d897e9566fdb5dc1b4be881902f7",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/anniecks-collection-p25.webp",
-          "width": 880,
-          "height": 1100,
-          "bytes": 142378,
-          "sha256": "87209a221d456764222b4b3a8497325e463103b5700ac187d8900690a506ec19",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHZEBxh0sA/view"
-    },
-    {
-      "path": "assets/projects/ardhi-strategie-p01.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 933988,
-      "sha256": "a33eb88e1f3678f6ee5a3e90a10f3742462610ba2b23831dc5f911ea99e2b223",
-      "quality": "canva-export",
-      "page": 1,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "0cfb18604e37f18ae61a4a4ee7eb32c14945a05483e5ce13a01bad9013675009",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/ardhi-strategie-p01.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 77952,
-          "sha256": "53e7ae3e93d79302a8788e48ee501b138e19eaaaf5d1d1e35f0d8de50dddcf57",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/ardhi-strategie-p05.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 73698,
-      "sha256": "b7cc197af8105cc2f301bb166cab379fe5445e3b11deb49ca2f52796af1c2fb1",
-      "quality": "canva-export",
-      "page": 5,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "ce10c4e8b3b2b343058ccdc8e7c933f6e149f4df8785fa19c06cc3de51c7a77f",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/ardhi-strategie-p05.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 62588,
-          "sha256": "1e17367a1b00fbaaa58250984cc3c409bce8e2821e461ec5f1b8135a46aca9af",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/ardhi-strategie-p06.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 733814,
-      "sha256": "3b7d43bcf5fb18e46399a36ab0390da0cef02ce5e36e4b5ccc17ecd71af3cd88",
+      "path": "assets/projects/agorafrik-recherche-p06.webp",
+      "width": 1414,
+      "height": 2000,
+      "bytes": 1302008,
+      "sha256": "ba6718ff5a07be73e2ccd240e51056432f9ab47eec7ab3eec581de933d94f9df",
       "quality": "canva-export",
       "page": 6,
-      "exportedAt": "2026-11-20",
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "62f62cf2b62730a935ee6ee4cc35adbc3c9c717409be0467379d4516aeb2c5da",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "0517605c321caf0ceb2e2d05cbcf50718585ad8d99a0d819d6f6fdfa1e220aa3",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/ardhi-strategie-p06.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 81298,
-          "sha256": "306a5e334d9146760628c57f0cde8be64f53d7b90384e5ac37e04106804ebc44",
+          "path": "assets/projects/thumbs/agorafrik-recherche-p06.webp",
+          "width": 778,
+          "height": 1100,
+          "bytes": 105942,
+          "sha256": "1621d5ef36198284efb6f5f31e3b0718d001122c90bebfa74c455048b2568f1a",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -945,30 +640,326 @@
       ]
     },
     {
-      "path": "assets/projects/ardhi-strategie-p13.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 901140,
-      "sha256": "5e656f0ba237eac0006a0061eb7a7d1cef17d3d5754a0bec81a0c2dde0f441eb",
+      "path": "assets/projects/anniecks-campagne-p01.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1177516,
+      "sha256": "7b66840abe443c9a7e527b1e997f9e132a39440899e5c0d4f571a823c00efdf6",
+      "quality": "canva-export",
+      "page": 1,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "0ca60df02450dab3547fc80c84dab7427c579acd4c0811372487de6be2a0195f",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p01.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 158966,
+          "sha256": "2a7a6a90ae0f2c344b5820c725304df48069cd27910da43a6f17ba55d9ab9d52",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p02.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1179652,
+      "sha256": "8960b8effe7931f6398242c1798dc0bdba0e7d2c2658e037a56aa11b55035ae0",
+      "quality": "canva-export",
+      "page": 2,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "6d044106ccb8fd6407e1c0bcc17dee6593c37519db1d4209b709a92b56964c09",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p02.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 136428,
+          "sha256": "b06d433cd27fc6e410e659293ea2b20163c81b3d67ffde9bd7fa7e9305c0ead3",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p03.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1463178,
+      "sha256": "87bf9ed5a2f1d972bed9776486da69b896018b6dc5751e831b555da3915ea62b",
+      "quality": "canva-export",
+      "page": 3,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "ec46793fd508796971772fe66771380b1444b4a9a4f4a1f1a1af836482bc737d",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p03.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 165264,
+          "sha256": "c6629c86e027d6d70b87bf0fbe2df01f7f09afa1f3134e5555b37f9e1cb87401",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p05.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 645742,
+      "sha256": "d7272536445bdf94fa005c1a09b878534d1680d23a3b13fbdacdacfcc035e701",
+      "quality": "canva-export",
+      "page": 5,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "1dc39ef9b15033971797758b1bcfe4dcddbf28d41cdc8e9da69e602f5748b59c",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p05.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 105980,
+          "sha256": "213121c5ba28b7a486e690f0dcdc9bf7e85a3a690ca64fe0f4f0845cb84ac8cc",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p07.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 930708,
+      "sha256": "fbfdb2bb52dc277efdb0e748a71b9eb2c11af21d16279dc3771eedc9962fc18b",
+      "quality": "canva-export",
+      "page": 7,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "95bb25d15a035b591b9b3b55d58ac1f8e1c179a0856c52a984e0a90f7f2b07ac",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p07.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 129924,
+          "sha256": "a8edb2733971363f62c297c96c82f1d369ace6280c9f510540e5a72b868f48cf",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p08.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 683782,
+      "sha256": "c7461390014d079cc424eb1a964f69454953575742dbe999992cfc0c1535606e",
+      "quality": "canva-export",
+      "page": 8,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "64552432f2ee1867d3eb7ee99c1e560a9a746c863a63c703f43f88d39031660d",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p08.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 38744,
+          "sha256": "0f80367ab004df3b14d7466286229019c761186b40ca9f525667451d8fef3a71",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p09.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 739862,
+      "sha256": "7776a3abcc109e93063e90ab99feff2a8842dc7203a47e54b065e8bc1ce6bf90",
+      "quality": "canva-export",
+      "page": 9,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "900401593c3a6ae112c1add68be66dcaebb506f983c9c26bb4205d68ee16572f",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p09.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 63472,
+          "sha256": "d9c26474b7f81c6499385971da32480627bad9f5ecb1838f63877b847fd0725e",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p10.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1148284,
+      "sha256": "aad49fecd009f144681ae46ef132117c059300a6f71ec36e9dbcb37201500d6a",
+      "quality": "canva-export",
+      "page": 10,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "312d769923bc17f12fe8276ee0bfc035f4cb8b738a18ab5f5c50b2da59d44fa0",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/anniecks-campagne-p10.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 104010,
+          "sha256": "989ad7e422d77fd7735f5349acf95f8e29dd5aefbb9b509cdafe439ffb208a69",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/anniecks-campagne-p13.webp",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 1132050,
+      "sha256": "a30a8bf506a9568858280c94e761de8aef649f69d0aeb6599ebd9b6523934152",
       "quality": "canva-export",
       "page": 13,
-      "exportedAt": "2026-11-20",
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "49e9f3a14df4cf225878f5c0eda14f09210c662bb85fcd9b084ce6667f68a815",
+        "width": 1080,
+        "height": 1920,
+        "sha256": "68b58e089c1fbd5a8ef71d94d446849fc3ba4de35b59a4b8c0f7ad16e4b81cff",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/ardhi-strategie-p13.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 112442,
-          "sha256": "52f37b8dfe99b83789853e3626364180132158e664fa651bc83b5d1bae02d55a",
+          "path": "assets/projects/thumbs/anniecks-campagne-p13.webp",
+          "width": 619,
+          "height": 1100,
+          "bytes": 68930,
+          "sha256": "1709c8f802345cc7b1ba44b94f6b8d16dadab9fa1cf1602d4adc6bde701fc409",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -982,30 +973,30 @@
       ]
     },
     {
-      "path": "assets/projects/ardhi-strategie-p14.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 417100,
-      "sha256": "ea4179e3486f1cace34a8c6b010c09523193daf771eee7eb727bc40cf63906ec",
+      "path": "assets/projects/anniecks-campagne-p14.webp",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 1063330,
+      "sha256": "4e5742e7448e195650a3650c52cd1dc6cc555d4b9608c58b02789413d69cef0f",
       "quality": "canva-export",
       "page": 14,
-      "exportedAt": "2026-11-20",
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "57505c8944b73bc2d9bf3fed893c538953a6eb482ba4f1974d09f7e836e247b3",
+        "width": 1080,
+        "height": 1920,
+        "sha256": "8e10d5bb41c4468d845c272a4683cbc538b5c89975cdb38907a06b28ccd73858",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/ardhi-strategie-p14.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 62972,
-          "sha256": "2050eabcd9b349117569c66adf5c47004accbf4eb0aa97cb7dd88d4098812340",
+          "path": "assets/projects/thumbs/anniecks-campagne-p14.webp",
+          "width": 619,
+          "height": 1100,
+          "bytes": 84024,
+          "sha256": "62684a4ae176b5c6313a1509dee0d3f8c1b260d71d63edf83ec2ddb575e87c03",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -1019,30 +1010,67 @@
       ]
     },
     {
-      "path": "assets/projects/ardhi-strategie-p15.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 151510,
-      "sha256": "3551b04bb897ce795dfc8f77ada72afc9a8e83f88841a85da1944b9a749f993f",
+      "path": "assets/projects/atelier-campagnes-p22.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 587862,
+      "sha256": "e8a1a96d2d54a7b5d887f63d7e595f23e219e6c5cc21b6b742d733b17e9c980f",
       "quality": "canva-export",
-      "page": 15,
-      "exportedAt": "2026-11-20",
+      "page": 22,
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "9353389f97c1189d105bd4c82bd41eeff0051d8c22a576997a2a9bb4e2a6526f",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "f7942984966a95c8e7329ca7e1a0152c00091234603bc367ab629ccaafac179c",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/ardhi-strategie-p15.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 86786,
-          "sha256": "a619a2dd676bd2fdf44f72cf56bed62f3e1dac45a23d85ec61145df159522804",
+          "path": "assets/projects/thumbs/atelier-campagnes-p22.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 84728,
+          "sha256": "a4b7242816dc7dc2f22ca3c9a81f0acf9b72c8a3a0c0ca1180effae95f884a30",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/atelier-campagnes-p26.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1320464,
+      "sha256": "e468c78bd9c8dfade64b2f0211cf90d03c1531a0c3c3478e986c20fd4de11dff",
+      "quality": "canva-export",
+      "page": 26,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "658c9dab8a402868533ca09c4e2133624554af821742e61ca3e12b921e2672ab",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/atelier-campagnes-p26.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 178328,
+          "sha256": "7b4a7db0d62601b7d316e8cc1cae4809d521c3804082ce542f3f50f3552dc70f",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -1090,8 +1118,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGkkpsu5Fs/view"
+      ]
     },
     {
       "path": "assets/projects/atelier-conseils-p02.webp",
@@ -1128,8 +1155,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGkkpsu5Fs/view"
+      ]
     },
     {
       "path": "assets/projects/atelier-conseils-p03.webp",
@@ -1166,8 +1192,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGkkpsu5Fs/view"
+      ]
     },
     {
       "path": "assets/projects/atelier-conseils-p04.webp",
@@ -1204,8 +1229,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGkkpsu5Fs/view"
+      ]
     },
     {
       "path": "assets/projects/atelier-conseils-p05.webp",
@@ -1242,8 +1266,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGkkpsu5Fs/view"
+      ]
     },
     {
       "path": "assets/projects/atelier-conseils-p06.webp",
@@ -1280,8 +1303,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGkkpsu5Fs/view"
+      ]
     },
     {
       "path": "assets/projects/atelier-identite-p07.webp",
@@ -1466,8 +1488,81 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHXR2GjJVc/view"
+      ]
+    },
+    {
+      "path": "assets/projects/bloom-collection-p02.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1301898,
+      "sha256": "a3a5436258412a0502c76ae11382105965103abc31b0442347b602caa033bb5a",
+      "quality": "canva-export",
+      "page": 2,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "9134c9d0c3458850954fd1571535c981d69dd00a9a307a3429fb52b6fc306e15",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/bloom-collection-p02.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 144496,
+          "sha256": "1123e2c3652f98a9aa84914ea0e2bf8d8f0da511bc2a328c71e3beef807c4960",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/bloom-collection-p04.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1253644,
+      "sha256": "219a65579b72d12daf9cf6edb3f02a63eb633433a54a1fdb6c75cc07bb1c8b37",
+      "quality": "canva-export",
+      "page": 4,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "434a353a95cae247d0cefcfda0f1dc103cbe08cfc7bc50c9c97dc16f4735033e",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/bloom-collection-p04.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 131566,
+          "sha256": "22532bac6e719e2789ad38aaba7ce7975d4b91beadad85ec2e133f63e731deb4",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
     },
     {
       "path": "assets/projects/bloom-collection-p05.webp",
@@ -1504,8 +1599,44 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHXR2GjJVc/view"
+      ]
+    },
+    {
+      "path": "assets/projects/bloom-collection-p06.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1347490,
+      "sha256": "87bb8b0c54773ee83187242dee4982a6eca65298dc1f4ec561f84d03aafb3ff8",
+      "quality": "canva-export",
+      "page": 6,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "1107dcf0d92c3331055c7808b3ca14b50e6a8afee3408d4b4a3d02dd08e1bba9",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/bloom-collection-p06.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 138576,
+          "sha256": "377c7ca9fad4e9df59d2713085394ab50b1813539ba28933c3bd693c6e5ce310",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
     },
     {
       "path": "assets/projects/bloom-collection-p11.webp",
@@ -1542,8 +1673,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHXR2GjJVc/view"
+      ]
     },
     {
       "path": "assets/projects/bloom-collection-p13.webp",
@@ -1580,71 +1710,33 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAHXR2GjJVc/view"
-    },
-    {
-      "path": "assets/projects/carrigres-identite-p07.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 84618,
-      "sha256": "f4934a065600e72029b350235a7800890314fc6cc108460649732e32fa6e8cbb",
-      "quality": "canva-export",
-      "page": 7,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "510f845269f4eac29211dd4e205881e2abb48cca2f7fd194304bcbb2ed88c6c5",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/carrigres-identite-p07.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 51700,
-          "sha256": "b40d2e9c396432cb9276b8be1cfa2fcbb07ff286722f94314dc02508332ac6d4",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
       ]
     },
     {
-      "path": "assets/projects/carrigres-identite-p08.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 63330,
-      "sha256": "61798e37a4842dfacfe7cc3184d6939cc34af229989d5f4b81ce6af7c59a329f",
+      "path": "assets/projects/bloom-collection-p14.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1269614,
+      "sha256": "5a4792c8089b30b3982f6d70562aed6e40d7ca4feb5f714ce61b39efd8592773",
       "quality": "canva-export",
-      "page": 8,
-      "exportedAt": "2026-11-20",
+      "page": 14,
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "f466825f1db9f96334404942eeec40aa995b01048288c5ed462fb2f67e1ee747",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "1b3616608ccb790c992cacc878f00d68214c01dcde053b7c78c0fd732d4c344b",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/carrigres-identite-p08.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 51864,
-          "sha256": "b060974312f629eaa8922707999c83e96692b4632c313308eb124bbaaa3d36ea",
+          "path": "assets/projects/thumbs/bloom-collection-p14.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 142580,
+          "sha256": "6e9f52b737fe02dddc94e29b557be0a9f5683c7b7fccc94272bd9654f65b47cf",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -1769,30 +1861,104 @@
       ]
     },
     {
-      "path": "assets/projects/luminary-storytelling-p06.webp",
+      "path": "assets/projects/carrigres-identite-p29.webp",
       "width": 1920,
       "height": 1080,
-      "bytes": 62064,
-      "sha256": "99ad81d4628708f9d78a3a6032f70b4a137c06e304f3e4a51cd719039a7085d6",
+      "bytes": 1469578,
+      "sha256": "d60c59e06c9527a0141f38d3ff8c9981ab6ab39cc9d3e71e537aaef4052f3743",
+      "quality": "canva-export",
+      "page": 29,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "ad183f0d0703858f790416b733a067c16c974329419dc3119d82cb15fb163788",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/carrigres-identite-p29.webp",
+          "width": 1100,
+          "height": 619,
+          "bytes": 100062,
+          "sha256": "6f1810eb32a6240d12608893b9e0a3cc64fd0fa0251328fd39020c5139c88b12",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/carrigres-identite-p30.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 1979762,
+      "sha256": "ff8a38c8d683c586d914b27ee53d12ebf0541e8fd153184478498fe7d31fd722",
+      "quality": "canva-export",
+      "page": 30,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "cd97ec8f16f565e3a4cc4d7bbce4e20c735b32d5aac7a3a2da2e666ff93959da",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/carrigres-identite-p30.webp",
+          "width": 1100,
+          "height": 619,
+          "bytes": 134704,
+          "sha256": "87bec30485227be440dff20a1c80fb732aa6d8bd03eba47396da82c59c711c1b",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/carrigres-signaletique-p06.webp",
+      "width": 1587,
+      "height": 2244,
+      "bytes": 346818,
+      "sha256": "5c37ff9b9e30cb6bc0b103b82ce2b94fa4b391c558bdf4dc3d72e2ad4cc41390",
       "quality": "canva-export",
       "page": 6,
-      "exportedAt": "2026-11-20",
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "efce19218d7f495dc87bc44302ea143afff4e38a4d2f08951e08d487ff661c34",
+        "width": 1587,
+        "height": 2244,
+        "sha256": "0cd8fc5c6ed05170bdaeb75294b28d1f2d1141d50cc7e8d4564c55cb74004894",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/luminary-storytelling-p06.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 35420,
-          "sha256": "8a6387fe30753f42436ff34b96a610098bd4e332f9a177a9397db2d15724820a",
+          "path": "assets/projects/thumbs/carrigres-signaletique-p06.webp",
+          "width": 778,
+          "height": 1100,
+          "bytes": 62174,
+          "sha256": "6fe8727d47689c68c54905eb7fcfd4ca8863fd95d0af454802ecdbf417984e8d",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -1803,84 +1969,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGMPtVOboA/view"
-    },
-    {
-      "path": "assets/projects/luminary-storytelling-p07.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 410208,
-      "sha256": "5f5db6868c0f87151acde93a21cd7957e5288ca1b8867b6417cdf58891839cca",
-      "quality": "canva-export",
-      "page": 7,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "47b75b213079b4ae278519065f32dd4e3de0c2d50660253cb85a85071df198f0",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/luminary-storytelling-p07.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 92718,
-          "sha256": "56343c6453eea8a692ab33190d12924e1656e969031a5de706307e3c8d37e9c9",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGMPtVOboA/view"
-    },
-    {
-      "path": "assets/projects/luminary-storytelling-p08.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 387064,
-      "sha256": "15e58e28e20879315a862e876b082f36eb58e88593ee19ca1c99cdf5faa51b79",
-      "quality": "canva-export",
-      "page": 8,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "4662f45f50d0705e6d2e3967f916fa9532f4f11fff163306d270d8159a3da5ce",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/luminary-storytelling-p08.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 59842,
-          "sha256": "8ffe81d1df0e98617a91a2cc2750257da2b089bacc682d0add717162310a4193",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGMPtVOboA/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-cadeau-p03.webp",
@@ -1917,8 +2006,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGgJgPlcLk/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-cadeau-p04.webp",
@@ -1955,8 +2043,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGgJgPlcLk/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-cadeau-p05.webp",
@@ -1993,8 +2080,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGgJgPlcLk/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-cadeau-p06.webp",
@@ -2031,8 +2117,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGgJgPlcLk/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-logo-p01.webp",
@@ -2069,8 +2154,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGPKRNNkl4/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-looks-p100.webp",
@@ -2107,8 +2191,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGhJ18FyTo/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-looks-p96.webp",
@@ -2145,8 +2228,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGhJ18FyTo/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-looks-p97.webp",
@@ -2183,8 +2265,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGhJ18FyTo/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p39.webp",
@@ -2221,8 +2302,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p40.webp",
@@ -2259,8 +2339,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p41.webp",
@@ -2297,8 +2376,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p42.webp",
@@ -2335,8 +2413,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p43.webp",
@@ -2373,8 +2450,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p44.webp",
@@ -2411,8 +2487,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/revendre-styles-p45.webp",
@@ -2449,8 +2524,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGN_nlsdNs/view"
+      ]
     },
     {
       "path": "assets/projects/utex-empreinte-p02.webp",
@@ -2490,141 +2564,30 @@
       ]
     },
     {
-      "path": "assets/projects/utex-empreinte-p03.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 274842,
-      "sha256": "d0fc5413260d71dd807c29247f0123d3604cd239d8abfbc922f6a1380047613c",
+      "path": "assets/projects/wali-matieres-p07.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1165186,
+      "sha256": "5b4bc552b18493995b085686767a290d7ce8d3c933c422ba19150de72a473fbe",
       "quality": "canva-export",
-      "page": 3,
-      "exportedAt": "2026-11-20",
+      "page": 7,
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "e16539f5d51c31caeb45b8f9dd5a4a58d28eb4a92f61d4133583bb2af0cabe8b",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "96ce031db2aa0b059e8642ac84507b01dc5a497da377ac9fd8c8e124b2d48c97",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/utex-empreinte-p03.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 53936,
-          "sha256": "48eab6498a6fba321dc4d763fd4ec24de132ec33c40a24f0202d87c679cabb1b",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/utex-empreinte-p06.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 196314,
-      "sha256": "b19fd17770f84a21572ca7794ead657015dece6a3ff7de77a94a9518a126a04c",
-      "quality": "canva-export",
-      "page": 6,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "f867436936fdbd86eef782e383e8529c7ee6e4661e7ddf17598f4021c719a0e1",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/utex-empreinte-p06.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 74690,
-          "sha256": "855565c14070d9882a6d0960ef873ce3e7ef7d965c4d1b83df8bb0b99180c732",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/utex-empreinte-p15.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 706336,
-      "sha256": "f56c21f9ee41c74520d292683237c1f1d92d6fbb6b618e485d3eecac5a7ce105",
-      "quality": "canva-export",
-      "page": 15,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "887d5a590d6479d3a1465142af446361a7f355bc565e456c8a191faaf407f2d2",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/utex-empreinte-p15.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 91328,
-          "sha256": "7aa0825ac334c39503de4ca4f1c9c51e8dffe2b9298c6202fb7703443a0d5337",
-          "quality": "web-thumbnail",
-          "format": "WebP",
-          "generation": {
-            "tool": "Pillow",
-            "maxLongEdge": 1100,
-            "quality": 90,
-            "crop": false,
-            "upscaled": false
-          }
-        }
-      ]
-    },
-    {
-      "path": "assets/projects/utex-empreinte-p16.webp",
-      "width": 1920,
-      "height": 1080,
-      "bytes": 986080,
-      "sha256": "2da57c5e002654e4fc74788e4a42d2db980c0228a98a9f69a8eca3c040b1b0ce",
-      "quality": "canva-export",
-      "page": 16,
-      "exportedAt": "2026-11-20",
-      "export": {
-        "format": "PNG",
-        "width": 1920,
-        "height": 1080,
-        "sha256": "63137f6648ecfe321b01d426d1e8cd636ce90f778c2c213397060baf6b9372d0",
-        "conversion": "lossless-webp",
-        "resized": false,
-        "cropped": false
-      },
-      "variants": [
-        {
-          "path": "assets/projects/thumbs/utex-empreinte-p16.webp",
-          "width": 1100,
-          "height": 619,
-          "bytes": 131296,
-          "sha256": "fab4c05687d88473fff46ced60b94651390c511ede46a306f3ccfcc0e55fd98b",
+          "path": "assets/projects/thumbs/wali-matieres-p07.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 113990,
+          "sha256": "b4c0eca02f6d6b584a47f0f59c83d5e0d209fed532848c1a55ae2e0c92faaa02",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -2699,6 +2662,43 @@
           "height": 1100,
           "bytes": 95326,
           "sha256": "b1fb3b42fe2ada9dd48073e5d751800d4e93a69e527316a2ba7e2fb28cebdbd9",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/wali-matieres-p30.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 163734,
+      "sha256": "0527137c17cdf3cadbe8ebcc54a098f9b77d49d38b39e302c74d6a3d4d83862b",
+      "quality": "canva-export",
+      "page": 30,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "801eff245646efb304f6483980f0e8571bfee6a84e32fc62cd0a2326ca630d16",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/wali-matieres-p30.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 47592,
+          "sha256": "cf59181872946bb4ab7bfc83200ef5b91544837e3296f6afa1ba11df8be98d9a",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -2810,6 +2810,80 @@
           "height": 1100,
           "bytes": 170726,
           "sha256": "1dab7d525deb2b982a6f1a2aacae76497ef3dc773fab021122e2879bb8737802",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/wali-visuels-p01.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 348024,
+      "sha256": "51f57221300dc51e8d5fa16ce1f01348b997c2bfbb63cb7e33ebe305ab7d1e9a",
+      "quality": "canva-export",
+      "page": 1,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "6f0226f73169b5c059593f9f3e5a6a2d24f62520d136faf8b84e9565e03c2cdf",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/wali-visuels-p01.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 84334,
+          "sha256": "06e5d3f25956560fc00323efe03074921ef0e43e6b8f426228d8bd9a66b76b6f",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/wali-visuels-p02.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 179132,
+      "sha256": "bf555b9992e0f2e60cfdc607a9ea002bd2f5152a3cd5fe95cdebc6522fdd8c1a",
+      "quality": "canva-export",
+      "page": 2,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "7e7ab6c53bdd7f1e87ccb10308b4c8dd4aa76642deb6c236294daee565728332",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/wali-visuels-p02.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 37430,
+          "sha256": "4fe60687b66c9261ad90866d033a8d3ea62f184928e6d4cbeef7cbaa69d3b2a7",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {
@@ -3008,6 +3082,154 @@
       ]
     },
     {
+      "path": "assets/projects/wali-visuels-p14.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 809914,
+      "sha256": "2e07e700d48e6ce0339850f0758bd3e846744bb5f4efdcdafe559b8853626f09",
+      "quality": "canva-export",
+      "page": 14,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "d4fd7664fd774e80e5c60aaec2d46367cde21bec70276a97c26223c2b7bf5632",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/wali-visuels-p14.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 100964,
+          "sha256": "4a6ba5da2a8366fdf33a2bd3519572b886a9637d873f8ecbcbcc3c004ad8a0d4",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/projects/wali-visuels-p18.webp",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 1003486,
+      "sha256": "82abd97267e8580ff80d269c41f0515f9d0780d04ed203811321aec4eb0eed52",
+      "quality": "canva-export",
+      "page": 18,
+      "exportedAt": "2026-11-21",
+      "export": {
+        "format": "PNG",
+        "width": 1080,
+        "height": 1350,
+        "sha256": "f713dc1fe74c9112984f07079e1c364b939f791a1fe3a8c4812f2f448d96df00",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/projects/thumbs/wali-visuels-p18.webp",
+          "width": 880,
+          "height": 1100,
+          "bytes": 118420,
+          "sha256": "0593d0d6e0b29f81f64b32ee5cd8d12214fc901d26d1e2f8f5f96ab7638ab327",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "Pillow",
+            "maxLongEdge": 1100,
+            "quality": 90,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/revendre-carte-cadeau.webp",
+      "width": 1748,
+      "height": 1240,
+      "quality": "canva-export",
+      "bytes": 235182,
+      "sha256": "c8c3b341e6575aad12891a314132b78f2d5be325a511170a023ee556b6060de3",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1748,
+        "height": 1240,
+        "sha256": "be64f71e95b9ff094a1e12f835b4d8eaca0a3e6782adc47b20fe94e114d13f69",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/revendre-carte-cadeau.webp",
+          "width": 900,
+          "height": 638,
+          "bytes": 51156,
+          "sha256": "560ccec280033472d120c69029b30e1ff14bd7c8b2443aadc34b58ac4645ea68",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets/revendre-lookbook.webp",
+      "width": 1414,
+      "height": 2000,
+      "quality": "canva-export",
+      "bytes": 861908,
+      "sha256": "49a6543618b79622eb151f1c905e54a4dea94a8d748b1ddaa7fce08d12e367c3",
+      "page": 1,
+      "export": {
+        "format": "PNG",
+        "width": 1414,
+        "height": 2000,
+        "sha256": "3fd227cf8e8fd1a8410772ee3cae870350be0a5ddc964c8e3f9e4e00f275711c",
+        "conversion": "lossless-webp",
+        "resized": false,
+        "cropped": false
+      },
+      "variants": [
+        {
+          "path": "assets/thumbs/revendre-lookbook.webp",
+          "width": 636,
+          "height": 900,
+          "bytes": 47196,
+          "sha256": "59bae1ebf53eda53f7258e42f0aee099e8906fc644b743dc2a31485eb19c7665",
+          "quality": "web-thumbnail",
+          "format": "WebP",
+          "generation": {
+            "tool": "ImageMagick 7",
+            "maxLongEdge": 900,
+            "quality": 90,
+            "method": 6,
+            "crop": false,
+            "upscaled": false
+          }
+        }
+      ]
+    },
+    {
       "path": "assets/sites/breathe-accueil.jpg",
       "width": 1348,
       "height": 926,
@@ -3102,8 +3324,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAGx6hlsUKI/view"
+      ]
     },
     {
       "path": "assets/utex-halloween.png",
@@ -3142,8 +3363,7 @@
             "upscaled": false
           }
         }
-      ],
-      "sourceUrl": "https://www.canva.com/design/DAG1BKvRHUw/view"
+      ]
     }
   ]
 }

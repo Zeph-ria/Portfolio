@@ -143,7 +143,6 @@
     ['.visual-bloom .visual-caption', triple('CRÉATION ÉDITORIALE / SOCIAL MEDIA', 'EDITORIAL DESIGN / SOCIAL MEDIA', 'DISEÑO EDITORIAL / REDES SOCIALES')],
     ['.visual-anniecks .visual-caption', triple('MODE / E-COMMERCE / CONTENU', 'FASHION / E-COMMERCE / CONTENT', 'MODA / COMERCIO ELECTRÓNICO / CONTENIDO')],
     ['.visual-masdia .visual-caption', triple('STRATÉGIE / AUTOMATISATION / DIGITAL', 'STRATEGY / AUTOMATION / DIGITAL', 'ESTRATEGIA / AUTOMATIZACIÓN / DIGITAL')],
-    ['.design-library .section-topline > span:last-child', triple('PRINT / IDENTITÉ / DIGITAL', 'PRINT / BRANDING / DIGITAL', 'IMPRESIÓN / IDENTIDAD / DIGITAL')],
     ['.carrigres-browser .browser-content strong', triple("Pour vos grands projets d'infra\u00adstructure.", 'For your major infrastructure projects.', 'Para tus grandes proyectos de infraestructura.')],
     ['.carrigres-browser .browser-overline', triple('CARRIGRÈS · GROUPE TEXAF', 'CARRIGRÈS · TEXAF GROUP', 'CARRIGRÈS · GRUPO TEXAF')],
     ['.carrigres-browser .browser-label', triple('MATÉRIAUX DE CONSTRUCTION · KINSHASA', 'CONSTRUCTION MATERIALS · KINSHASA', 'MATERIALES DE CONSTRUCCIÓN · KINSHASA')],
@@ -169,25 +168,17 @@
   const ASSETS = Object.freeze({
     'breathe-without-fear-site.jpg': triple('Capture de la page d’accueil Breathe & Rise Without Fear, avec le portrait de Marie Desy et la présentation de son initiative', 'Screenshot of the Breathe & Rise Without Fear homepage, with Marie Desy’s portrait and an introduction to her initiative', 'Captura de la página de inicio de Breathe & Rise Without Fear, con el retrato de Marie Desy y la presentación de su iniciativa'),
     'carrigres-brochure.webp': triple('Brochure de présentation Carrigrès, réalisée pour la communication institutionnelle', 'Carrigrès company brochure designed for institutional communication', 'Folleto corporativo de Carrigrès para comunicación institucional'),
-    'bloom-publication.webp': triple('Création Bloom Atelier 243 présentant un bouquet de roses rouges stabilisées', 'Bloom Atelier 243 design featuring a bouquet of preserved red roses', 'Diseño de Bloom Atelier 243 con un ramo de rosas rojas preservadas'),
     'anniecks-campagne.webp': triple("Composition photographique Annieck's Business montrant des t-shirts colorés", "Annieck's Business photo composition with colourful T-shirts", "Composición fotográfica de Annieck's Business con camisetas de colores"),
     'carrigres-calendrier-mural.webp': triple('Calendrier mural Carrigrès 2026 avec camion et grille annuelle', 'Carrigrès 2026 wall calendar with a truck and annual date grid', 'Calendario de pared Carrigrès 2026 con un camión y cuadrícula anual'),
     'carrigres-calendrier-table.webp': triple('Calendrier de table Carrigrès 2026, identité bleu et jaune', 'Carrigrès 2026 desk calendar in blue and yellow', 'Calendario de mesa Carrigrès 2026 en azul y amarillo'),
     'carrigres-calendrier-triptyque.webp': triple('Calendrier triptyque pliable Carrigrès 2026', 'Carrigrès 2026 folding triptych calendar', 'Calendario tríptico plegable Carrigrès 2026'),
     'carrigres-calendrier-sous-main.webp': triple('Sous-main de bureau Carrigrès avec calendrier 2026', 'Carrigrès desk pad with a 2026 calendar', 'Protector de escritorio Carrigrès con calendario 2026'),
-    'carrigres-charte.webp': triple('Couverture de la charte graphique Carrigrès', 'Carrigrès brand guidelines cover', 'Portada del manual de identidad visual de Carrigrès'),
-    'agorafrik-charte.webp': triple('Couverture de la charte graphique Agorafrik', 'Agorafrik brand guidelines cover', 'Portada del manual de identidad visual de Agorafrik'),
-    'agorafrik-visuels.webp': triple('Couverture des créations de communication Agorafrik, rouge profond et orange', 'Agorafrik communication designs cover in deep red and orange', 'Portada de los diseños de comunicación Agorafrik en rojo oscuro y naranja'),
     'agorafrik-publication.webp': triple('Publication Agorafrik présentant une plateforme dédiée aux talents africains', 'Agorafrik post introducing a platform for African talent', 'Publicación de Agorafrik sobre una plataforma para el talento africano'),
-    'ardhi-organic-strategie.webp': triple('Présentation de stratégie digitale Ardhi Organic avec couleurs orange et vert', 'Ardhi Organic digital strategy presentation in orange and green', 'Presentación de estrategia digital de Ardhi Organic en naranja y verde'),
     'kadea-affiche.webp': triple('Affiche de communication d’une formation Kadea Academy', 'Promotional poster for a Kadea Academy course', 'Cartel promocional de una formación de Kadea Academy'),
     'revendre-carte-cadeau.webp': triple('Carte cadeau Re-vendre avec typographie orange et ruban rouge', 'Re-vendre gift card with orange lettering and a red ribbon', 'Tarjeta regalo de Re-vendre con letras naranjas y lazo rojo'),
-    'atelier-prospectus.webp': triple("Prospectus de L'Atelier, salon de manucure et pédicure", "Leaflet for L'Atelier manicure and pedicure salon", "Folleto de L'Atelier, salón de manicura y pedicura"),
-    'atelier-rollup.webp': triple("Roll-up vertical de L'Atelier, prestations de manucure et pédicure", "Vertical roll-up banner for L'Atelier manicure and pedicure services", "Banner vertical de L'Atelier para servicios de manicura y pedicura"),
     'utex-halloween.webp': HALLOWEEN_ALT,
     'utex-halloween.png': HALLOWEEN_ALT,
     'utex-centenaire.webp': triple('Visuel de présentation du centenaire TEXAF', 'TEXAF centenary presentation design', 'Diseño de presentación del centenario de TEXAF'),
-    'agorafrik-pitch.webp': triple('Page de conclusion du pitch deck Agorafrik, avec portrait artistique et motifs bordeaux et orange', 'Conclusion page of the Agorafrik pitch deck, with an artistic portrait and burgundy and orange motifs', 'Página de conclusión de la presentación de Agorafrik, con un retrato artístico y motivos en burdeos y naranja')
   });
 
   const HALLOWEEN_LABELS = Object.freeze([triple('Campagne Halloween', 'Halloween campaign', 'Campaña de Halloween'), triple('UTEX', 'UTEX', 'UTEX')]);
@@ -196,19 +187,12 @@
     'carrigres-calendrier-table.webp': [triple('Calendrier de table A5', 'A5 desk calendar', 'Calendario de mesa A5'), triple('Carrigrès · 2026', 'Carrigrès · 2026', 'Carrigrès · 2026')],
     'carrigres-calendrier-triptyque.webp': [triple('Calendrier triptyque', 'Triptych calendar', 'Calendario tríptico'), triple('Carrigrès · 2026', 'Carrigrès · 2026', 'Carrigrès · 2026')],
     'carrigres-calendrier-sous-main.webp': [triple('Sous-main de bureau', 'Desk pad', 'Protector de escritorio'), triple('Carrigrès · 2026', 'Carrigrès · 2026', 'Carrigrès · 2026')],
-    'carrigres-charte.webp': [triple('Charte graphique', 'Brand guidelines', 'Manual de identidad visual'), triple('Carrigrès', 'Carrigrès', 'Carrigrès')],
-    'agorafrik-charte.webp': [triple('Charte graphique Agorafrik', 'Agorafrik brand guidelines', 'Manual de identidad de Agorafrik'), triple('Identité de marque', 'Brand identity', 'Identidad de marca')],
-    'agorafrik-visuels.webp': [triple('Agorafrik — visuels', 'Agorafrik — visuals', 'Agorafrik — diseños'), triple('Direction de communication', 'Communication direction', 'Dirección de comunicación')],
     'agorafrik-publication.webp': [triple('Agorafrik — campagne', 'Agorafrik — campaign', 'Agorafrik — campaña'), triple('Réseaux sociaux', 'Social media', 'Redes sociales')],
-    'ardhi-organic-strategie.webp': [triple('Ardhi Organic', 'Ardhi Organic', 'Ardhi Organic'), triple('Stratégie de notoriété', 'Brand awareness strategy', 'Estrategia de notoriedad')],
     'kadea-affiche.webp': [triple('Affiche de formation', 'Course poster', 'Cartel de formación'), triple('Kadea Academy · 2024', 'Kadea Academy · 2024', 'Kadea Academy · 2024')],
     'revendre-carte-cadeau.webp': [triple('Carte cadeau', 'Gift card', 'Tarjeta regalo'), triple('Re-vendre', 'Re-vendre', 'Re-vendre')],
-    'atelier-prospectus.webp': [triple('Prospectus A5', 'A5 leaflet', 'Folleto A5'), triple("L'Atelier", "L'Atelier", "L'Atelier")],
-    'atelier-rollup.webp': [triple('Roll-up vitrine', 'Window roll-up banner', 'Banner para escaparate'), triple("L'Atelier", "L'Atelier", "L'Atelier")],
     'utex-halloween.webp': HALLOWEEN_LABELS,
     'utex-halloween.png': HALLOWEEN_LABELS,
     'utex-centenaire.webp': [triple('Centenaire TEXAF', 'TEXAF centenary', 'Centenario de TEXAF'), triple('UTEX / événementiel', 'UTEX / events', 'UTEX / eventos')],
-    'agorafrik-pitch.webp': [triple('Pitch deck Agorafrik', 'Agorafrik pitch deck', 'Presentación de Agorafrik'), triple('Présentation de marque', 'Brand presentation', 'Presentación de marca')]
   });
 
   const ARCHIVE_LABELS = Object.freeze({});
@@ -275,7 +259,7 @@
         if (!value) { diagnostics.add(`Missing ${language} inline translation: ${element.getAttribute('data-fr')}`); return; }
         renderText(element, value, document);
       });
-      // Inline copy belongs to its case study; legacy selectors are fallbacks.
+      // Inline artwork copy takes precedence; legacy selectors are fallbacks.
       // This keeps a reused visual class from replacing a new reviewed caption.
       const hasExplicitText = element => element.getAttribute('data-fr') !== null || element.getAttribute('data-i18n') !== null;
       for (const [selector, message] of TEXT_BINDINGS) queryAll(selector, scope).forEach(element => {
