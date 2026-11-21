@@ -201,7 +201,11 @@ if (browser) {
       assert.equal(await page.locator('#preview-counter').textContent(), `${total} sur ${total}`);
       await page.keyboard.press('Escape');
       assert.equal(await page.locator('#design-dialog').isVisible(), false);
-      assert(await trigger.evaluate(link => document.activeElement === link));
+      assert(await trigger.evaluate(async link => {
+        for (let frame = 0; frame < 3 && document.activeElement !== link; frame++)
+          await new Promise(requestAnimationFrame);
+        return document.activeElement === link;
+      }), 'Viewer focus must return to its original image link');
       assert.equal(await carousel.locator('[data-slide]').nth(1).getAttribute('aria-hidden'), 'false');
     });
 
