@@ -31,6 +31,14 @@
         items.forEach(item => { item.dataset.artworkType = kindOf(item); });
         const preferred = ["agorafrik-identite-p35.webp","wali-visuels-p13.webp","atelier-campagnes-p22.webp","revendre-styles-p39.webp"];
         const teaserItems = preferred.map(name => items.find(item => picturePath(item).endsWith(name))).filter(Boolean).slice(0,4);
+        // The four visible teaser artworks should appear promptly rather than waiting for lazy loading.
+        teaserItems.forEach(item => {
+          const preview = item.querySelector('img');
+          if (preview) {
+            preview.loading = 'eager';
+            preview.fetchPriority = 'high';
+          }
+        });
         items.forEach(item => { item.hidden = false; });
         const teaser = document.createElement("ul");
         teaser.className = "gallery-teaser";
