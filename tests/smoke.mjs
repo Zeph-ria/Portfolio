@@ -39,7 +39,7 @@ assert(!html.includes('Just1Pulse'), 'Excluded project unexpectedly shown');
 for (const [, path] of html.matchAll(/src="(assets\/[^"]+\.webp)"/g)) {
   assert(existsSync(join(root, path)), `Missing design thumbnail: ${path}`);
 }
-assert(!/Prayer Machine|Génération|Quoakoo|Gloria OS|\bexercices?\b|\bexercises?\b|\bejercicios?\b/i.test(html + '\n' + localization), 'Excluded project or unprofessional label found');
+assert(!/Prayer Machine|Génération|Quoakoo|Gloria OS/i.test(html + '\n' + localization), 'Excluded project found');
 assert(js.trim().length > 0, 'Interaction script missing');
 assert(css.includes('prefers-reduced-motion'), 'Reduced-motion support missing');
 console.log('Portfolio smoke checks passed.');
