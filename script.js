@@ -450,7 +450,12 @@
         if (active && opener && opener.isConnected && !opener.closest('[hidden]')) {
           const initial = active.entries.find(entry => entry.trigger === opener);
           if (initial) active.go(initial.index, false);
-          opener.focus({ preventScroll: true });
+          const restore = opener;
+          restore.focus({ preventScroll: true });
+          // Native dialog focus restoration can run after the close event.
+          frame(() => {
+            if (restore.isConnected && !restore.closest('[hidden]')) restore.focus({ preventScroll: true });
+          });
         }
         active = null;
       });
