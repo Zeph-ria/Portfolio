@@ -9,6 +9,53 @@
       es:{all:"Todo",logos:"Logotipos",mockups:"Mockups",visuals:"Visuales",more:"Ver más creaciones",less:"Reducir la galería",pages:"Ver todas las páginas",close:"Cerrar",openOriginal:"Abrir el documento original",reader:"Calendarios Carrigrès",galleryLabel:"Elegir una categoría"}
     };
     const t = key => dictionary[lang()]?.[key] || dictionary.fr[key];
+
+    // Load only art the visitor is about to see. Full-size originals and colors
+    // are untouched; the loader swaps in the pre-existing thumbnail URL.
+    const pending = [...document.querySelectorAll('img[data-deferred-src]')];
+    const hydrate = image => {
+      if (!image || !image.dataset.deferredSrc) return;
+      image.src = image.dataset.deferredSrc;
+      delete image.dataset.deferredSrc;
+    };
+    if (pending.length) {
+      if (typeof IntersectionObserver !== 'function') pending.forEach(hydrate);
+      else {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            hydrate(entry.target);
+            observer.unobserve(entry.target);
+          });
+        }, {rootMargin: '480px 0px', threshold: 0});
+        pending.forEach(img => observer.observe(img));
+      }
+      const carouselSlides = root => [...root.querySelectorAll(':scope .slide-track > [data-slide]')];
+      const loadSlide = (root, index) => {
+        const slides = carouselSlides(root);
+        if (index >= 0 && index < slides.length) hydrate(slides[index].querySelector('img[data-deferred-src]'));
+      };
+      // Hydrate the destination before native carousel navigation, mouse or keyboard.
+      document.addEventListener('click', event => {
+        const arrow = event.target.closest('[data-slide-next], [data-slide-prev]');
+        const root = arrow?.closest('[data-slideshow]');
+        if (!root) return;
+        const slides = carouselSlides(root);
+        const current = slides.findIndex(slide => slide.classList.contains('is-current'));
+        const dir = arrow.matches('[data-slide-next]') ? 1 : -1;
+        loadSlide(root, Math.max(0, current) + dir);
+      }, true);
+      document.addEventListener('keydown', event => {
+        const root = event.target.closest('[data-slideshow]');
+        if (!root || !['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+        const slides = carouselSlides(root);
+        const current = slides.findIndex(slide => slide.classList.contains('is-current'));
+        const index = event.key === 'Home' ? 0 : event.key === 'End' ? slides.length - 1
+          : Math.max(0, current) + (event.key === 'ArrowRight' ? 1 : -1);
+        loadSlide(root, index);
+      }, true);
+    }
+
     const gallery = document.querySelector("#galerie [data-gallery]");
     if (gallery) {
       const grid = gallery.querySelector(".gallery-grid");
