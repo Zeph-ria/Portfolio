@@ -104,6 +104,7 @@ test('Local scripts, styles, media and fonts exist and are non-empty', () => {
   const references = [];
   for (const node of elements) {
     if (node.attrs.src) references.push(node.attrs.src);
+    if (node.attrs['data-deferred-src']) references.push(node.attrs['data-deferred-src']);
     if (node.attrs['data-full-src']) references.push(node.attrs['data-full-src']);
     if (node.tag === 'link' && node.attrs.href) references.push(node.attrs.href);
     if (Object.hasOwn(node.attrs, 'data-preview')) references.push(node.attrs.href);
@@ -117,7 +118,7 @@ test('Local scripts, styles, media and fonts exist and are non-empty', () => {
     if (/^(https?:|data:|#)/i.test(reference)) continue;
     assertLocalFile(reference);
   }
-  for (const node of byTag('img').filter(node => node.attrs.src)) {
+  for (const node of byTag('img').filter(node => node.attrs.src || node.attrs['data-deferred-src'])) {
     assert(Object.hasOwn(node.attrs, 'alt'), `Image lacks alt: ${node.attrs.src}`);
     assert(node.attrs.alt.trim().length > 0, `Content image has empty alt: ${node.attrs.src}`);
     assert(Number(node.attrs.width) > 0 && Number(node.attrs.height) > 0, `Explicit image dimensions required: ${node.attrs.src}`);
@@ -175,15 +176,16 @@ test('Thumbnails and full-size originals match their files and asset manifest', 
       records.set(variant.path, variant);
     }
   }
-  for (const node of byTag('img').filter(node => /\.(?:webp|png|jpe?g)$/i.test(node.attrs.src || ''))) {
-    const actual = imageDimensions(readFileSync(assertLocalFile(node.attrs.src, 'Image')));
-    assert.deepEqual({ width: Number(node.attrs.width), height: Number(node.attrs.height) }, actual, `Incorrect intrinsic dimensions: ${node.attrs.src}`);
-    assert(records.has(node.attrs.src), `Displayed image is absent from asset manifest: ${node.attrs.src}`);
+  for (const node of byTag('img').filter(node => /\.(?:webp|png|jpe?g)$/i.test(node.attrs.src || node.attrs['data-deferred-src'] || ''))) {
+    const imagePath = node.attrs.src || node.attrs['data-deferred-src'];
+    const actual = imageDimensions(readFileSync(assertLocalFile(imagePath, 'Image')));
+    assert.deepEqual({ width: Number(node.attrs.width), height: Number(node.attrs.height) }, actual, `Incorrect intrinsic dimensions: ${imagePath}`);
+    assert(records.has(imagePath), `Displayed image is absent from asset manifest: ${imagePath}`);
     const fullPath = node.attrs['data-full-src'];
     if (fullPath) {
       const original = manifest.images.find(image => image.path === fullPath);
       assert(original, `Full-size original is absent from asset manifest: ${fullPath}`);
-      assert(original.path === node.attrs.src || original.variants?.some(variant => variant.path === node.attrs.src), `Thumbnail belongs to a different original: ${node.attrs.src}`);
+      assert(original.path === imagePath || original.variants?.some(variant => variant.path === imagePath), `Thumbnail belongs to a different original: ${imagePath}`);
       const fullSize = imageDimensions(readFileSync(assertLocalFile(fullPath, 'Original')));
       assert.deepEqual({ width: Number(node.attrs['data-full-width']), height: Number(node.attrs['data-full-height']) }, fullSize, `Incorrect full-size dimensions: ${fullPath}`);
       if (node.attrs['data-asset-quality']) assert.equal(node.attrs['data-asset-quality'], original.quality, `Incorrect original quality: ${fullPath}`);
@@ -286,7 +288,7 @@ test('The gallery keeps a generous set of local artwork links accessible in docu
     assert(!link.attrs['data-source'], 'The gallery must not link to a complete source document');
     const image = descendants(link).find(node => node.tag === 'img');
     assert(image, 'Each gallery tile needs an image');
-    assert.match(image.attrs.src || '', /^assets\//);
+    assert.match(image.attrs.src || image.attrs['data-deferred-src'] || '', /^assets\//);
     assert.equal(image.attrs['data-full-src'] || image.attrs.src, link.attrs.href);
     for (const language of ['fr', 'en', 'es']) assert(image.attrs[`data-alt-${language}`]?.trim(), `Missing ${language} gallery alt text`);
     assertSlideLabels(tile);
