@@ -77,3 +77,25 @@ La PR nº 4 a été fusionnée, puis GitHub Pages a déployé avec succès le co
 Un navigateur ayant ouvert le site avant cette publication conservait néanmoins l’ancien script : absence des contrôles de diaporama et du menu mobile, ouverture directe des images. Les réponses publiques ont un cache de dix minutes. Les cinq URL CSS/JavaScript portent désormais une version calculée à partir de leur contenu, actualisée par le générateur. Les créations et la direction artistique restent identiques. Un contrôle de cohérence empêche de publier une URL de ressource dont la version ne correspond plus au fichier.
 
 Après cette correction : **45/45 tests Node réussis**, smoke test réussi et diff propre.
+
+## Finition éditoriale — 21 novembre 2026
+
+Les 11 projets et leurs 77 visuels ont fait l’objet d’une relecture visuelle et éditoriale. Les titres, légendes et angles sont révisés en FR/EN/ES. Carrigrès, UTEX Empreinte et Agorafrik disposent désormais d’un choix de conception et d’une synthèse des livrables lisibles avant l’ouverture de l’étude. Leurs images d’ouverture sont respectivement les maquettes de casques, la vision du programme ESG et la série d’affiches Agorafrik. Aucune page de la sélection n’a été supprimée.
+
+Les formulations distinguent les maquettes, propositions et concepts des résultats observés. Le script de voix off Luminary est nommé comme tel. Les périodes et chiffres Carrigrès restent identiques ; l’automatisation concerne la collecte des demandes, sans génération de devis ni attribution de ventes.
+
+### Présentation contrôlée dans le navigateur
+
+L’aperçu géré par Sites a permis de contrôler les nouveaux fichiers avant publication. La page de bureau affiche les trois études sur deux colonnes, avec les images à gauche et le récit à droite. Sous 1001 px, la lecture est empilée ; les titres précèdent les images dans l’ordre du document. Les huit autres projets conservent leur grille compacte.
+
+La matrice FR/EN/ES a été parcourue à **320, 390, 700, 768, 1000 et 1280 px** de largeur d’iframe, soit **18 configurations**. Les largeurs utiles mesurées étaient 305, 375, 685, 753, 985 et 1265 px, après la barre de défilement. Pour chaque configuration, la largeur du contenu égale la largeur utile : aucun débordement horizontal de page. Les 3 projets mis en avant et les 17 diaporamas initialisés restent présents dans les trois langues.
+
+Contrôles visuels ciblés : Carrigrès sur bureau et à 390 px ; UTEX Empreinte en espagnol à 320 px, sans dépassement de ses titres, résumés, rôle et choix ; ouverture de l’étude détaillée ; ouverture de la première image Carrigrès dans la visionneuse à 320 px, avec son original 1920 × 1080 chargé et affiché à 258 px de large. Ces observations concernent un navigateur à largeurs contrôlées, sans prétendre remplacer des essais sur téléphones physiques.
+
+Les 45 tests Node, le smoke test et le contrôle du diff restent les vérifications automatiques de cette passe. `styles.css`, les polices et la composition d’accueil approuvée sont conservés.
+
+### Correction d’une œuvre source
+
+Le titre du nuancier vert Wali est corrigé nativement dans Canva en « NUANCIER DES TONS VERTS », sans modification de police, de cadre ou des autres éléments. La seule page 48 a été réexportée officiellement en PNG 1080 × 1350, inspectée en grand format et importée en WebP sans perte. Un nom de fichier révisé évite de réutiliser une ancienne image en cache ; la miniature est régénérée à 880 × 1100. La date de provenance de l’import correspond désormais au jour réel de l’import.
+
+Une coquille distincte reste intégrée à l’image de tablette visible dans les pages 13 et 14 d’Ardhi : « ALIMENTS PRODUIT ». Le texte est aplati dans un média dont la source modifiable n’est pas accessible. Ces créations sont conservées telles quelles ; aucune correction de cette image n’est revendiquée.

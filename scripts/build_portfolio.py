@@ -109,25 +109,38 @@ def render_case(project):
     summary = element('summary',text('Étude du projet','Project study','Estudio del proyecto'))
     return f'<details class="case-study">{summary}<dl>{"".join(rows)}</dl></details>'
 
-def render_project(project, index, manifest):
+def render_project(project, index, manifest, featured=False):
     category = element('span',project['category'])
     context = element('p',project['context'],'class="project-context"') if project.get('context') else ''
     role = element('span',text('Mon rôle','My role','Mi papel'),'class="role-label"')+element('span',project['role'])
-    return f'''<article class="project-card project-{project['format']}" id="projet-{attr(project['id'])}" data-project="{attr(project['id'])}" data-category="{attr(' '.join(project['categories']))}">
+    angle = element('p',project['angle'],'class="project-angle"') if project.get('angle') else ''
+    insight = ''
+    if featured:
+        labels = {'decision': text('Le choix structurant','The defining choice','La decisión clave'),
+                  'evidence': text('Ce que le projet réunit','What the work brings together','Lo que reúne el proyecto')}
+        rows = ''.join(f'<div>{element("dt",labels[key])}{element("dd",project[key])}</div>' for key in ('decision','evidence'))
+        insight = f'<dl class="project-insight">{rows}</dl>'
+    emphasis = ' featured-project' if featured else ''
+    return f'''<article class="project-card project-{project['format']}{emphasis}" id="projet-{attr(project['id'])}" data-project="{attr(project['id'])}" data-category="{attr(' '.join(project['categories']))}">
             <div class="project-topline"><span>{index:02}</span>{category}</div>
+            <div class="project-details"><div><h3>{html.escape(project['name'])}</h3>{angle}</div></div>
             {render_carousel(project['slides'],project['name'],manifest)}
-            <div class="project-details"><div><h3>{html.escape(project['name'])}</h3>{element('p',project['summary'])}</div></div>
-            <p class="project-role">{role}</p>
-            {context}
-            {render_case(project)}
+            <div class="project-story">
+              {element('p',project['summary'],'class="project-summary"')}
+              <p class="project-role">{role}</p>
+              {context}
+              {insight}
+              {render_case(project)}
+            </div>
           </article>'''
 
 def render_work(content, manifest):
     categories=[('all',text('Tout voir','All work','Ver todo')),('branding',text('Identités','Identities','Identidades')),('communication',text('Campagnes & contenus','Campaigns & content','Campañas y contenidos')),('digital',text('Stratégie & digital','Strategy & digital','Estrategia y digital'))]
     buttons='\n          '.join(element('button',label,f'class="filter{" active" if key=="all" else ""}" type="button" data-filter="{key}" aria-pressed="{"true" if key=="all" else "false"}"') for key,label in categories)
-    cards='\n          '.join(render_project(project,index,manifest) for index,project in enumerate(content['projects'],1))
+    featured = set(content.get('featuredProjects', []))
+    cards='\n          '.join(render_project(project,index,manifest,project['id'] in featured) for index,project in enumerate(content['projects'],1))
     heading=element('h2',text('LE TRAVAIL<br><em>PARLE.</em>','THE WORK<br><em>SPEAKS.</em>','EL TRABAJO<br><em>HABLA.</em>'),'class="display-title" id="work-title"',True)
-    intro=element('p',text('Des identités, des campagnes, des programmes et des expériences numériques. Pour chaque projet : les choix, les créations et ce qu’ils permettent de construire.','Identities, campaigns, programmes and digital experiences. For each project: the decisions, the work and what they help build.','Identidades, campañas, programas y experiencias digitales. En cada proyecto: las decisiones, las creaciones y lo que permiten construir.'),'class="section-lede"')
+    intro=element('p',text('Rendre une offre plus claire, donner envie de participer, faire reconnaître une marque. Ces projets montrent comment je relie une intention à des images, des mots et des parcours concrets.','Make an offer clearer, invite participation, give a brand a recognisable presence. These projects show how I connect an intention with images, words and practical journeys.','Aclarar una oferta, invitar a participar, dar a una marca una presencia reconocible. Estos proyectos muestran cómo conecto una intención con imágenes, palabras y recorridos concretos.'),'class="section-lede"')
     guidance=element('p',text('Feuilletez les projets ici. Cliquez sur un visuel pour le voir en entier et lire ses détails.','Browse the projects here. Select an image to see it in full and read the details.','Explora los proyectos aquí. Selecciona una imagen para verla completa y leer los detalles.'),'class="work-guidance"')
     return f'''<section class="work-section section-pad" id="realisations" aria-labelledby="work-title">
         <div class="section-topline">{element('span',text('Travaux sélectionnés','Selected work','Trabajos seleccionados'))}<span>2024 — 2026</span></div>
