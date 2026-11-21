@@ -152,6 +152,32 @@ if (browser) {
       }
     });
 
+    await run('Agorafrik photography and UTEX identity pages are published without the internal ESG deck', async () => {
+      const ag = page.locator('#projet-agorafrik');
+      const ut = page.locator('#projet-utex-empreinte');
+      assert.equal(await ag.locator('[data-slide]').count(), 12);
+      assert.equal(await ut.locator('[data-slide]').count(), 3);
+      const paths = [
+        'assets/projects/agorafrik-photo-p25.webp',
+        'assets/projects/agorafrik-photo-p26.webp',
+        'assets/projects/agorafrik-photo-p27.webp',
+        'assets/projects/utex-empreinte-p01.webp',
+        'assets/projects/utex-empreinte-p19.webp'
+      ];
+      for (const path of paths) {
+        const img = page.locator('img[src="' + path + '"]').first();
+        assert(await img.count(), 'Portfolio is missing artwork: ' + path);
+        const ok = await img.evaluate(async image => {
+          image.loading = 'eager';
+          try { await image.decode(); return image.naturalWidth > 0 && image.naturalHeight > 0; }
+          catch { return false; }
+        });
+        assert(ok, 'Cannot decode artwork: ' + path);
+      }
+      assert.equal(await page.locator('a[href*="Revisé%20-%20ESG"], a[href*="DAG4l6UmPgY"]').count(), 0,
+        'The complete confidential Canva deck must not be linked');
+    });
+
     await run('project pages remain local, navigate within the project and restore focus', async () => {
       const carousel = page.locator('[data-slideshow]').filter({ has: page.locator('[data-slide]:nth-child(2)') }).first();
       const total = await carousel.locator('[data-slide]').count();
@@ -180,7 +206,7 @@ if (browser) {
 
     await run('calendars fill their cards and show complete images with optional actual-size zoom', async () => {
       await page.setViewportSize({ width: 390, height: 844 });
-      const calendar = page.locator('a[data-preview][href*="carrigres-calendrier-mural"]').first();
+      const calendar = page.locator('#calendrier-mural a[data-preview]').first();
       assert(await calendar.count(), 'Wall calendar missing');
       const imageFit = await calendar.locator('img').evaluate(image => getComputedStyle(image).objectFit);
       assert.equal(imageFit, 'contain');
