@@ -2786,30 +2786,30 @@
       ]
     },
     {
-      "path": "assets/projects/wali-matieres-p48.webp",
+      "path": "assets/projects/wali-matieres-revise-p48.webp",
       "width": 1080,
       "height": 1350,
-      "bytes": 287452,
-      "sha256": "a7b9c46c8d6cb3c8aa60862161c5192a0aa9533835bbe7306ef5a4b617eb9297",
+      "bytes": 856834,
+      "sha256": "a39e1906f57812b31a9326ec9c55ef2b3a2be012b1edffe8842728424219e83e",
       "quality": "canva-export",
       "page": 48,
-      "exportedAt": "2026-11-20",
+      "exportedAt": "2026-11-21",
       "export": {
         "format": "PNG",
         "width": 1080,
         "height": 1350,
-        "sha256": "372f91ba41b54966cc3f2016096fbfab24b05c5740c3c4eca3aae6d144a5da8a",
+        "sha256": "ef07d80ee6aab997b90b1ab8beaa6fefd5c467f82813fa015f9a5a41d62b2ffa",
         "conversion": "lossless-webp",
         "resized": false,
         "cropped": false
       },
       "variants": [
         {
-          "path": "assets/projects/thumbs/wali-matieres-p48.webp",
+          "path": "assets/projects/thumbs/wali-matieres-revise-p48.webp",
           "width": 880,
           "height": 1100,
-          "bytes": 182824,
-          "sha256": "188be26a346d0e160c014cad780b5e92e50baf4feba34a61ca150be6b9378a74",
+          "bytes": 170726,
+          "sha256": "1dab7d525deb2b982a6f1a2aacae76497ef3dc773fab021122e2879bb8737802",
           "quality": "web-thumbnail",
           "format": "WebP",
           "generation": {

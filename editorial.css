@@ -16,9 +16,18 @@
 .project-slideshow [data-slide-title]{font:500 13px/1.4 var(--sans)}
 .project-slideshow [data-slide-caption]{font-size:13px;line-height:1.6;margin-top:6px;max-width:60ch}
 .project-slideshow .slide-controls{margin-top:8px;border-bottom:1px solid var(--line);padding-bottom:17px}
-.project-details{padding-top:20px}
+.project-details{padding:0 0 21px}
 .project-details>div{min-width:0}
 .project-details p{max-width:58ch;line-height:1.65}
+.project-details .project-angle{font-size:14px;line-height:1.5;color:var(--wine);margin-top:10px;max-width:40ch}
+.project-story{min-width:0;padding-top:21px}
+.project-summary{font-size:15px;line-height:1.7;color:var(--muted);max-width:58ch;margin:0}
+.project-insight{margin:25px 0 0;border-top:1px solid var(--line)}
+.project-insight>div{padding-top:18px}
+.project-insight dt{font-size:10px;line-height:1.5;letter-spacing:.075em;text-transform:uppercase;color:var(--wine);margin-bottom:7px}
+.project-insight dd{font-size:14px;line-height:1.65;color:var(--ink);margin:0;max-width:48ch}
+.featured-project{grid-column:1/-1;border-top:1px solid var(--line);padding-top:23px}
+.featured-project .project-slideshow figcaption{min-height:0}
 .project-role{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;margin:17px 0 0;font-size:12px;line-height:1.6;color:var(--muted)}
 .role-label{font-size:10px;line-height:1.8;text-transform:uppercase;letter-spacing:.06em;color:var(--wine)}
 .project-context{margin:13px 0 0;font-size:11px;color:var(--muted);font-style:italic}
@@ -60,6 +69,15 @@
 .number-grid small{display:block;font-size:11px;line-height:1.6;max-width:235px;opacity:.8}
 .metrics-source{font-size:12px;line-height:1.65;max-width:740px;margin:42px 0 0;opacity:.85}
 
+@media(min-width:1001px){
+  .featured-project{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:clamp(32px,4vw,66px);align-items:start}
+  .featured-project .project-topline{grid-column:1/-1;margin-bottom:24px}
+  .featured-project .project-details{grid-column:2;grid-row:2;padding-bottom:18px}
+  .featured-project .project-slideshow{grid-column:1;grid-row:2/span 2}
+  .featured-project .project-story{grid-column:2;grid-row:3;padding-top:0}
+  .featured-project .slide-track [data-preview]{aspect-ratio:16/9}
+}
+
 @media(hover:none){.preview-affordance{opacity:1}}
 @media(max-width:1100px){
   .project-slideshow figcaption{min-height:132px}
@@ -78,6 +96,12 @@
   .project-landscape .slide-track [data-preview]{aspect-ratio:16/10}
   .preview-affordance{top:10px;right:10px;font-size:10px;padding:7px 9px}
   .project-role{grid-template-columns:55px minmax(0,1fr);gap:10px}
+  .project-details{padding-bottom:18px}
+  .project-story{padding-top:18px}
+  .project-summary{font-size:14px}
+  .project-insight{margin-top:21px}
+  .project-insight dd{font-size:13px}
+  .featured-project{padding-top:19px}
   .project-details h3{font-size:clamp(35px,8.5vw,55px)}
   .calendar-title{font-size:clamp(49px,10.5vw,84px)}
   .calendar-grid{grid-template-columns:minmax(0,1fr);gap:40px}

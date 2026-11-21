@@ -22,6 +22,8 @@ Le portfolio présente **11 projets, 77 pages de réalisations, 4 calendriers et
 
 La section édition réunit les quatre calendriers Carrigrès : mural, table, triptyque et sous-main. Les sites Carrigrès et Breathe & Rise Without Fear disposent chacun de trois captures réelles, avec accès au site public.
 
+La finition éditoriale du 21 novembre met Carrigrès, UTEX Empreinte et Agorafrik en avant : une image plus grande, un angle de lecture, un choix de conception et les éléments réunis par le projet sont visibles avant l’étude détaillée. Les autres réalisations conservent une présentation plus compacte. Les 77 titres et légendes sont réécrits en FR/EN/ES à partir des visuels ; les trois premières séquences passent de l’application ou de l’intention aux détails du système.
+
 Les projets exclus par Gloria ne figurent plus dans l’interface ni dans les traductions. Les créations du parcours Kadea sont présentées comme des projets de marque ou des concepts, avec leur contexte et leur rôle.
 
 ## Direction artistique conservée
@@ -45,6 +47,8 @@ Les documents sources qui contiennent des budgets, coordonnées, notes internes 
 ## Données éditoriales et provenance
 
 `content/projects.json` contient les textes FR/EN/ES et la sélection. `assets-manifest.json` documente les **88 fichiers originaux affichés** (87 pages de la visionneuse et un visuel de composition d’accueil distinct) et **82 variantes de cartes**, avec dimensions, taille et SHA-256.
+
+`featuredProjects` définit les trois projets mis en avant. Chaque projet possède un `angle` traduit ; les projets mis en avant ajoutent `decision` et `evidence`. Ces textes décrivent des choix et des livrables observables. Seul un résultat effectivement documenté est présenté comme tel.
 
 Le reporting Carrigrès utilisé couvre janvier–septembre 2025 ; les données Google couvrent cinq mois depuis l’indexation. Le parcours documenté est WordPress → Tally → Google Sheets → suivi commercial. Aucune génération automatique de devis ni vente n’est déduite des conversations WhatsApp.
 

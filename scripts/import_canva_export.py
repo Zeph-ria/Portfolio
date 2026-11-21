@@ -8,6 +8,7 @@ the public manifest. Original pixels are kept in lossless WebP files; smaller
 card derivatives are stored separately.
 """
 from pathlib import Path
+from datetime import datetime, timezone
 from PIL import Image
 import hashlib
 import io
@@ -69,7 +70,7 @@ def import_export(source, design_id, prefix, pages):
                  "bytes": target.stat().st_size, "sha256": sha(target.read_bytes()),
                  "quality": "canva-export", "designId": design_id, "page": page,
                  "sourceUrl": f"https://www.canva.com/design/{design_id}/view",
-                 "exportedAt": "2026-11-20",
+                 "exportedAt": datetime.now(timezone.utc).date().isoformat(),
                  "export": {"format": "PNG", "width": width, "height": height,
                             "sha256": sha(raw), "conversion": "lossless-webp",
                             "resized": False, "cropped": False},
