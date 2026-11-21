@@ -4,19 +4,17 @@ Portfolio statique en français, anglais et espagnol. Site public : https://zeph
 
 ## Présentation actuelle
 
-La version du 21 novembre 2026 suit la correction demandée par Gloria : les créations occupent la place principale, chaque projet tient en une phrase et les titres retrouvent leur présentation précédente.
+La version du 21 novembre 2026 présente une sélection éditoriale dans la direction artistique d'origine, avec les titres Wremena et la palette bordeaux conservés.
 
-- **10 projets**, avec 33 vues sélectionnées dans leurs présentations.
-- **89 visuels dans la galerie**, affichés directement dans une mosaïque transversale ; le nom de la marque est la seule légende visible sous chaque image.
-- **4 formats de calendriers Carrigrès**, avec leurs originaux complets disponibles dans la visionneuse.
-- **2 sites réalisés**, Carrigrès et Breathe & Rise Without Fear, avec trois captures réelles chacun et un lien vers le site public.
-- **Annieck’s Business** : dix compositions du document courant, principalement issues de ses premières pages ; quatre ouvrent la présentation du projet.
-- **Recherche graphique** : deux affiches sélectionnées, en remplacement des présentations documentaires de stratégie et de storytelling.
-- **UTEX Empreinte** : la signature visuelle de la proposition ESG, sans les documents de conception du programme.
+- **10 projets** et **88 visuels dans la galerie**, en fichiers locaux de bonne qualité. La galerie présente d'abord quatre créations originales, puis le bouton « Voir plus de créations » déploie toutes les autres et les filtres **Logos / Mockups / Visuels**.
+- **Carrigrès** : quatre formats imprimés. Les originaux complets (calendrier mural, calendrier de table avec 15 pages, calendrier triptyque et sous-main) s'ouvrent dans une visionneuse PDF accessible, avec lien de secours vers le fichier partagé en lecture publique sur Google Drive.
+- **L’Atelier** : crédits limités aux campagnes et créations de communication, sans prétendre à la création du logo.
+- **UTEX Empreinte** : identité visuelle et trois étapes générales du projet ESG présenté sans documents internes. Aucune diapositive de stratégie confidentielle n'est publiée.
+- **Re-vendre** : traitement CSS pour atténuer le blanc derrière le logo, sans modifier l'original source.
+- **Kadea Storytelling** et **Chocolata Pâtisserie / Portfolio affiche Gloria** : deux petites études dépliables avec accès aux créations Canva originales. Les contenus incorporés peuvent nécessiter un partage de lecture public pour les visiteurs.
+- **Agorafrik, Carrigrès, Wali, Bloom et Re-vendre** : élargissement des diaporamas avec davantage de travaux déjà exportés sur le site.
 
-Deux compositions L’Atelier (pages 6 et 12 du document de campagnes) restent exclues : des médias non importés dans leur source Canva empêchent leur export. La galerie contient douze autres visuels L’Atelier ; les pages 22 et 26 ont pu être exportées.
-
-Les pages de construction de logos, les planches techniques des chartes, les documents stratégiques et leurs anciennes copies ont été retirés des fichiers publiés. Aucun lien vers un document Canva complet n’est proposé. Les logos finalisés et les applications sélectionnées restent visibles.
+Les nouvelles images de la charte Agorafrik (pages photographiques 25 à 27) et les pages supplémentaires non confidentielles d'UTEX Empreinte ne sont pas encore exportées dans les assets du site. Ne pas pointer des miniatures Canva temporaires dans la publication.
 
 ## Direction artistique
 
