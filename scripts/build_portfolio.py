@@ -96,9 +96,18 @@ def render_carousel(slides, name, manifest, extra_class='', calendar=False):
 
 def render_project(project, index, manifest):
     heading = element('h3',project['nameI18n']) if project.get('nameI18n') else f'<h3>{html.escape(project["name"])}</h3>'
+    process = '''<details class="utex-process">
+              <summary data-fr="Découvrir la conception du projet" data-en="Explore the project development" data-es="Descubrir la concepción del proyecto">Découvrir la conception du projet</summary>
+              <div class="utex-steps">
+                <div class="utex-step"><strong data-fr="01. Architecture du projet" data-en="01. Programme architecture" data-es="01. Arquitectura del proyecto">01. Architecture du projet</strong><p data-fr="Définition de la vision et des objectifs de la proposition ESG." data-en="Defining the vision and objectives of the proposed ESG programme." data-es="Definición de la visión y los objetivos de la propuesta ESG.">Définition de la vision et des objectifs de la proposition ESG.</p></div>
+                <div class="utex-step"><strong data-fr="02. Identité du programme" data-en="02. Programme identity" data-es="02. Identidad del programa">02. Identité du programme</strong><p data-fr="Création du nom, de la signature et du langage visuel." data-en="Creating the name, signature and visual language." data-es="Creación del nombre, la firma y el lenguaje visual.">Création du nom, de la signature et du langage visuel.</p></div>
+                <div class="utex-step"><strong data-fr="03. Activation envisagée" data-en="03. Proposed activation" data-es="03. Activación propuesta">03. Activation envisagée</strong><p data-fr="Conception de pistes de sensibilisation et de participation, sans dévoiler les documents internes." data-en="Outlining awareness and participation initiatives without disclosing internal documents." data-es="Propuestas de sensibilización y participación sin divulgar documentos internos.">Conception de pistes de sensibilisation et de participation, sans dévoiler les documents internes.</p></div>
+              </div>
+            </details>''' if project['id'] == 'utex-empreinte' else ''
     return f'''<article class="project-card project-{project['format']}" id="projet-{attr(project['id'])}" data-project="{attr(project['id'])}" data-category="{attr(' '.join(project['categories']))}">
             {render_carousel(project['slides'],project['name'],manifest)}
             <div class="project-details"><div>{heading}{element('p',project['summary'])}</div></div>
+            {process}
           </article>'''
 
 def render_work(content, manifest):
