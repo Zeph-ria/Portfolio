@@ -150,11 +150,11 @@ test('Portfolio exclusions and private contact guardrails are enforced', () => {
     assert(!corpus.includes(forbidden), `Excluded project remains: ${forbidden}`);
   }
   const mainWork = normalizeForExclusions(html.slice(html.indexOf('<!-- BEGIN PORTFOLIO:realisations -->'), html.indexOf('<!-- END PORTFOLIO:realisations -->')));
-  assert(!/\\b(?:exercices?|exercises?|ejercicios?)\\b/.test(mainWork), 'Selected professional projects should not be labelled as exercises');
+  assert(!/\b(?:exercices?|exercises?|ejercicios?)\b/.test(mainWork), 'Selected professional projects should not be labelled as exercises');
   assert(!publicCopy.toLowerCase().includes('gzephrine@gmail.com'), 'Unapproved personal email exposed');
   for (const node of elements) {
     for (const reference of [node.attrs.href, node.attrs['data-source']]) {
-      if (/https?:\\/\\/(?:www\\.)?canva\\.com(?:[/?#]|$)/i.test(reference ?? '')) {
+      if (typeof reference === 'string' && reference.startsWith('https://www.canva.com/')) {
         const allowed = ['https://www.canva.com/d/33yApppVP3PdSGh', 'https://www.canva.com/d/_JHdUraww64hDTX'];
         assert(allowed.includes(reference), 'Only approved editorial archive links may point to Canva');
       }
