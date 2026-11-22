@@ -2798,7 +2798,280 @@
           "en": "Carrigrès : Desk calendar",
           "es": "Carrigrès : Calendario de sobremesa"
         }
-      }
+      },
+      "slides": [
+        {
+          "path": "assets/carrigres-calendrier-table.webp",
+          "thumb": "assets/thumbs/carrigres-calendrier-table.webp",
+          "width": 2000,
+          "height": 1382,
+          "title": {
+            "fr": "Calendrier de table",
+            "en": "Desk calendar",
+            "es": "Calendario de sobremesa"
+          },
+          "alt": {
+            "fr": "Carrigrès : Calendrier de table",
+            "en": "Carrigrès : Desk calendar",
+            "es": "Carrigrès : Calendario de sobremesa"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p01.webp",
+          "thumb": "assets/calendars/table-p01.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Couverture 2026",
+            "en": "2026 cover",
+            "es": "Portada 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Couverture 2026",
+            "en": "Carrigrès : 2026 cover",
+            "es": "Carrigrès : Portada 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p02.webp",
+          "thumb": "assets/calendars/table-p02.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Présentation Carrigrès",
+            "en": "Carrigrès introduction",
+            "es": "Presentación Carrigrès"
+          },
+          "alt": {
+            "fr": "Carrigrès : Présentation Carrigrès",
+            "en": "Carrigrès : Carrigrès introduction",
+            "es": "Carrigrès : Presentación Carrigrès"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p03.webp",
+          "thumb": "assets/calendars/table-p03.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Nos matériaux",
+            "en": "Our materials",
+            "es": "Nuestros materiales"
+          },
+          "alt": {
+            "fr": "Carrigrès : Nos matériaux",
+            "en": "Carrigrès : Our materials",
+            "es": "Carrigrès : Nuestros materiales"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p04.webp",
+          "thumb": "assets/calendars/table-p04.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Janvier 2026",
+            "en": "January 2026",
+            "es": "Enero de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Janvier 2026",
+            "en": "Carrigrès : January 2026",
+            "es": "Carrigrès : Enero de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p05.webp",
+          "thumb": "assets/calendars/table-p05.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Février 2026",
+            "en": "February 2026",
+            "es": "Febrero de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Février 2026",
+            "en": "Carrigrès : February 2026",
+            "es": "Carrigrès : Febrero de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p06.webp",
+          "thumb": "assets/calendars/table-p06.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Mars 2026",
+            "en": "March 2026",
+            "es": "Marzo de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Mars 2026",
+            "en": "Carrigrès : March 2026",
+            "es": "Carrigrès : Marzo de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p07.webp",
+          "thumb": "assets/calendars/table-p07.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Avril 2026",
+            "en": "April 2026",
+            "es": "Abril de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Avril 2026",
+            "en": "Carrigrès : April 2026",
+            "es": "Carrigrès : Abril de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p08.webp",
+          "thumb": "assets/calendars/table-p08.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Mai 2026",
+            "en": "May 2026",
+            "es": "Mayo de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Mai 2026",
+            "en": "Carrigrès : May 2026",
+            "es": "Carrigrès : Mayo de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p09.webp",
+          "thumb": "assets/calendars/table-p09.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Juin 2026",
+            "en": "June 2026",
+            "es": "Junio de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Juin 2026",
+            "en": "Carrigrès : June 2026",
+            "es": "Carrigrès : Junio de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p10.webp",
+          "thumb": "assets/calendars/table-p10.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Juillet 2026",
+            "en": "July 2026",
+            "es": "Julio de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Juillet 2026",
+            "en": "Carrigrès : July 2026",
+            "es": "Carrigrès : Julio de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p11.webp",
+          "thumb": "assets/calendars/table-p11.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Août 2026",
+            "en": "August 2026",
+            "es": "Agosto de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Août 2026",
+            "en": "Carrigrès : August 2026",
+            "es": "Carrigrès : Agosto de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p12.webp",
+          "thumb": "assets/calendars/table-p12.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Septembre 2026",
+            "en": "September 2026",
+            "es": "Septiembre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Septembre 2026",
+            "en": "Carrigrès : September 2026",
+            "es": "Carrigrès : Septiembre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p13.webp",
+          "thumb": "assets/calendars/table-p13.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Octobre 2026",
+            "en": "October 2026",
+            "es": "Octubre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Octobre 2026",
+            "en": "Carrigrès : October 2026",
+            "es": "Carrigrès : Octubre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p14.webp",
+          "thumb": "assets/calendars/table-p14.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Novembre 2026",
+            "en": "November 2026",
+            "es": "Noviembre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Novembre 2026",
+            "en": "Carrigrès : November 2026",
+            "es": "Carrigrès : Noviembre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/table-p15.webp",
+          "thumb": "assets/calendars/table-p15.webp",
+          "width": 1050,
+          "height": 726,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Décembre 2026",
+            "en": "December 2026",
+            "es": "Diciembre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Décembre 2026",
+            "en": "Carrigrès : December 2026",
+            "es": "Carrigrès : Diciembre de 2026"
+          }
+        }
+      ]
     },
     {
       "id": "triptyque",
@@ -2822,7 +3095,285 @@
           "en": "Backing for monthly calendar sheets.",
           "es": "Soporte para hojas mensuales."
         }
-      }
+      },
+      "slides": [
+        {
+          "path": "assets/carrigres-calendrier-triptyque.webp",
+          "thumb": "assets/thumbs/carrigres-calendrier-triptyque.webp",
+          "width": 1228,
+          "height": 3024,
+          "title": {
+            "fr": "Calendrier triptyque",
+            "en": "Three-panel calendar",
+            "es": "Calendario de tres paneles"
+          },
+          "alt": {
+            "fr": "Carrigrès : Calendrier triptyque",
+            "en": "Carrigrès : Three-panel calendar",
+            "es": "Carrigrès : Calendario de tres paneles"
+          },
+          "caption": {
+            "fr": "Habillage pour feuillets mensuels.",
+            "en": "Backing for monthly calendar sheets.",
+            "es": "Soporte para hojas mensuales."
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p01.webp",
+          "thumb": "assets/calendars/triptyque-p01.webp",
+          "width": 427,
+          "height": 1050,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Présentation 2026",
+            "en": "2026 introduction",
+            "es": "Presentación 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Présentation 2026",
+            "en": "Carrigrès : 2026 introduction",
+            "es": "Carrigrès : Presentación 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p02.webp",
+          "thumb": "assets/calendars/triptyque-p02.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Décembre 2025",
+            "en": "December 2025",
+            "es": "Diciembre de 2025"
+          },
+          "alt": {
+            "fr": "Carrigrès : Décembre 2025",
+            "en": "Carrigrès : December 2025",
+            "es": "Carrigrès : Diciembre de 2025"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p03.webp",
+          "thumb": "assets/calendars/triptyque-p03.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Janvier 2026",
+            "en": "January 2026",
+            "es": "Enero de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Janvier 2026",
+            "en": "Carrigrès : January 2026",
+            "es": "Carrigrès : Enero de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p04.webp",
+          "thumb": "assets/calendars/triptyque-p04.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Février 2026",
+            "en": "February 2026",
+            "es": "Febrero de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Février 2026",
+            "en": "Carrigrès : February 2026",
+            "es": "Carrigrès : Febrero de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p05.webp",
+          "thumb": "assets/calendars/triptyque-p05.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Mars 2026",
+            "en": "March 2026",
+            "es": "Marzo de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Mars 2026",
+            "en": "Carrigrès : March 2026",
+            "es": "Carrigrès : Marzo de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p06.webp",
+          "thumb": "assets/calendars/triptyque-p06.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Avril 2026",
+            "en": "April 2026",
+            "es": "Abril de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Avril 2026",
+            "en": "Carrigrès : April 2026",
+            "es": "Carrigrès : Abril de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p07.webp",
+          "thumb": "assets/calendars/triptyque-p07.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Mai 2026",
+            "en": "May 2026",
+            "es": "Mayo de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Mai 2026",
+            "en": "Carrigrès : May 2026",
+            "es": "Carrigrès : Mayo de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p08.webp",
+          "thumb": "assets/calendars/triptyque-p08.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Juin 2026",
+            "en": "June 2026",
+            "es": "Junio de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Juin 2026",
+            "en": "Carrigrès : June 2026",
+            "es": "Carrigrès : Junio de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p09.webp",
+          "thumb": "assets/calendars/triptyque-p09.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Juillet 2026",
+            "en": "July 2026",
+            "es": "Julio de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Juillet 2026",
+            "en": "Carrigrès : July 2026",
+            "es": "Carrigrès : Julio de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p10.webp",
+          "thumb": "assets/calendars/triptyque-p10.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Août 2026",
+            "en": "August 2026",
+            "es": "Agosto de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Août 2026",
+            "en": "Carrigrès : August 2026",
+            "es": "Carrigrès : Agosto de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p11.webp",
+          "thumb": "assets/calendars/triptyque-p11.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Septembre 2026",
+            "en": "September 2026",
+            "es": "Septiembre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Septembre 2026",
+            "en": "Carrigrès : September 2026",
+            "es": "Carrigrès : Septiembre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p12.webp",
+          "thumb": "assets/calendars/triptyque-p12.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Octobre 2026",
+            "en": "October 2026",
+            "es": "Octubre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Octobre 2026",
+            "en": "Carrigrès : October 2026",
+            "es": "Carrigrès : Octubre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p13.webp",
+          "thumb": "assets/calendars/triptyque-p13.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Novembre 2026",
+            "en": "November 2026",
+            "es": "Noviembre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Novembre 2026",
+            "en": "Carrigrès : November 2026",
+            "es": "Carrigrès : Noviembre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p14.webp",
+          "thumb": "assets/calendars/triptyque-p14.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Décembre 2026",
+            "en": "December 2026",
+            "es": "Diciembre de 2026"
+          },
+          "alt": {
+            "fr": "Carrigrès : Décembre 2026",
+            "en": "Carrigrès : December 2026",
+            "es": "Carrigrès : Diciembre de 2026"
+          }
+        },
+        {
+          "path": "assets/calendars/triptyque-p15.webp",
+          "thumb": "assets/calendars/triptyque-p15.webp",
+          "width": 1050,
+          "height": 570,
+          "quality": "pdf-page-preview",
+          "title": {
+            "fr": "Janvier 2027",
+            "en": "January 2027",
+            "es": "Enero de 2027"
+          },
+          "alt": {
+            "fr": "Carrigrès : Janvier 2027",
+            "en": "Carrigrès : January 2027",
+            "es": "Carrigrès : Enero de 2027"
+          }
+        }
+      ]
     },
     {
       "id": "sous-main",
