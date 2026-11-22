@@ -116,3 +116,78 @@
 /* The full monthly sequence lives in the carousel; the PDF is a quiet optional source. */
 .calendar-original-link{display:inline-block;margin-top:15px;color:var(--wine);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;font:500 13px/1.4 var(--sans)}
 .calendar-original-link:hover{color:var(--ink)}
+
+/* Carrigrès: an even exhibition wall for four different print proportions.
+   Artwork is never cropped or stretched. Slide labels and arrows share a baseline. */
+.calendar-section .calendar-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:start;
+  column-gap:clamp(22px,2.8vw,42px);
+  row-gap:clamp(45px,5vw,78px);
+}
+.calendar-section .calendar-card{min-width:0;overflow:hidden}
+.calendar-section .calendar-card .slide-track{align-items:stretch}
+.calendar-section .calendar-card .slide-track>li{min-width:0}
+.calendar-section .calendar-card .slide-track figure{display:flex;flex-direction:column}
+.calendar-section .calendar-card .slide-track [data-preview]{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-sizing:border-box;
+  width:100%;
+  height:clamp(430px,42vw,590px)!important;
+  aspect-ratio:auto!important;
+  padding:clamp(14px,2vw,30px)!important;
+  background:#ece7e2!important;
+  border-radius:6px;
+}
+.calendar-section .calendar-card .slide-track [data-preview] img{
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  box-shadow:none!important;
+}
+.calendar-section .calendar-card figcaption{
+  display:flex;
+  align-items:flex-start;
+  padding:17px 2px 0;
+  min-height:64px;
+}
+.calendar-section .calendar-card .slide-controls{
+  display:flex;
+  min-height:48px;
+  margin-top:8px;
+  padding:0 2px;
+}
+.calendar-section .calendar-card .single-slide .slide-controls{
+  display:flex!important;
+  visibility:hidden;
+}
+.calendar-section .calendar-original-link{margin-top:12px}
+@media(max-width:900px){
+  .calendar-section .calendar-grid{
+    grid-template-columns:minmax(0,1fr);
+    row-gap:44px;
+  }
+  .calendar-section .calendar-card .slide-track [data-preview]{
+    height:clamp(330px,70vw,570px)!important;
+    padding:clamp(13px,4vw,24px)!important;
+  }
+}
+@media(max-width:520px){
+  .calendar-section #calendrier-mural .slide-track [data-preview],
+  .calendar-section #calendrier-triptyque .slide-track [data-preview]{
+    height:clamp(360px,125vw,510px)!important;
+  }
+  .calendar-section #calendrier-table .slide-track [data-preview],
+  .calendar-section #calendrier-sous-main .slide-track [data-preview]{
+    height:clamp(250px,78vw,365px)!important;
+  }
+  .calendar-section .calendar-card figcaption{min-height:56px;padding-top:15px}
+  .calendar-section .calendar-grid{row-gap:36px}
+}
