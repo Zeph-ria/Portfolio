@@ -71,7 +71,7 @@ test('Navigation, buttons and external links have safe, real targets', () => {
   const menu = ids.get('main-menu');
   assert(menu?.tag === 'nav', 'The primary menu must be a native navigation landmark');
   const destinations = descendants(menu).filter(node => node.tag === 'a').map(node => node.attrs.href);
-  assert.deepEqual(destinations, ['#realisations', '#galerie', '#apropos', '#contact'], 'The navigation must reach Work, Gallery, About and Contact');
+  assert.deepEqual(destinations, ['#realisations', '#competences', '#contact'], 'The navigation must reach Work, Skills and Contact');
   const menuToggle = ids.get('menu-toggle');
   assert.equal(menuToggle?.tag, 'button');
   assert.equal(menuToggle?.attrs['aria-controls'], 'main-menu');
