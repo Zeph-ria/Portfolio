@@ -151,7 +151,7 @@ def render_gallery(content, manifest):
 def render_calendars(content, manifest):
     cards=[]
     for calendar in content['calendars']:
-        slides=render_carousel([calendar['slide']],'Carrigrès',manifest,'calendar-slideshow',True)
+        slides=render_carousel(calendar.get('slides', [calendar['slide']]),'Carrigrès',manifest,'calendar-slideshow',True)
         cards.append(f'<article class="calendar-card" id="calendrier-{calendar["id"]}">{slides}</article>')
     heading=element('h2',text('Carrigrès : les quatre calendriers','Carrigrès : four calendar formats','Carrigrès : cuatro formatos de calendario'),'class="gallery-series" id="calendars-title"')
     return f'''<section class="calendar-section section-pad" id="calendriers" aria-labelledby="calendars-title">
@@ -212,7 +212,7 @@ def replace_section(document, section_id, new_section, original_class=None):
 
 def collect_assets(content):
     slides=[slide for project in content['projects'] for slide in project['slides']]
-    slides += [calendar['slide'] for calendar in content['calendars']]
+    slides += [slide for calendar in content['calendars'] for slide in calendar.get('slides', [calendar['slide']])]
     slides += content.get('gallery', [])
     return sorted({item[key] for item in slides for key in ('path','thumb') if item.get(key)})
 
