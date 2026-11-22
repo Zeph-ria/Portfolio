@@ -112,3 +112,7 @@
 .calendar-card .slide-controls [data-slide-count]{font-weight:600;color:var(--wine)}
 @media(max-width:800px){.competences-list{grid-template-columns:1fr;gap:37px}.competences-heading{margin-bottom:55px}.competences-section .competences-display{font-size:clamp(61px,11vw,95px)}.competences-outro{margin-top:65px}}
 @media(max-width:460px){.competence-item{grid-template-columns:24px minmax(0,1fr);gap:9px 13px}.competence-name{font-size:clamp(28px,7vw,36px)}.competence-copy{font-size:14px}.competences-outro{padding-left:0}.contact-actions{flex-direction:column;align-items:stretch}.contact-actions .contact-cta{width:100%;text-align:center}#calendrier-table .slide-track [data-preview]{aspect-ratio:4/3!important}}
+
+/* The full monthly sequence lives in the carousel; the PDF is a quiet optional source. */
+.calendar-original-link{display:inline-block;margin-top:15px;color:var(--wine);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;font:500 13px/1.4 var(--sans)}
+.calendar-original-link:hover{color:var(--ink)}
