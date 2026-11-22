@@ -4,14 +4,14 @@ Portfolio statique en français, anglais et espagnol. Site public : https://zeph
 
 ## Présentation actuelle
 
-La version du 21 novembre 2026 présente une sélection éditoriale dans la direction artistique d'origine, avec les titres Wremena et la palette bordeaux conservés.
+La version du 22 novembre 2026 réunit les travaux créatifs et huit champs de compétences professionnels, tout en préservant Wremena et le bordeaux de la direction artistique approuvée.
 
 - **10 projets** et **93 visuels dans la galerie**, en fichiers locaux de bonne qualité. La galerie présente d'abord quatre créations originales, puis le bouton « Voir plus de créations » déploie toutes les autres et les filtres **Logos / Mockups / Visuels**.
-- **Carrigrès** : quatre formats imprimés. Les originaux complets (calendrier mural, calendrier de table avec 15 pages, calendrier triptyque et sous-main) s'ouvrent dans une visionneuse PDF accessible, avec lien de secours vers le fichier partagé en lecture publique sur Google Drive.
+- **Carrigrès** : quatre formats imprimés. Les calendriers de table et triptyque comptent chacun **16 slides natives** : un aperçu de réalisation, suivi de **15 pages du PDF original**, dont tous les mois. Les PDF haute définition restent accessibles par un lien discret ; les calendriers mural et sous-main conservent leur visionneuse.
 - **L’Atelier** : crédits limités aux campagnes et créations de communication, sans prétendre à la création du logo.
 - **UTEX Empreinte** : trois vues de présentation, couverture, logo et signature de clôture, accompagnées des grandes étapes de la conception du programme ESG. Aucune diapositive de stratégie confidentielle n'est publiée.
 - **Re-vendre** : traitement CSS pour atténuer le blanc derrière le logo, sans modifier l'original source.
-- **Kadea Storytelling** et **Chocolata Pâtisserie / Portfolio affiche Gloria** : deux petites études dépliables avec accès aux créations Canva originales. Les contenus incorporés peuvent nécessiter un partage de lecture public pour les visiteurs.
+- Les deux anciennes cartes documentaires **Storytelling / Chocolata** ont été retirées pour éviter une rupture visuelle ; le storytelling est désormais présenté comme compétence plutôt que sous forme de dossier séparé.
 - **Agorafrik, Carrigrès, Wali, Bloom et Re-vendre** : élargissement des diaporamas avec davantage de travaux déjà exportés sur le site.
 
 Les compositions photographiques Agorafrik (pages 25 à 27) et les vues sélectionnées d’UTEX Empreinte sont installées localement dans le site. Les cinq nouveaux aperçus sont des WebP de 596 px issus des rendus Canva, non des exports haute définition : leur définition est adaptée à une vignette, mais limitée dans une visionneuse fortement agrandie. Les autres originaux préexistants restent inchangés.
@@ -24,11 +24,17 @@ La palette bordeaux `#652936`, noir `#0e0e0e` et blanc ainsi que la composition 
 
 ## Navigation et images
 
-Le menu dessert **Travaux, Galerie, À propos et Contact**. Les filtres de projets n’affectent pas la galerie. Toutes ses images restent dans le document et accessibles au clavier, y compris pendant la consultation en grand.
+Le menu présente strictement **Travaux, Compétences et Me contacter**. La section Compétences est uniquement textuelle : elle reprend les compétences de l'ancien portfolio, complétées par les acquis documentés en automatisation, suivi commercial, outils métier et IA appliquée. Un lien WhatsApp vérifié (terminaison 65) est disponible dans la section Contact. Les filtres de projets n’affectent pas la galerie. Toutes ses images restent dans le document et accessibles au clavier, y compris pendant la consultation en grand.
 
 La visionneuse ouvre l’original choisi, permet de parcourir les visuels de la même galerie ou du même projet, affiche la taille réelle et propose le téléchargement du fichier local. La fermeture rend le focus au lien exact ayant ouvert l’image. Les formats d’origine sont préservés dans la galerie et la visionneuse. Les images des cartes utilisent des variantes légères séparées.
 
 Les versions `?lang=fr`, `?lang=en` et `?lang=es` sont prises en charge ; le choix est mémorisé. Les textes de l’interface, les titres descriptifs et les alternatives des images sont traduits. Les créations elles-mêmes restent dans leur langue d’origine.
+
+## Calendriers en carrousels
+
+Les 15 pages du calendrier de table et les 15 pages du triptyque ont été rendues à partir des PDF d'impression originaux, proportionnellement et **sans recadrage**. Elles sont stockées au format WebP dans `assets/calendars/`, documentées avec dimensions, provenance et SHA-256 dans `assets-manifest.json`. Ces aperçus légers ne remplacent pas les PDF en haute définition ; les liens originaux sont conservés dans `portfolio-refinements.js`.
+
+Les 30 feuillets sont gérés par `content/projects.json` et `scripts/build_portfolio.py`, accessibles via les mêmes flèches, le défilement tactile et la visionneuse que les autres créations, et chargés progressivement pour préserver les performances.
 
 ## Chargement des images
 
