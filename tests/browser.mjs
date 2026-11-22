@@ -200,7 +200,7 @@ async function main() {
     });
 
     await run('mobile navigation fits, reaches its links and closes without losing keyboard focus', async page => {
-      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#galerie', '#apropos', '#contact']);
+      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#competences', '#contact']);
       assert.equal(await page.locator('#menu-toggle').isVisible(), false);
       for (const width of [320, 390, 700]) {
         await page.setViewportSize({ width, height: 844 });
@@ -214,9 +214,9 @@ async function main() {
         assert(await page.locator('#menu-toggle').evaluate(button => document.activeElement === button));
       }
       await page.locator('#menu-toggle').click();
-      await page.locator('#main-menu a[href="#galerie"]').click();
+      await page.locator('#main-menu a[href="#competences"]').click();
       assert.equal(await page.locator('#main-menu').isVisible(), false);
-      assert(await page.locator('#galerie').evaluate(section => document.activeElement === section));
+      assert(await page.locator('#competences').evaluate(section => document.activeElement === section));
       await page.setViewportSize({ width: 1440, height: 1000 });
       await page.locator('#main-menu a').first().focus();
       await page.setViewportSize({ width: 390, height: 844 });
