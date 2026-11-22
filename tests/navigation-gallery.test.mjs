@@ -209,6 +209,35 @@ if (browser) {
       assert.equal(await carousel.locator('[data-slide]').nth(1).getAttribute('aria-hidden'), 'false');
     });
 
+    await run('four calendar artwork stages and their captions align without cropping', async () => {
+      const ids=['mural','table','triptyque','sous-main'];
+      const snapshot = async () => page.evaluate(ids => ids.map(id => {
+        const root = document.querySelector('#calendrier-' + id);
+        const frame = root?.querySelector('[data-slide] [data-preview]');
+        const caption = root?.querySelector('[data-slide] figcaption');
+        const img = frame?.querySelector('img');
+        const r = frame?.getBoundingClientRect();
+        const c = caption?.getBoundingClientRect();
+        return {id, top:r?.top, height:r?.height, left:r?.left,
+          captionTop:c?.top, objectFit:img ? getComputedStyle(img).objectFit : ''};
+      }),ids);
+      await page.setViewportSize({width:1440,height:1000});
+      let boxes = await snapshot();
+      assert(boxes.every(x => x.objectFit === 'contain'), 'Preserve all original artwork without cropping');
+      assert(Math.abs(boxes[0].top-boxes[1].top)<2, 'First pair must share the same vertical start');
+      assert(Math.abs(boxes[2].top-boxes[3].top)<2, 'Second pair must share the same vertical start');
+      assert(Math.abs(boxes[0].height-boxes[1].height)<2);
+      assert(Math.abs(boxes[2].height-boxes[3].height)<2);
+      assert(Math.abs(boxes[0].captionTop-boxes[1].captionTop)<2, 'Captions should align within their row');
+      assert(Math.abs(boxes[2].captionTop-boxes[3].captionTop)<2, 'Captions should align within their row');
+      await page.setViewportSize({width:390,height:900});
+      boxes = await snapshot();
+      assert(boxes.every(x => x.objectFit === 'contain'));
+      assert(boxes.every(x => Math.abs(x.left-boxes[0].left)<2), 'Mobile cards should follow the same margin');
+      assert(boxes[0].height > boxes[1].height, 'Portrait and landscape print proportions must stay distinct on mobile');
+      assert(!await page.evaluate(() => document.documentElement.scrollWidth > innerWidth+1), 'Calendar layout must not overflow on mobile');
+    });
+
     await run('calendars fill their cards and show complete images with optional actual-size zoom', async () => {
       await page.setViewportSize({ width: 390, height: 844 });
       const calendar = page.locator('#calendrier-mural a[data-preview]').first();
