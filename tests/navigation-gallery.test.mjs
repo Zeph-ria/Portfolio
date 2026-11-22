@@ -232,6 +232,46 @@ if (browser) {
       await page.locator('#preview-close').click();
     });
 
+    await run('Skills remain text-only and usable on mobile, with direct WhatsApp contact', async () => {
+      const skills = page.locator('#competences');
+      const contact = page.locator('a[href="https://wa.me/243815128665"]');
+      assert.equal(await skills.locator('.competence-item').count(), 8);
+      assert.equal(await skills.locator('img').count(), 0);
+      assert.equal(await contact.count(), 1);
+      for (const width of [390, 1440]) {
+        await page.setViewportSize({ width, height: 900 });
+        await skills.scrollIntoViewIfNeeded();
+        assert(await skills.isVisible());
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Skills must not overflow');
+      }
+    });
+
+    await run('Desk and folding calendars expose all pages as regular carousels', async () => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      for (const id of ['table','triptyque']) {
+        const card = page.locator('#calendrier-' + id);
+        const carousel = card.locator('[data-slideshow]');
+        assert.equal(await carousel.locator('[data-slide]').count(), 16);
+        const next = carousel.locator('[data-slide-next]');
+        await next.click();
+        assert.match(await carousel.locator('[data-slide-count]').textContent(), /^2 sur 16$/);
+        const img = carousel.locator('[data-slide]').nth(1).locator('img[data-full-src]').first();
+        const expected = 'assets/calendars/' + id + '-p01.webp';
+        assert.equal(await img.getAttribute('data-full-src'), expected);
+        assert(await img.evaluate(async image => {
+          if (image.dataset.deferredSrc) {
+            image.src=image.dataset.deferredSrc;
+            delete image.dataset.deferredSrc;
+          }
+          try { await image.decode(); return image.naturalWidth>0 && image.naturalHeight>0; }
+          catch { return false; }
+        }), 'The selected calendar page must decode');
+        await carousel.locator('[data-slide]').nth(1).locator('a[data-preview]').click();
+        assert.equal(await page.locator('#preview-image').getAttribute('src'), expected);
+        await page.locator('#preview-close').click();
+      }
+    });
+
     await run('FR, EN and ES refresh the menu and open gallery without changing the selected image', async () => {
       const gallery = page.locator('[data-gallery]');
       const tile = gallery.locator('[data-slide]').nth(2);
