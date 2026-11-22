@@ -337,7 +337,7 @@ test('enhancement preserves every primary local link and identifies the actual p
 
 test('mobile menu opens, changes language, closes with Escape and restores focus', () => {
   const f = fixture();
-  assert.deepEqual(f.all('#main-menu a').map(link => link.getAttribute('href')), ['#realisations', '#galerie', '#apropos', '#contact']);
+  assert.deepEqual(f.all('#main-menu a').map(link => link.getAttribute('href')), ['#realisations', '#competences', '#contact']);
   const button = f.id('menu-toggle');
   assert.equal(button.hidden, false);
   assert.equal(button.getAttribute('aria-expanded'), 'false');
@@ -358,9 +358,9 @@ test('navigation activation, outside click and desktop resize close the mobile d
   const f = fixture();
   const button = f.id('menu-toggle');
   button.emit('click');
-  f.one('#main-menu a[href="#apropos"]').emit('click');
+  f.one('#main-menu a[href="#competences"]').emit('click');
   assert.equal(button.getAttribute('aria-expanded'), 'false');
-  assert.equal(f.document.activeElement, f.id('apropos'));
+  assert.equal(f.document.activeElement, f.id('competences'));
   button.emit('click');
   f.event('click', { target: f.id('language-select') });
   assert.equal(button.getAttribute('aria-expanded'), 'true', 'Controls inside the header do not dismiss it');
