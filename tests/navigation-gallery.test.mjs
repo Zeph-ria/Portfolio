@@ -53,8 +53,8 @@ if (browser) {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(baseURL, { waitUntil: 'domcontentloaded' });
 
-    await run('four navigation destinations; mobile menu closes and returns focus', async () => {
-      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#galerie', '#apropos', '#contact']);
+    await run('three navigation destinations; mobile menu closes and returns focus', async () => {
+      assert.deepEqual(await page.locator('#main-menu a').evaluateAll(links => links.map(link => link.getAttribute('href'))), ['#realisations', '#competences', '#contact']);
       assert.equal(await page.locator('#menu-toggle').isVisible(), false);
       for (const width of [320, 390]) {
         await page.setViewportSize({ width, height: 844 });
@@ -71,9 +71,9 @@ if (browser) {
         assert(await page.locator('#menu-toggle').evaluate(button => document.activeElement === button));
       }
       await page.locator('#menu-toggle').click();
-      await page.locator('#main-menu a[href="#galerie"]').click();
+      await page.locator('#main-menu a[href="#competences"]').click();
       assert.equal(await page.locator('#main-menu').isVisible(), false);
-      assert(await page.locator('#galerie').evaluate(section => document.activeElement === section));
+      assert(await page.locator('#competences').evaluate(section => document.activeElement === section));
       await page.setViewportSize({ width: 1440, height: 1000 });
       assert.equal(await page.locator('#main-menu').isVisible(), true);
       assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'), 'false');
@@ -248,7 +248,7 @@ if (browser) {
         assert((await page.locator('#preview-title').textContent()).includes(await tile.locator('[data-slide-title]').getAttribute('data-' + language)));
         assert((await page.locator('#preview-counter').textContent()).endsWith(' ' + count + ' ' + total));
         assert.equal(await page.locator('#preview-zoom').textContent(), zoomText);
-        assert(await page.locator('#main-menu a').evaluateAll((links, language) => links.length === 4 && links.every(link => link.textContent.trim() === link.getAttribute('data-' + language)), language));
+        assert(await page.locator('#main-menu a').evaluateAll((links, language) => links.length === 3 && links.every(link => link.textContent.trim() === link.getAttribute('data-' + language)), language));
       }
       await page.locator('#preview-close').click();
       assert(await trigger.evaluate(link => document.activeElement === link));
