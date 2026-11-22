@@ -4,9 +4,9 @@
   const init = () => {
     const lang = () => ["fr","en","es"].includes(document.documentElement.lang) ? document.documentElement.lang : "fr";
     const dictionary = {
-      fr:{all:"Tout voir",logos:"Logos",mockups:"Mockups",visuals:"Visuels",more:"Voir plus de créations",less:"Réduire la galerie",pages:"Feuilleter toutes les pages",close:"Fermer",openOriginal:"Ouvrir le document original",reader:"Calendriers Carrigrès",galleryLabel:"Choisir une catégorie"},
-      en:{all:"All",logos:"Logos",mockups:"Mockups",visuals:"Visuals",more:"See more creations",less:"Show fewer creations",pages:"Browse every page",close:"Close",openOriginal:"Open the original document",reader:"Carrigrès calendars",galleryLabel:"Choose a category"},
-      es:{all:"Todo",logos:"Logotipos",mockups:"Mockups",visuals:"Visuales",more:"Ver más creaciones",less:"Reducir la galería",pages:"Ver todas las páginas",close:"Cerrar",openOriginal:"Abrir el documento original",reader:"Calendarios Carrigrès",galleryLabel:"Elegir una categoría"}
+      fr:{all:"Tout voir",logos:"Logos",mockups:"Mockups",visuals:"Visuels",more:"Voir plus de créations",less:"Réduire la galerie",pages:"Feuilleter toutes les pages",close:"Fermer",openOriginal:"Ouvrir le document original",reader:"Calendriers Carrigrès",galleryLabel:"Choisir une catégorie",original:"PDF original · Haute définition"},
+      en:{all:"All",logos:"Logos",mockups:"Mockups",visuals:"Visuals",more:"See more creations",less:"Show fewer creations",pages:"Browse every page",close:"Close",openOriginal:"Open the original document",reader:"Carrigrès calendars",galleryLabel:"Choose a category",original:"Original PDF · High resolution"},
+      es:{all:"Todo",logos:"Logotipos",mockups:"Mockups",visuals:"Visuales",more:"Ver más creaciones",less:"Reducir la galería",pages:"Ver todas las páginas",close:"Cerrar",openOriginal:"Abrir el documento original",reader:"Calendarios Carrigrès",galleryLabel:"Elegir una categoría",original:"PDF original · Alta resolución"}
     };
     const t = key => dictionary[lang()]?.[key] || dictionary.fr[key];
 
@@ -204,6 +204,19 @@
       };
       calendarCards.forEach(card=>{
         const source=calendarSources[card.id]; if(!source)return;
+        // Multi-page calendars are read directly in the carousel; the PDF is an unobtrusive reference.
+        if (card.id === 'calendrier-table' || card.id === 'calendrier-triptyque') {
+          const original = document.createElement('a');
+          original.className = 'calendar-original-link';
+          original.href = 'https://drive.google.com/file/d/' + encodeURIComponent(source.id) + '/view';
+          original.target = '_blank';
+          original.rel = 'noopener noreferrer';
+          const setLabel = () => { original.textContent = t('original'); };
+          setLabel();
+          document.addEventListener('portfolio:languagechange', setLabel);
+          card.appendChild(original);
+          return;
+        }
         const btn=document.createElement("button");btn.type="button";btn.className="calendar-pages-button";
         btn.addEventListener("click",()=>{
           selected=source;
