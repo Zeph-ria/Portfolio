@@ -29,6 +29,24 @@
   <script src="i18n.js?v=6c1fe36d10ba" defer></script>
   <script src="script.js?v=8f5dbc094cbc" defer></script>
   <link rel="stylesheet" href="portfolio-refinements.css?v=641e8687c50e">
+  <!-- Critical palette: inline so older cached CSS and iOS button tint cannot revert work filters to blue. -->
+  <style id="work-filter-color-guard">
+    #realisations .filters button[data-filter] {
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      color: #652936 !important;
+      -webkit-text-fill-color: #652936 !important;
+      border-color: #652936 !important;
+      background-color: transparent !important;
+    }
+    #realisations .filters button[data-filter]:is(.active, [aria-pressed="true"], :hover, :focus-visible) {
+      color: #fff !important;
+      -webkit-text-fill-color: #fff !important;
+      border-color: #652936 !important;
+      background-color: #652936 !important;
+    }
+  </style>
+
   <script src="portfolio-refinements.js?v=ff4744fb459e" defer></script>
 </head>
 <body>
