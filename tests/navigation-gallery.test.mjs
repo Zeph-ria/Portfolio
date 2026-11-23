@@ -128,6 +128,41 @@ if (browser) {
       }
     });
 
+    await run('burgundy survives stale CSS and iOS-style blue button tint', async () => {
+      assert.equal(await page.locator('#work-filter-color-guard').count(), 1);
+      await page.setViewportSize({ width: 390, height: 844 });
+      const active = page.locator('#realisations button[data-filter="all"]');
+      const inactive = page.locator('#realisations button[data-filter="branding"]');
+      await page.addStyleTag({ content: `
+        .filter, button.filter, .filter:not(.active) {
+          color: #007aff !important;
+          -webkit-text-fill-color: #007aff !important;
+          background-color: transparent !important;
+        }
+        .filter.active, .filter[aria-pressed="true"] {
+          background-color: #0e0e0e !important;
+          border-color: #0e0e0e !important;
+        }
+      ` });
+      const visual = async node => node.evaluate(el => {
+        const css = getComputedStyle(el);
+        return [css.color, css.webkitTextFillColor, css.backgroundColor, css.borderTopColor];
+      });
+      const initial = await visual(inactive);
+      assert.equal(initial[0], 'rgb(101, 41, 54)');
+      assert.equal(initial[1], 'rgb(101, 41, 54)');
+      assert.equal(initial[2], 'rgba(0, 0, 0, 0)');
+      const picked = await visual(active);
+      assert.equal(picked[0], 'rgb(255, 255, 255)');
+      assert.equal(picked[1], 'rgb(255, 255, 255)');
+      assert.equal(picked[2], 'rgb(101, 41, 54)');
+      await inactive.click();
+      const changed = await visual(inactive);
+      assert.equal(changed[0], 'rgb(255, 255, 255)');
+      assert.equal(changed[2], 'rgb(101, 41, 54)');
+      await active.click();
+    });
+
     await run('a project fragment reveals work hidden by the research filter', async () => {
       const targetId = await page.locator('article.project-card[data-category]').evaluateAll(cards => cards.find(card => !card.dataset.category.split(/\s+/).includes('research'))?.id);
       assert(targetId, 'The selection needs a project outside graphic exploration');
