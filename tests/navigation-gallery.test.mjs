@@ -413,6 +413,7 @@ if (browser) {
         const first = motionPage.locator('#realisations .project-card').last();
         assert.equal(await first.getAttribute('data-reveal-state'),'waiting',
           'Offscreen project should be waiting for the scroll reveal');
+        await motionPage.waitForTimeout(800); // initial offscreen transition finishes before assertions
         const before = await first.evaluate(el => ({
           opacity:getComputedStyle(el).opacity,
           translate:getComputedStyle(el).transform
