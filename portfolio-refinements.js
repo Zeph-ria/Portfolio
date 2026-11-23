@@ -233,6 +233,64 @@
       document.addEventListener("portfolio:languagechange",readerLabels);
     }
 
+    // Reveal editorial elements once as they approach the viewport.
+    // Visible or already-passed content is never hidden at startup; this also
+    // handles opening the site at a deep link or restoring a scrolled page.
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMotion && typeof IntersectionObserver === 'function') {
+      const selectors = [
+        '.feature',
+        'main section .section-topline',
+        'main section .display-title',
+        'main section .section-lede',
+        '#realisations .filters',
+        '.work-section .project-card',
+        '#galerie .gallery-teaser > .gallery-item',
+        '#galerie .gallery-grid > .gallery-item',
+        '.calendar-section .gallery-series',
+        '.calendar-section .calendar-card',
+        '.websites-section .website-card',
+        '.about-copy > p',
+        '.about-copy > .specialties',
+        '.competences-eyebrow',
+        '.competences-intro',
+        '.competences-list .competence-item',
+        '.competences-outro',
+        '.number-grid > div',
+        '.timeline-row',
+        '.contact-section > p',
+        '.contact-section .contact-actions'
+      ];
+      const targets = [...document.querySelectorAll(selectors.join(','))];
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const node = entry.target;
+          node.dataset.revealState = 'shown';
+          observer.unobserve(node);
+        }
+      }, {rootMargin:'0px 0px -7% 0px', threshold:0.06});
+
+      targets.forEach((node, index) => {
+        const rect = node.getBoundingClientRect();
+        const hidden = Boolean(node.closest('[hidden]'));
+        // Don't fade away content already on screen or above the scroll position.
+        if (!hidden && (rect.bottom <= 0 || rect.top < window.innerHeight * 0.90)) return;
+        node.classList.add('scroll-reveal');
+        node.style.setProperty('--reveal-delay', ((index % 3) * 65) + 'ms');
+        node.dataset.revealState = 'waiting';
+        observer.observe(node);
+      });
+
+      // Keyboard navigation must always expose focused content immediately.
+      document.addEventListener('focusin', event => {
+        const target = event.target.closest?.('.scroll-reveal[data-reveal-state="waiting"]');
+        if (!target) return;
+        target.dataset.revealState = 'shown';
+        observer.unobserve(target);
+      }, true);
+    }
+
     // Motion remains optional; hover, focus, manual interaction and zoom pause playback.
     const motion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
     if (!motion?.matches) {
