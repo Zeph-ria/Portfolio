@@ -113,7 +113,7 @@ if (browser) {
           color: 'rgb(101, 41, 54)',
           fill: 'rgb(101, 41, 54)',
           background: 'rgba(0, 0, 0, 0)',
-          border: 'rgba(101, 41, 54, 0.48)'
+          border: 'rgb(101, 41, 54)'
         });
         assert.equal((await css(active)).background, 'rgb(101, 41, 54)');
         assert.equal((await css(active)).fill, 'rgb(255, 255, 255)');
