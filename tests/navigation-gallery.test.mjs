@@ -401,6 +401,53 @@ if (browser) {
         assert(await gallery.evaluateAll(links => links.every(link => link.getClientRects().length > 0 && link.tabIndex >= 0 && !link.closest('[hidden], [inert], [aria-hidden="true"]'))), 'Every gallery original must remain reachable without JavaScript');
       } finally { await fallback.close(); }
     });
+    await run('scroll reveals fade and rise only when content enters view', async () => {
+      const motionContext = await browser.newContext({
+        viewport: {width:390,height:844}, reducedMotion:'no-preference'
+      });
+      try {
+        const motionPage = await motionContext.newPage();
+        const motionErrors = [];
+        motionPage.on('pageerror', error => motionErrors.push(error.message));
+        await motionPage.goto(baseURL, {waitUntil:'domcontentloaded'});
+        const first = motionPage.locator('#realisations .project-card').last();
+        assert.equal(await first.getAttribute('data-reveal-state'),'waiting',
+          'Offscreen project should be waiting for the scroll reveal');
+        const before = await first.evaluate(el => ({
+          opacity:getComputedStyle(el).opacity,
+          translate:getComputedStyle(el).transform
+        }));
+        assert.equal(before.opacity,'0','Offscreen project should start transparent');
+        assert.notEqual(before.translate,'none','Reveal includes a small vertical rise');
+        await first.scrollIntoViewIfNeeded();
+        await first.evaluate(el => new Promise((resolve,reject)=>{
+          if(el.dataset.revealState==='shown')return resolve();
+          let frames=0;
+          const poll=()=>el.dataset.revealState==='shown'?resolve():
+            frames++>150?reject(new Error('Scroll reveal did not trigger')):requestAnimationFrame(poll);
+          poll();
+        }));
+        await motionPage.waitForTimeout(820);
+        assert.equal(await first.evaluate(el=>getComputedStyle(el).opacity),'1');
+        assert.equal(await first.getAttribute('data-reveal-state'),'shown');
+        await motionPage.evaluate(()=>window.scrollTo(0,0));
+        await motionPage.waitForTimeout(80);
+        assert.equal(await first.getAttribute('data-reveal-state'),'shown',
+          'One-time animation must not replay when scrolling back');
+        assert.deepEqual(motionErrors, []);
+      } finally { await motionContext.close(); }
+
+      const reducedContext = await browser.newContext({
+        viewport: {width:390,height:844},reducedMotion:'reduce'
+      });
+      try {
+        const reducedPage=await reducedContext.newPage();
+        await reducedPage.goto(baseURL,{waitUntil:'domcontentloaded'});
+        assert.equal(await reducedPage.locator('.scroll-reveal[data-reveal-state="waiting"]').count(),0,
+          'OS reduced-motion preference must leave all content visible');
+      } finally { await reducedContext.close(); }
+    });
+
     await run('no uncaught browser errors', async () => assert.deepEqual(errors, []));
     await context.close();
     console.log(`${passed} browser acceptance checks passed; ${failed} failed.`);
