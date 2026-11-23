@@ -225,3 +225,28 @@
   color:var(--ink);
   background:transparent;
 }
+
+/* Work filters follow the same burgundy control system as the visual gallery.
+   Explicit text colour prevents iOS/Safari from falling back to its blue button tint. */
+.work-section .filters .filter{
+  appearance:none;
+  -webkit-appearance:none;
+  color:var(--wine);
+  -webkit-text-fill-color:var(--wine);
+  border:1px solid rgba(101,41,54,.48);
+  background:transparent;
+  transition:background-color .18s ease,color .18s ease,border-color .18s ease;
+}
+.work-section .filters .filter:is(.active,[aria-pressed="true"],:hover,:focus-visible){
+  color:var(--paper);
+  -webkit-text-fill-color:var(--paper);
+  border-color:var(--wine);
+  background:var(--wine);
+}
+.work-section .filters .filter:focus-visible{
+  outline:3px solid #a65c76;
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion:reduce){
+  .work-section .filters .filter{transition:none}
+}
