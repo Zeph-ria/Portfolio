@@ -99,6 +99,35 @@ if (browser) {
       await page.locator('[data-filter="all"]').click();
     });
 
+    await run('Work filters retain the approved burgundy in every interactive state', async () => {
+      for (const width of [390, 1440]) {
+        await page.setViewportSize({ width, height: 940 });
+        const inactive = page.locator('.work-section .filter[data-filter="branding"]');
+        const active = page.locator('.work-section .filter[data-filter="all"]');
+        const css = async locator => locator.evaluate(el => {
+          const style = getComputedStyle(el);
+          return {color:style.color,fill:style.webkitTextFillColor,background:style.backgroundColor,border:style.borderTopColor};
+        });
+        await page.mouse.move(1, 1);
+        assert.deepEqual(await css(inactive), {
+          color: 'rgb(101, 41, 54)',
+          fill: 'rgb(101, 41, 54)',
+          background: 'rgba(0, 0, 0, 0)',
+          border: 'rgba(101, 41, 54, 0.48)'
+        });
+        assert.equal((await css(active)).background, 'rgb(101, 41, 54)');
+        assert.equal((await css(active)).fill, 'rgb(255, 255, 255)');
+        await inactive.hover();
+        assert.equal((await css(inactive)).background, 'rgb(101, 41, 54)');
+        await inactive.click();
+        await page.mouse.move(1, 1);
+        assert.equal(await inactive.getAttribute('aria-pressed'), 'true');
+        assert.equal((await css(inactive)).color, 'rgb(255, 255, 255)');
+        assert.equal((await css(inactive)).background, 'rgb(101, 41, 54)');
+        await page.locator('.work-section .filter[data-filter="all"]').click();
+      }
+    });
+
     await run('a project fragment reveals work hidden by the research filter', async () => {
       const targetId = await page.locator('article.project-card[data-category]').evaluateAll(cards => cards.find(card => !card.dataset.category.split(/\s+/).includes('research'))?.id);
       assert(targetId, 'The selection needs a project outside graphic exploration');
