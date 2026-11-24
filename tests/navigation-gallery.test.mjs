@@ -295,6 +295,13 @@ if (browser) {
       assert(Math.abs(boxes[0].captionTop-boxes[1].captionTop)<2, 'Captions should align within their row');
       assert(Math.abs(boxes[2].captionTop-boxes[3].captionTop)<2, 'Captions should align within their row');
       await page.setViewportSize({width:390,height:900});
+      // Chromium may report the previous desktop computed layout for one frame
+      // immediately after a viewport resize. Wait for the mobile stylesheet.
+      await page.waitForFunction(() => {
+        const section = document.querySelector('.calendar-section');
+        return window.innerWidth === 390 &&
+          getComputedStyle(section).paddingLeft === '22px';
+      });
       boxes = await snapshot();
       assert(boxes.every(x => x.objectFit === 'contain'));
       assert(boxes.every(x => Math.abs(x.left-boxes[0].left)<2), 'Mobile cards should follow the same margin');
