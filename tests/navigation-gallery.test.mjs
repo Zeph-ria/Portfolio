@@ -456,6 +456,33 @@ if (browser) {
       } finally { await reducedContext.close(); }
     });
 
+    await run('the personal headline is legible in every language and viewport', async () => {
+      const featureTitle=page.locator('.feature h2');
+      const cases=[
+        ['fr','Je relie les idées à ce qui les rend possibles.'],
+        ['en','I connect ideas to what makes them possible.'],
+        ['es','Conecto las ideas con lo que las hace posibles.']
+      ];
+      for(const [language,expected] of cases){
+        await page.evaluate(code=>window.PortfolioI18n.setLanguage(code),language);
+        assert.equal((await featureTitle.innerText()).replace(/\\s+/g,' ').trim(),expected);
+        for(const width of [320,390,768,1440]){
+          await page.setViewportSize({width,height:900});
+          const ok=await featureTitle.evaluate(el=>{
+            const rect=el.getBoundingClientRect();
+            const computed=getComputedStyle(el);
+            return rect.width>0 && rect.right<=innerWidth+1 &&
+              el.scrollWidth<=el.clientWidth+2 &&
+              computed.fontFamily.includes('Wremena') &&
+              document.documentElement.scrollWidth<=innerWidth+1;
+          });
+          assert(ok,language+' headline must fit at '+width+'px');
+        }
+      }
+      await page.evaluate(()=>window.PortfolioI18n.setLanguage('fr'));
+      await page.setViewportSize({width:1440,height:1000});
+    });
+
     await run('no uncaught browser errors', async () => assert.deepEqual(errors, []));
     await context.close();
     console.log(`${passed} browser acceptance checks passed; ${failed} failed.`);
