@@ -4,17 +4,16 @@ Portfolio statique en français, anglais et espagnol. Site public : https://zeph
 
 ## Présentation actuelle
 
-La version du 22 novembre 2026 réunit les travaux créatifs et huit champs de compétences professionnels, tout en préservant Wremena et le bordeaux de la direction artistique approuvée.
+L'édition de novembre 2026 met en avant **trois contributions principales**, puis une sélection de travaux complémentaires. La direction artistique approuvée, la typographie Wremena et la palette bordeaux restent inchangées.
 
-- **10 projets** et **93 visuels dans la galerie**, en fichiers locaux de bonne qualité. La galerie présente d'abord quatre créations originales, puis le bouton « Voir plus de créations » déploie toutes les autres et les filtres **Logos / Mockups / Visuels**.
-- **Carrigrès** : quatre formats imprimés. Les calendriers de table et triptyque comptent chacun **16 slides natives** : un aperçu de réalisation, suivi de **15 pages du PDF original**, dont tous les mois. Les PDF haute définition restent accessibles par un lien discret ; les calendriers mural et sous-main conservent leur visionneuse.
-- **L’Atelier** : crédits limités aux campagnes et créations de communication, sans prétendre à la création du logo.
-- **UTEX Empreinte** : trois vues de présentation, couverture, logo et signature de clôture, accompagnées des grandes étapes de la conception du programme ESG. Aucune diapositive de stratégie confidentielle n'est publiée.
-- **Re-vendre** : traitement CSS pour atténuer le blanc derrière le logo, sans modifier l'original source.
-- Les deux anciennes cartes documentaires **Storytelling / Chocolata** ont été retirées pour éviter une rupture visuelle ; le storytelling est désormais présenté comme compétence plutôt que sous forme de dossier séparé.
-- **Agorafrik, Carrigrès, Wali, Bloom et Re-vendre** : élargissement des diaporamas avec davantage de travaux déjà exportés sur le site.
+- **Carrigrès** : communication digitale, visibilité web et structuration d'un parcours de demande de devis vers le suivi commercial. Les chiffres publiés proviennent du bilan 2025 et ne sont pas présentés comme des ventes.
+- **Agorafrik** : langage visuel articulé autour de l'identité, du choix photographique et des applications graphiques.
+- **UTEX Empreinte** : conception d'une **proposition** de programme ESG, avec identité et pistes de déploiement. Les documents de travail internes ne sont pas publiés et la proposition n'est pas présentée comme un programme déjà exécuté.
+- **Autres travaux** : Re-vendre, L’Atelier, Wali, Bloom, Annieck’s, UTEX/TEXAF et recherche graphique restent consultables, ainsi que les 93 créations de la galerie.
+- **Compétences** : trois champs de pratique rédigés en texte, *Stratégie & communication*, *Identité & expériences digitales* et *Systèmes & pilotage*, en FR/EN/ES. Ils remplacent l'ancienne liste numérotée de huit items.
+- **Carrigrès, calendriers** : 16 vues natives pour chaque format de table et triptyque, incluant les 15 pages du PDF, et lien discret vers l'original haute définition.
 
-Les compositions photographiques Agorafrik (pages 25 à 27) et les vues sélectionnées d’UTEX Empreinte sont installées localement dans le site. Les cinq nouveaux aperçus sont des WebP de 596 px issus des rendus Canva, non des exports haute définition : leur définition est adaptée à une vignette, mais limitée dans une visionneuse fortement agrandie. Les autres originaux préexistants restent inchangés.
+Les images et supports originaux n'ont pas été modifiés par la réécriture éditoriale.
 
 ## Direction artistique
 
