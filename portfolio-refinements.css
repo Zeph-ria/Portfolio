@@ -276,3 +276,66 @@
     transition:none!important;
   }
 }
+
+/* Editorial positioning: prioritize responsibility and contribution over inventories. */
+.work-section .project-card[data-editorial-tier="lead"] .project-details {
+  padding-top:clamp(14px,1.5vw,24px);
+}
+.work-section .project-role {
+  display:block;
+  margin:0 0 13px;
+  font:600 11px/1.45 var(--sans);
+  letter-spacing:.055em;
+  color:var(--wine);
+}
+.work-section .project-card[data-editorial-tier="lead"] .project-details p:not(.project-role) {
+  max-width:58ch;
+  font:400 clamp(14px,1.25vw,16px)/1.7 var(--sans);
+  color:var(--muted);
+}
+.work-section .project-card[data-editorial-tier="support"] .project-details h3 {
+  font-size:clamp(29px,3vw,47px);
+}
+.work-section .project-card[data-editorial-tier="support"] .project-details p {
+  max-width:54ch;
+}
+#projet-utex-empreinte .project-details {align-self:center}
+@media(min-width:950px){
+  #projet-utex-empreinte .project-slideshow {grid-row:auto}
+  #projet-utex-empreinte {align-items:center}
+}
+
+/* Three editorial practice areas without numbered cards, borders or icons. */
+.competences-section .competences-list {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:start;
+  gap:clamp(28px,3.6vw,64px);
+}
+.competences-list .expertise-pillar {min-width:0}
+.competences-list .expertise-title {
+  margin:0 0 23px;
+  font:400 clamp(30px,3vw,47px)/1.08 var(--serif);
+  letter-spacing:-.025em;
+  color:var(--ink);
+}
+.competences-list .expertise-copy {
+  max-width:43ch;
+  margin:0;
+  font:400 15px/1.83 var(--sans);
+  color:var(--muted);
+}
+.competences-section .competences-outro {
+  max-width:900px;
+  padding:0;
+  margin:clamp(58px,6vw,92px) 0 0;
+  font-size:clamp(22px,2.5vw,35px);
+}
+@media(max-width:980px){
+  .competences-section .competences-list{
+    grid-template-columns:1fr;
+    gap:clamp(28px,6vw,46px);
+  }
+  .competences-list .expertise-copy {max-width:75ch}
+  .competences-list .expertise-title {margin-bottom:11px}
+}
