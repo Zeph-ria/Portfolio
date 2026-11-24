@@ -78,4 +78,3 @@ test('Every localized public element has French, English and Spanish copy',()=>{
         'Missing '+language+' for '+node.tag+' '+(node.attrs.class||node.attrs.id||''));
   }
 });
-
