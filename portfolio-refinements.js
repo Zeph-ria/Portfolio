@@ -254,7 +254,7 @@
         '.about-copy > .specialties',
         '.competences-eyebrow',
         '.competences-intro',
-        '.competences-list .competence-item',
+        '.competences-list .expertise-pillar',
         '.competences-outro',
         '.number-grid > div',
         '.timeline-row',
