@@ -15,6 +15,14 @@ L'édition de novembre 2026 met en avant **trois contributions principales**, pu
 
 Les images et supports originaux n'ont pas été modifiés par la réécriture éditoriale.
 
+## Ligne éditoriale validée · 24 novembre 2026
+
+La phrase principale est **« Je relie les idées à ce qui les rend possibles. »** Elle est reprise sans reformulation dans le titre bordeaux, avec des traductions EN/ES qui respectent le sens. Elle doit parler du bénéfice pour le client : partir du besoin, puis trouver la bonne stratégie, création, expérience numérique ou organisation pour y répondre.
+
+Les textes des dix projets, des sites web, de la galerie, des compétences, du parcours et du contact ont été revus en langage direct. Les réalisations sont présentées par contributions vérifiables et sans résultats inventés. La proposition UTEX Empreinte reste clairement identifiée comme une proposition, non un programme déployé. Les chiffres Carrigrès restent ceux du bilan daté ; les échanges WhatsApp ne sont pas assimilés à des ventes.
+
+L'interface, la typographie, les images, les filtres, les animations et les quatre calendriers ne changent pas dans cette révision. Les traductions FR/EN/ES sont complètes, y compris les libellés du parcours et du bas de page.
+
 ## Direction artistique
 
 La famille Wremena, les fichiers de police et la feuille `styles.css` sont ceux de la référence approuvée `7154a95`. Les titres de projets reviennent **sous les images**, avec la règle d’origine `400 clamp(31px, 3.5vw, 55px) / 1.1`. Les surcharges qui agrandissaient les titres sur téléphone et les présentations en deux colonnes image/texte ont été supprimées.
