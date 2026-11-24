@@ -55,3 +55,27 @@ test('Three expertise areas replace generic numbered skill cards without imagery
     }
   }
 });
+
+
+test('The exact approved sentence is the central headline in all three languages',()=>{
+  const feature=elements.find(node=>node.tag==='section' && node.attrs.class==='feature');
+  assert(feature,'The editorial feature must exist');
+  const h2=below(feature).find(node=>node.tag==='h2');
+  assert(h2);
+  assert.equal(h2.attrs['data-fr'],'Je relie les idées à <em>ce qui les rend possibles.</em>');
+  assert.equal(h2.attrs['data-en'],'I connect ideas to <em>what makes them possible.</em>');
+  assert.equal(h2.attrs['data-es'],'Conecto las ideas con <em>lo que las hace posibles.</em>');
+  assert(!html.includes('Je travaille sur <em>le fond</em> autant que sur la forme.'),
+    'The former generic headline must not return');
+});
+
+test('Every localized public element has French, English and Spanish copy',()=>{
+  const localized=elements.filter(node=>Object.hasOwn(node.attrs,'data-fr'));
+  assert(localized.length > 80);
+  for(const node of localized){
+    for(const language of ['fr','en','es'])
+      assert(node.attrs['data-'+language]?.trim(),
+        'Missing '+language+' for '+node.tag+' '+(node.attrs.class||node.attrs.id||''));
+  }
+});
+
