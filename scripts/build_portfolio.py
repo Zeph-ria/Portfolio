@@ -116,7 +116,7 @@ def render_work(content, manifest):
     buttons='\n          '.join(element('button',label,f'class="filter{" active" if key=="all" else ""}" type="button" data-filter="{key}" aria-pressed="{"true" if key=="all" else "false"}"') for key,label in categories)
     cards='\n          '.join(render_project(project,index,manifest) for index,project in enumerate(content['projects'],1))
     heading=element('h2',text('LE TRAVAIL<br><em>PARLE.</em>','THE WORK<br><em>SPEAKS.</em>','EL TRABAJO<br><em>HABLA.</em>'),'class="display-title" id="work-title"',True)
-    intro=element('p',text('Trois projets où la réflexion précède les livrables, puis une sélection de créations complémentaires.','Three projects where thinking comes before deliverables, followed by selected creative work.','Tres proyectos donde la reflexión precede a los entregables, seguidos de una selección de trabajos creativos.'),'class="section-lede"')
+    intro=element('p',text('Du travail de fond aux créations plus ponctuelles, voici ce que j’ai apporté à chaque projet.','From broader assignments to individual creative pieces, here is what I contributed to each project.','Desde misiones más amplias hasta trabajos creativos puntuales, esto es lo que aporté a cada proyecto.'),'class="section-lede"')
     return f'''<section class="work-section section-pad" id="realisations" aria-labelledby="work-title">
         <div class="section-topline">{element('span',text('Travaux sélectionnés','Selected work','Trabajos seleccionados'))}<span>2024 à 2026</span></div>
         {heading}
@@ -139,7 +139,7 @@ def render_gallery(content, manifest):
     return f'''<section class="design-library section-pad" id="galerie" aria-labelledby="gallery-title">
         <div class="section-topline">{element('span',text('Galerie','Gallery','Galería'))}{element('span',text('Créations visuelles','Visual work','Creaciones visuales'))}</div>
         {element('h2',text('GALERIE.','GALLERY.','GALERÍA.'),'class="display-title gallery-display" id="gallery-title"')}
-        {element('p',text('Mon univers en images.','My visual world.','Mi universo en imágenes.'),'class="section-lede"')}
+        {element('p',text('Identités, campagnes, supports et recherches visuelles : quelques facettes de mon travail.','Identities, campaigns, designed materials and visual explorations: different sides of my work.','Identidades, campañas, piezas gráficas y exploraciones visuales: distintas facetas de mi trabajo.'),'class="section-lede"')}
         <div data-gallery><ul class="gallery-grid">{images}</ul></div>
       </section>'''
 
@@ -150,7 +150,7 @@ def render_calendars(content, manifest):
         cards.append(f'<article class="calendar-card" id="calendrier-{calendar["id"]}">{slides}</article>')
     heading=element('h2',text('Carrigrès : les quatre calendriers','Carrigrès : four calendar formats','Carrigrès : cuatro formatos de calendario'),'class="gallery-series" id="calendars-title"')
     return f'''<section class="calendar-section section-pad" id="calendriers" aria-labelledby="calendars-title">
-        <div class="section-topline">{element('span',text('Édition · Carrigrès','Print · Carrigrès','Edición · Carrigrès'))}{element('span',text('Un système, plusieurs usages','One system, several uses','Un sistema, varios usos'))}</div>
+        <div class="section-topline">{element('span',text('Édition · Carrigrès','Print · Carrigrès','Edición · Carrigrès'))}{element('span',text('Une identité, quatre formats','One identity, four formats','Una identidad, cuatro formatos'))}</div>
         {heading}
         <div class="calendar-grid">{' '.join(cards)}</div>
       </section>'''
@@ -161,8 +161,8 @@ def render_sites(manifest):
         raise FileNotFoundError('The reviewed website screenshots are required: assets/sites/manifest.json')
     captures=json.loads(source.read_text())['images']
     entries=[
-      ('Carrigrès','carrigres-web','https://www.carrigres.com/',text('Site WordPress et parcours de demande de devis.','WordPress website and quotation enquiry journey.','Sitio WordPress y recorrido de solicitud de presupuesto.')),
-      ('Breathe & Rise Without Fear','breathe-without-fear','https://breathewithoutfear.org/',text('Site de l’initiative de Marie Desy.','Website for Marie Desy’s initiative.','Sitio de la iniciativa de Marie Desy.'))
+      ('Carrigrès','carrigres-web','https://www.carrigres.com/',text('Un site WordPress pour présenter les matériaux et faciliter le suivi des demandes de devis.','A WordPress site that presents the materials and makes quotation enquiries easier to follow up.','Un sitio WordPress para presentar los materiales y facilitar el seguimiento de las solicitudes de presupuesto.')),
+      ('Breathe & Rise Without Fear','breathe-without-fear','https://breathewithoutfear.org/',text('Un site pour présenter l’initiative de Marie Desy, sa mission et ses actions.','A website presenting Marie Desy’s initiative, its mission and activities.','Un sitio que presenta la iniciativa de Marie Desy, su misión y sus acciones.'))
     ]
     cards=[]
     for name,key,url,summary in entries:
@@ -176,7 +176,7 @@ def render_sites(manifest):
         cards.append(f'<article class="website-card" id="{key}">{gallery}<div class="website-details"><div><h3>{html.escape(name)}</h3>{element("p",summary)}</div>{visit}</div></article>')
     return f'''<section class="websites-section section-pad" id="sites" aria-labelledby="websites-title">
         <div class="section-topline">{element('span',text('Expériences numériques','Digital experiences','Experiencias digitales'))}<span>WEB / UX</span></div>
-        {element('h2',text('DES IDÉES<br><em>EN LIGNE.</em>','IDEAS<br><em>ONLINE.</em>','IDEAS<br><em>EN LÍNEA.</em>'),'class="display-title websites-title" id="websites-title"',True)}
+        {element('h2',text('SITES WEB.<br><em>PARCOURS.</em>','WEBSITES.<br><em>JOURNEYS.</em>','SITIOS WEB.<br><em>RECORRIDOS.</em>'),'class="display-title websites-title" id="websites-title"',True)}
         <div class="website-grid">{' '.join(cards)}</div>
       </section>'''
 
@@ -188,7 +188,7 @@ def render_metrics(content):
         <div class="section-topline">{element('span',text('Carrigrès · résultats documentés','Carrigrès · documented results','Carrigrès · resultados documentados'))}<span>2025</span></div>
         {element('h2',text('DES IDÉES.<br><em>DES PREUVES.</em>','IDEAS.<br><em>EVIDENCE.</em>','IDEAS.<br><em>EVIDENCIAS.</em>'),'id="numbers-title" class="numbers-title"',True)}
         <div class="number-grid">{' '.join(cards)}</div>
-        {element('p',text('Source : bilan de communication Carrigrès, janvier à septembre 2025. Les données Google couvrent les cinq mois suivant l’indexation du site.','Source: Carrigrès communication report, January à September 2025. Google data covers the five months following website indexing.','Fuente: balance de comunicación Carrigrès, enero à septiembre de 2025. Los datos de Google abarcan los cinco meses posteriores a la indexación del sitio.'),'class="metrics-source"')}
+        {element('p',text('Source : bilan de communication Carrigrès de janvier à septembre 2025. Les données Google portent sur les cinq mois suivant l’indexation du site. Les conversations WhatsApp ne sont pas des ventes.','Source: Carrigrès communication report, January to September 2025. Google figures cover the five months after website indexing. WhatsApp conversations are not sales.','Fuente: informe de comunicación de Carrigrès, de enero a septiembre de 2025. Los datos de Google cubren los cinco meses posteriores a la indexación. Las conversaciones de WhatsApp no son ventas.'),'class="metrics-source"')}
       </section>'''
 
 def replace_section(document, section_id, new_section, original_class=None):
