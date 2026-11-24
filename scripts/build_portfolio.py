@@ -186,7 +186,7 @@ def render_metrics(content):
         cards.append(f'<div><strong>{html.escape(metric["value"])}</strong>{element("p",metric["label"])}{element("small",metric["period"])}</div>')
     return f'''<section class="numbers-section section-pad" id="preuves" aria-labelledby="numbers-title">
         <div class="section-topline">{element('span',text('Carrigrès · résultats documentés','Carrigrès · documented results','Carrigrès · resultados documentados'))}<span>2025</span></div>
-        {element('h2',text('DES IDÉES.<br><em>DES PREUVES.</em>','IDEAS.<br><em>EVIDENCE.</em>','IDEAS.<br><em>EVIDENCIAS.</em>'),'id="numbers-title" class="numbers-title"',True)}
+        {element('h2',text('LES FAITS.<br><em>LES CHIFFRES.</em>','FACTS.<br><em>FIGURES.</em>','DATOS.<br><em>CIFRAS.</em>'),'id="numbers-title" class="numbers-title"',True)}
         <div class="number-grid">{' '.join(cards)}</div>
         {element('p',text('Source : bilan de communication Carrigrès de janvier à septembre 2025. Les données Google portent sur les cinq mois suivant l’indexation du site. Les conversations WhatsApp ne sont pas des ventes.','Source: Carrigrès communication report, January to September 2025. Google figures cover the five months after website indexing. WhatsApp conversations are not sales.','Fuente: informe de comunicación de Carrigrès, de enero a septiembre de 2025. Los datos de Google cubren los cinco meses posteriores a la indexación. Las conversaciones de WhatsApp no son ventas.'),'class="metrics-source"')}
       </section>'''
