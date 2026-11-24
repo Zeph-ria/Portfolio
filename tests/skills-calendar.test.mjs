@@ -22,8 +22,8 @@ test('Only Work, Skills and Contact remain in the top navigation', () => {
 
 test('Skills are substantial text-only content in all three languages', () => {
   const section = elements.find(node => node.attrs.id === 'competences');
-  const blocks = children(section).filter(node => node.attrs.class?.split(/\s+/).includes('competence-item'));
-  assert.equal(blocks.length, 8);
+  const blocks = children(section).filter(node => node.attrs.class?.split(/\s+/).includes('expertise-pillar'));
+  assert.equal(blocks.length, 3);
   assert.equal(children(section).filter(node => node.tag === 'img').length, 0, 'Skills should be text-only');
   for (const block of blocks) {
     const title = children(block).find(node => node.tag === 'h3');
