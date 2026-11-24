@@ -33,7 +33,7 @@ test('New copy emphasizes scope without claiming that proposed ESG work was depl
   assert(carrigres.summary.fr.includes('demande de devis'));
   const utex=doc.projects.find(project=>project.id==='utex-empreinte');
   assert(utex.summary.fr.includes('proposition de programme ESG'));
-  assert(utex.summary.fr.includes('non confidentiels'));
+  assert(utex.summary.fr.includes('Les documents internes restent confidentiels.'));
   assert(!html.includes('class="utex-process"'),'No internal programme steps should be disclosed');
   assert(!html.includes('canva.com/design/DAG4l6UmPgY'),'No confidential full deck link');
 });
