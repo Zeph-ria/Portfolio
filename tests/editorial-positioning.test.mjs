@@ -45,7 +45,7 @@ test('Four expertise areas include AI without generic numbered cards or imagery'
   assert.equal(pillars.length,4);
   assert.equal(below(section).filter(n=>n.tag==='img').length,0);
   assert(!below(section).some(n=>n.attrs.class==='competence-index'),'Do not reproduce school-like numbered skills');
-  assert(pillars.some(pillar=>below(pillar).some(node=>node.tag==='h3' && node.attrs['data-fr']==='IA &amp; automatisation')),
+  assert(pillars.some(pillar=>below(pillar).some(node=>node.tag==='h3' && node.attrs['data-fr']==='IA & automatisation')),
     'AI and automation must be visible as an explicit skill');
   for(const pillar of pillars){
     const title=below(pillar).find(n=>n.tag==='h3');
