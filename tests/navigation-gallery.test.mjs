@@ -328,7 +328,7 @@ if (browser) {
     await run('Skills remain text-only and usable on mobile, with direct WhatsApp contact', async () => {
       const skills = page.locator('#competences');
       const contact = page.locator('a[href="https://wa.me/243815128665"]');
-      assert.equal(await skills.locator('.competence-item').count(), 8);
+      assert.equal(await skills.locator('.expertise-pillar').count(), 3);
       assert.equal(await skills.locator('img').count(), 0);
       assert.equal(await contact.count(), 1);
       for (const width of [390, 1440]) {
