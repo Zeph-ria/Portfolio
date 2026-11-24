@@ -66,7 +66,7 @@
     galleryLabel: triple('Galerie des réalisations', 'Design gallery', 'Galería de diseños'),
     projectFilters: triple('Filtrer les projets', 'Filter projects', 'Filtrar proyectos'),
     designFilters: triple('Filtrer la galerie', 'Filter gallery', 'Filtrar galería'),
-    description: triple('Portfolio de Gloria Tumsifu Kasunzu : stratégie, communication, design et solutions numériques. Projets et réalisations à Kinshasa.', 'Gloria Tumsifu Kasunzu’s portfolio: strategy, communication, design and digital solutions. Projects and creative work in Kinshasa.', 'Portafolio de Gloria Tumsifu Kasunzu: estrategia, comunicación, diseño y soluciones digitales. Proyectos y trabajos creativos en Kinshasa.'),
+    description: triple('Portfolio de Gloria Tumsifu Kasunzu : stratégie, communication, design, intelligence artificielle et automatisation. Projets et réalisations à Kinshasa.', 'Gloria Tumsifu Kasunzu’s portfolio: strategy, communication, design, artificial intelligence and automation. Projects and work in Kinshasa.', 'Portafolio de Gloria Tumsifu Kasunzu: estrategia, comunicación, diseño, inteligencia artificial y automatización. Proyectos y trabajos en Kinshasa.'),
     title: triple('Gloria Tumsifu Kasunzu — Portfolio', 'Gloria Tumsifu Kasunzu — Portfolio', 'Gloria Tumsifu Kasunzu — Portafolio')
   });
 
