@@ -102,6 +102,8 @@ def render_carousel(slides, name, manifest, extra_class='', calendar=False, defe
 
 def render_project(project, index, manifest):
     heading = element('h3',project['nameI18n']) if project.get('nameI18n') else f'<h3>{html.escape(project["name"])}</h3>'
+    role = element('p', project['role'], 'class="project-role"') if project.get('role') else ''
+    tier = project.get('tier', 'support')
     process = '''<details class="utex-process">
               <summary data-fr="Découvrir la conception du projet" data-en="Explore the project development" data-es="Descubrir la concepción del proyecto">Découvrir la conception du projet</summary>
               <div class="utex-steps">
@@ -110,9 +112,9 @@ def render_project(project, index, manifest):
                 <div class="utex-step"><strong data-fr="03. Activation envisagée" data-en="03. Proposed activation" data-es="03. Activación propuesta">03. Activation envisagée</strong><p data-fr="Conception de pistes de sensibilisation et de participation, sans dévoiler les documents internes." data-en="Outlining awareness and participation initiatives without disclosing internal documents." data-es="Propuestas de sensibilización y participación sin divulgar documentos internos.">Conception de pistes de sensibilisation et de participation, sans dévoiler les documents internes.</p></div>
               </div>
             </details>''' if project['id'] == 'utex-empreinte' else ''
-    return f'''<article class="project-card project-{project['format']}" id="projet-{attr(project['id'])}" data-project="{attr(project['id'])}" data-category="{attr(' '.join(project['categories']))}">
+    return f'''<article class="project-card project-{project['format']}" id="projet-{attr(project['id'])}" data-project="{attr(project['id'])}" data-category="{attr(' '.join(project['categories']))}" data-editorial-tier="{attr(tier)}">
             {render_carousel(project['slides'],project['name'],manifest,defer_first=index>2)}
-            <div class="project-details"><div>{heading}{element('p',project['summary'])}</div></div>
+            <div class="project-details"><div>{role}{heading}{element('p',project['summary'])}</div></div>
             {process}
           </article>'''
 
@@ -121,7 +123,7 @@ def render_work(content, manifest):
     buttons='\n          '.join(element('button',label,f'class="filter{" active" if key=="all" else ""}" type="button" data-filter="{key}" aria-pressed="{"true" if key=="all" else "false"}"') for key,label in categories)
     cards='\n          '.join(render_project(project,index,manifest) for index,project in enumerate(content['projects'],1))
     heading=element('h2',text('LE TRAVAIL<br><em>PARLE.</em>','THE WORK<br><em>SPEAKS.</em>','EL TRABAJO<br><em>HABLA.</em>'),'class="display-title" id="work-title"',True)
-    intro=element('p',text('Identités, campagnes et créations visuelles.','Identities, campaigns and visual work.','Identidades, campañas y creaciones visuales.'),'class="section-lede"')
+    intro=element('p',text('Trois projets où la réflexion précède les livrables, puis une sélection de créations complémentaires.','Three projects where thinking comes before deliverables, followed by selected creative work.','Tres proyectos donde la reflexión precede a los entregables, seguidos de una selección de trabajos creativos.'),'class="section-lede"')
     return f'''<section class="work-section section-pad" id="realisations" aria-labelledby="work-title">
         <div class="section-topline">{element('span',text('Travaux sélectionnés','Selected work','Trabajos seleccionados'))}<span>2024 à 2026</span></div>
         {heading}
