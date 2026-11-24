@@ -339,3 +339,195 @@
   .competences-list .expertise-copy {max-width:75ch}
   .competences-list .expertise-title {margin-bottom:11px}
 }
+
+
+/* 2026 editorial pass: a tonal burgundy vocabulary without changing the
+   approved Wremena typography or the original #652936 brand anchor. */
+:root{
+  --wine-secondary:#975368;
+  --wine-hairline:#c99ba8;
+  --wine-pale:#fbf5f7;
+}
+.section-pad:not(.numbers-section) > .section-topline > span:first-child,
+.competences-section .competences-eyebrow,
+.work-section .project-role,
+.case-study dt{
+  color:var(--wine-secondary);
+}
+.section-pad:not(.numbers-section) > .section-topline > span:last-child{
+  color:var(--muted);
+}
+.design-filters .design-filter:not(.active){
+  color:var(--wine-secondary);
+  background:var(--wine-pale);
+  border-color:var(--wine-hairline);
+  transition:background-color .18s ease,color .18s ease,border-color .18s ease;
+}
+.design-filters .design-filter:is(.active,:hover,:focus-visible){
+  color:var(--paper);
+  background:var(--wine);
+  border-color:var(--wine);
+}
+.work-section .filters .filter:focus-visible,
+.design-filters .design-filter:focus-visible{
+  outline-color:var(--wine-secondary);
+}
+.language-select{
+  background:var(--wine-pale);
+  border-color:var(--wine-hairline);
+  color:var(--wine);
+}
+.main-nav a:hover,.main-nav a:focus-visible{
+  color:var(--wine-secondary);
+  opacity:1;
+}
+@media(max-width:700px){
+  .navigation-enhanced .menu-toggle{
+    border-color:var(--wine-hairline);
+    color:var(--wine);
+    background:var(--wine-pale);
+  }
+  .navigation-enhanced .main-nav a:focus-visible,
+  .navigation-enhanced .main-nav a:hover{
+    background:var(--wine-pale);
+  }
+}
+
+/* About: headline and manifesto share the upper rhythm. Three narrative
+   chapters then occupy the whole page width instead of a cramped right rail. */
+#apropos .about-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.91fr);
+  align-items:start;
+  gap:clamp(36px,5vw,102px);
+  margin:clamp(48px,6vw,94px) 0 clamp(56px,7vw,108px);
+}
+#apropos .about-grid .display-title{
+  margin:0;
+  font-size:clamp(62px,7vw,132px);
+  line-height:.89;
+  letter-spacing:-.075em;
+}
+#apropos .about-copy{
+  min-width:0;
+  max-width:610px;
+  padding:0;
+}
+#apropos .about-copy .about-lead{
+  font:400 clamp(25px,2.45vw,41px)/1.2 var(--serif);
+  margin:0 0 clamp(19px,2.1vw,32px);
+}
+#apropos .about-copy .about-summary{
+  max-width:55ch;
+  margin:0;
+  font:400 clamp(15px,1.2vw,17px)/1.72 var(--sans);
+  color:#4b4545;
+}
+#apropos .about-story{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(26px,4vw,67px);
+  border-top:1px solid #cdbbc1;
+  padding-top:clamp(28px,3.2vw,50px);
+}
+#apropos .about-chapter{min-width:0}
+#apropos .about-chapter-label{
+  display:block;
+  margin:0 0 clamp(15px,1.75vw,26px);
+  color:var(--wine-secondary);
+  font:600 11px/1.4 var(--sans);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+#apropos .about-chapter p{
+  margin:0;
+  max-width:51ch;
+  color:#464041;
+  font:400 clamp(15px,1.13vw,16px)/1.79 var(--sans);
+}
+@media(max-width:1050px){
+  #apropos .about-grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(24px,4vw,48px);
+  }
+  #apropos .about-grid .display-title{
+    font-size:clamp(56px,6.9vw,86px);
+  }
+  #apropos .about-story{gap:26px}
+}
+@media(max-width:800px){
+  #apropos .about-grid{
+    grid-template-columns:1fr;
+    gap:clamp(27px,4vw,42px);
+    margin:38px 0 54px;
+  }
+  #apropos .about-grid .display-title{
+    font-size:clamp(53px,10.6vw,91px);
+    margin:0;
+  }
+  #apropos .about-copy .about-lead{
+    font-size:clamp(27px,5vw,38px);
+    line-height:1.23;
+  }
+  #apropos .about-story{
+    grid-template-columns:1fr;
+    gap:0;
+    padding-top:0;
+  }
+  #apropos .about-chapter{
+    padding:27px 0;
+    border-bottom:1px solid #e1d5d9;
+  }
+  #apropos .about-chapter:last-child{
+    border-bottom:0;
+    padding-bottom:0;
+  }
+  #apropos .about-chapter-label{margin-bottom:12px}
+  #apropos .about-chapter p{max-width:70ch}
+}
+@media(max-width:359px){
+  #apropos .about-grid .display-title{font-size:clamp(45px,11vw,51px)}
+}
+
+/* Four balanced expertise pillars, with AI explicit and equal in weight to
+   communication, design and operations. Avoid the previous narrow three-up. */
+.competences-section .competences-list{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(42px,5vw,82px) clamp(36px,7vw,125px);
+}
+.competences-list .expertise-pillar{
+  padding-top:clamp(17px,2vw,28px);
+  border-top:1px solid #decfd4;
+}
+.competences-list .expertise-title{
+  margin:0 0 15px;
+  font-size:clamp(30px,2.8vw,45px);
+  max-width:24ch;
+}
+.competences-list .expertise-copy{
+  max-width:56ch;
+  font-size:16px;
+  line-height:1.77;
+}
+.competences-section .competences-outro{
+  border-left:2px solid var(--wine-hairline);
+  padding:0 0 0 clamp(21px,3vw,36px);
+  max-width:880px;
+  color:var(--ink);
+  font-style:normal;
+}
+@media(max-width:760px){
+  .competences-section .competences-list{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .competences-list .expertise-title{margin-bottom:12px}
+  .competences-list .expertise-copy{font-size:15px}
+  .competences-section .competences-outro{
+    margin-top:60px;
+    font-size:clamp(22px,5vw,31px);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .design-filters .design-filter{transition:none}
+}
