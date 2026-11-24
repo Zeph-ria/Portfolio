@@ -10,9 +10,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Une identité industrielle déclinée sur des supports imprimés et des objets.",
-        "en": "An industrial identity applied to printed materials and branded objects.",
-        "es": "Una identidad industrial aplicada a materiales impresos y objetos de marca."
+        "fr": "À Carrigrès, mon travail ne s’arrêtait pas aux publications. J’ai contribué à la visibilité digitale de l’entreprise et structuré un parcours de demande de devis, du site au suivi commercial.",
+        "en": "At Carrigrès, my work went beyond publishing content. I supported the company's digital visibility and structured a quotation-request journey, from the website to commercial follow-up.",
+        "es": "En Carrigrès, mi trabajo iba más allá de las publicaciones. Contribuí a su visibilidad digital y estructuré un recorrido de solicitud de presupuestos, desde el sitio web hasta el seguimiento comercial."
       },
       "slides": [
         {
@@ -127,7 +127,13 @@
             "es": "Carrigrès : Cartel de materiales"
           }
         }
-      ]
+      ],
+      "role": {
+        "fr": "Communication digitale · SEO · Suivi des demandes",
+        "en": "Digital communication · SEO · Request tracking",
+        "es": "Comunicación digital · SEO · Seguimiento de solicitudes"
+      },
+      "tier": "lead"
     },
     {
       "id": "agorafrik",
@@ -138,9 +144,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Identité, mockups et direction iconographique au service des cultures et des talents africains.",
-        "en": "Identity, mockups and photographic art direction celebrating African cultures and talent.",
-        "es": "Identidad, mockups y dirección fotográfica que celebran las culturas y el talento africanos."
+        "fr": "J’ai construit un langage visuel pour traduire l’ambition culturelle d’Agorafrik : identité, choix photographiques et applications conçus comme un ensemble cohérent.",
+        "en": "I developed a visual language for Agorafrik's cultural ambition: identity, photography direction and brand applications conceived as a coherent whole.",
+        "es": "Desarrollé un lenguaje visual para expresar la propuesta cultural de Agorafrik: identidad, selección fotográfica y aplicaciones concebidas como un conjunto coherente."
       },
       "slides": [
         {
@@ -338,7 +344,84 @@
             "es": "Agorafrik : Dirección fotográfica: moda e identidad cultural"
           }
         }
-      ]
+      ],
+      "role": {
+        "fr": "Identité · Direction iconographique · Applications",
+        "en": "Identity · Photographic direction · Applications",
+        "es": "Identidad · Dirección fotográfica · Aplicaciones"
+      },
+      "tier": "lead"
+    },
+    {
+      "id": "utex-empreinte",
+      "name": "UTEX Empreinte",
+      "format": "landscape",
+      "categories": [
+        "branding"
+      ],
+      "summary": {
+        "fr": "J’ai conçu une proposition de programme ESG pour UTEX, de sa vision à son identité et à ses pistes de déploiement. Seuls les éléments de présentation non confidentiels sont montrés ici.",
+        "en": "I designed a proposed ESG programme for UTEX, from its vision and identity to possible implementation pathways. Only non-confidential presentation material appears here.",
+        "es": "Concebí una propuesta de programa ESG para UTEX, desde su visión e identidad hasta posibles vías de implementación. Aquí solo se muestran elementos de presentación no confidenciales."
+      },
+      "slides": [
+        {
+          "path": "assets/projects/utex-empreinte-p01.webp",
+          "thumb": "assets/projects/utex-empreinte-p01.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Couverture du concept ESG",
+            "en": "ESG concept cover",
+            "es": "Portada del concepto ESG"
+          },
+          "alt": {
+            "fr": "UTEX Empreinte : Couverture du concept ESG",
+            "en": "UTEX Empreinte : ESG concept cover",
+            "es": "UTEX Empreinte : Portada del concepto ESG"
+          }
+        },
+        {
+          "path": "assets/projects/utex-empreinte-p02.webp",
+          "thumb": "assets/projects/thumbs/utex-empreinte-p02.webp",
+          "width": 1920,
+          "height": 1080,
+          "title": {
+            "fr": "Signature UTEX Empreinte",
+            "en": "UTEX Empreinte signature",
+            "es": "Firma UTEX Empreinte"
+          },
+          "alt": {
+            "fr": "UTEX Empreinte : Signature UTEX Empreinte",
+            "en": "UTEX Empreinte : UTEX Empreinte signature",
+            "es": "UTEX Empreinte : Firma UTEX Empreinte"
+          }
+        },
+        {
+          "path": "assets/projects/utex-empreinte-p19.webp",
+          "thumb": "assets/projects/utex-empreinte-p19.webp",
+          "width": 596,
+          "height": 335,
+          "quality": "canva-preview",
+          "title": {
+            "fr": "Signature de clôture du programme",
+            "en": "Programme closing signature",
+            "es": "Firma de cierre del programa"
+          },
+          "alt": {
+            "fr": "UTEX Empreinte : Signature de clôture du programme",
+            "en": "UTEX Empreinte : Programme closing signature",
+            "es": "UTEX Empreinte : Firma de cierre del programa"
+          }
+        }
+      ],
+      "role": {
+        "fr": "Conception du programme · Identité · Proposition ESG",
+        "en": "Programme concept · Identity · ESG proposal",
+        "es": "Concepto del programa · Identidad · Propuesta ESG"
+      },
+      "tier": "lead"
     },
     {
       "id": "revendre",
@@ -349,9 +432,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Logo, carte cadeau et contenus de mode pour Re-vendre.",
-        "en": "A logo, gift card and fashion content for Re-vendre.",
-        "es": "Logotipo, tarjeta regalo y contenidos de moda para Re-vendre."
+        "fr": "J’ai développé une identité et ses déclinaisons pour une marque de mode : logo, carte cadeau et contenus pensés pour plusieurs supports.",
+        "en": "I developed the identity and its applications for a fashion brand: logo, gift card and content adapted across touchpoints.",
+        "es": "Desarrollé la identidad y sus aplicaciones para una marca de moda: logotipo, tarjeta regalo y contenidos adaptados a distintos soportes."
       },
       "slides": [
         {
@@ -546,7 +629,8 @@
             "es": "Re-vendre : Pedir la tarjeta regalo"
           }
         }
-      ]
+      ],
+      "tier": "support"
     },
     {
       "id": "atelier",
@@ -556,9 +640,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Création de campagnes et de compositions graphiques pour valoriser les prestations du salon.",
-        "en": "Campaign and visual content design to showcase the salon's services.",
-        "es": "Diseño de campañas y contenido visual para destacar los servicios del salón."
+        "fr": "Des campagnes et des compositions graphiques conçues pour mettre en scène les prestations du salon et rendre sa communication plus cohérente.",
+        "en": "Campaigns and visual compositions designed to showcase the salon's services and bring consistency to its communication.",
+        "es": "Campañas y composiciones visuales para destacar los servicios del salón y dar coherencia a su comunicación."
       },
       "slides": [
         {
@@ -689,7 +773,8 @@
             "es": "L’Atelier : Cuidado de la manicura"
           }
         }
-      ]
+      ],
+      "tier": "support"
     },
     {
       "id": "wali",
@@ -699,9 +784,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Des compositions produit et des nuanciers pour la gamme Wali.",
-        "en": "Product compositions and colour swatches for the Wali range.",
-        "es": "Composiciones de producto y muestrarios de color para la gama Wali."
+        "fr": "Une recherche de présentation produit, de couleurs et de composition pour donner à la gamme Wali une expression visuelle lisible.",
+        "en": "Product presentation, colour and composition work to give the Wali range a clear visual expression.",
+        "es": "Trabajo de presentación de producto, color y composición para dar a la gama Wali una expresión visual clara."
       },
       "slides": [
         {
@@ -832,7 +917,8 @@
             "es": "Wali : Gama de esmaltes"
           }
         }
-      ]
+      ],
+      "tier": "support"
     },
     {
       "id": "bloom",
@@ -842,9 +928,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Des visuels de coffrets floraux, de l’annonce au message personnalisé.",
-        "en": "Flower box visuals, from product announcements to personal messages.",
-        "es": "Piezas visuales de cajas florales, del anuncio al mensaje personalizado."
+        "fr": "Une mise en scène visuelle des coffrets floraux, pensée pour relier la présentation du produit à l’émotion du message.",
+        "en": "Visual storytelling for floral gift boxes, connecting the product presentation with the feeling behind the message.",
+        "es": "Una puesta en escena visual de los cofres florales que vincula la presentación del producto con la emoción del mensaje."
       },
       "slides": [
         {
@@ -927,7 +1013,8 @@
             "es": "Bloom Atelier : Caja floral en contexto"
           }
         }
-      ]
+      ],
+      "tier": "support"
     },
     {
       "id": "anniecks",
@@ -937,9 +1024,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Des visuels de mode masculine, du produit à la silhouette portée.",
-        "en": "Menswear visuals, from individual products to complete outfits.",
-        "es": "Piezas visuales de moda masculina, del producto al conjunto completo."
+        "fr": "Des contenus de prêt-à-porter masculin qui valorisent les pièces, les silhouettes et la lecture du produit sur les réseaux.",
+        "en": "Menswear content that highlights garments, outfits and product presentation across social channels.",
+        "es": "Contenidos de moda masculina que destacan las prendas, los conjuntos y la presentación del producto en redes."
       },
       "slides": [
         {
@@ -1006,72 +1093,8 @@
             "es": "Annieck’s : El detalle cuenta"
           }
         }
-      ]
-    },
-    {
-      "id": "utex-empreinte",
-      "name": "UTEX Empreinte",
-      "format": "landscape",
-      "categories": [
-        "branding"
       ],
-      "summary": {
-        "fr": "Conception de l’identité et du projet ESG UTEX Empreinte : de l’idée à sa structuration. Les éléments internes restent confidentiels.",
-        "en": "Concept, identity and structure of the UTEX Empreinte ESG initiative. Internal material remains confidential.",
-        "es": "Concepción, identidad y estructura del proyecto ESG UTEX Empreinte. El contenido interno permanece confidencial."
-      },
-      "slides": [
-        {
-          "path": "assets/projects/utex-empreinte-p01.webp",
-          "thumb": "assets/projects/utex-empreinte-p01.webp",
-          "width": 596,
-          "height": 335,
-          "quality": "canva-preview",
-          "title": {
-            "fr": "Couverture du concept ESG",
-            "en": "ESG concept cover",
-            "es": "Portada del concepto ESG"
-          },
-          "alt": {
-            "fr": "UTEX Empreinte : Couverture du concept ESG",
-            "en": "UTEX Empreinte : ESG concept cover",
-            "es": "UTEX Empreinte : Portada del concepto ESG"
-          }
-        },
-        {
-          "path": "assets/projects/utex-empreinte-p02.webp",
-          "thumb": "assets/projects/thumbs/utex-empreinte-p02.webp",
-          "width": 1920,
-          "height": 1080,
-          "title": {
-            "fr": "Signature UTEX Empreinte",
-            "en": "UTEX Empreinte signature",
-            "es": "Firma UTEX Empreinte"
-          },
-          "alt": {
-            "fr": "UTEX Empreinte : Signature UTEX Empreinte",
-            "en": "UTEX Empreinte : UTEX Empreinte signature",
-            "es": "UTEX Empreinte : Firma UTEX Empreinte"
-          }
-        },
-        {
-          "path": "assets/projects/utex-empreinte-p19.webp",
-          "thumb": "assets/projects/utex-empreinte-p19.webp",
-          "width": 596,
-          "height": 335,
-          "quality": "canva-preview",
-          "title": {
-            "fr": "Signature de clôture du programme",
-            "en": "Programme closing signature",
-            "es": "Firma de cierre del programa"
-          },
-          "alt": {
-            "fr": "UTEX Empreinte : Signature de clôture du programme",
-            "en": "UTEX Empreinte : Programme closing signature",
-            "es": "UTEX Empreinte : Firma de cierre del programa"
-          }
-        }
-      ]
+      "tier": "support"
     },
     {
       "id": "utex",
@@ -1081,9 +1104,9 @@
         "communication"
       ],
       "summary": {
-        "fr": "Des affiches pour les rendez-vous festifs et institutionnels d’UTEX / TEXAF.",
-        "en": "Posters for UTEX / TEXAF celebrations and institutional events.",
-        "es": "Carteles para celebraciones y actos institucionales de UTEX / TEXAF."
+        "fr": "Des supports de communication conçus pour des rendez-vous festifs et institutionnels, en adaptant chaque composition à son contexte.",
+        "en": "Visual communication for celebratory and institutional events, with each composition tailored to its context.",
+        "es": "Piezas de comunicación para eventos festivos e institucionales, con composiciones adaptadas a cada contexto."
       },
       "slides": [
         {
@@ -1118,7 +1141,8 @@
             "es": "UTEX / TEXAF : Centenario TEXAF"
           }
         }
-      ]
+      ],
+      "tier": "support"
     },
     {
       "id": "recherche-graphique",
@@ -1128,9 +1152,9 @@
         "research"
       ],
       "summary": {
-        "fr": "Des explorations visuelles autour du portrait, de la couleur et de la typographie.",
-        "en": "Visual explorations of portraiture, colour and typography.",
-        "es": "Exploraciones visuales del retrato, el color y la tipografía."
+        "fr": "Une sélection de recherches personnelles sur le portrait, la composition et la typographie : un répertoire de formes qui nourrit mon regard graphique.",
+        "en": "A selection of personal explorations in portraiture, composition and typography: a visual vocabulary that informs my design work.",
+        "es": "Una selección de investigaciones personales sobre retrato, composición y tipografía: un repertorio visual que nutre mi trabajo gráfico."
       },
       "nameI18n": {
         "fr": "Recherche graphique",
@@ -1170,7 +1194,8 @@
             "es": "Agorafrik : Retrato y tipografía"
           }
         }
-      ]
+      ],
+      "tier": "support"
     }
   ],
   "gallery": [
