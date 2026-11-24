@@ -38,13 +38,15 @@ test('New copy emphasizes scope without claiming that proposed ESG work was depl
   assert(!html.includes('canva.com/design/DAG4l6UmPgY'),'No confidential full deck link');
 });
 
-test('Three expertise areas replace generic numbered skill cards without imagery',()=>{
+test('Four expertise areas include AI without generic numbered cards or imagery',()=>{
   const section=elements.find(node=>node.attrs.id==='competences');
   assert(section);
   const pillars=below(section).filter(n=>n.attrs.class==='expertise-pillar');
-  assert.equal(pillars.length,3);
+  assert.equal(pillars.length,4);
   assert.equal(below(section).filter(n=>n.tag==='img').length,0);
   assert(!below(section).some(n=>n.attrs.class==='competence-index'),'Do not reproduce school-like numbered skills');
+  assert(pillars.some(pillar=>below(pillar).some(node=>node.tag==='h3' && node.attrs['data-fr']==='IA & automatisation')),
+    'AI and automation must be visible as an explicit skill');
   for(const pillar of pillars){
     const title=below(pillar).find(n=>n.tag==='h3');
     const copy=below(pillar).find(n=>n.tag==='p');
@@ -55,6 +57,27 @@ test('Three expertise areas replace generic numbered skill cards without imagery
     }
   }
 });
+
+
+
+test('Biography shares a balanced editorial story across three translated chapters',()=>{
+  const about=elements.find(node=>node.attrs.id==='apropos');
+  assert(about,'Biography should exist');
+  const chapters=below(about).filter(node=>node.attrs.class==='about-chapter');
+  assert.equal(chapters.length,3);
+  for(const chapter of chapters){
+    const label=below(chapter).find(node=>node.attrs.class==='about-chapter-label');
+    const paragraph=below(chapter).find(node=>node.tag==='p');
+    assert(label && paragraph);
+    for(const lang of ['fr','en','es']){
+      assert(label.attrs['data-'+lang]?.trim(),'Missing localized chapter label');
+      assert(paragraph.attrs['data-'+lang]?.trim(),'Missing localized chapter copy');
+    }
+  }
+  assert(!html.includes('Je continue à apprendre'),'Junior-sounding closing sentence must be replaced');
+  assert(html.includes('data-fr="Des sciences politiques à l’intelligence artificielle'));
+});
+
 
 
 test('The exact approved sentence is the central headline in all three languages',()=>{
